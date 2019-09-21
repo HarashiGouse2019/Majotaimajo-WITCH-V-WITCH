@@ -44,6 +44,10 @@ public class PlayerPawn : MonoBehaviour
         transform.RotateAround(originOfRotation.position, Vector3.back, _speed * Time.deltaTime);
         Vector2 desiredPosition = (transform.position - originOfRotation.position).normalized * radius + originOfRotation.position;
         transform.position = Vector2.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
+
+        Quaternion zLock = transform.rotation;
+        zLock.eulerAngles = new Vector3(zLock.eulerAngles.x, zLock.eulerAngles.y, 0);
+        transform.rotation = zLock;
     }
 
     public void MoveOnDiameter(float _speed, Transform _target)
