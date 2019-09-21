@@ -61,4 +61,19 @@ public class PlayerController : MonoBehaviour
     }
 
     //Remember, we are controlling pawn!!!
+    void InitControls()
+    {
+        //Movement
+        if (Input.GetKey(left))
+            pawn.MoveInCircle(-pawn.rotationSpeed);
+
+        if (Input.GetKey(right))
+            pawn.MoveInCircle(pawn.rotationSpeed);
+
+        if (Input.GetKey(up))
+            pawn.MoveOnDiameter(pawn.movementSpeed, pawn.originOfRotation);
+
+        if (Input.GetKey(down))
+            pawn.MoveOnDiameter(-pawn.movementSpeed, pawn.originOfRotation);
+    }
 }
