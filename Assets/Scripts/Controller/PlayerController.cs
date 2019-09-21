@@ -31,33 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    //This will be based on rotating, so we need a rotating function
-    public void Rotate(object _direction)
-    {
-        //A switch case of if it's "Left" or "Right"
-        switch (_direction)
-        {
-            //It takes Left and Right as 
-            case "Left":
-
-                break;
-            case "Right":
-
-                break;
-
-            case -1:
-
-                break;
-            case 1:
-
-                break;
-            default:
-                //Do Nothing
-                break;
-        }
+        InitControls();
     }
 
     //Remember, we are controlling pawn!!!
