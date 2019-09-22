@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     //Reference to canvas (we'll make it a list since we have so many)
     public List<Canvas> Canvas;
 
+    public TextureRenderer tRenderer;
+
     //We need to reverence all the following
     [Header("Game Status")]
     public TextMeshProUGUI HISCORETEXT;
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Dialogue.Instance.Run(0);
+        tRenderer.check = true;
     }
 
     // Update is called once per frame
@@ -79,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         tSpirits--;
         timesHit = 0;
+        tRenderer.check = true;
         ResetScore();
     }
 
