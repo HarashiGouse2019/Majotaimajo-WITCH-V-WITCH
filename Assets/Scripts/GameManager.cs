@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     int hiScore;
     int score;
     int tSpirits;
-    bool typeIn;
     DanmakuSequencer danmakuSequencer;
 
     KeyCode skipKey = KeyCode.Return;
@@ -144,7 +143,6 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
         textBoxUI.gameObject.SetActive(false);
-        typeIn = false;
         StopCoroutine(DisableDelay(_delay));
     }
 
@@ -162,7 +160,7 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                danmakuSequencer.enabled = true;
+                GameObject.FindGameObjectWithTag("target").GetComponent<DanmakuSequencer>().enabled = true;
                 //This is where we start our Danmaku routines
                 //In another script of course!!
 

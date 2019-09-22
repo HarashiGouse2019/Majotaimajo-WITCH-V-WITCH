@@ -62,5 +62,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(shoot))
             pawn.Shoot(0);
+
+        //Check pawn positioning
+        if (pawn.transform.position.x > pawn.originOfRotation.gameObject.transform.position.x)
+            pawn.Flip(-1);
+        else
+            pawn.Flip(1);
     }
 }

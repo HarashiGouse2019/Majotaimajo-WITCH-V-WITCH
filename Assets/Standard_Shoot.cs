@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using System.Diagnostics;
 using UnityEngine;
-using DanmakuPattern;
 using Alarm;
 
 using Debug = UnityEngine.Debug;

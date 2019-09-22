@@ -4,44 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using Alarm;
 
-namespace DanmakuPattern
+[CreateAssetMenu(fileName = "New Pattern", menuName = "Pattern")]
+public class Pattern : ScriptableObject
 {
-    public class Pattern : MonoBehaviour
+    public static Pattern pattern;
+    [Serializable]
+    public class Block
     {
-        /// <summary>
-        /// Create a unique shooting routine.
-        /// </summary>
-        /// 
-        /// <param name="amount"></param>
-        /// How many bullets you want instaniated.
-        /// 
-        /// <param name="duration"></param>
-        /// How long it takes for each bullet to instantiate.
-        /// 
-        /// <param name="timer"></param>
-        /// A reference to a Timer class
-        /// 
-        /// <param name="size"></param>
-        /// The size of the timer (how many total alarms there will be)
-        /// 
-        /// <param name="timerIndex"></param>
-        /// The timer index for the set Timer class
-        ///
-        /// <param name="method">
-        /// The method/function to call
-        ///
+        public int amount;
+        public GameObject bullet;
 
-        public static Pattern pattern;
+        public bool loop;
+        public float loopRate;
 
-        public Pattern(int amount = 1, float duration = 1, float angle = 0, Timer timer = null, int size = 1, int index = 0, Action method = null) {
-            ConstructPattern(amount, duration, angle, timer, size, index, method);
+        public enum RotationType
+        {
+
+            NoRotation,
+            ClockwiseI,
+            ClockwiseII,
+            ClockwiseIII,
+            CounterClockwiseI = -1,
+            CounterClockwiseII = -2,
+            CounterClockwiseIII = -3
+        };
+        public enum DistributionType
+        {
+            Uniformed,
+            Biformed,
+            Scattered
         }
 
-        public virtual void ConstructPattern(int _amount, float _duration, float angle, Timer _timer, int _size, int _index, Action _method) { }
-        public virtual void ConstructPattern(ref int _amount, float _duration, float angle, Timer _timer, int _size, int _index, Action _method) { }
-        public virtual void ConstructPattern(ref int _amount, ref int step, float _duration, float angle, Timer _timer, int _size, int _index, Action _method) { }
-        public virtual void ConstructPattern(ref int _amount, ref int step, ref float angle, float _duration, Timer _timer, int _size, int _index, Action _method) { }
-        public virtual void ConstructPattern(int _amount, ref int step, float _duration, float angle, Timer _timer, int _size, int _index, Action<int> _method) { }
-        public virtual void ConstructPattern(int _amount, ref int step, ref float angle, float _duration,  Timer _timer, int _size, int _index, Action<int> _method) { }
+        public RotationType rotation;
+        public DistributionType distribution;
     }
+
+    public List<Block> build = new List<Block>();
 }
+
+//And I think that's it... I think...

@@ -5,6 +5,8 @@ using Alarm;
 
 public class PlayerPawn : MonoBehaviour
 {
+    public static PlayerPawn player;
+
     #region Public Members
     //Our movment speeds
     public float movementSpeed;
@@ -37,6 +39,7 @@ public class PlayerPawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = this;
         pawnTransform = GetComponent<Transform>();
         transform.position = (transform.position - originOfRotation.position).normalized * radius + originOfRotation.position;
     }
@@ -88,10 +91,20 @@ public class PlayerPawn : MonoBehaviour
         return isMoving;
     }
 
+    public void Flip(int _direction)
+    {
+        Vector3 xScale = transform.localScale;
+        xScale.x = _direction;
+
+        transform.localScale = xScale;
+    }
+
     void Wait(float _duration)
     {
         timer.StartTimer(0);
         returnVal = timer.SetFor(_duration, 0);
         if (returnVal == true) recoil = false;
     }
+
+    
 }

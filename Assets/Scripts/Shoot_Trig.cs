@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using System.Diagnostics;
 using UnityEngine;
-using DanmakuPattern;
 using Alarm;
 
 using Debug = UnityEngine.Debug;
@@ -86,9 +85,9 @@ public class Shoot_Trig : MonoBehaviour
     {
         UpdateStartPoint();
 
-        if (loop) Loop();
-
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
+
+        if (loop) InvokeRepeating("Loop", 0, loopSpeed); else CancelInvoke("Loop");
     }
 
     public void SpawnBullets(int _numberOfProjectiles, int _index = 0)
@@ -141,12 +140,11 @@ public class Shoot_Trig : MonoBehaviour
             angle += angleStep;
         }
     }
+    
     void Loop()
     {
-
-        //Now... The moment of truth...
-        Pattern simplePattern = new Simple_Pattern(numberOfProjectiles, loopSpeed, (g_angle += (int)rotation), loopTimer, loopTimer.GetSize(), 0, () => SpawnBullets(numberOfProjectiles));
-
+        g_angle += (int)rotation;
+        SpawnBullets(numberOfProjectiles, bulletIndex);
     }
 
     public void Remove(GameObject obj)
