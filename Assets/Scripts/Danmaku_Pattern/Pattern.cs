@@ -6,7 +6,7 @@ using Alarm;
 
 namespace DanmakuPattern
 {
-    public class Pattern
+    public class Pattern : MonoBehaviour
     {
         /// <summary>
         /// Create a unique shooting routine.

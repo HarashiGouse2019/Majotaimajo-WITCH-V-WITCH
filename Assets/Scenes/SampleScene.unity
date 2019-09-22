@@ -347,6 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218907849}
   - component: {fileID: 218907850}
+  - component: {fileID: 218907851}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -390,6 +391,46 @@ MonoBehaviour:
   SLOT3: {fileID: 998696646}
   textBoxUI: {fileID: 1714457120}
   dialogue: {fileID: 70251642}
+  dialoguePos: 0
+  isDone: 0
+--- !u!114 &218907851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218907848}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startStep: 0
+  currentStep: 0
+  nextStep: 0
+  stepSpeed: 0.25
+  runningRoutine: 0
+  routine:
+  - pattern: {fileID: 0}
+    stepPos: 0
+  - pattern: {fileID: 0}
+    stepPos: 100
+  - pattern: {fileID: 0}
+    stepPos: 200
+  - pattern: {fileID: 0}
+    stepPos: 300
+  - pattern: {fileID: 0}
+    stepPos: 400
+  - pattern: {fileID: 0}
+    stepPos: 500
+  - pattern: {fileID: 0}
+    stepPos: 600
+  - pattern: {fileID: 0}
+    stepPos: 700
+  - pattern: {fileID: 0}
+    stepPos: 800
+  - pattern: {fileID: 0}
+    stepPos: 900
 --- !u!1 &264528796
 GameObject:
   m_ObjectHideFlags: 0
