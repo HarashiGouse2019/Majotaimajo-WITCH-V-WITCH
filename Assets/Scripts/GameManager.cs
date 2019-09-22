@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI SCORETEXT;
     public Image SPIRITS;
     public Image SLOT1, SLOT2, SLOT3;
+    public Image BOSSHEALTH;
 
     [Header("Text Box")]
     public Image textBoxUI;
@@ -31,11 +32,14 @@ public class GameManager : MonoBehaviour
     public int dialoguePos = 0;
     public bool isDone = false;
 
+    //Score System
+    public int timesHit;
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        SetLives(3);
+        SetLives(5);
         #region Singleton
         if (Instance == null)
         {
@@ -62,7 +66,6 @@ public class GameManager : MonoBehaviour
 
         if (!textBoxUI.gameObject.activeSelf) AddToScore(1);
 
-        if (Input.GetKeyDown(KeyCode.Backspace)) ResetScore();
         if (isDone == true) ToNextDialogue();
     }
 
@@ -74,7 +77,14 @@ public class GameManager : MonoBehaviour
 
     public void DecrementLives()
     {
+        tSpirits--;
+        timesHit = 0;
+        ResetScore();
+    }
 
+    public void DecrementProgress(float _value)
+    {
+        BOSSHEALTH.fillAmount -= _value / 100f;
     }
 
     public void DecrementMagic(int _value)

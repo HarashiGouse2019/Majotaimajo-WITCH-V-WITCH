@@ -9,8 +9,11 @@ public class PlayerPawn : MonoBehaviour
 
     #region Public Members
     //Our movment speeds
+    public PlayerController controller;
+
     public float movementSpeed;
     public float rotationSpeed;
+    public float maxSpeed;
 
     public Transform originOfRotation;
 
@@ -32,11 +35,13 @@ public class PlayerPawn : MonoBehaviour
     bool recoil = false;
     bool returnVal;
     bool hit;
-    
-    Timer timer = new Timer(1, true);
+
+    Timer timer = new Timer(3, true);
     SpriteRenderer srenderer;
+    Rigidbody2D rb;
+    Vector2 move;
     bool isVisible;
-    
+
     #endregion
 
     // Start is called before the first frame update
@@ -44,8 +49,8 @@ public class PlayerPawn : MonoBehaviour
     {
         player = this;
         pawnTransform = GetComponent<Transform>();
-        transform.position = (transform.position - originOfRotation.position).normalized * radius + originOfRotation.position;
         srenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
         isVisible = srenderer.isVisible;
     }
 
@@ -54,25 +59,25 @@ public class PlayerPawn : MonoBehaviour
     {
         if (recoil == true) Wait(0.05f);
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
-        MoveInCircle(0);
-        if (hit) { GetHurt(3); }
+
+        //For our blinking effect
+        if (hit == true)
+        {
+            GetHurt(0.15f, 5f);
+            srenderer.enabled = isVisible;
+        }
+        else
+        {
+            isVisible = true;
+            srenderer.enabled = isVisible;
+        }
     }
 
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
     //Either circle around Luu, or go towards her.
-    public void MoveInCircle(float _speed)
+    public void CalculateAngle()
     {
-
-        transform.RotateAround(originOfRotation.position, Vector3.back, _speed * Time.deltaTime);
-        Vector2 desiredPosition = (transform.position - originOfRotation.position).normalized * radius + originOfRotation.position;
-        transform.position = Vector2.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
-
-        Quaternion zLock = transform.rotation;
-        zLock.eulerAngles = new Vector3(zLock.eulerAngles.x, zLock.eulerAngles.y, 0);
-        transform.rotation = zLock;
-
-        g_angle += -(_speed * Time.deltaTime);
-
+        g_angle = Mathf.Sin(transform.position.y);
     }
 
     public void MoveOnDiameter(float _speed, Transform _target)
@@ -81,7 +86,7 @@ public class PlayerPawn : MonoBehaviour
         radius += _speed * Time.deltaTime;
     }
 
-        public void Shoot(int _index)
+    public void Shoot(int _index)
     {
         if (recoil == false)
         {
@@ -111,45 +116,60 @@ public class PlayerPawn : MonoBehaviour
 
     void Wait(float _duration)
     {
-        timer.StartTimer(0);
-        returnVal = timer.SetFor(_duration, 0);
+        timer.StartTimer(2);
+        returnVal = timer.SetFor(_duration, 2);
         if (returnVal == true) recoil = false;
     }
 
-    void GetHurt(int _duration)
+    private void GetHurt(float _blinkRate, float _duration)
     {
-        timer.StartTimer(1);
-        returnVal = timer.SetFor(_duration, 1);
-        if (!returnVal)
+        if (hit == true)
         {
-            Flash(0.05f);
-        } else
-        {
-            hit = false;
-            timer.SetToZero(1, true);
-        }
-    }
+            if (GameManager.Instance.tSpirits < 1)
+            {
+                Application.Quit();
+            }
 
-    void Flash(float _duration)
-    {
-        timer.StartTimer(0);
-        if (timer.SetFor(_duration, 0)) {
-            if (isVisible == true) { isVisible = false; timer.SetToZero(0); }
-            if (isVisible == false) {isVisible = true; timer.SetToZero(0); }
+            timer.StartTimer(0);
+            timer.StartTimer(1);
+            //I want it so that the player is blinking on and off for a certain duration of time.
+            //That would mean getting to the Sprite Renderer, and enabling it and disabling it after
+            //certain intervals.
+
+            //Since there's a timer in Pawn, and I've initialized 12, I'm going to use alarm 6
+            //We'll pass the blink rate to our SetFor method.
+            returnVal = timer.SetFor(_duration, 1, true);
+            if (timer.SetFor(_blinkRate, 0))
+            {
+                if (isVisible) isVisible = false;
+                else if (isVisible == false) isVisible = true;
+            }
+
+            if (returnVal)
+            {
+                hit = false;
+                timer.SetToZero(0, true);
+            }
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-       switch(other.name)
+        switch (other.name)
         {
             case "testBullet(Clone)":
-                hit = true;
-                GameManager.Instance.DecrementLives();
+                if (hit == false)
+                {
+                    hit = true;
+                    GameManager.Instance.DecrementLives();
+                }
                 break;
             case "Luu_Obj":
-                hit = true;
-                GameManager.Instance.DecrementLives();
+                if (hit == false)
+                {
+                    hit = true;
+                    GameManager.Instance.DecrementLives();
+                }
                 break;
             default:
 
@@ -158,4 +178,32 @@ public class PlayerPawn : MonoBehaviour
     }
 
 
+
+    public void Foward()
+    {
+        move = new Vector2(rb.velocity.x, movementSpeed);
+        if (rb.velocity.magnitude < maxSpeed)
+            rb.velocity += move * Time.fixedDeltaTime;
+
+    }
+    public void Back()
+    {
+        move = new Vector2(rb.velocity.x, -movementSpeed);
+        if (rb.velocity.magnitude < maxSpeed)
+            rb.velocity += move * Time.fixedDeltaTime;
+    }
+
+    public void Left()
+    {
+        move = new Vector2(-movementSpeed, rb.velocity.y);
+        if (rb.velocity.magnitude < maxSpeed)
+            rb.velocity += move * Time.fixedDeltaTime;
+    }
+
+    public void Right()
+    {
+        move = new Vector2(movementSpeed, rb.velocity.y);
+        if (rb.velocity.magnitude < maxSpeed)
+            rb.velocity += move * Time.fixedDeltaTime;
+    }
 }

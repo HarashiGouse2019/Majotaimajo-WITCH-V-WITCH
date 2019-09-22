@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Texturesrenderer : MonoBehaviour
+public class TextureRenderer : MonoBehaviour
 {
     public Texture spirits;
 

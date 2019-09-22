@@ -70,7 +70,7 @@ public class Standard_Shoot : MonoBehaviour
             existingProjectiles.Add(tmpObj);
 
 
-            tmpObj.transform.eulerAngles = new Vector3(0, 0, GetComponent<PlayerPawn>().g_angle);
+            tmpObj.transform.eulerAngles = new Vector3(0f, 0f, PlayerPawn.player.g_angle);
             tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
         }
     }

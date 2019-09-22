@@ -26,7 +26,7 @@ public class CheckDestroy : MonoBehaviour
     void Update()
     {
         destroyTimer.StartTimer(0);
-        if (destroyTimer.currentTime[0] > 8)
+        if (destroyTimer.currentTime[0] > 10)
         {
             origin.GetComponent<Shoot_Trig>().Remove(gameObject);
             Destroy(gameObject);

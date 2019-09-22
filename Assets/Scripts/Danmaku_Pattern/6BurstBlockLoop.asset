@@ -19,6 +19,6 @@ MonoBehaviour:
       type: 3}
     loop: 1
     loopRate: 0.3
-    rotation: 1
+    rotation: 2
     distribution: 0
     transitionDuration: 0
