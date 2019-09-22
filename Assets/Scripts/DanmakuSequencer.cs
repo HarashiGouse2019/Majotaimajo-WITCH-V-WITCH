@@ -18,7 +18,8 @@ public class DanmakuSequencer : MonoBehaviour
     }
 
     public uint runningRoutine = 0;
-    public uint completedRoutines = 0;
+    public int completedRoutines = 0;
+    public int completedLoops = 0;
 
     public List<Routine> routine = new List<Routine>(); 
     #endregion
@@ -49,24 +50,7 @@ public class DanmakuSequencer : MonoBehaviour
 
     private void Update()
     {
-        if (currentStep >= nextStep)
-        {
-            if (!CheckIfAtLastRoutine())
-            {
-                runningRoutine++;
-                nextStep = GetNextStep();
-                startStep = currentStep;
-            }
-
-            //If at the end of last one
-
-        }
-        if (GetRoutineCompletionInPercentage() == 0)
-        {
-            Unlock();
-            RunPattern(routine[(int)runningRoutine].pattern);
-        }
-
+        GetRoutineCompletionInPercentage();
     }
 
     public void IterateSequence()
@@ -81,8 +65,30 @@ public class DanmakuSequencer : MonoBehaviour
 
     void Sequence()
     {
-        GetRoutineCompletionInPercentage();
+
         currentStep++;
+
+        if (currentStep > nextStep - 1)
+        {
+            if (!CheckIfAtLastRoutine())
+            {
+                runningRoutine++;
+                completedRoutines++;
+                nextStep = GetNextStep();
+                startStep = GetPreviousStep();
+            }
+
+            //If at the end of last one
+
+        }
+
+
+        if (GetRoutineCompletionInPercentage() < 0.02)
+        {
+            Unlock();
+            trig.loop = false;
+            RunPattern(routine[(int)runningRoutine].pattern);
+        }
     }
 
     public uint GetNextStep()
@@ -92,21 +98,22 @@ public class DanmakuSequencer : MonoBehaviour
 
     public uint GetPreviousStep()
     {
-        return routine[(int)runningRoutine - 1].stepPos;
+        return routine[(int)runningRoutine].stepPos;
     }
 
     public float GetRoutineCompletionInPercentage()
     {
         //Give me the percent between patterns
-        progress = (currentStep / (nextStep - startStep)) - completedRoutines;
+        progress = (currentStep - startStep) / (nextStep - startStep);
         return progress;
     }
 
     //Patterns
     void RunPattern(Pattern _pattern)
     {
-        if (locked == Unlock())
+        if (locked == false)
         {
+            progress = 0;
             trig.numberOfProjectiles = _pattern.build[(int)runningRoutine].amount;
             trig.loop = _pattern.build[(int)runningRoutine].loop;
             trig.loopSpeed = _pattern.build[(int)runningRoutine].loopRate;
@@ -167,9 +174,13 @@ public class DanmakuSequencer : MonoBehaviour
         if (currentStep == routine[routine.Count - 1].stepPos)
         {
             currentStep = reset;
-            nextStep = GetNextStep();
-            startStep = currentStep;
             runningRoutine = reset;
+            
+            nextStep = routine[(int)runningRoutine + 1].stepPos;
+            startStep = routine[(int)runningRoutine].stepPos;
+            completedRoutines++;
+            completedLoops++;
+            progress = reset + (completedRoutines - completedLoops);
             return true;
         }
         return false;
