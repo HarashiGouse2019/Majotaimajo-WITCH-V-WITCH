@@ -31,22 +31,24 @@ public class GameManager : MonoBehaviour
     KeyCode skipKey = KeyCode.Return;
     public int dialoguePos = 0;
     public bool isDone = false;
-   
+
 
     // Start is called before the first frame update
     void Awake()
     {
         SetLives(3);
         #region Singleton
-            if (Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(this);
-        } else {
+        }
+        else
+        {
             Destroy(gameObject);
         }
         #endregion
-        
+
     }
 
     private void Start()
@@ -112,25 +114,25 @@ public class GameManager : MonoBehaviour
         if (isDone == false)
         {
             textBoxUI.gameObject.SetActive(true);
-            if (dialogue.text.Length > 0)
-            {
-                dialogue.text = "";
-            }
+            dialogue.text = "";
+
 
             //This give a typewritter effect. With a ton of trial and error, this one works the best!!!
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length + 1; i++)
             {
-                dialogue.text = text.Substring(0, i);
-                //AudioManager.audio.Play("Type000");
-                //Just in chase you don't want to read dialogue...
-                if (Input.GetKeyDown(skipKey))
+                if (Input.GetKeyDown(skipKey) && i > 0)
                 {
-                     dialogue.text = text;
+                    i = text.Length + 1;
+                    dialogue.text = text;
                     break;
                 }
+                else
+                {
+                    dialogue.text = text.Substring(0, i);
+                    //AudioManager.audio.Play("Type000");
 
-                yield return new WaitForSeconds(textspeed);
-
+                    yield return new WaitForSeconds(textspeed);
+                }
             }
             isDone = true;
         }
@@ -138,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator DisableDelay(float _delay)
     {
-        
+
         yield return new WaitForSeconds(_delay);
         textBoxUI.gameObject.SetActive(false);
         typeIn = false;
@@ -147,12 +149,22 @@ public class GameManager : MonoBehaviour
 
     public void ToNextDialogue()
     {
-        StopCoroutine(Dialogue.Instance.displayText);
         if (Input.GetKeyDown(skipKey))
         {
-            isDone = false;
-            dialoguePos++;
-            Dialogue.Instance.Run(dialoguePos);
+            if (dialoguePos < Dialogue.Instance.dialogue.Length - 1)
+            {
+                isDone = false;
+                dialoguePos++;
+                dialogue.text = "";
+                Dialogue.Instance.Run(dialoguePos);
+            } else
+            {
+                dialogue.text = "";
+                textBoxUI.gameObject.SetActive(false);
+                //This is where we start our Danmaku routines
+                //In another script of course!!
+
+            }
         }
     }
 }
