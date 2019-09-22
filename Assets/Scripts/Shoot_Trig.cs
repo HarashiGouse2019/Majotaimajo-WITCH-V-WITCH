@@ -53,7 +53,7 @@ public class Shoot_Trig : MonoBehaviour
     [Range(0.05f, 1)] public float loopSpeed = 0.05f;
 
     [Header("Prefabs")]
-    public List<GameObject> bullet;
+    public List<GameObject> bullet = new List<GameObject>();
     public int bulletIndex;
 
     [Header("Origin")]

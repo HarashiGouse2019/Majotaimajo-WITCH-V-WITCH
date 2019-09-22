@@ -5,6 +5,8 @@ using UnityEngine;
 public class DanmakuSequencer : MonoBehaviour
 {
     #region Public Members
+    public Shoot_Trig trig;
+
     public float startStep, currentStep, nextStep;
     public float stepSpeed;
 
@@ -28,17 +30,12 @@ public class DanmakuSequencer : MonoBehaviour
 
     #region Private Members
     readonly uint reset = 0;
-
-    Shoot_Trig trig;
-
     bool locked = false;
     #endregion
 
     void Awake()
     {
-        if (currentStep != 0) startStep = GetPreviousStep();
-        nextStep = GetNextStep();
-        trig = gameObject.GetComponent<Shoot_Trig>();
+        
     }
     void OnEnable()
     {
@@ -57,6 +54,8 @@ public class DanmakuSequencer : MonoBehaviour
 
     public void IterateSequence()
     {
+        if (currentStep != 0) startStep = GetPreviousStep();
+        nextStep = GetNextStep();
         InvokeRepeating("Sequence", 0f, stepSpeed);
     }
 
@@ -185,11 +184,22 @@ public class DanmakuSequencer : MonoBehaviour
             }
             else
             {
-                PauseSequenceIteration();
+                gameObject.SetActive(false);
             }
             completedRoutines++;
             return true;
         }
         return false;
+    }
+
+    void ResetAllValues()
+    {
+        progress = reset;
+        currentStep = reset;
+        nextStep = reset;
+        startStep = reset;
+        completedLoops = (int)reset;
+        completedRoutines = (int)reset;
+        runningRoutine = reset;
     }
 }

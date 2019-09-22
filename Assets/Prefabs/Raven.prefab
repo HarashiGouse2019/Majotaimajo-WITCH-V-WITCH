@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 1202548112172699522}
   - component: {fileID: 1202548112172699525}
   - component: {fileID: 1202548112172699524}
+  - component: {fileID: 6089921367965787053}
   m_Layer: 0
   m_Name: Raven
   m_TagString: player
@@ -75,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202548112172699551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.5, z: 10}
+  m_LocalPosition: {x: 0, y: -6.534, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1202548111567478764}
@@ -227,7 +228,27 @@ MonoBehaviour:
   currentStep: 0
   nextStep: 0
   stepSpeed: 0.5
+  progress: 0
   runningRoutine: 0
+  completedRoutines: 0
+  completedLoops: 0
   routine:
   - pattern: {fileID: 11400000, guid: e4c2b0e7bf4ac344ba010ac5a38a91ab, type: 2}
     stepPos: 0
+  enableSequenceLooping: 0
+--- !u!58 &6089921367965787053
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202548112172699551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.08, y: -0.17}
+  serializedVersion: 2
+  m_Radius: 0.08

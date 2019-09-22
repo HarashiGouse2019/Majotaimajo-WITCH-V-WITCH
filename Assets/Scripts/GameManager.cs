@@ -25,8 +25,7 @@ public class GameManager : MonoBehaviour
     //Get lives, score, etc
     int hiScore;
     int score;
-    int tSpirits;
-    DanmakuSequencer danmakuSequencer;
+    public int tSpirits;
 
     KeyCode skipKey = KeyCode.Return;
     public int dialoguePos = 0;
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         #endregion
-        danmakuSequencer = GetComponent<DanmakuSequencer>();
     }
 
     private void Start()
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
         HISCORETEXT.text = hiScore.ToString("D8");
         SCORETEXT.text = score.ToString("D8");
 
-        AddToScore(1);
+        if (!textBoxUI.gameObject.activeSelf) AddToScore(1);
 
         if (Input.GetKeyDown(KeyCode.Backspace)) ResetScore();
         if (isDone == true) ToNextDialogue();

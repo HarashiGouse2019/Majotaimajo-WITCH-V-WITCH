@@ -31,8 +31,11 @@ public class PlayerPawn : MonoBehaviour
 
     bool recoil = false;
     bool returnVal;
+    bool hit;
     
     Timer timer = new Timer(1, true);
+    SpriteRenderer srenderer;
+    bool isVisible;
     
     #endregion
 
@@ -42,6 +45,8 @@ public class PlayerPawn : MonoBehaviour
         player = this;
         pawnTransform = GetComponent<Transform>();
         transform.position = (transform.position - originOfRotation.position).normalized * radius + originOfRotation.position;
+        srenderer = GetComponent<SpriteRenderer>();
+        isVisible = srenderer.isVisible;
     }
 
     // Update is called once per frame
@@ -49,6 +54,8 @@ public class PlayerPawn : MonoBehaviour
     {
         if (recoil == true) Wait(0.05f);
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
+        MoveInCircle(0);
+        if (hit) { GetHurt(3); }
     }
 
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
@@ -71,12 +78,10 @@ public class PlayerPawn : MonoBehaviour
     public void MoveOnDiameter(float _speed, Transform _target)
     {
         //This will calculate the vector between Raven and Luu, and will move on that normalized vector
-        Vector2 playerToLuu = (_target.position - pawnTransform.position).normalized;
-        gameObject.transform.Translate(playerToLuu * _speed * Time.deltaTime);
-        radius = radius / _speed;
+        radius += _speed * Time.deltaTime;
     }
 
-    public void Shoot(int _index)
+        public void Shoot(int _index)
     {
         if (recoil == false)
         {
@@ -99,6 +104,11 @@ public class PlayerPawn : MonoBehaviour
         transform.localScale = xScale;
     }
 
+    public void ActivateSpell(SequencerManager.Spell _spell)
+    {
+        _spell.sequence.enabled = true;
+    }
+
     void Wait(float _duration)
     {
         timer.StartTimer(0);
@@ -106,5 +116,46 @@ public class PlayerPawn : MonoBehaviour
         if (returnVal == true) recoil = false;
     }
 
-    
+    void GetHurt(int _duration)
+    {
+        timer.StartTimer(1);
+        returnVal = timer.SetFor(_duration, 1);
+        if (!returnVal)
+        {
+            Flash(0.05f);
+        } else
+        {
+            hit = false;
+            timer.SetToZero(1, true);
+        }
+    }
+
+    void Flash(float _duration)
+    {
+        timer.StartTimer(0);
+        if (timer.SetFor(_duration, 0)) {
+            if (isVisible == true) { isVisible = false; timer.SetToZero(0); }
+            if (isVisible == false) {isVisible = true; timer.SetToZero(0); }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+       switch(other.name)
+        {
+            case "testBullet(Clone)":
+                hit = true;
+                GameManager.Instance.DecrementLives();
+                break;
+            case "Luu_Obj":
+                hit = true;
+                GameManager.Instance.DecrementLives();
+                break;
+            default:
+
+                break;
+        }
+    }
+
+
 }
