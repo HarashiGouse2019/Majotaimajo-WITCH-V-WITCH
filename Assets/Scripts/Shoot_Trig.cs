@@ -17,7 +17,7 @@ using Random = UnityEngine.Random;
 //
 public class Shoot_Trig : MonoBehaviour
 {
-    public static Shoot_Trig shootTrig;
+    public static Shoot_Trig Instance;
 
     #region Public Members
     [Header("Danmaku Config")]
@@ -77,6 +77,7 @@ public class Shoot_Trig : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
         loopTimer = new Timer(3); //Reintergrated timer!
         existingProjectiles = new List<GameObject>();
     }
@@ -90,12 +91,10 @@ public class Shoot_Trig : MonoBehaviour
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
     }
 
-    public void SpawnBullets(int _numberOfProjectiles)
+    public void SpawnBullets(int _numberOfProjectiles, int _index = 0)
     {
         float angleStep = 360f / _numberOfProjectiles;
         float angle = g_angle;
-
-        AudioManager.audio.Play("Shoot000", 100f);
 
         switch (distribution)
         {
@@ -134,7 +133,7 @@ public class Shoot_Trig : MonoBehaviour
             Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
             Vector3 projectileMoveDir = (projectileVector - startPoint).normalized * speed;
 
-            GameObject tmpObj = Instantiate(bullet[bulletIndex], startPoint, Quaternion.identity);
+            GameObject tmpObj = Instantiate(bullet[_index], startPoint, gameObject.transform.rotation);
 
             existingProjectiles.Add(tmpObj);
             tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);

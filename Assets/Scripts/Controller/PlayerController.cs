@@ -39,15 +39,28 @@ public class PlayerController : MonoBehaviour
     {
         //Movement
         if (Input.GetKey(left))
+        {
             pawn.MoveInCircle(-pawn.rotationSpeed);
+            pawn.isMoving = true;
+        }
+        else if (Input.GetKeyUp(left))
+            pawn.isMoving = false;
 
         if (Input.GetKey(right))
+        {
             pawn.MoveInCircle(pawn.rotationSpeed);
+            pawn.isMoving = true;
+        }
+        else if (Input.GetKeyUp(left))
+            pawn.isMoving = false;
 
         if (Input.GetKey(up))
             pawn.MoveOnDiameter(pawn.movementSpeed, pawn.originOfRotation);
 
         if (Input.GetKey(down))
             pawn.MoveOnDiameter(-pawn.movementSpeed, pawn.originOfRotation);
+
+        if (Input.GetKey(shoot))
+            pawn.Shoot(0);
     }
 }

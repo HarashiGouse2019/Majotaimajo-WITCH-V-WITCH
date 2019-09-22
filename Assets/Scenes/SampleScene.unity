@@ -1159,7 +1159,7 @@ GameObject:
   - component: {fileID: 560486104}
   m_Layer: 0
   m_Name: TestCircleLuu
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2330,9 +2330,11 @@ GameObject:
   - component: {fileID: 1252690544}
   - component: {fileID: 1252690546}
   - component: {fileID: 1252690545}
+  - component: {fileID: 1252690547}
+  - component: {fileID: 1252690548}
   m_Layer: 0
   m_Name: TestCircleRaven
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2347,7 +2349,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -6.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1723832861}
   m_Father: {fileID: 1834879816}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2414,6 +2417,8 @@ MonoBehaviour:
   movementSpeed: 50
   rotationSpeed: 100
   originOfRotation: {fileID: 560486103}
+  isMoving: 0
+  g_angle: 0
 --- !u!114 &1252690546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2434,6 +2439,49 @@ MonoBehaviour:
   special1: 97
   special2: 115
   special3: 100
+--- !u!114 &1252690547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252690542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29fbf40e7d12a34eb5dc6f222e6ba03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfProjectiles: 1
+  speed: 650
+  g_angle: 0
+  rotation: 0
+  distribution: 0
+  existingProjectiles: []
+  steps: 0
+  loop: 0
+  loopSpeed: 0.05
+  bullet: []
+  bulletIndex: 0
+  origin: {fileID: 1723832860}
+--- !u!114 &1252690548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252690542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3a2a0f225067744d8936cfb1d9eb3aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 650
+  existingProjectiles: []
+  bullet:
+  - {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6, type: 3}
+  bulletIndex: 0
+  origin: {fileID: 1723832861}
+  target: {fileID: 560486103}
 --- !u!1 &1259256005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,6 +3440,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620927260}
   m_CullTransparentMesh: 0
+--- !u!1 &1723832860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723832861}
+  - component: {fileID: 1723832862}
+  m_Layer: 0
+  m_Name: BulletOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1723832861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723832860}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1252690543}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1723832862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723832860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6287fa674fb0314596eae84d7a36a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  pawn: {fileID: 0}
 --- !u!1 &1764173616
 GameObject:
   m_ObjectHideFlags: 0
