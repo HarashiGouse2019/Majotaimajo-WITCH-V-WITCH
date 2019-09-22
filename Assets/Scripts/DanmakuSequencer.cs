@@ -21,7 +21,9 @@ public class DanmakuSequencer : MonoBehaviour
     public int completedRoutines = 0;
     public int completedLoops = 0;
 
-    public List<Routine> routine = new List<Routine>(); 
+    public List<Routine> routine = new List<Routine>();
+
+    public bool enableSequenceLooping;
     #endregion
 
     #region Private Members
@@ -29,7 +31,7 @@ public class DanmakuSequencer : MonoBehaviour
 
     Shoot_Trig trig;
 
-    bool locked = false; 
+    bool locked = false;
     #endregion
 
     void Awake()
@@ -83,9 +85,8 @@ public class DanmakuSequencer : MonoBehaviour
         }
 
 
-        if (GetRoutineCompletionInPercentage() < 0.02)
+        if (GetRoutineCompletionInPercentage() < 0.1f)
         {
-            Unlock();
             trig.loop = false;
             RunPattern(routine[(int)runningRoutine].pattern);
         }
@@ -111,90 +112,84 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
-        if (locked == false)
-        {
-            progress = 0;
-            trig.numberOfProjectiles = _pattern.build[(int)runningRoutine].amount;
-            trig.loop = _pattern.build[(int)runningRoutine].loop;
-            trig.loopSpeed = _pattern.build[(int)runningRoutine].loopRate;
-            trig.bullet[0] = _pattern.build[(int)runningRoutine].bullet;
-            #region Rotation
-            //No idea, but Imma do it!!
-            switch (_pattern.build[(int)runningRoutine].rotation)
-            {
-                case Pattern.Block.RotationType.NoRotation:
-                    trig.rotation = Shoot_Trig.RotationType.NoRotation;
-                    break;
-                case Pattern.Block.RotationType.ClockwiseI:
-                    trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
-                    break;
-                case Pattern.Block.RotationType.ClockwiseII:
-                    trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
-                    break;
-                case Pattern.Block.RotationType.ClockwiseIII:
-                    trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
-                    break;
-                case Pattern.Block.RotationType.CounterClockwiseI:
-                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
-                    break;
-                case Pattern.Block.RotationType.CounterClockwiseII:
-                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
-                    break;
-                case Pattern.Block.RotationType.CounterClockwiseIII:
-                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
-                    break;
-                default:
-                    break;
-            }
-            #endregion
 
-            #region Distribution
-            //And then again...
-            switch (_pattern.build[(int)runningRoutine].distribution)
-            {
-                case Pattern.Block.DistributionType.Uniformed:
-                    trig.distribution = Shoot_Trig.DistributionType.Uniformed;
-                    break;
-                case Pattern.Block.DistributionType.Biformed:
-                    trig.distribution = Shoot_Trig.DistributionType.Biformed;
-                    break;
-                case Pattern.Block.DistributionType.Scattered:
-                    trig.distribution = Shoot_Trig.DistributionType.Scattered;
-                    break;
-                default:
-                    break;
-            }
-            #endregion
-            Lock();
+        progress = 0;
+        trig.numberOfProjectiles = _pattern.block.amount;
+        trig.loop = _pattern.block.loop;
+        trig.loopSpeed = _pattern.block.loopRate;
+        trig.bullet[0] = _pattern.block.bullet;
+        trig.speed = _pattern.block.speed;
+        #region Rotation
+        //No idea, but Imma do it!!
+        switch ((int)_pattern.block.rotation)
+        {
+            case 0:
+                trig.rotation = Shoot_Trig.RotationType.NoRotation;
+                break;
+            case 1:
+                trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
+                break;
+            case 2:
+                trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
+                break;
+            case 3:
+                trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
+                break;
+            case -1:
+                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
+                break;
+            case -2:
+                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
+                break;
+            case -3:
+                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
+                break;
+            default:
+                break;
         }
+        #endregion
+
+        #region Distribution
+        //And then again...
+        switch (_pattern.block.distribution)
+        {
+            case Pattern.Block.DistributionType.Uniformed:
+                trig.distribution = Shoot_Trig.DistributionType.Uniformed;
+                break;
+            case Pattern.Block.DistributionType.Biformed:
+                trig.distribution = Shoot_Trig.DistributionType.Biformed;
+                break;
+            case Pattern.Block.DistributionType.Scattered:
+                trig.distribution = Shoot_Trig.DistributionType.Scattered;
+                break;
+            default:
+                break;
+        }
+        #endregion
     }
 
     bool CheckIfAtLastRoutine()
     {
         if (currentStep == routine[routine.Count - 1].stepPos)
         {
-            currentStep = reset;
-            runningRoutine = reset;
-            
-            nextStep = routine[(int)runningRoutine + 1].stepPos;
-            startStep = routine[(int)runningRoutine].stepPos;
+            if (enableSequenceLooping == true)
+            {
+                currentStep = reset;
+                runningRoutine = reset;
+
+                nextStep = routine[(int)runningRoutine + 1].stepPos;
+                startStep = routine[(int)runningRoutine].stepPos;
+
+                completedLoops++;
+                progress = reset + (completedRoutines - completedLoops);
+            }
+            else
+            {
+                PauseSequenceIteration();
+            }
             completedRoutines++;
-            completedLoops++;
-            progress = reset + (completedRoutines - completedLoops);
             return true;
         }
         return false;
-    }
-
-    bool Lock()
-    {
-        locked = true;
-        return locked;
-    }
-
-    bool Unlock()
-    {
-        locked = false;
-        return locked;
     }
 }

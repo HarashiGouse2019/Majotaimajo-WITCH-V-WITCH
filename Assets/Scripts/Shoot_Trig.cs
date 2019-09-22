@@ -87,7 +87,14 @@ public class Shoot_Trig : MonoBehaviour
 
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
 
-        if (loop) InvokeRepeating("Loop", 0, loopSpeed); else CancelInvoke("Loop");
+        if (loop)
+        {
+            loopTimer.StartTimer(0);
+            Loop();
+        } else
+        {
+            loopTimer.SetToZero(0, true);
+        }
     }
 
     public void SpawnBullets(int _numberOfProjectiles, int _index = 0)
@@ -143,8 +150,12 @@ public class Shoot_Trig : MonoBehaviour
     
     void Loop()
     {
-        g_angle += (int)rotation;
-        SpawnBullets(numberOfProjectiles, bulletIndex);
+        
+        if (loopTimer.SetFor(loopSpeed, 0))
+        {
+            g_angle += (int)rotation;
+            SpawnBullets(numberOfProjectiles, bulletIndex);
+        }
     }
 
     public void Remove(GameObject obj)

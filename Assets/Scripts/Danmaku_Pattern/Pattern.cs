@@ -12,6 +12,7 @@ public class Pattern : ScriptableObject
     public class Block
     {
         public int amount;
+        public float speed;
         public GameObject bullet;
 
         public bool loop;
@@ -37,9 +38,11 @@ public class Pattern : ScriptableObject
 
         public RotationType rotation;
         public DistributionType distribution;
+
+        public float transitionDuration;
     }
 
-    public List<Block> build = new List<Block>();
+    public Block block;
 }
 
 //And I think that's it... I think...
