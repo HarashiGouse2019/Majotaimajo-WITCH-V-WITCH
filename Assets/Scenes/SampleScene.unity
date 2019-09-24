@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 81, y: -5.199997}
+  m_AnchoredPosition: {x: 104, y: -5.1999893}
   m_SizeDelta: {x: 613, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &70251642
@@ -454,21 +454,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Raven: Where did she go?'
-  - "Luu: I\u2019m right here!!"
-  - 'Luu: You need me?'
-  - 'Raven: I need you to not ruin everyone''s night.'
-  - 'Luu: But Halloween is perfect for world domination.'
-  - 'Raven: That''s... not how that works.'
-  - 'Luu: I get it... You''re just jealous that I thought of world domination, aren''t
-    you?'
-  - 'Raven: Not in the slightest.'
-  - 'Raven: Us witches musn''t be exposed to the public.'
-  - 'Luu: What does it matter?'
-  - 'Luu: I''m striving for world domination.'
-  - 'Raven: *Sign*'
-  - 'Raven: Guess I have not choice.'
-  - 'Raven: You''re coming with me!!!'
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    speech: Where did she go?
+  - expression: {fileID: 11400000, guid: aa93362568f69f44ea14a6621ae7e8a6, type: 2}
+    speech: I'm right here!!!
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    speech: Oh good. I'm tired, and I don't feel like rehearsing.
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    speech: Let's have a battle like true witches. Sorry you have no image.
+  - expression: {fileID: 11400000, guid: aa93362568f69f44ea14a6621ae7e8a6, type: 2}
+    speech: You don't need an image to still be awesome!!!!
+  - expression: {fileID: 11400000, guid: aa93362568f69f44ea14a6621ae7e8a6, type: 2}
+    speech: Let's do this!!!!
 --- !u!1 &218907848
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +477,7 @@ GameObject:
   - component: {fileID: 218907849}
   - component: {fileID: 218907850}
   - component: {fileID: 218907851}
+  - component: {fileID: 218907852}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -519,12 +517,14 @@ MonoBehaviour:
   HISCORETEXT: {fileID: 520858571}
   SCORETEXT: {fileID: 1856162262}
   SPIRITS: {fileID: 0}
+  MAGIC: {fileID: 1487001901}
   SLOT1: {fileID: 979989910}
   SLOT2: {fileID: 474933194}
   SLOT3: {fileID: 998696646}
   BOSSHEALTH: {fileID: 707250513}
   textBoxUI: {fileID: 1714457120}
   dialogue: {fileID: 70251642}
+  expression: {fileID: 505220344}
   tSpirits: 0
   dialoguePos: 0
   isDone: 0
@@ -536,11 +536,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218907848}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 212342b6e31b76548bba468d70f32434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &218907852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218907848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2df74990670e64f9310bdcd9912684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comments: 'Snap Routine is to be used only to take pictures of your game during
+    gameplay!
+
+    If on, you will get frequent frame drops.
+
+    If you''re not taking pictures, keep this off.'
 --- !u!1 &244764418
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244764418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14, y: 0.5, z: 0}
+  m_LocalPosition: {x: 15, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
@@ -1392,6 +1410,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474933192}
   m_CullTransparentMesh: 0
+--- !u!1 &505220342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505220343}
+  - component: {fileID: 505220345}
+  - component: {fileID: 505220344}
+  m_Layer: 5
+  m_Name: EXPRESSION
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &505220343
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505220342}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.009931576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1714457119}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -301.31018, y: 1.099884}
+  m_SizeDelta: {x: -652.61, y: -52.450012}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &505220344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505220342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 2808247577033239706, guid: 8a8dd3514f3de8e4f819c2e5847c1caa,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &505220345
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505220342}
+  m_CullTransparentMesh: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1548,7 @@ Camera:
     y: 0.025
     width: 0.6
     height: 0.95
-  near clip plane: 0.5
+  near clip plane: 1
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -1518,7 +1611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520359308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
@@ -1780,7 +1873,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 75d8b502ba2336546bff0f808c07ff46, type: 3}
-  m_Color: {r: 0.8915094, g: 0.9728774, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1968,14 +2061,14 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &631120596
 GameObject:
@@ -3383,7 +3476,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b50db8d9b3a937646bc85a13a5fd03d8, type: 3}
-  m_Color: {r: 0.9103774, g: 0.96976775, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4604,7 +4697,7 @@ Transform:
   m_GameObject: {fileID: 1649122546}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.5, y: -1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.125, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
   m_RootOrder: 3
@@ -4736,16 +4829,17 @@ RectTransform:
   m_GameObject: {fileID: 1714457118}
   m_LocalRotation: {x: -0, y: 0.0047088466, z: -0, w: 0.999989}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.115615, y: 1.1713957, z: 1.115615}
   m_Children:
   - {fileID: 70251641}
+  - {fileID: 505220343}
   m_Father: {fileID: 568130116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0.54, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -97}
-  m_SizeDelta: {x: 832, y: 209}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -63}
+  m_SizeDelta: {x: -135, y: 204.9}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1714457120
 MonoBehaviour:
@@ -5592,8 +5686,8 @@ Camera:
   near clip plane: 0.4
   far clip plane: 1000
   field of view: 27
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 7
   m_Depth: -100
   m_CullingMask:
     serializedVersion: 2

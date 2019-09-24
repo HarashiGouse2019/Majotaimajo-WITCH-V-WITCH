@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: b50db8d9b3a937646bc85a13a5fd03d8
+guid: 8a8dd3514f3de8e4f819c2e5847c1caa
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2808247577033239706
+    second: RavenPortrait_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,13 +43,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  alignment: 9
+  spritePivot: {x: 0.49785376, y: 0.6247333}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 20, z: 0, w: 2}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -82,11 +85,32 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: RavenPortrait_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 25
+        width: 76
+        height: 74
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f4e69a31154f8478c7c4130de3abf7
+      internalID: 2808247577033239706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b36dc2606e8ae8e45a0aa0b9bab8ad84
+    spriteID: 94cc3663aea39614c82dc25f3ff270c0
     internalID: 0
     vertices: []
     indices: 

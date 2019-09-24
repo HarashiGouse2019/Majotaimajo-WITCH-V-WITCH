@@ -18,12 +18,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI HISCORETEXT;
     public TextMeshProUGUI SCORETEXT;
     public Image SPIRITS;
+    public Image MAGIC;
     public Image SLOT1, SLOT2, SLOT3;
     public Image BOSSHEALTH;
 
     [Header("Text Box")]
     public Image textBoxUI;
     public TextMeshProUGUI dialogue;
+    public Image expression;
 
     //Get lives, score, etc
     int hiScore;
@@ -93,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void DecrementMagic(int _value)
     {
-
+        MAGIC.fillAmount -= _value / 100f;
     }
 
     public void ActivateSlot(Image _slot)

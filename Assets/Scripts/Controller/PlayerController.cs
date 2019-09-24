@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 pawn.Shoot(0);
         }
 
-        if (Input.GetKeyDown(special1))
+        if (Input.GetKey(special1))
         {
             Slot1_Old = GameManager.Instance.SLOT1.color;
             GameManager.Instance.SLOT1.color = new Color(250f, 255f, 255f);
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SLOT1.color = Slot1_Old;
         }
 
-        if (Input.GetKeyDown(special2))
+        if (Input.GetKey(special2))
         {
             Slot2_Old = GameManager.Instance.SLOT2.color;
             GameManager.Instance.SLOT2.color = new Color(225f, 255f ,231f);
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SLOT2.color = Slot2_Old;
         }
 
-        if (Input.GetKeyDown(special3))
+        if (Input.GetKey(special3))
         {
             Slot3_Old = GameManager.Instance.SLOT3.color;
             GameManager.Instance.SLOT3.color = new Color(204f, 255f, 209f);
