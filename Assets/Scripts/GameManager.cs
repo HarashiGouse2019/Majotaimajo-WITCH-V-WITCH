@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    #region Public Members
     public static GameManager Instance;
 
     //Reference to canvas (we'll make it a list since we have so many)
@@ -27,17 +28,28 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI dialogue;
     public Image expression;
 
+    //Score System
+    public int timesHit;
+
+
+    #endregion
+
+    #region Private Members
     //Get lives, score, etc
     int hiScore;
     int score;
-    public int tSpirits;
+    int tSpirits;
 
-    KeyCode skipKey = KeyCode.Return;
-    public int dialoguePos = 0;
-    public bool isDone = false;
 
-    //Score System
-    public int timesHit;
+    readonly KeyCode skipKey = KeyCode.Return;
+    int dialoguePos = 0;
+    bool isDone = false;
+
+    readonly float flashVal = 255f;
+    float rVal, gVal, bVal;
+
+
+    #endregion
 
 
     // Start is called before the first frame update
@@ -98,9 +110,24 @@ public class GameManager : MonoBehaviour
         MAGIC.fillAmount -= _value / 100f;
     }
 
-    public void ActivateSlot(Image _slot)
+    public void ActivateSlot(Image _slot, bool _on)
     {
 
+        switch (_on)
+        {
+            case true:
+                rVal = _slot.color.r;
+                gVal = _slot.color.g;
+                bVal = _slot.color.b;
+
+                _slot.color = new Color(_slot.color.r, flashVal, _slot.color.r);
+
+                break;
+            case false:
+                _slot.color = new Color(rVal, gVal, bVal);
+
+                break;
+        }
     }
 
     public void PostHighScore()
@@ -138,7 +165,6 @@ public class GameManager : MonoBehaviour
                 {
                     i = text.Length + 1;
                     dialogue.text = text;
-                    break;
                 }
                 else
                 {
@@ -170,7 +196,8 @@ public class GameManager : MonoBehaviour
                 dialoguePos++;
                 dialogue.text = "";
                 Dialogue.Instance.Run(dialoguePos);
-            } else
+            }
+            else
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);

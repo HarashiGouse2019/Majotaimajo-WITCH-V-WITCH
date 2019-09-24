@@ -36,7 +36,7 @@ public class PlayerPawn : MonoBehaviour
     bool returnVal;
     bool hit;
 
-    Timer timer = new Timer(3, true);
+    readonly Timer timer = new Timer(3, true);
     SpriteRenderer srenderer;
     Rigidbody2D rb;
     Vector2 move;
@@ -80,7 +80,7 @@ public class PlayerPawn : MonoBehaviour
         g_angle = Mathf.Sin(transform.position.y);
     }
 
-    public void MoveOnDiameter(float _speed, Transform _target)
+    public void MoveOnDiameter(float _speed)
     {
         //This will calculate the vector between Raven and Luu, and will move on that normalized vector
         radius += _speed * Time.deltaTime;
@@ -125,7 +125,7 @@ public class PlayerPawn : MonoBehaviour
     {
         if (hit == true)
         {
-            if (GameManager.Instance.tSpirits < 1)
+            if (GameManager.Instance.GetLives() < 1)
             {
                 Application.Quit();
             }

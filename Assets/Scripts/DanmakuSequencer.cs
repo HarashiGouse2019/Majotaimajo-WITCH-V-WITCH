@@ -30,7 +30,6 @@ public class DanmakuSequencer : MonoBehaviour
 
     #region Private Members
     readonly uint reset = 0;
-    bool locked = false;
     #endregion
 
     void Awake()
