@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     int hiScore;
     int score;
     int tSpirits;
+    float magic;
 
 
     readonly KeyCode skipKey = KeyCode.Return;
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         Dialogue.Instance.Run(0);
         tRenderer.check = true;
+        magic = 100;
     }
 
     // Update is called once per frame
@@ -102,7 +104,8 @@ public class GameManager : MonoBehaviour
 
     public void DecrementProgress(float _value)
     {
-        BOSSHEALTH.fillAmount -= _value / 100f;
+        magic -= _value;
+        BOSSHEALTH.fillAmount -= magic / 100f;
     }
 
     public void DecrementMagic(float _value)
