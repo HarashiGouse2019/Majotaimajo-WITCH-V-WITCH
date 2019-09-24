@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         BOSSHEALTH.fillAmount -= _value / 100f;
     }
 
-    public void DecrementMagic(int _value)
+    public void DecrementMagic(float _value)
     {
         MAGIC.fillAmount -= _value / 100f;
     }
