@@ -7,8 +7,6 @@ public class Spell : ScriptableObject
 {
     public static Spell Instance;
     #region Public Members
-    public Shoot_Trig trig;
-
     public float stepSpeed;
 
     [System.Serializable]
