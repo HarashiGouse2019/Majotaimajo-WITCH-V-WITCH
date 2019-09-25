@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HISCORETEXT.text = hiScore.ToString("D8");
-        SCORETEXT.text = score.ToString("D8");
+        HISCORETEXT.text = hiScore.ToString("D10");
+        SCORETEXT.text = score.ToString("D10");
 
         if (!textBoxUI.gameObject.activeSelf) AddToScore(1);
 

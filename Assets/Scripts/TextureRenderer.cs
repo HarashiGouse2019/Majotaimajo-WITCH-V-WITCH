@@ -7,8 +7,8 @@ public class TextureRenderer : MonoBehaviour
 {
     public Image[] spirits = new Image[10];
 
-    float texWidth, texHeight;
-    float texPosX, texPosY;
+    readonly float texWidth, texHeight;
+    readonly float texPosX, texPosY;
 
     public Canvas canvas;
 
@@ -31,7 +31,6 @@ public class TextureRenderer : MonoBehaviour
     // Start is called before the first frame update
     private void UpdateLives()
     {
-        Debug.Log("What?!?!?!");
         check = false;
         for (int i = 0; i < GameManager.Instance.GetLives(); i++)
         {

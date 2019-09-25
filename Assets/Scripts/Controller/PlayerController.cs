@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         //Check pawn positioning
         if (pawn.transform.position.x > pawn.originOfRotation.gameObject.transform.position.x)
             pawn.Flip(-1);
-        else
+        else if (pawn.transform.position.x < pawn.originOfRotation.gameObject.transform.position.x)
             pawn.Flip(1);
     }
 
@@ -98,23 +98,13 @@ public class PlayerController : MonoBehaviour
     {
         //This looks a lot nicer!!!!
         if (Input.GetKeyDown(special1))
-            GameManager.Instance.ActivateSlot(GameManager.Instance.SLOT1, true);
-
-        if (Input.GetKeyUp(special1))
-            GameManager.Instance.ActivateSlot(GameManager.Instance.SLOT1, false);
+            pawn.ActivateSpell("Witch's Ritual");
 
         if (Input.GetKeyDown(special2))
-            GameManager.Instance.ActivateSlot(GameManager.Instance.SLOT2, true);
-
-        if (Input.GetKeyUp(special2))
-            GameManager.Instance.ActivateSlot(GameManager.Instance.SLOT2, false);
+            pawn.ActivateSpell("Chime");
 
         if (Input.GetKeyDown(special3))
-            GameManager.Instance.ActivateSlot(GameManager.Instance.SLOT3, true);
-
-        if (Input.GetKeyUp(special3))
-            GameManager.Instance.ActivateSlot(GameManager.Instance.SLOT3, false);
-
+            pawn.ActivateSpell("Spider's Nest");
     }
        
 }

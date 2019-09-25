@@ -71,7 +71,6 @@ public class Shoot_Trig : MonoBehaviour
     void OnEnable()
     {
         startPoint = gameObject.transform.position;
-        origin = gameObject;
     }
 
     void Start()
@@ -79,6 +78,7 @@ public class Shoot_Trig : MonoBehaviour
         Instance = this;
         loopTimer = new Timer(3); //Reintergrated timer!
         existingProjectiles = new List<GameObject>();
+        origin = gameObject;
     }
 
     void FixedUpdate()
@@ -97,8 +97,10 @@ public class Shoot_Trig : MonoBehaviour
         }
     }
 
-    public void SpawnBullets(int _numberOfProjectiles, int _index = 0)
+    public virtual void SpawnBullets(int _numberOfProjectiles, int _index = 0)
     {
+        
+
         float angleStep = 360f / _numberOfProjectiles;
         float angle = g_angle;
 
@@ -141,6 +143,9 @@ public class Shoot_Trig : MonoBehaviour
 
             GameObject tmpObj = Instantiate(bullet[_index], startPoint, gameObject.transform.rotation);
 
+            //From here, we tell our temporary object where it came from
+            tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
+
             existingProjectiles.Add(tmpObj);
             tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
 
@@ -158,12 +163,12 @@ public class Shoot_Trig : MonoBehaviour
         }
     }
 
-    public void Remove(GameObject obj)
+    public virtual void Remove(GameObject obj)
     {
         existingProjectiles.Remove(obj);
     }
 
-    public void UpdateStartPoint()
+    public virtual void UpdateStartPoint()
     {
         startPoint = origin.transform.position;
     }

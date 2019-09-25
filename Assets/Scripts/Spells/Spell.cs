@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]
+public class Spell : ScriptableObject
+{
+    public static Spell Instance;
+    #region Public Members
+    public Shoot_Trig trig;
+
+    public float stepSpeed;
+
+    [System.Serializable]
+    public class Routine
+    {
+        public Pattern pattern;
+        public uint stepPos;
+    }
+
+    public List<Routine> routine = new List<Routine>();
+
+    public bool enableSequenceLooping;
+    #endregion
+
+    #region Private Members
+    readonly uint reset = 0;
+    #endregion
+}

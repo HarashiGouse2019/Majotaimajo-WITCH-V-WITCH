@@ -352,64 +352,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85332602}
   m_CullTransparentMesh: 0
---- !u!1 &175344285
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 175344286}
-  - component: {fileID: 175344287}
-  m_Layer: 0
-  m_Name: SpidersNestSeq
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &175344286
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175344285}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1252690543}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &175344287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175344285}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trig: {fileID: 1252690547}
-  startStep: 0
-  currentStep: 0
-  nextStep: 0
-  stepSpeed: 0.1
-  progress: 0
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
-  routine:
-  - pattern: {fileID: 0}
-    stepPos: 0
-  - pattern: {fileID: 0}
-    stepPos: 0
-  enableSequenceLooping: 0
 --- !u!1 &193965335
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,32 +398,50 @@ MonoBehaviour:
   dialogue:
   - expression: {fileID: 11400000, guid: cd108c063f6e5e248b56013bef2a9688, type: 2}
     speech: Where did she go?
-  - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
+  - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
     speech: I'm right here!!!
   - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
     speech: Yay!!! You finally got drawn in!!!
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
     speech: It took long enough. I was getting bored.
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
-    speech: Sadly, this is the only expression I can make so far.
+    speech: NOW I HAVE 3 EXPRESSIONS JUST LIKE YOU!!!
+  - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
+    speech: Well, I'm glad that you got your expressions now
+  - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    speech: Is that all you can say? That's scary!!!
+  - expression: {fileID: 11400000, guid: cd108c063f6e5e248b56013bef2a9688, type: 2}
+    speech: What do you mean it's scary?
+  - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    speech: Hearing you say that is so unlike you.
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
-    speech: 'Well, I was like that for a while. '
-  - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
-    speech: I can make 3 different expressions now!!!
-  - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
-    speech: Like an actual human being.
+    speech: I guess?
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
-    speech: Are we really humans though?
+    speech: Did I make you upset?
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
-    speech: Sort of...
-  - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
-    speech: Boring!!!!
+    speech: Why would you want me upset?
+  - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    speech: '...'
+  - expression: {fileID: 11400000, guid: 77cc5dcb20c943f4bb545f5c8f7758c0, type: 2}
+    speech: I don't know...
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    speech: Sort of a mean thing to say.
+  - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    speech: But I am suppose to be mean at you. It's all in the script.
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    speech: Oh yeah.
+  - expression: {fileID: 11400000, guid: 77cc5dcb20c943f4bb545f5c8f7758c0, type: 2}
+    speech: I get hurt just thinking about it.
   - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
-    speech: That's just get on with the Danmaku gameplay.
+    speech: It'll all be over soon. Just be in character for this portion of the scene.
+  - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    speech: '...'
+  - expression: {fileID: 11400000, guid: 77cc5dcb20c943f4bb545f5c8f7758c0, type: 2}
+    speech: '...'
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
-    speech: Wait...
-  - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
-    speech: We're in a game?!
+    speech: EAT DUST HEEVEN!!!
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    speech: Why do I feel such the slightest bit of anger?
 --- !u!1 &218907848
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244764418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15, y: 0.5, z: 0}
+  m_LocalPosition: {x: 17.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
@@ -836,13 +796,13 @@ MonoBehaviour:
   m_margin: {x: 1.7820519, y: -1.0350349, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 264528798}
-    characterCount: 8
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1092,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1923883822}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1103,9 +1063,9 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1923883822}
+  m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 401036772}
   m_TextComponent: {fileID: 905873208}
   m_materialReferenceIndex: 1
@@ -1626,7 +1586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520359308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
@@ -1845,7 +1805,7 @@ Transform:
   m_GameObject: {fileID: 560486102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
   m_RootOrder: 0
@@ -1947,7 +1907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trig: {fileID: 560486106}
   startStep: 0
   currentStep: 0
   nextStep: 0
@@ -2085,66 +2044,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!1 &631120596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 631120597}
-  - component: {fileID: 631120598}
-  m_Layer: 0
-  m_Name: ChimeSeq
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &631120597
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631120596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1252690543}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &631120598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631120596}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trig: {fileID: 1252690547}
-  startStep: 0
-  currentStep: 0
-  nextStep: 0
-  stepSpeed: 0.5
-  progress: 0
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
-  routine:
-  - pattern: {fileID: 11400000, guid: 4bb46331e6ef97b42b13b17b879d2acb, type: 2}
-    stepPos: 0
-  - pattern: {fileID: 11400000, guid: ab8a7ee204c598a4eb6d5a55d9e50652, type: 2}
-    stepPos: 10
-  - pattern: {fileID: 11400000, guid: 815b109b1dc1c0345b1e637a92793677, type: 2}
-    stepPos: 20
-  enableSequenceLooping: 1
 --- !u!1 &674324068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,64 +2208,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707250511}
   m_CullTransparentMesh: 0
---- !u!1 &728693949
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 728693950}
-  - component: {fileID: 728693951}
-  m_Layer: 0
-  m_Name: WitchsRitualSeq
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &728693950
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728693949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1252690543}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &728693951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728693949}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trig: {fileID: 1252690547}
-  startStep: 0
-  currentStep: 0
-  nextStep: 0
-  stepSpeed: 0.1
-  progress: 0
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
-  routine:
-  - pattern: {fileID: 11400000, guid: 7107a7570e059fd418a513b0714c47ed, type: 2}
-    stepPos: 0
-  - pattern: {fileID: 11400000, guid: 7107a7570e059fd418a513b0714c47ed, type: 2}
-    stepPos: 50
-  enableSequenceLooping: 0
 --- !u!1 &729060347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,13 +2721,13 @@ MonoBehaviour:
   m_margin: {x: -6.5569215, y: -2.7301378, z: -1.741526, w: -11.08556}
   m_textInfo:
     textComponent: {fileID: 905873208}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3307,13 +3148,13 @@ MonoBehaviour:
   m_margin: {x: -0.00003973643, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1138832778}
-    characterCount: 6
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3387,7 +3228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1923883822}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -3398,9 +3239,9 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1923883822}
+  m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 1182515191}
   m_TextComponent: {fileID: 1259256007}
   m_materialReferenceIndex: 1
@@ -3428,6 +3269,8 @@ GameObject:
   - component: {fileID: 1252690548}
   - component: {fileID: 1252690549}
   - component: {fileID: 1252690550}
+  - component: {fileID: 1252690552}
+  - component: {fileID: 1252690551}
   m_Layer: 0
   m_Name: Raven_Obj
   m_TagString: player
@@ -3444,12 +3287,9 @@ Transform:
   m_GameObject: {fileID: 1252690542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -6, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1723832861}
-  - {fileID: 728693950}
-  - {fileID: 175344286}
-  - {fileID: 631120597}
   m_Father: {fileID: 1834879816}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3514,13 +3354,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  movementSpeed: 50
+  movementSpeed: 70
   rotationSpeed: 70
-  maxSpeed: 50
+  maxSpeed: 70
   originOfRotation: {fileID: 560486103}
   radius: 5.5
   isMoving: 0
   g_angle: 0
+  sequencer: {fileID: 0}
 --- !u!114 &1252690546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3578,12 +3419,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a2a0f225067744d8936cfb1d9eb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfProjectiles: 1
   speed: 1000
+  g_angle: 0
+  rotation: 0
+  distribution: 0
   existingProjectiles: []
+  steps: 0
+  loop: 0
+  loopSpeed: 0.05
   bullet:
-  - {fileID: 1689500805556136349, guid: 4970269457bd61a4c9fb809a62f29000, type: 3}
+  - {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6, type: 3}
   bulletIndex: 0
-  origin: {fileID: 1723832861}
+  origin: {fileID: 1252690542}
   target: {fileID: 560486103}
 --- !u!58 &1252690549
 CircleCollider2D:
@@ -3622,6 +3470,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1252690551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252690542}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startStep: 0
+  currentStep: 0
+  nextStep: 0
+  stepSpeed: 0
+  progress: 0
+  runningRoutine: 0
+  completedRoutines: 0
+  completedLoops: 0
+  routine: []
+  enableSequenceLooping: 0
+--- !u!114 &1252690552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252690542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27b0260bd211fc4c9b083399bbfde27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells:
+  - {fileID: 11400000, guid: f1e68018efa8a4f48a632373b17a950c, type: 2}
 --- !u!1 &1259256005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,13 +3640,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1259256007}
-    characterCount: 7
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3839,11 +3723,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spells:
   - name: Witch's Ritual
-    sequence: {fileID: 728693951}
+    sequence: {fileID: 0}
   - name: Chime
-    sequence: {fileID: 631120598}
+    sequence: {fileID: 0}
   - name: Spider's Nest
-    sequence: {fileID: 175344287}
+    sequence: {fileID: 0}
 --- !u!4 &1304041161
 Transform:
   m_ObjectHideFlags: 0
@@ -3884,7 +3768,7 @@ Transform:
   m_GameObject: {fileID: 1392110016}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.5, y: 13.67, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.4875, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
   m_RootOrder: 5
@@ -4712,7 +4596,7 @@ Transform:
   m_GameObject: {fileID: 1649122546}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.5, y: -1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1.125, z: 1}
+  m_LocalScale: {x: 1, y: 1.5328125, z: 1}
   m_Children: []
   m_Father: {fileID: 1834879816}
   m_RootOrder: 3
@@ -4853,7 +4737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0.54, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.199951, y: -80.400024}
+  m_AnchoredPosition: {x: 9.199951, y: -80.3999}
   m_SizeDelta: {x: -169.9, y: 212.2}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1714457120
@@ -4987,7 +4871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1923883822}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4998,9 +4882,9 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1923883822}
+  m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 1764173619}
   m_TextComponent: {fileID: 2123214183}
   m_materialReferenceIndex: 1
@@ -5061,7 +4945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1923883822}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -5072,9 +4956,9 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1923883822}
+  m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 1814929786}
   m_TextComponent: {fileID: 1873071503}
   m_materialReferenceIndex: 1
@@ -5473,13 +5357,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1873071503}
-    characterCount: 8
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -5635,66 +5519,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!21 &1923883822
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: LiberationSans SDF Material
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 28684132378477856, guid: 8f586378b4e144a9851e7b34d9b748ee,
-          type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _FaceDilate: 0
-    - _GradientScale: 10
-    - _MaskSoftnessX: 0
-    - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0
-    - _OutlineWidth: 0
-    - _PerspectiveFilter: 0.875
-    - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 0.73125
-    - _ScaleX: 1
-    - _ScaleY: 1
-    - _ShaderFlags: 0
-    - _Sharpness: 0
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _TextureHeight: 1024
-    - _TextureWidth: 1024
-    - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
-    - _UnderlaySoftness: 0
-    - _VertexOffsetX: 0
-    - _VertexOffsetY: 0
-    - _WeightBold: 0.75
-    - _WeightNormal: 0
-    m_Colors:
-    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!1 &1941657978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,7 +5568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1923883822}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -5755,9 +5579,9 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1923883822}
+  m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 1941657981}
   m_TextComponent: {fileID: 1403169072}
   m_materialReferenceIndex: 1
@@ -6056,7 +5880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1923883822}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -6067,9 +5891,9 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 1923883822}
+  m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_padding: 0
   m_canvasRenderer: {fileID: 2074500878}
   m_TextComponent: {fileID: 1138832778}
   m_materialReferenceIndex: 1
@@ -6212,13 +6036,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2123214183}
-    characterCount: 7
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0

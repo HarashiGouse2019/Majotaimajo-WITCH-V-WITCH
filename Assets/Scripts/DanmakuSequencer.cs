@@ -5,8 +5,6 @@ using UnityEngine;
 public class DanmakuSequencer : MonoBehaviour
 {
     #region Public Members
-    public Shoot_Trig trig;
-
     public float startStep, currentStep, nextStep;
     public float stepSpeed;
 
@@ -23,18 +21,19 @@ public class DanmakuSequencer : MonoBehaviour
     public int completedRoutines = 0;
     public int completedLoops = 0;
 
-    public List<Routine> routine = new List<Routine>();
+    public List<Spell.Routine> routine = new List<Spell.Routine>();
 
     public bool enableSequenceLooping;
     #endregion
 
     #region Private Members
     readonly uint reset = 0;
+    Shoot_Trig trig;
     #endregion
 
     void Awake()
     {
-        
+        trig = GetComponent<Shoot_Trig>();
     }
     void OnEnable()
     {
@@ -183,7 +182,7 @@ public class DanmakuSequencer : MonoBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
+                enabled = false;
             }
             completedRoutines++;
             return true;

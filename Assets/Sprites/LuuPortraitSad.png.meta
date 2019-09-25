@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 82d8be445d5eef64ab9f8a653b0f39bc
+guid: 5462e4bed0831094da2f5bf1a0699db0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1882230107559967566
-    second: LuuPortraitSmile_0
+      213: 2861634332489969134
+    second: LuuPortraitSad_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -87,7 +87,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LuuPortraitSmile_0
+      name: LuuPortraitSad_0
       rect:
         serializedVersion: 2
         x: 27
@@ -101,8 +101,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 238c872a700643d409de27131a00ddec
-      internalID: 1882230107559967566
+      spriteID: c2a6b6e3b4f98994585276fef3c61d25
+      internalID: 2861634332489969134
       vertices: []
       indices: 
       edges: []
@@ -110,7 +110,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 60cd74961ce2bc548aec1d3bae06a903
+    spriteID: fba26f3f18307b243ba17604f8badb0d
     internalID: 0
     vertices: []
     indices: 

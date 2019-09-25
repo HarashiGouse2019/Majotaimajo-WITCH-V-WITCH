@@ -25,8 +25,6 @@ public class PlayerPawn : MonoBehaviour
 
 
     #region Private Members
-    //We'll need our Transform
-    Transform pawnTransform;
 
     //We'll add the important stuff
     Vector2 startPoint;
@@ -37,8 +35,11 @@ public class PlayerPawn : MonoBehaviour
     bool hit;
 
     readonly Timer timer = new Timer(3, true);
+    Vector3 xScale;
+    float xScaleVal;
     SpriteRenderer srenderer;
     Rigidbody2D rb;
+    public DanmakuSequencer sequencer;
     Vector2 move;
     bool isVisible;
 
@@ -48,10 +49,12 @@ public class PlayerPawn : MonoBehaviour
     void Start()
     {
         player = this;
-        pawnTransform = GetComponent<Transform>();
         srenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        sequencer = GetComponent<DanmakuSequencer>();
         isVisible = srenderer.isVisible;
+        xScale = transform.localScale;
+        xScaleVal = xScale.x;
     }
 
     // Update is called once per frame
@@ -103,15 +106,41 @@ public class PlayerPawn : MonoBehaviour
 
     public void Flip(int _direction)
     {
-        Vector3 xScale = transform.localScale;
-        xScale.x = _direction;
+        
+
+        switch (_direction)
+        {
+            case 1:
+                xScale.x = xScaleVal;
+                break;
+            case -1:
+                xScale.x = -xScaleVal;
+                break;
+        }
+        
 
         transform.localScale = xScale;
     }
 
-    public void ActivateSpell(SequencerManager.Spell _spell)
+    public void ActivateSpell(string _name)
     {
-        _spell.sequence.enabled = true;
+
+        Spell spell = SpellLibrary.library.FindSpell(_name);
+
+        //We give all values to our Sequencer
+        sequencer.stepSpeed = spell.stepSpeed;
+
+        //We have to loop each routine, and add them the list
+        for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
+        {
+            sequencer.routine.Add(spell.routine[routinePos]);
+        }
+
+        //And then we check if we enable looping
+        sequencer.enableSequenceLooping = spell.enableSequenceLooping;
+
+        //Now that all value have passed in, we enable
+        sequencer.enabled = true;
     }
 
     void Wait(float _duration)
@@ -158,10 +187,13 @@ public class PlayerPawn : MonoBehaviour
         switch (other.name)
         {
             case "testBullet(Clone)":
-                if (hit == false)
+                if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name == "Luu_Obj")
                 {
-                    hit = true;
-                    GameManager.Instance.DecrementLives();
+                    if (hit == false)
+                    {
+                        hit = true;
+                        GameManager.Instance.DecrementLives();
+                    }
                 }
                 break;
             case "Luu_Obj":

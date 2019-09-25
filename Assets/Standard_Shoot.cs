@@ -14,23 +14,12 @@ using Random = UnityEngine.Random;
 //
 //
 //
-public class Standard_Shoot : MonoBehaviour
+public class Standard_Shoot : Shoot_Trig
 {
-    public static Standard_Shoot Instance;
+    public new static Standard_Shoot Instance;
 
     #region Public Members
-
-    public float speed;
-
-    //Statistics
-    [HideInInspector] public List<GameObject> existingProjectiles;
-
-    [Header("Prefabs")]
-    public List<GameObject> bullet;
-    public int bulletIndex;
-
     [Header("Origin and Target")]
-    public Transform origin;
     public Transform target;
     #endregion
 
@@ -57,7 +46,7 @@ public class Standard_Shoot : MonoBehaviour
         UpdateStartPoint();
     }
 
-    public void SpawnBullets(int _numberOfProjectiles, int _index = 0)
+    public override void SpawnBullets(int _numberOfProjectiles, int _index = 0)
     {
 
    
@@ -67,6 +56,8 @@ public class Standard_Shoot : MonoBehaviour
             Vector3 targetVector = (target.position - origin.transform.position).normalized;
             GameObject tmpObj = Instantiate(bullet[_index], startPoint, transform.rotation);
 
+
+            tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
             existingProjectiles.Add(tmpObj);
 
 
@@ -74,12 +65,12 @@ public class Standard_Shoot : MonoBehaviour
             tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
         }
     }
-    public void Remove(GameObject obj)
+    public override void Remove(GameObject obj)
     {
         existingProjectiles.Remove(obj);
     }
 
-    public void UpdateStartPoint()
+    public override void UpdateStartPoint()
     {
         startPoint = origin.transform.position;
     }
