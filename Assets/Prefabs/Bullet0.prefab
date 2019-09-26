@@ -203,13 +203,40 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2620697
+        value: 0.531044
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.15121907
+        value: 0.5319628
+        inSlope: -0.07700763
+        outSlope: -0.07700763
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.4219219
+        outWeight: 0.4215783
+      - serializedVersion: 3
+        time: 0.24738026
+        value: 0.13426366
+        inSlope: -0.34284374
+        outSlope: -0.34284374
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.538097
+        value: 0.0663805
+        inSlope: -0.14366512
+        outSlope: -0.14366512
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.35854763
+        outWeight: 0.37675467
       - serializedVersion: 3
         time: 1
         value: 0
@@ -224,17 +251,17 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.9844124, g: 0.8443396, b: 1, a: 1}
+      key1: {r: 0.99944985, g: 0.9945061, b: 1, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 38357
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -249,14 +276,14 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 1
+    textureMode: 0
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_MinVertexDistance: 1
   m_Autodestruct: 0
   m_Emitting: 1
