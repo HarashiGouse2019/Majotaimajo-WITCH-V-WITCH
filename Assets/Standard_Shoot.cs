@@ -59,9 +59,10 @@ public class Standard_Shoot : Shoot_Trig
 
             tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
             existingProjectiles.Add(tmpObj);
+            
+            //This is what I wanted
+            tmpObj.transform.rotation = Quaternion.FromToRotation(target.position, transform.position) ;
 
-
-            tmpObj.transform.eulerAngles = new Vector3(0f, 0f, PlayerPawn.player.g_angle);
             tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
         }
     }

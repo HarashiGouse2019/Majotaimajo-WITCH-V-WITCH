@@ -82,17 +82,6 @@ public class PlayerPawn : MonoBehaviour
 
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
     //Either circle around Luu, or go towards her.
-    public void CalculateAngle()
-    {
-        g_angle = Mathf.Sin(transform.position.y);
-    }
-
-    public void MoveOnDiameter(float _speed)
-    {
-        //This will calculate the vector between Raven and Luu, and will move on that normalized vector
-        radius += _speed * Time.deltaTime;
-    }
-
     public void Shoot(int _index)
     {
         if (recoil == false)
@@ -245,5 +234,10 @@ public class PlayerPawn : MonoBehaviour
         move = new Vector2(movementSpeed, rb.velocity.y);
         if (rb.velocity.magnitude < maxSpeed)
             rb.velocity += move * Time.fixedDeltaTime;
+    }
+
+    public void FindRadius()
+    {
+        radius = Vector2.Distance(originOfRotation.position, transform.position);
     }
 }

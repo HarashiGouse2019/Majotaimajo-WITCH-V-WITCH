@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
             //pawn.MoveInCircle(pawn.rotationSpeed);
             pawn.Left();
             pawn.isMoving = true;
-            pawn.CalculateAngle();
         }
         else if (Input.GetKeyUp(left))
             pawn.isMoving = false;
@@ -55,7 +54,6 @@ public class PlayerController : MonoBehaviour
             //pawn.MoveInCircle(-pawn.rotationSpeed);
             pawn.Right();
             pawn.isMoving = true;
-            pawn.CalculateAngle();
         }
         else if (Input.GetKeyUp(left))
             pawn.isMoving = false;
@@ -64,7 +62,6 @@ public class PlayerController : MonoBehaviour
         {
             pawn.Foward();
             pawn.isMoving = true;
-            pawn.CalculateAngle();
         }
         //pawn.MoveOnDiameter(-pawn.movementSpeed, pawn.originOfRotation);
 
@@ -72,7 +69,6 @@ public class PlayerController : MonoBehaviour
         {
             pawn.Back();
             pawn.isMoving = true;
-            pawn.CalculateAngle();
         }
             //pawn.MoveOnDiameter(pawn.movementSpeed, pawn.originOfRotation);
 
