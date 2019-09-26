@@ -69,6 +69,7 @@ public class DanmakuSequencer : MonoBehaviour
 
         if (currentStep > nextStep - 1)
         {
+            RunPattern(routine[(int)runningRoutine].pattern);
             if (!CheckIfAtLastRoutine())
             {
                 runningRoutine++;
@@ -76,16 +77,6 @@ public class DanmakuSequencer : MonoBehaviour
                 nextStep = GetNextStep();
                 startStep = GetPreviousStep();
             }
-
-            //If at the end of last one
-
-        }
-
-
-        if (GetRoutineCompletionInPercentage() < 0.1f)
-        {
-            trig.loop = false;
-            RunPattern(routine[(int)runningRoutine].pattern);
         }
     }
 

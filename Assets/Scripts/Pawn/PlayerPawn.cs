@@ -43,6 +43,7 @@ public class PlayerPawn : MonoBehaviour
     SpellLibrary library;
     Vector2 move;
     bool isVisible;
+    Color srendererColor;
 
     #endregion
 
@@ -59,11 +60,14 @@ public class PlayerPawn : MonoBehaviour
         isVisible = srenderer.isVisible;
         xScale = transform.localScale;
         xScaleVal = xScale.x;
+        srendererColor = srenderer.color;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (recoil == true) Wait(0.05f);
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
 
@@ -71,12 +75,12 @@ public class PlayerPawn : MonoBehaviour
         if (hit == true)
         {
             GetHurt(0.15f, 5f);
-            srenderer.enabled = isVisible;
         }
         else
         {
+            
             isVisible = true;
-            srenderer.enabled = isVisible;
+            srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
         }
     }
 
@@ -88,6 +92,7 @@ public class PlayerPawn : MonoBehaviour
         {
             Standard_Shoot.Instance = GetComponent<Standard_Shoot>();
             Standard_Shoot.Instance.SpawnBullets(1, _index);
+            AudioManager.audio.Play("Shoot000", 100f);
             recoil = true;
         }
     }
@@ -167,8 +172,18 @@ public class PlayerPawn : MonoBehaviour
             returnVal = timer.SetFor(_duration, 1, true);
             if (timer.SetFor(_blinkRate, 0))
             {
-                if (isVisible) isVisible = false;
-                else if (isVisible == false) isVisible = true;
+                if (isVisible)
+                {
+                    Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
+                    srenderer.color = invisible;
+                    isVisible = false;
+                }
+                else if (isVisible == false)
+                {
+                    Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
+                    srenderer.color = visible;
+                    isVisible = true;
+                }
             }
 
             if (returnVal)

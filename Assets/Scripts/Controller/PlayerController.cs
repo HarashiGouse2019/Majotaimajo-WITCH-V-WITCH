@@ -96,13 +96,13 @@ public class PlayerController : MonoBehaviour
 
         //This looks a lot nicer!!!!
         if (Input.GetKeyDown(special1))
-            pawn.ActivateSpell("Witch's Ritual");
+            pawn.ActivateSpell(SpellLibrary.library.spells[0].name);
 
         if (Input.GetKeyDown(special2))
-            pawn.ActivateSpell("Chime");
+            pawn.ActivateSpell(SpellLibrary.library.spells[1].name);
 
         if (Input.GetKeyDown(special3))
-            pawn.ActivateSpell("Spider's Nest");
+            pawn.ActivateSpell(SpellLibrary.library.spells[2].name);
 
         //We do this for Ui Purposes
         if (Input.GetKeyUp(special1))

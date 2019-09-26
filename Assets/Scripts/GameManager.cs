@@ -104,13 +104,13 @@ public class GameManager : MonoBehaviour
 
     public void DecrementProgress(float _value)
     {
-        magic -= _value;
-        BOSSHEALTH.fillAmount -= magic / 100f;
+        BOSSHEALTH.fillAmount -= _value / 100f;
     }
 
     public void DecrementMagic(float _value)
     {
-        MAGIC.fillAmount -= _value / 100f;
+        magic -= _value / 100f;
+        MAGIC.fillAmount = magic;
     }
 
     public void ActivateSlot(Image _slot, bool _on)
