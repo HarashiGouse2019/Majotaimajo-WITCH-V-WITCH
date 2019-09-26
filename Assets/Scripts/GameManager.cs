@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI SCORETEXT;
     public Image SPIRITS;
     public Image MAGIC;
-    public Image SLOT1, SLOT2, SLOT3;
+    public Image[] SLOTS = new Image[3];
     public Image BOSSHEALTH;
 
     [Header("Text Box")]

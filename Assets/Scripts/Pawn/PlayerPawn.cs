@@ -39,7 +39,8 @@ public class PlayerPawn : MonoBehaviour
     float xScaleVal;
     SpriteRenderer srenderer;
     Rigidbody2D rb;
-    public DanmakuSequencer sequencer;
+    DanmakuSequencer sequencer;
+    SpellLibrary library;
     Vector2 move;
     bool isVisible;
 
@@ -48,10 +49,13 @@ public class PlayerPawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = this;
+        //Get Components
         srenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         sequencer = GetComponent<DanmakuSequencer>();
+        library = GetComponent<SpellLibrary>();
+
+        player = this;
         isVisible = srenderer.isVisible;
         xScale = transform.localScale;
         xScaleVal = xScale.x;
@@ -124,9 +128,13 @@ public class PlayerPawn : MonoBehaviour
 
     public void ActivateSpell(string _name)
     {
+        GameManager manager = GameManager.Instance;
 
-        Spell spell = SpellLibrary.library.FindSpell(_name);
+        Spell spell = library.FindSpell(_name);
 
+        //What index is the spell; This is for UI purposes;
+        manager.ActivateSlot(manager.SLOTS[library.GetSpellIndex(_name)], _on:true);
+        
         //We give all values to our Sequencer
         sequencer.stepSpeed = spell.stepSpeed;
 

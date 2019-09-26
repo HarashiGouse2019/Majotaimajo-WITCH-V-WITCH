@@ -473,7 +473,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 193965336}
-  - {fileID: 1304041161}
   - {fileID: 1845453400}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -496,9 +495,10 @@ MonoBehaviour:
   SCORETEXT: {fileID: 1856162262}
   SPIRITS: {fileID: 0}
   MAGIC: {fileID: 1487001901}
-  SLOT1: {fileID: 979989910}
-  SLOT2: {fileID: 474933194}
-  SLOT3: {fileID: 998696646}
+  SLOTS:
+  - {fileID: 979989910}
+  - {fileID: 474933194}
+  - {fileID: 998696646}
   BOSSHEALTH: {fileID: 707250513}
   textBoxUI: {fileID: 1714457120}
   dialogue: {fileID: 70251642}
@@ -703,7 +703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400.1, y: -389.3}
+  m_AnchoredPosition: {x: 430.55, y: -357}
   m_SizeDelta: {x: 294.7, y: 211.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &264528798
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9198113, b: 0.99846035, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3361,7 +3361,6 @@ MonoBehaviour:
   radius: 5.5
   isMoving: 0
   g_angle: 0
-  sequencer: {fileID: 0}
 --- !u!114 &1252690546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,6 +3505,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spells:
   - {fileID: 11400000, guid: f1e68018efa8a4f48a632373b17a950c, type: 2}
+  - {fileID: 11400000, guid: f2e68e1c823eaf548aa305880b90d783, type: 2}
+  - {fileID: 11400000, guid: 38cbe8c130f0a0244801cfbde2a6fc63, type: 2}
+  spellIndex: 0
 --- !u!1 &1259256005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3692,56 +3694,6 @@ MonoBehaviour:
   canvas: {fileID: 0}
   rectSize: {fileID: 0}
   check: 0
---- !u!1 &1304041159
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1304041161}
-  - component: {fileID: 1304041160}
-  m_Layer: 0
-  m_Name: SequenceManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1304041160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304041159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb418e8a703ed84c80f97f4d89395f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spells:
-  - name: Witch's Ritual
-    sequence: {fileID: 0}
-  - name: Chime
-    sequence: {fileID: 0}
-  - name: Spider's Nest
-    sequence: {fileID: 0}
---- !u!4 &1304041161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304041159}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2085037, y: -2.229765, z: 51.507908}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 218907849}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1392110016
 GameObject:
   m_ObjectHideFlags: 0
@@ -5048,7 +5000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 218907849}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1845453401
 MonoBehaviour:

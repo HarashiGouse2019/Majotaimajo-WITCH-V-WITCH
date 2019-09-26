@@ -6,7 +6,7 @@ using UnityEngine;
 public class Spell : ScriptableObject
 {
     public static Spell Instance;
-    #region Public Members
+
     public float stepSpeed;
 
     [System.Serializable]
@@ -19,9 +19,4 @@ public class Spell : ScriptableObject
     public List<Routine> routine = new List<Routine>();
 
     public bool enableSequenceLooping;
-    #endregion
-
-    #region Private Members
-    readonly uint reset = 0;
-    #endregion
 }

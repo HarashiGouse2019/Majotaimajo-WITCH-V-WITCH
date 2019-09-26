@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
     void RunSpecial()
     {
+        GameManager manager = GameManager.Instance;
+
         //This looks a lot nicer!!!!
         if (Input.GetKeyDown(special1))
             pawn.ActivateSpell("Witch's Ritual");
@@ -105,6 +107,16 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(special3))
             pawn.ActivateSpell("Spider's Nest");
+
+        //We do this for Ui Purposes
+        if (Input.GetKeyUp(special1))
+            manager.ActivateSlot(manager.SLOTS[0], false);
+
+        if (Input.GetKeyUp(special2))
+            manager.ActivateSlot(manager.SLOTS[1], false);
+
+        if (Input.GetKeyUp(special3))
+            manager.ActivateSlot(manager.SLOTS[2], false);
     }
        
 }
