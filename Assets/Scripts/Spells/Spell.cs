@@ -7,6 +7,8 @@ public class Spell : ScriptableObject
 {
     public static Spell Instance;
 
+    public uint spellPriority;
+
     public float stepSpeed;
 
     [System.Serializable]

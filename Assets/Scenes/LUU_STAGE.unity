@@ -1871,6 +1871,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7109cf4cf9a06c24184f88cbbf7c8086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  movementSpeed: 0
+  rotationSpeed: 0
+  maxSpeed: 0
+  originOfRotation: {fileID: 0}
+  radius: 6
+  isMoving: 0
+  priority: 1
+  basePriority: 1
+  g_angle: 0
 --- !u!114 &560486106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3367,6 +3377,8 @@ MonoBehaviour:
   originOfRotation: {fileID: 560486103}
   radius: 5.5
   isMoving: 0
+  priority: 1
+  basePriority: 0
   g_angle: 0
 --- !u!114 &1252690546
 MonoBehaviour:

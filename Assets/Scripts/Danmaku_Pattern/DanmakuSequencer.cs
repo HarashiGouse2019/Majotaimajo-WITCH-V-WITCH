@@ -79,10 +79,8 @@ public class DanmakuSequencer : MonoBehaviour
             }
         }
 
-        if (GetRoutineCompletionInPercentage() < 0.05)
-        {
+        if (GetRoutineCompletionInPercentage() < 0.1f)
             RunPattern(routine[(int)runningRoutine].pattern);
-        }
     }
 
     public uint GetNextStep()
@@ -203,10 +201,7 @@ public class DanmakuSequencer : MonoBehaviour
                 progress = reset + (completedRoutines - completedLoops);
             }
             else
-            {
-                enabled = false;
-                trig.loop = false;
-            }
+                ResetAllValues();
             completedRoutines++;
             return true;
         }
@@ -215,6 +210,9 @@ public class DanmakuSequencer : MonoBehaviour
 
     void ResetAllValues()
     {
+        //Get the pawn
+        Pawn pawn = GetComponent<Pawn>();
+
         progress = reset;
         currentStep = reset;
         nextStep = reset;
@@ -222,5 +220,8 @@ public class DanmakuSequencer : MonoBehaviour
         completedLoops = (int)reset;
         completedRoutines = (int)reset;
         runningRoutine = reset;
+        enabled = false;
+        trig.loop = false;
+        pawn.priority = pawn.basePriority;
     }
 }

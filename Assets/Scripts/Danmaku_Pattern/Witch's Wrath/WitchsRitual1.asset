@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: WitchsRitualBlock2
+  m_Name: WitchsRitual1
   m_EditorClassIdentifier: 
   block:
-    amount: 16
-    speed: 650
-    incrementVal: 0
-    overrideRotation: 1
-    initialRotation: 1
+    amount: 8
+    speed: 500
+    incrementVal: -10
+    overrideRotation: 0
+    initialRotation: 0
     rotationSpeed: 0
     bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
       type: 3}
     loop: 1
-    loopRate: 0.15
+    loopRate: 0.04
     rotation: -3
-    distribution: 1
-    rotationFocus: 1
-    rotationIntensity: 1
+    distribution: 2
+    rotationFocus: 1.25
+    rotationIntensity: 20
     transitionDuration: 0

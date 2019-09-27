@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                PlayerPawn.player.originOfRotation.GetComponent<LuuPawn>().ActivateSpell("Sakura Burst");
+                PlayerPawn.Instance.originOfRotation.GetComponent<LuuPawn>().ActivateSpell("Sakura Burst");
                 //This is where we start our Danmaku routines
                 //In another script of course!!
 
