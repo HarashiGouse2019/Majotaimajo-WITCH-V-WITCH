@@ -16,10 +16,15 @@ MonoBehaviour:
     amount: 6
     speed: 100
     incrementVal: 75
+    overrideRotation: 0
+    initialRotation: 0
+    rotationSpeed: 0
     bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
       type: 3}
     loop: 1
     loopRate: 0.05
     rotation: -3
     distribution: 2
+    rotationFocus: 1
+    rotationIntensity: 1
     transitionDuration: 0

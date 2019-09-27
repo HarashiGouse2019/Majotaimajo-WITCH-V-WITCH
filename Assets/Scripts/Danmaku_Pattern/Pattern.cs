@@ -15,7 +15,7 @@ public class Pattern : ScriptableObject
         public float speed;
         public int incrementVal;
         public bool overrideRotation;
-        [Range(1, 10)]
+        [Range(1, 360)]
         public float initialRotation;
         public float rotationSpeed;
 

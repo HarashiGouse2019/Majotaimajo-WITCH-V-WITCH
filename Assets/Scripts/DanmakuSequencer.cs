@@ -117,6 +117,9 @@ public class DanmakuSequencer : MonoBehaviour
 
         trig.incrementVal = _pattern.block.incrementVal;
 
+        if (_pattern.block.overrideRotation)
+            trig.g_angle = _pattern.block.initialRotation;
+
         trig.rotationFocus = _pattern.block.rotationFocus;
 
         trig.rotationIntensity = _pattern.block.rotationIntensity;

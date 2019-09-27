@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block:
     amount: 32
-    speed: 2000
+    speed: 700
     incrementVal: 0
     overrideRotation: 0
     initialRotation: 0
@@ -25,4 +25,6 @@ MonoBehaviour:
     loopRate: 0.15
     rotation: -3
     distribution: 1
+    rotationFocus: 1
+    rotationIntensity: 1
     transitionDuration: 0

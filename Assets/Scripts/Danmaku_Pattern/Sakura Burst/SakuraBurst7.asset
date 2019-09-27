@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SakuraBurst7
   m_EditorClassIdentifier: 
   block:
-    amount: 10
+    amount: 5
     speed: 10
     incrementVal: 20
-    overrideRotation: 0
-    initialRotation: 0
+    overrideRotation: 1
+    initialRotation: 225
     rotationSpeed: 0
     bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
       type: 3}
@@ -25,4 +25,6 @@ MonoBehaviour:
     loopRate: 0.1
     rotation: -3
     distribution: 2
+    rotationFocus: 1
+    rotationIntensity: 1
     transitionDuration: 0

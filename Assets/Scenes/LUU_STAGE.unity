@@ -1889,6 +1889,8 @@ MonoBehaviour:
   g_angle: 0
   rotation: -3
   distribution: 0
+  rotationFocus: 1
+  rotationIntensity: 1
   existingProjectiles: []
   steps: 0
   loop: 0
@@ -1897,8 +1899,6 @@ MonoBehaviour:
   - {fileID: 0}
   bulletIndex: 0
   origin: {fileID: 0}
-  n: 1
-  m: 1
 --- !u!114 &560486107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3406,6 +3406,8 @@ MonoBehaviour:
   g_angle: 0
   rotation: 0
   distribution: 0
+  rotationFocus: 0
+  rotationIntensity: 0
   existingProjectiles: []
   steps: 0
   loop: 0
@@ -3414,8 +3416,6 @@ MonoBehaviour:
   - {fileID: 0}
   bulletIndex: 0
   origin: {fileID: 1723832860}
-  n: 1
-  m: 1
 --- !u!114 &1252690548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3434,6 +3434,8 @@ MonoBehaviour:
   g_angle: 0
   rotation: 0
   distribution: 0
+  rotationFocus: 0
+  rotationIntensity: 0
   existingProjectiles: []
   steps: 0
   loop: 0
@@ -3442,8 +3444,6 @@ MonoBehaviour:
   - {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6, type: 3}
   bulletIndex: 0
   origin: {fileID: 1252690542}
-  n: 1
-  m: 1
   target: {fileID: 560486103}
 --- !u!58 &1252690549
 CircleCollider2D:

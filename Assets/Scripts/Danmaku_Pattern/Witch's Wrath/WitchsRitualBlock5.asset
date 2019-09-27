@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: SakuraBurst0
+  m_Name: WitchsRitualBlock5
   m_EditorClassIdentifier: 
   block:
-    amount: 2
-    speed: 100
-    incrementVal: 75
-    overrideRotation: 0
-    initialRotation: 0
+    amount: 16
+    speed: 650
+    incrementVal: 0
+    overrideRotation: 1
+    initialRotation: 1
     rotationSpeed: 0
-    bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
+    bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
       type: 3}
     loop: 1
-    loopRate: 0.05
-    rotation: 3
-    distribution: 2
+    loopRate: 0.15
+    rotation: -3
+    distribution: 1
     rotationFocus: 1
     rotationIntensity: 1
     transitionDuration: 0
