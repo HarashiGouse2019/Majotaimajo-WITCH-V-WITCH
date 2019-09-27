@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: ChimeBlock1
+  m_Name: WitchsRitualBlock3
   m_EditorClassIdentifier: 
   block:
-    amount: 2
-    speed: 600
-    bullet: {fileID: 7800489306995270210, guid: 513324213f20737458f91a587ed4aa56,
+    amount: 32
+    speed: 2000
+    incrementVal: 0
+    overrideRotation: 0
+    initialRotation: 0
+    rotationSpeed: 0
+    bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
       type: 3}
     loop: 1
-    loopRate: 0.25
+    loopRate: 0.15
     rotation: -3
-    distribution: 0
+    distribution: 1
     transitionDuration: 0

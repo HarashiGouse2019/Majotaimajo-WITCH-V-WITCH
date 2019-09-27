@@ -66,7 +66,7 @@ public class PlayerPawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (recoil == true) Wait(0.05f);
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
@@ -78,7 +78,7 @@ public class PlayerPawn : MonoBehaviour
         }
         else
         {
-            
+
             isVisible = true;
             srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
         }
@@ -104,7 +104,7 @@ public class PlayerPawn : MonoBehaviour
 
     public void Flip(int _direction)
     {
-        
+
 
         switch (_direction)
         {
@@ -115,7 +115,7 @@ public class PlayerPawn : MonoBehaviour
                 xScale.x = -xScaleVal;
                 break;
         }
-        
+
 
         transform.localScale = xScale;
     }
@@ -127,8 +127,8 @@ public class PlayerPawn : MonoBehaviour
         Spell spell = library.FindSpell(_name);
 
         //What index is the spell; This is for UI purposes;
-        manager.ActivateSlot(manager.SLOTS[library.GetSpellIndex(_name)], _on:true);
-        
+        manager.ActivateSlot(manager.SLOTS[library.GetSpellIndex(_name)], _on: true);
+
         //We give all values to our Sequencer
         sequencer.stepSpeed = spell.stepSpeed;
 
@@ -196,32 +196,16 @@ public class PlayerPawn : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        switch (other.name)
-        {
-            case "testBullet(Clone)":
-                if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name == "Luu_Obj")
-                {
-                    if (hit == false)
-                    {
-                        hit = true;
-                        GameManager.Instance.DecrementLives();
-                    }
-                }
-                break;
-            case "Luu_Obj":
-                if (hit == false)
-                {
-                    hit = true;
-                    GameManager.Instance.DecrementLives();
-                }
-                break;
-            default:
 
-                break;
+        if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name == "Luu_Obj")
+        {
+            if (hit == false)
+            {
+                hit = true;
+                GameManager.Instance.DecrementLives();
+            }
         }
     }
-
-
 
     public void Foward()
     {

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
+  m_Name: Sakura Burst
+  m_EditorClassIdentifier: 
+  stepSpeed: 0.1
+  routine:
+  - pattern: {fileID: 11400000, guid: b3b93cef73bb2554f9f0566145b1e0c6, type: 2}
+    stepPos: 0
+  - pattern: {fileID: 11400000, guid: e4c2b0e7bf4ac344ba010ac5a38a91ab, type: 2}
+    stepPos: 5
+  - pattern: {fileID: 11400000, guid: 7baf1648d24b7f246b3f73ab62daf9e7, type: 2}
+    stepPos: 10
+  - pattern: {fileID: 11400000, guid: 7107a7570e059fd418a513b0714c47ed, type: 2}
+    stepPos: 15
+  - pattern: {fileID: 11400000, guid: 6788ba7751929da458f31bf7e9831116, type: 2}
+    stepPos: 50
+  - pattern: {fileID: 11400000, guid: 27db73b89fc1a064887d2e236d26346e, type: 2}
+    stepPos: 55
+  - pattern: {fileID: 11400000, guid: fb7708b7efb952b479186c4b91ed1d20, type: 2}
+    stepPos: 60
+  - pattern: {fileID: 11400000, guid: 7ecd426dfcc301e44b7716d8f19906a4, type: 2}
+    stepPos: 65
+  - pattern: {fileID: 11400000, guid: b3b93cef73bb2554f9f0566145b1e0c6, type: 2}
+    stepPos: 100
+  enableSequenceLooping: 1

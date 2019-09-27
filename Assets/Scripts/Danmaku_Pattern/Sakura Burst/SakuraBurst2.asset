@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
+  m_Name: SakuraBurst2
+  m_EditorClassIdentifier: 
+  block:
+    amount: 6
+    speed: 100
+    incrementVal: 75
+    bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
+      type: 3}
+    loop: 1
+    loopRate: 0.05
+    rotation: 3
+    distribution: 2
+    transitionDuration: 0

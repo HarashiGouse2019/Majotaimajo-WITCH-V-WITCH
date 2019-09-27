@@ -67,16 +67,21 @@ public class DanmakuSequencer : MonoBehaviour
 
         currentStep++;
 
-        if (currentStep > nextStep - 1)
+        if (currentStep == nextStep)
         {
-            RunPattern(routine[(int)runningRoutine].pattern);
             if (!CheckIfAtLastRoutine())
             {
                 runningRoutine++;
                 completedRoutines++;
                 nextStep = GetNextStep();
                 startStep = GetPreviousStep();
+                progress = 0;
             }
+        }
+
+        if (GetRoutineCompletionInPercentage() < 0.05)
+        {
+            RunPattern(routine[(int)runningRoutine].pattern);
         }
     }
 
@@ -100,13 +105,22 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
-
-        progress = 0;
         trig.numberOfProjectiles = _pattern.block.amount;
+
         trig.loop = _pattern.block.loop;
+
         trig.loopSpeed = _pattern.block.loopRate;
+
         trig.bullet[0] = _pattern.block.bullet;
+
         trig.speed = _pattern.block.speed;
+
+        trig.incrementVal = _pattern.block.incrementVal;
+
+        trig.rotationFocus = _pattern.block.rotationFocus;
+
+        trig.rotationIntensity = _pattern.block.rotationIntensity;
+
         #region Rotation
         //No idea, but Imma do it!!
         switch ((int)_pattern.block.rotation)
@@ -114,24 +128,31 @@ public class DanmakuSequencer : MonoBehaviour
             case 0:
                 trig.rotation = Shoot_Trig.RotationType.NoRotation;
                 break;
+
             case 1:
                 trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
                 break;
+
             case 2:
                 trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
                 break;
+
             case 3:
                 trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
                 break;
+
             case -1:
                 trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
                 break;
+
             case -2:
                 trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
                 break;
+
             case -3:
                 trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
                 break;
+
             default:
                 break;
         }
@@ -144,12 +165,19 @@ public class DanmakuSequencer : MonoBehaviour
             case Pattern.Block.DistributionType.Uniformed:
                 trig.distribution = Shoot_Trig.DistributionType.Uniformed;
                 break;
+
             case Pattern.Block.DistributionType.Biformed:
                 trig.distribution = Shoot_Trig.DistributionType.Biformed;
                 break;
+
+            case Pattern.Block.DistributionType.Increment:
+                trig.distribution = Shoot_Trig.DistributionType.Increment;
+                break;
+
             case Pattern.Block.DistributionType.Scattered:
                 trig.distribution = Shoot_Trig.DistributionType.Scattered;
                 break;
+
             default:
                 break;
         }
@@ -174,6 +202,7 @@ public class DanmakuSequencer : MonoBehaviour
             else
             {
                 enabled = false;
+                trig.loop = false;
             }
             completedRoutines++;
             return true;

@@ -15,7 +15,7 @@ MonoBehaviour:
   stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: 6c29ce82dfae5284196dece7c1f277a2, type: 2}
-    stepPos: 1
+    stepPos: 0
   - pattern: {fileID: 11400000, guid: 0a4a5bc5df2d01447b61f7295bc5bcb7, type: 2}
     stepPos: 20
   - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}

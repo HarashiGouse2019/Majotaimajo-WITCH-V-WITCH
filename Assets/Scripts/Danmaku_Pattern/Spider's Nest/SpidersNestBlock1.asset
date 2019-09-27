@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: WitchsRitualBlock2
+  m_Name: SpidersNestBlock1
   m_EditorClassIdentifier: 
   block:
-    amount: 16
-    speed: 1500
-    bullet: {fileID: 7800489306995270210, guid: 513324213f20737458f91a587ed4aa56,
+    amount: 8
+    speed: 800
+    incrementVal: 0
+    bullet: {fileID: 1689500805556136349, guid: 4970269457bd61a4c9fb809a62f29000,
       type: 3}
     loop: 1
-    loopRate: 0.15
-    rotation: -3
+    loopRate: 0.25
+    rotation: 0
     distribution: 1
     transitionDuration: 0

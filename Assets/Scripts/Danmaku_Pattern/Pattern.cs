@@ -13,6 +13,12 @@ public class Pattern : ScriptableObject
     {
         public int amount;
         public float speed;
+        public int incrementVal;
+        public bool overrideRotation;
+        [Range(1, 10)]
+        public float initialRotation;
+        public float rotationSpeed;
+
         public GameObject bullet;
 
         public bool loop;
@@ -33,11 +39,15 @@ public class Pattern : ScriptableObject
         {
             Uniformed,
             Biformed,
+            Increment,
             Scattered
         }
 
         public RotationType rotation;
         public DistributionType distribution;
+
+        public float rotationFocus;
+        public float rotationIntensity;
 
         public float transitionDuration;
     }

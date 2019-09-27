@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
 
     public void DecrementMagic(float _value)
     {
-        magic -= _value / 100f;
+        magic -= _value / 100;
         MAGIC.fillAmount = magic;
     }
 
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                GameObject.FindGameObjectWithTag("target").GetComponent<DanmakuSequencer>().enabled = true;
+                PlayerPawn.player.originOfRotation.GetComponent<LuuPawn>().ActivateSpell("Sakura Burst");
                 //This is where we start our Danmaku routines
                 //In another script of course!!
 

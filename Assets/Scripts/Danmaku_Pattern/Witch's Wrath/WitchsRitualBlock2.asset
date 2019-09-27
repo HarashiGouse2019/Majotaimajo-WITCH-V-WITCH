@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
+  m_Name: WitchsRitualBlock2
+  m_EditorClassIdentifier: 
+  block:
+    amount: 16
+    speed: 1500
+    incrementVal: 0
+    overrideRotation: 1
+    initialRotation: 1
+    rotationSpeed: 0
+    bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
+      type: 3}
+    loop: 1
+    loopRate: 0.15
+    rotation: -3
+    distribution: 1
+    transitionDuration: 0

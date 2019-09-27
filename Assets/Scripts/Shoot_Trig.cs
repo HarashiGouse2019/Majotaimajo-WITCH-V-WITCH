@@ -22,6 +22,7 @@ public class Shoot_Trig : MonoBehaviour
     [Header("Danmaku Config")]
     [Range(1, 10)] public int numberOfProjectiles = 1;
     public float speed;
+    public int incrementVal;
     public float g_angle;
     public enum RotationType
     {
@@ -38,11 +39,15 @@ public class Shoot_Trig : MonoBehaviour
     {
         Uniformed,
         Biformed,
+        Increment,
         Scattered
     }
 
     public RotationType rotation;
     public DistributionType distribution;
+
+    public float rotationFocus;
+    public float rotationIntensity;
 
     //Statistics
     [HideInInspector] public List<GameObject> existingProjectiles;
@@ -91,7 +96,8 @@ public class Shoot_Trig : MonoBehaviour
         {
             loopTimer.StartTimer(0);
             Loop();
-        } else
+        }
+        else
         {
             loopTimer.SetToZero(0, true);
         }
@@ -99,10 +105,11 @@ public class Shoot_Trig : MonoBehaviour
 
     public virtual void SpawnBullets(int _numberOfProjectiles, int _index = 0)
     {
-        
 
-        float angleStep = 360f / _numberOfProjectiles;
-        float angle = g_angle;
+
+        float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
+                                                             //You want to concentrate only on one side, but spread them, n is the one.
+        float angle = g_angle * rotationIntensity;
 
         switch (distribution)
         {
@@ -123,6 +130,10 @@ public class Shoot_Trig : MonoBehaviour
                 }
                 break;
 
+            case DistributionType.Increment:
+                speed += incrementVal;
+                break;
+
             case DistributionType.Scattered:
                 speed = Random.Range(20f, speed + 50);
                 break;
@@ -135,13 +146,13 @@ public class Shoot_Trig : MonoBehaviour
         for (int i = 0; i <= _numberOfProjectiles - 1; i++)
         {
 
-            float projectileAngleX = startPoint.x + Mathf.Sin((angle * Mathf.PI) / 180f) * radius;
-            float projectileAngleY = startPoint.y + Mathf.Cos((angle * Mathf.PI) / 180f) * radius;
+            float projectileAngleX = startPoint.x  + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
+            float projectileAngleY = startPoint.y + (Mathf.Cos((angle * Mathf.PI) / 180f)) * radius;
 
             Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
             Vector3 projectileMoveDir = (projectileVector - startPoint).normalized * speed;
 
-            GameObject tmpObj = Instantiate(bullet[_index], startPoint, gameObject.transform.rotation);
+            GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
 
             //From here, we tell our temporary object where it came from
             tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
@@ -152,10 +163,10 @@ public class Shoot_Trig : MonoBehaviour
             angle += angleStep;
         }
     }
-    
+
     void Loop()
     {
-        
+
         if (loopTimer.SetFor(loopSpeed, 0))
         {
             g_angle += (int)rotation;

@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             if (GameManager.Instance.textBoxUI.gameObject.activeSelf != true && GameManager.Instance.MAGIC)
             {
                 pawn.Shoot(0);
-                GameManager.Instance.DecrementMagic(0.01f);
+                GameManager.Instance.DecrementMagic(1f);
             }
         }
 

@@ -163,8 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763345ce266d1f64cad7e132b1898440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   movementSpeed: 50
   rotationSpeed: 100
+  maxSpeed: 0
   originOfRotation: {fileID: 0}
   radius: 7
   isMoving: 0
@@ -183,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfProjectiles: 1
   speed: 650
+  incrementVal: 0
   g_angle: 0
   rotation: 0
   distribution: 0
@@ -205,8 +208,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a2a0f225067744d8936cfb1d9eb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfProjectiles: 1
   speed: 650
+  incrementVal: 0
+  g_angle: 0
+  rotation: 0
+  distribution: 0
   existingProjectiles: []
+  steps: 0
+  loop: 0
+  loopSpeed: 0.05
   bullet:
   - {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6, type: 3}
   bulletIndex: 0
@@ -249,6 +260,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08, y: -0.17}
+  m_Offset: {x: 0.06428522, y: -0.17}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.050316557

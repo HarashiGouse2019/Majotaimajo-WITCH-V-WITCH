@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: 6BurstBlockLoopRotation
+  m_Name: SakuraBurst3
   m_EditorClassIdentifier: 
   block:
-    amount: 6
-    speed: 600
-    bullet: {fileID: 1689500805556136349, guid: 4970269457bd61a4c9fb809a62f29000,
+    amount: 10
+    speed: 10
+    incrementVal: 10
+    overrideRotation: 0
+    initialRotation: 0
+    rotationSpeed: 0
+    bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
       type: 3}
     loop: 1
-    loopRate: 0.2
-    rotation: 2
-    distribution: 0
+    loopRate: 0.1
+    rotation: 3
+    distribution: 2
     transitionDuration: 0
