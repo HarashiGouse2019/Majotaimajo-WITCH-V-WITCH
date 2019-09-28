@@ -6,12 +6,15 @@ public class SpellLibrary : MonoBehaviour
 {
     public static SpellLibrary library;
 
+    public Spell spellInUse;
+
     public Spell[] spells = new Spell[3];
 
     public uint spellIndex = 0;
-
+    
     readonly bool isActivated;
     readonly uint reset = 0;
+    
 
     private void Awake()
     {

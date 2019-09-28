@@ -24,6 +24,8 @@ public class Pawn : MonoBehaviour
 
     public uint priority = 1;
     public uint basePriority;
+
+    public SpellLibrary library;
     #endregion
 
     #region Protected Members
@@ -42,7 +44,7 @@ public class Pawn : MonoBehaviour
     protected SpriteRenderer srenderer;
     protected Rigidbody2D rb;
     protected DanmakuSequencer sequencer;
-    protected SpellLibrary library;
+    
     protected Vector2 move;
     protected bool isVisible;
     protected Color srendererColor;
@@ -109,25 +111,30 @@ public class Pawn : MonoBehaviour
 
     public virtual void ActivateSpell(string _name)
     {
-        Spell spell = library.FindSpell(_name);
-
-        //Increate pawn's priority!!!
-        priority = spell.spellPriority;
-
-        //We give all values to our Sequencer
-        sequencer.stepSpeed = spell.stepSpeed;
-
-        //We have to loop each routine, and add them the list
-        for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
+        if (SpellLibrary.library.spellInUse == null)
         {
-            sequencer.routine.Add(spell.routine[routinePos]);
+            Spell spell = library.FindSpell(_name);
+
+            library.spellInUse = spell;
+
+            //Increate pawn's priority!!!
+            priority = spell.spellPriority;
+
+            //We give all values to our Sequencer
+            sequencer.stepSpeed = spell.stepSpeed;
+
+            //We have to loop each routine, and add them the list
+            for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
+            {
+                sequencer.routine.Add(spell.routine[routinePos]);
+            }
+
+            //And then we check if we enable looping
+            sequencer.enableSequenceLooping = spell.enableSequenceLooping;
+
+            //Now that all value have passed in, we enable
+            sequencer.enabled = true;
         }
-
-        //And then we check if we enable looping
-        sequencer.enableSequenceLooping = spell.enableSequenceLooping;
-
-        //Now that all value have passed in, we enable
-        sequencer.enabled = true;
     }
 
     public virtual void Wait(float _duration)

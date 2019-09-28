@@ -222,6 +222,9 @@ public class DanmakuSequencer : MonoBehaviour
         runningRoutine = reset;
         enabled = false;
         trig.loop = false;
+
+        //Reset pawn stat
         pawn.priority = pawn.basePriority;
+        pawn.library.spellInUse = null;
     }
 }
