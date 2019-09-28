@@ -8,6 +8,7 @@ public class Spell : ScriptableObject
     public static Spell Instance;
 
     public uint spellPriority;
+    public uint magicConsumtion;
 
     public float stepSpeed;
 

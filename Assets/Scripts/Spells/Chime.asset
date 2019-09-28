@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Chime
   m_EditorClassIdentifier: 
   spellPriority: 0
+  magicConsumtion: 5
   stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: 4bb46331e6ef97b42b13b17b879d2acb, type: 2}

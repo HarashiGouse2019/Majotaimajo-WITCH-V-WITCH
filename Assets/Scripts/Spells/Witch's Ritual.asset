@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Witch's Ritual
   m_EditorClassIdentifier: 
   spellPriority: 8
+  magicConsumtion: 45
   stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}

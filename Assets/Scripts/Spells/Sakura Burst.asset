@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sakura Burst
   m_EditorClassIdentifier: 
   spellPriority: 4
+  magicConsumtion: 30
   stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: b3b93cef73bb2554f9f0566145b1e0c6, type: 2}
