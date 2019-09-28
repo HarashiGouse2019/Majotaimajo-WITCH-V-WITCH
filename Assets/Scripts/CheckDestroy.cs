@@ -29,7 +29,7 @@ public class CheckDestroy : MonoBehaviour
         if (destroyTimer.currentTime[0] > 10)
         {
             origin.GetComponent<Shoot_Trig>().Remove(gameObject);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

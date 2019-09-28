@@ -69,7 +69,7 @@ public class Shoot_Trig : MonoBehaviour
     private const float radius = 1f;
     private int distStep = 0;
 
-    private Vector3 startPoint;
+    protected Vector3 startPoint;
     private Timer loopTimer;
     #endregion
 

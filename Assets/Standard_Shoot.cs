@@ -26,8 +26,6 @@ public class Standard_Shoot : Shoot_Trig
     #region Private Members
     private const float radius = 1f;
 
-    private Vector3 startPoint;
-
     #endregion
 
     void OnEnable()
@@ -54,8 +52,9 @@ public class Standard_Shoot : Shoot_Trig
         {
 
             Vector3 targetVector = (target.position - origin.transform.position).normalized;
-            GameObject tmpObj = Instantiate(bullet[_index], startPoint, transform.rotation);
-
+            GameObject tmpObj = ObjectPooler.Instance.GetObject("bullet0");
+            if (tmpObj != null)
+                tmpObj.SetActive(true);
 
             tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
             existingProjectiles.Add(tmpObj);

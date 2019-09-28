@@ -15,7 +15,7 @@ MonoBehaviour:
   block:
     amount: 5
     speed: 10
-    incrementVal: 20
+    incrementVal: 10
     overrideRotation: 1
     initialRotation: 225
     rotationSpeed: 0
@@ -25,6 +25,6 @@ MonoBehaviour:
     loopRate: 0.1
     rotation: -3
     distribution: 2
-    rotationFocus: 1
+    rotationFocus: 6
     rotationIntensity: 1
     transitionDuration: 0

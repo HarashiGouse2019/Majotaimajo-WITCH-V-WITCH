@@ -25,7 +25,7 @@ public class Pawn : MonoBehaviour
     public uint priority = 1;
     public uint basePriority;
 
-    public SpellLibrary library;//Comment
+    public SpellLibrary library;
     #endregion
 
     #region Protected Members
@@ -55,44 +55,6 @@ public class Pawn : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Get Components
-        srenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        sequencer = GetComponent<DanmakuSequencer>();
-        library = GetComponent<SpellLibrary>();
-
-        isVisible = srenderer.isVisible;
-        xScale = transform.localScale;
-        xScaleVal = xScale.x;
-        srendererColor = srenderer.color;
-
-        //Set base priority at start
-        basePriority = priority;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        if (recoil == true) Wait(0.05f);
-        if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
-
-        //For our blinking effect
-        if (hit == true)
-        {
-            GetHurt(0.15f, 5f);
-        }
-        else
-        {
-
-            isVisible = true;
-            srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
-        }
-    }
 
     public virtual void Shoot(int _index)
     {

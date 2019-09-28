@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
     PlayerPawn pawn;
     #endregion
 
-    Color Slot1_Old, Slot2_Old, Slot3_Old;
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -74,10 +72,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(shoot))
         {
-            if (GameManager.Instance.textBoxUI.gameObject.activeSelf != true && GameManager.Instance.MAGIC)
+            if (GameManager.Instance.textBoxUI.gameObject.activeSelf != true && GameManager.Instance.GetMagic() > 0)
             {
                 pawn.Shoot(0);
-                GameManager.Instance.DecrementMagic(1f);
+                GameManager.Instance.DecrementMagic(0.01f);
             }
         }
 

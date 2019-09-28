@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour
 
     public void DecrementMagic(float _value)
     {
-        magic -= _value / 100;
-        MAGIC.fillAmount = magic;
+        magic -= _value;
+        MAGIC.fillAmount = magic / 100f;
     }
 
     public void ActivateSlot(Image _slot, bool _on)
@@ -148,6 +148,11 @@ public class GameManager : MonoBehaviour
         return tSpirits;
     }
 
+    public float GetMagic()
+    {
+        return magic;
+    }
+
     void SetLives(int _value)
     {
         tSpirits = _value;
@@ -164,7 +169,7 @@ public class GameManager : MonoBehaviour
             //This give a typewritter effect. With a ton of trial and error, this one works the best!!!
             for (int i = 0; i < text.Length + 1; i++)
             {
-                if (Input.GetKeyDown(skipKey) && i > 0)
+                if (Input.GetKeyDown(skipKey) && i > -1)
                 {
                     i = text.Length + 1;
                     dialogue.text = text;

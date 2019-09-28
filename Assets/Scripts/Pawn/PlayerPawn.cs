@@ -7,6 +7,41 @@ public class PlayerPawn : Pawn
 {
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
     //Either circle around Luu, or go towards her.
+    private void Start()
+    {
+        //Get Components
+        srenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        sequencer = GetComponent<DanmakuSequencer>();
+        library = GetComponent<SpellLibrary>();
+
+        isVisible = srenderer.isVisible;
+        xScale = transform.localScale;
+        xScaleVal = xScale.x;
+        srendererColor = srenderer.color;
+
+        //Set base priority at start
+        basePriority = priority;
+    }
+
+    private void Update()
+    {
+        if (recoil == true) Wait(0.05f);
+        if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
+
+        //For our blinking effect
+        if (hit == true)
+        {
+            GetHurt(0.15f, 5f);
+        }
+        else
+        {
+
+            isVisible = true;
+            srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
+        }
+    }
+
     public override void Shoot(int _index)
     {
         if (recoil == false)
@@ -43,6 +78,7 @@ public class PlayerPawn : Pawn
 
     public override void ActivateSpell(string _name)
     {
+       
         base.ActivateSpell(_name);
     }
 

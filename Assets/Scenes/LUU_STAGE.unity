@@ -534,7 +534,7 @@ MonoBehaviour:
     If on, you will get frequent frame drops.
 
     If you''re not taking pictures, keep this off.'
---- !u!21 &229086792
+--- !u!21 &231063959
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 229086792}
+  m_Material: {fileID: 231063959}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 229086792}
+  m_sharedMaterial: {fileID: 231063959}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 401036772}
@@ -1940,6 +1940,7 @@ MonoBehaviour:
   isMoving: 0
   priority: 1
   basePriority: 1
+  library: {fileID: 0}
   g_angle: 0
 --- !u!114 &560486106
 MonoBehaviour:
@@ -2019,6 +2020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27b0260bd211fc4c9b083399bbfde27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellInUse: {fileID: 0}
   spells:
   - {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
   spellIndex: 0
@@ -3305,7 +3307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 229086792}
+  m_Material: {fileID: 231063959}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -3316,7 +3318,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 229086792}
+  m_sharedMaterial: {fileID: 231063959}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 1182515191}
@@ -3348,6 +3350,7 @@ GameObject:
   - component: {fileID: 1252690550}
   - component: {fileID: 1252690552}
   - component: {fileID: 1252690551}
+  - component: {fileID: 1252690553}
   m_Layer: 0
   m_Name: Raven_Obj
   m_TagString: player
@@ -3439,6 +3442,7 @@ MonoBehaviour:
   isMoving: 0
   priority: 3
   basePriority: 1
+  library: {fileID: 0}
   g_angle: 0
 --- !u!114 &1252690546
 MonoBehaviour:
@@ -3588,11 +3592,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27b0260bd211fc4c9b083399bbfde27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellInUse: {fileID: 0}
   spells:
   - {fileID: 11400000, guid: f1e68018efa8a4f48a632373b17a950c, type: 2}
   - {fileID: 11400000, guid: f2e68e1c823eaf548aa305880b90d783, type: 2}
   - {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
   spellIndex: 0
+--- !u!114 &1252690553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252690542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0efd79292324e44b767f7f88cdbb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToPool:
+  - name: bullet0
+    size: 1000
+    projectile: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
+      type: 3}
+    expandPool: 1
+  pooledObjects: []
 --- !u!1 &1259256005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4908,7 +4932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 229086792}
+  m_Material: {fileID: 231063959}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4919,7 +4943,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 229086792}
+  m_sharedMaterial: {fileID: 231063959}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 1764173619}
@@ -4982,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 229086792}
+  m_Material: {fileID: 231063959}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4993,7 +5017,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 229086792}
+  m_sharedMaterial: {fileID: 231063959}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 1814929786}
@@ -5605,7 +5629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 229086792}
+  m_Material: {fileID: 231063959}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -5616,7 +5640,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 229086792}
+  m_sharedMaterial: {fileID: 231063959}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 1941657981}
@@ -5917,7 +5941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 229086792}
+  m_Material: {fileID: 231063959}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -5928,7 +5952,7 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_spriteAsset: {fileID: 0}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 229086792}
+  m_sharedMaterial: {fileID: 231063959}
   m_isDefaultMaterial: 0
   m_padding: 1.25
   m_canvasRenderer: {fileID: 2074500878}
