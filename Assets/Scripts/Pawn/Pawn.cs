@@ -25,7 +25,7 @@ public class Pawn : MonoBehaviour
     public uint priority = 1;
     public uint basePriority;
 
-    public SpellLibrary library;
+    public SpellLibrary library;//Comment
     #endregion
 
     #region Protected Members
