@@ -57,7 +57,7 @@ public class ObjectPooler : MonoBehaviour
         #region Iteration
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && name == itemsToPool[i].name)
+            if (!pooledObjects[i].activeInHierarchy && name == pooledObjects[i].name)
                 return pooledObjects[i];
         }
         #endregion

@@ -22,7 +22,7 @@ public class LuuPawn : Pawn
             GameManager.Instance.DecrementProgress(0.05f);
             GameManager.Instance.timesHit++;
             GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
-            Destroy(bullets.gameObject);
+            bullets.gameObject.SetActive(false);
         }
     }
 }

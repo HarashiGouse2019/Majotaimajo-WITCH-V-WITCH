@@ -51,18 +51,12 @@ public class Standard_Shoot : Shoot_Trig
         for (int i = 0; i <= _numberOfProjectiles - 1; i++)
         {
 
-            Vector3 targetVector = (target.position - origin.transform.position).normalized;
-            GameObject tmpObj = ObjectPooler.Instance.GetObject("bullet0");
+           
+            GameObject tmpObj = ObjectPooler.Instance.GetObject("bullet0(Clone)");
             if (tmpObj != null)
+            {
                 tmpObj.SetActive(true);
-
-            tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
-            existingProjectiles.Add(tmpObj);
-            
-            //This is what I wanted
-            tmpObj.transform.rotation = Quaternion.FromToRotation(target.position, transform.position) ;
-
-            tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
+            }
         }
     }
     public override void Remove(GameObject obj)
