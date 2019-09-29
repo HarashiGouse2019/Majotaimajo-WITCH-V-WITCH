@@ -71,6 +71,7 @@ public class Shoot_Trig : MonoBehaviour
 
     protected Vector3 startPoint;
     private Timer loopTimer;
+    private AudioClip sound;
     #endregion
 
     void OnEnable()
@@ -105,8 +106,6 @@ public class Shoot_Trig : MonoBehaviour
 
     public virtual void SpawnBullets(int _numberOfProjectiles, int _index = 0)
     {
-
-
         float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
                                                              //You want to concentrate only on one side, but spread them, n is the one.
         float angle = g_angle * rotationIntensity;
