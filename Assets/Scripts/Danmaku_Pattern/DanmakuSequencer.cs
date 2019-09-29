@@ -5,6 +5,8 @@ using UnityEngine;
 public class DanmakuSequencer : MonoBehaviour
 {
     #region Public Members
+    public bool allowOverride = false;
+
     public float startStep, currentStep, nextStep;
     public float stepSpeed;
 
@@ -226,5 +228,8 @@ public class DanmakuSequencer : MonoBehaviour
         //Reset pawn stat
         pawn.priority = pawn.basePriority;
         pawn.library.spellInUse = null;
+
+        //Clear routine
+        routine.Clear();
     }
 }

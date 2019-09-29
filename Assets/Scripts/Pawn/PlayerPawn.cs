@@ -80,7 +80,7 @@ public class PlayerPawn : Pawn
     {
         Spell spell = library.FindSpell(_name);
 
-        if (SpellLibrary.library.spellInUse == null && GameManager.Instance.GetMagic() > spell.magicConsumtion)
+        if (GameManager.Instance.GetMagic() > spell.magicConsumtion && SpellLibrary.library.spellInUse == null)
         {
             library.spellInUse = spell;
 
@@ -96,7 +96,7 @@ public class PlayerPawn : Pawn
                 sequencer.routine.Add(spell.routine[routinePos]);
 
                 //And then we check if we enable looping
-                sequencer.enableSequenceLooping = spell.enableSequenceLooping;
+                if (sequencer.allowOverride) sequencer.enableSequenceLooping = spell.enableSequenceLooping;
             }
 
             //Now that all value have passed in, we enable

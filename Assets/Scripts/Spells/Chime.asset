@@ -22,4 +22,4 @@ MonoBehaviour:
     stepPos: 2
   - pattern: {fileID: 11400000, guid: 4bb46331e6ef97b42b13b17b879d2acb, type: 2}
     stepPos: 4
-  enableSequenceLooping: 1
+  enableSequenceLooping: 0
