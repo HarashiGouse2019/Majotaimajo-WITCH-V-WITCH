@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: ChimeBlock2
+  m_Name: SpidersNest1
   m_EditorClassIdentifier: 
   block:
-    amount: 2
-    speed: 5
-    incrementVal: 80
+    amount: 8
+    speed: 400
+    incrementVal: 0
     overrideRotation: 0
-    initialRotation: 1
+    initialRotation: 0
     rotationSpeed: 0
-    bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
+    bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
       type: 3}
     loop: 1
-    loopRate: 0.05
-    rotation: 0
-    distribution: 2
-    rotationFocus: 8
-    rotationIntensity: 2
+    loopRate: 0.1
+    rotation: -2
+    distribution: 0
+    rotationFocus: 6
+    rotationIntensity: 45
     transitionDuration: 0

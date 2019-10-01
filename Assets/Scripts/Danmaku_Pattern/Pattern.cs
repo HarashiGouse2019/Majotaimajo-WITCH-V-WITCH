@@ -46,8 +46,25 @@ public class Pattern : ScriptableObject
         public RotationType rotation;
         public DistributionType distribution;
 
+        public enum RotationFocusEffect
+        {
+            Static,
+            Increment
+        }
+
+        public enum RotationIntensityEffect
+        {
+            Static,
+            Increment
+        }
+
+        public RotationFocusEffect rotationFocusEffect;
         public float rotationFocus;
+        public float rotationFocusIncrementVal;
+
+        public RotationIntensityEffect rotationIntensityEffect;
         public float rotationIntensity;
+        public float rotationIntensityIncrementVal;
 
         public float transitionDuration;
     }

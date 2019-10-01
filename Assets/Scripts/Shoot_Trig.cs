@@ -47,7 +47,10 @@ public class Shoot_Trig : MonoBehaviour
     public DistributionType distribution;
 
     public float rotationFocus;
+    public float rotationFocusIncrementVal;
+
     public float rotationIntensity;
+    public float rotationIntensityIncrementVal;
 
     //Statistics
     [HideInInspector] public List<GameObject> existingProjectiles;
@@ -106,6 +109,14 @@ public class Shoot_Trig : MonoBehaviour
 
     public virtual void SpawnBullets(int _numberOfProjectiles, int _index = 0)
     {
+        //Update rotation focus
+        rotationFocus += rotationFocusIncrementVal;
+
+        //Update rotation intensity
+        rotationIntensity += rotationIntensityIncrementVal;
+
+        //Assing those values to our basic algorithm
+
         float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
                                                              //You want to concentrate only on one side, but spread them, n is the one.
         float angle = g_angle * rotationIntensity;

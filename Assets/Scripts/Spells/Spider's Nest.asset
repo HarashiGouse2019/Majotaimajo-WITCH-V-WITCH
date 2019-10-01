@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
   m_Name: Spider's Nest
   m_EditorClassIdentifier: 
-  stepSpeed: 0
+  spellPriority: 5
+  magicConsumtion: 15
+  stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: 57af61934dbe0fd4fa43f1353c1e96b6, type: 2}
     stepPos: 0
+  - pattern: {fileID: 11400000, guid: 4edbe2b886df6b44b8d474f94f4321a6, type: 2}
+    stepPos: 5
   - pattern: {fileID: 11400000, guid: 57af61934dbe0fd4fa43f1353c1e96b6, type: 2}
     stepPos: 10
+  - pattern: {fileID: 11400000, guid: 4edbe2b886df6b44b8d474f94f4321a6, type: 2}
+    stepPos: 15
+  - pattern: {fileID: 11400000, guid: 57af61934dbe0fd4fa43f1353c1e96b6, type: 2}
+    stepPos: 20
+  - pattern: {fileID: 11400000, guid: 4edbe2b886df6b44b8d474f94f4321a6, type: 2}
+    stepPos: 25
+  - pattern: {fileID: 11400000, guid: 4edbe2b886df6b44b8d474f94f4321a6, type: 2}
+    stepPos: 30
   enableSequenceLooping: 0

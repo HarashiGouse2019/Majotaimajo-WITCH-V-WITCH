@@ -105,6 +105,7 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
+        #region Assing Values
         trig.numberOfProjectiles = _pattern.block.amount;
 
         trig.loop = _pattern.block.loop;
@@ -122,7 +123,8 @@ public class DanmakuSequencer : MonoBehaviour
 
         trig.rotationFocus = _pattern.block.rotationFocus;
 
-        trig.rotationIntensity = _pattern.block.rotationIntensity;
+        trig.rotationIntensity = _pattern.block.rotationIntensity; 
+        #endregion
 
         #region Rotation
         //No idea, but Imma do it!!
@@ -185,6 +187,35 @@ public class DanmakuSequencer : MonoBehaviour
                 break;
         }
         #endregion
+
+        #region Rotation Focus Effect
+        switch (_pattern.block.rotationFocusEffect)
+        {
+            case Pattern.Block.RotationFocusEffect.Static:
+                //Do Nothing
+                break;
+            case Pattern.Block.RotationFocusEffect.Increment:
+                trig.rotationFocusIncrementVal = _pattern.block.rotationFocusIncrementVal;
+                break;
+            default:
+                break;
+        }
+        #endregion
+
+        #region Rotation Intensity Effect
+        switch (_pattern.block.rotationIntensityEffect)
+        {
+            case Pattern.Block.RotationIntensityEffect.Static:
+                //Do Nothing
+                break;
+            case Pattern.Block.RotationIntensityEffect.Increment:
+                trig.rotationIntensityIncrementVal = _pattern.block.rotationIntensityIncrementVal;
+                break;
+            default:
+                break;
+        } 
+        #endregion
+
     }
 
     bool CheckIfAtLastRoutine()
@@ -215,7 +246,7 @@ public class DanmakuSequencer : MonoBehaviour
         //Get the pawn
         Pawn pawn = GetComponent<Pawn>();
 
-        progress = reset;
+        progress = (float)reset;
         currentStep = reset;
         nextStep = reset;
         startStep = reset;

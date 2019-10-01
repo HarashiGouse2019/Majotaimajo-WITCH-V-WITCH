@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: ChimeBlock3
+  m_Name: SpidersNest0
   m_EditorClassIdentifier: 
   block:
     amount: 8
@@ -22,9 +22,9 @@ MonoBehaviour:
     bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
       type: 3}
     loop: 1
-    loopRate: 0.25
-    rotation: -3
+    loopRate: 0.05
+    rotation: 0
     distribution: 0
-    rotationFocus: 0
-    rotationIntensity: 0
+    rotationFocus: 1
+    rotationIntensity: 1
     transitionDuration: 0

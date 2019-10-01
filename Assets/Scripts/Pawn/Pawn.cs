@@ -55,6 +55,11 @@ public class Pawn : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        
+    }
+
 
     public virtual void Shoot(int _index)
     {

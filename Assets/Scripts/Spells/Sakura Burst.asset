@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
   m_Name: Sakura Burst
   m_EditorClassIdentifier: 
-  spellPriority: 4
+  spellPriority: 6
   magicConsumtion: 30
   stepSpeed: 0.1
   routine:

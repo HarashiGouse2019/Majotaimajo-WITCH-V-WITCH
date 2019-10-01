@@ -7,6 +7,8 @@ public class LuuPawn : Pawn
 
     void Start()
     {
+        priority = basePriority;
+
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
     }
@@ -19,7 +21,7 @@ public class LuuPawn : Pawn
             library.spellInUse = spell;
 
             //Increate pawn's priority!!!
-            priority = spell.spellPriority;
+            priority += spell.spellPriority;
             //We give all values to our Sequencer
             sequencer.stepSpeed = spell.stepSpeed;
             //We have to loop each routine, and add them the list

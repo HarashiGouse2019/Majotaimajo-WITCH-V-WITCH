@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Alarm;
-
+using TMPro;
 public class PlayerPawn : Pawn
 {
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
     //Either circle around Luu, or go towards her.
     private void Start()
     {
+        priority = basePriority;
+
         //Get Components
         srenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -20,8 +22,11 @@ public class PlayerPawn : Pawn
         xScaleVal = xScale.x;
         srendererColor = srenderer.color;
 
-        //Set base priority at start
-        basePriority = priority;
+        //Read your SpellLibrary, and override GameUi spell text
+        for (int i = 0; i < library.spells.Length; i++)
+        {
+            GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
+        }
     }
 
     private void Update()
@@ -87,7 +92,7 @@ public class PlayerPawn : Pawn
             GameManager.Instance.DecrementMagic(spell.magicConsumtion);
 
             //Increate pawn's priority!!!
-            priority = spell.spellPriority;
+            priority += spell.spellPriority;
             //We give all values to our Sequencer
             sequencer.stepSpeed = spell.stepSpeed;
             //We have to loop each routine, and add them the list

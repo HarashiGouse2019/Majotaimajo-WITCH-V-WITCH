@@ -155,3 +155,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originatedSpawnPoint: {fileID: 0}
+  priority: 0

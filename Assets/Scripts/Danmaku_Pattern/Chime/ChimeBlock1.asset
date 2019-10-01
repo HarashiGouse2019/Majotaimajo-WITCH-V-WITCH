@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block:
     amount: 2
-    speed: 5
-    incrementVal: 80
+    speed: 50
+    incrementVal: 10
     overrideRotation: 0
     initialRotation: 1
     rotationSpeed: 0
@@ -23,8 +23,12 @@ MonoBehaviour:
       type: 3}
     loop: 1
     loopRate: 0.05
-    rotation: 0
+    rotation: -3
     distribution: 2
-    rotationFocus: 8
-    rotationIntensity: 2
+    rotationFocusEffect: 0
+    rotationFocus: 1
+    rotationFocusIncrementVal: 0
+    rotationIntensityEffect: 1
+    rotationIntensity: 1
+    rotationIntensityIncrementVal: 0.1
     transitionDuration: 0
