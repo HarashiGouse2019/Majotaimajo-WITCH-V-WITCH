@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
         tSpirits = _value;
     }
 
-    public IEnumerator DisplayText(string text, float textspeed)
+    public IEnumerator DisplayText(string text, float textspeed, Dialogue.Script.Voices voice)
     {
         if (isDone == false)
         {
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
             //This give a typewritter effect. With a ton of trial and error, this one works the best!!!
             for (int i = 0; i < text.Length + 1; i++)
             {
-                if (Input.GetKeyDown(skipKey) && i > -1)
+                if (Input.GetKeyDown(skipKey) && i > 0)
                 {
                     i = text.Length + 1;
                     dialogue.text = text;
@@ -177,7 +177,36 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     dialogue.text = text.Substring(0, i);
-                    //AudioManager.audio.Play("Type000");
+
+                    #region Voices
+
+                    switch (voice)
+                    {
+                        case Dialogue.Script.Voices.None:
+                            AudioManager.audio.Play("Type000");
+                            break;
+                        case Dialogue.Script.Voices.Amber:
+                            AudioManager.audio.Play("Type000");
+                            break;
+                        case Dialogue.Script.Voices.August:
+                            AudioManager.audio.Play("Type000");
+                            break;
+                        case Dialogue.Script.Voices.Crystal:
+                            AudioManager.audio.Play("Type000");
+                            break;
+                        case Dialogue.Script.Voices.Luu:
+                            AudioManager.audio.Play("LuuVoice");
+                            break;
+                        case Dialogue.Script.Voices.Maple:
+                            AudioManager.audio.Play("Type000");
+                            break;
+                        case Dialogue.Script.Voices.Raven:
+                            AudioManager.audio.Play("RavenVoice");
+                            break;
+                        default:
+                            break;
+                    } 
+                    #endregion
 
                     yield return new WaitForSeconds(textspeed);
                 }

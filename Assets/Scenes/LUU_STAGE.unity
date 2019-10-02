@@ -397,50 +397,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - expression: {fileID: 11400000, guid: cd108c063f6e5e248b56013bef2a9688, type: 2}
+    voice: 6
     speech: Where did she go?
   - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    voice: 4
     speech: I'm right here!!!
   - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
+    voice: 6
     speech: Yay!!! You finally got drawn in!!!
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
+    voice: 4
     speech: It took long enough. I was getting bored.
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
+    voice: 4
     speech: NOW I HAVE 3 EXPRESSIONS JUST LIKE YOU!!!
   - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
+    voice: 6
     speech: Well, I'm glad that you got your expressions now
   - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    voice: 4
     speech: Is that all you can say? That's scary!!!
   - expression: {fileID: 11400000, guid: cd108c063f6e5e248b56013bef2a9688, type: 2}
+    voice: 6
     speech: What do you mean it's scary?
   - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    voice: 4
     speech: Hearing you say that is so unlike you.
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    voice: 6
     speech: I guess?
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
+    voice: 4
     speech: Did I make you upset?
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    voice: 6
     speech: Why would you want me upset?
   - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    voice: 4
     speech: '...'
   - expression: {fileID: 11400000, guid: 77cc5dcb20c943f4bb545f5c8f7758c0, type: 2}
+    voice: 4
     speech: I don't know...
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    voice: 6
     speech: Sort of a mean thing to say.
   - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    voice: 4
     speech: But I am suppose to be mean at you. It's all in the script.
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    voice: 6
     speech: Oh yeah.
   - expression: {fileID: 11400000, guid: 77cc5dcb20c943f4bb545f5c8f7758c0, type: 2}
+    voice: 4
     speech: I get hurt just thinking about it.
   - expression: {fileID: 11400000, guid: 2891ff6b40f4453409f7525caee0c25e, type: 2}
+    voice: 6
     speech: It'll all be over soon. Just be in character for this portion of the scene.
   - expression: {fileID: 11400000, guid: baffaa82590f75e4d83a55ba829b5d7c, type: 2}
+    voice: 4
     speech: '...'
   - expression: {fileID: 11400000, guid: 77cc5dcb20c943f4bb545f5c8f7758c0, type: 2}
+    voice: 4
     speech: '...'
   - expression: {fileID: 11400000, guid: 2ebd95711ab03de4d95aad6ebf0f1836, type: 2}
+    voice: 4
     speech: EAT DUST HEEVEN!!!
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    voice: 6
     speech: Why do I feel such the slightest bit of anger?
 --- !u!1 &218907848
 GameObject:
@@ -5079,6 +5102,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Shoot001
     clip: {fileID: 8300000, guid: 476c31f073a9e3c4b92bc554ce311992, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 0
+    source: {fileID: 0}
+  - name: RavenVoice
+    clip: {fileID: 8300000, guid: d59f129cc90e9b74bb31a04eef6e317e, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 0
+    source: {fileID: 0}
+  - name: LuuVoice
+    clip: {fileID: 8300000, guid: 9b897bdab6145ae44bc0686801d7ca1a, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 0

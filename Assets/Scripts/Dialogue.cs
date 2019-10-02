@@ -11,7 +11,19 @@ public class Dialogue : MonoBehaviour
     [System.Serializable]
     public class Script
     {
+        public enum Voices
+        {
+            None,
+            Amber,
+            August,
+            Crystal,
+            Luu,
+            Maple,
+            Raven
+        }
+
         public Expression expression;
+        public Voices voice;
         public string speech;
     }
 
@@ -31,7 +43,7 @@ public class Dialogue : MonoBehaviour
 
         GameManager.Instance.expression.sprite = dialogue[_index].expression.image;
 
-        displayText = manager.DisplayText(dialogue[_index].speech, _speed);
+        displayText = manager.DisplayText(dialogue[_index].speech, _speed, dialogue[_index].voice);
 
         StartCoroutine(displayText);
     }
