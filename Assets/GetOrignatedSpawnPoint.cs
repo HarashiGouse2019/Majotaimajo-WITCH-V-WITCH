@@ -11,17 +11,13 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     readonly uint demolishVal = 5;
 
+    private Pawn origin;
+
     private void Awake()
     {
         Instance = this;
+        
     }
-
-    private void Start()
-    {
-        Debug.Log(originatedSpawnPoint.name);
-        priority = originatedSpawnPoint.GetComponent<Pawn>().priority;
-    }
-
     private void OnTriggerEnter2D(Collider2D col)
     {
         //Check the priority level of a character
@@ -31,6 +27,7 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
         {
             if (originPoint.priority > priority + demolishVal)
             {
+                Debug.Log("If you're getting this message, these bullets are probably destroying themselves!!!!\n Comparing priorities: " + priority + " : " + originPoint.priority);
                 gameObject.SetActive(false);
             }
         }

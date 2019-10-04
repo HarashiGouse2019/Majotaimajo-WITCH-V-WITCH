@@ -76,6 +76,7 @@ public class Shoot_Trig : MonoBehaviour
     private Timer loopTimer;
     private AudioClip sound;
     protected ObjectPooler pool;
+    private Pawn pawnOrigin;
     #endregion
 
     void OnEnable()
@@ -89,7 +90,8 @@ public class Shoot_Trig : MonoBehaviour
         loopTimer = new Timer(3); //Reintergrated timer!
         existingProjectiles = new List<GameObject>();
         origin = gameObject;
-        pool = GetComponent<ObjectPooler>();
+        pawnOrigin = GetComponent<Pawn>();
+        pool = FindObjectOfType<ObjectPooler>();
     }
 
     void FixedUpdate()
@@ -171,16 +173,18 @@ public class Shoot_Trig : MonoBehaviour
                 tmpObj.SetActive(true);
                 tmpObj.transform.position = startPoint;
                 tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+
+                //Assign projectile priority from origin
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = pawnOrigin.priority;
+
+                //From here, we tell our temporary object where it came from
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
+
+                tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
             } else
             {
                 Debug.LogWarning("For some reason, this object is inactive.");
             }
-
-            //From here, we tell our temporary object where it came from
-            tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
-
-            tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
-
             angle += angleStep;
         }
     }

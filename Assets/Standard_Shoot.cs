@@ -37,6 +37,7 @@ public class Standard_Shoot : Shoot_Trig
     {
         Instance = this;
         existingProjectiles = new List<GameObject>();
+        pool = FindObjectOfType<ObjectPooler>();
     }
 
     void FixedUpdate()
@@ -52,18 +53,20 @@ public class Standard_Shoot : Shoot_Trig
         {
 
             Vector3 targetVector = (target.position - origin.transform.position).normalized;
-            //GameObject tmpObj = Instantiate(bullet[0], transform.position, transform.rotation);
             GameObject tmpObj = pool.GetMember(bulletMember);
-            tmpObj.SetActive(true);
-            tmpObj.transform.position = transform.position;
-            tmpObj.transform.rotation = transform.rotation;
+            if (!tmpObj.activeInHierarchy)
+            {
+                tmpObj.SetActive(true);
+                tmpObj.transform.position = transform.position;
+                tmpObj.transform.rotation = transform.rotation;
 
-            tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
-            
-            //This is what I wanted
-            tmpObj.transform.rotation = Quaternion.FromToRotation(target.position, transform.position) ;
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
 
-            tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
+                //This is what I wanted
+                tmpObj.transform.rotation = Quaternion.FromToRotation(target.position, transform.position);
+
+                tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
+            }
         }
     }
     public override void Remove(GameObject obj)

@@ -45,6 +45,7 @@ public class ObjectPooler : MonoBehaviour
             for (int i = 0; i < item.size; i++)
             {
                 GameObject newMember = Instantiate(item.projectile);
+
                 newMember.SetActive(false);
                 item.projectile.name = item.name;
                 pooledObjects.Add(newMember);
@@ -60,9 +61,8 @@ public class ObjectPooler : MonoBehaviour
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             
-            if (!pooledObjects[i].activeInHierarchy && (name + "(Clone)") == pooledObjects[i].name)
+            if (!pooledObjects[i].activeSelf && (name + "(Clone)") == pooledObjects[i].name)
             {
-                Debug.Log("Find a member. Giving it to you!");
                 return pooledObjects[i];
             }
         }

@@ -11,6 +11,16 @@ public class CheckDestroy : MonoBehaviour
     private GameObject origin;
     #endregion
 
+    private void OnEnable()
+    {
+        destroyTimer.StartTimer(0);
+        if (destroyTimer.currentTime[0] > 10)
+        {
+            gameObject.SetActive(false);
+            destroyTimer.SetToZero(0, true);
+        }
+    }
+
     void Awake()
     {
         destroyTimer = new Timer(1);
@@ -25,11 +35,6 @@ public class CheckDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        destroyTimer.StartTimer(0);
-        if (destroyTimer.currentTime[0] > 10)
-        {
-            gameObject.SetActive(false);
-            destroyTimer.SetToZero(0, true);
-        }
+        
     }
 }
