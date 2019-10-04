@@ -112,7 +112,7 @@ public class DanmakuSequencer : MonoBehaviour
 
         trig.loopSpeed = _pattern.block.loopRate;
 
-        trig.bullet[0] = _pattern.block.bullet;
+        trig.bulletMember = _pattern.block.bulletType;
 
         trig.speed = _pattern.block.speed;
 

@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             if (GameManager.Instance.textBoxUI.gameObject.activeSelf != true && GameManager.Instance.GetMagic() > 0)
             {
-                pawn.Shoot(0);
+                pawn.Shoot("Crystal");
                 GameManager.Instance.DecrementMagic(0.01f);
             }
         }

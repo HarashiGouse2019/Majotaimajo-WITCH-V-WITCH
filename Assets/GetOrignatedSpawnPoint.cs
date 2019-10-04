@@ -24,9 +24,15 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.GetComponent<GetOrignatedSpawnPoint>().priority > priority + demolishVal)
+        //Check the priority level of a character
+        GetOrignatedSpawnPoint originPoint = col.GetComponent<GetOrignatedSpawnPoint>();
+
+        if (originPoint != null)
         {
-            gameObject.SetActive(false);
+            if (originPoint.priority > priority + demolishVal || col.gameObject.tag == "Border")
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

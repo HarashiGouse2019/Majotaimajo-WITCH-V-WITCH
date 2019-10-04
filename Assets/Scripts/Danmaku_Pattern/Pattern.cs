@@ -19,7 +19,7 @@ public class Pattern : ScriptableObject
         public float initialRotation;
         public float rotationSpeed;
 
-        public GameObject bullet;
+        public string bulletType;
 
         public bool loop;
         public float loopRate;

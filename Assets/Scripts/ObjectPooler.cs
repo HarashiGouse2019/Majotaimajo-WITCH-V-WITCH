@@ -19,6 +19,8 @@ public class ObjectPooler : MonoBehaviour
     public List<ObjectPoolItem> itemsToPool;
     public List<GameObject> pooledObjects;
     // Start is called before the first frame update
+
+    public int poolIndex;
     void Awake()
     {
         Instance = this;
@@ -42,29 +44,34 @@ public class ObjectPooler : MonoBehaviour
         {
             for (int i = 0; i < item.size; i++)
             {
-                GameObject newMember = (GameObject)Instantiate(item.projectile);
+                GameObject newMember = Instantiate(item.projectile);
                 newMember.SetActive(false);
                 item.projectile.name = item.name;
-                item.expandPool = false;
                 pooledObjects.Add(newMember);
             }
 
         }
     }
 
-    public GameObject GetObject(string name)
+    public GameObject GetMember(string name)
     {
+
         #region Iteration
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && name == pooledObjects[i].name)
+            
+            if (!pooledObjects[i].activeInHierarchy && (name + "(Clone)") == pooledObjects[i].name)
+            {
                 return pooledObjects[i];
+            }
         }
         #endregion
 
         foreach (ObjectPoolItem item in itemsToPool)
         {
-            if (item.projectile.name == name)
+            Debug.Log("Ran out of members in pool. Creating more!!!");
+            Debug.Log(item.projectile.name);
+            if (name == item.projectile.name)
             {
                 if (item.expandPool)
                 {

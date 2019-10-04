@@ -47,12 +47,12 @@ public class PlayerPawn : Pawn
         }
     }
 
-    public override void Shoot(int _index)
+    public override void Shoot(string bulletName)
     {
         if (recoil == false)
         {
             Standard_Shoot.Instance = GetComponent<Standard_Shoot>();
-            Standard_Shoot.Instance.SpawnBullets(1, _index);
+            Standard_Shoot.Instance.SpawnBullets(1, bulletName);
             AudioManager.audio.Play("Shoot000", 100f);
             recoil = true;
         }

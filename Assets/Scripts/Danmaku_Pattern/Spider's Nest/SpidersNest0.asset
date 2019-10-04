@@ -19,12 +19,15 @@ MonoBehaviour:
     overrideRotation: 0
     initialRotation: 0
     rotationSpeed: 0
-    bullet: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
-      type: 3}
+    bulletType: Lavender
     loop: 1
     loopRate: 0.05
     rotation: 0
     distribution: 0
+    rotationFocusEffect: 0
     rotationFocus: 1
+    rotationFocusIncrementVal: 0
+    rotationIntensityEffect: 0
     rotationIntensity: 1
+    rotationIntensityIncrementVal: 0
     transitionDuration: 0

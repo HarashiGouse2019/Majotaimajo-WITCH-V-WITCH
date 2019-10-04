@@ -19,12 +19,15 @@ MonoBehaviour:
     overrideRotation: 0
     initialRotation: 0
     rotationSpeed: 0
-    bullet: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
-      type: 3}
+    bulletType: Sakura
     loop: 1
     loopRate: 0.1
     rotation: -2
     distribution: 0
+    rotationFocusEffect: 0
     rotationFocus: 6
+    rotationFocusIncrementVal: 0
+    rotationIntensityEffect: 0
     rotationIntensity: 45
+    rotationIntensityIncrementVal: 0
     transitionDuration: 0

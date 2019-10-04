@@ -61,7 +61,7 @@ public class Pawn : MonoBehaviour
     }
 
 
-    public virtual void Shoot(int _index)
+    public virtual void Shoot(string bulletName)
     {
 
     }

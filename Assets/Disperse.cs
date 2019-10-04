@@ -12,7 +12,7 @@ public class Disperse : Shoot_Trig
         timer.StartTimer(0);
         if (timer.SetFor(2f, 0))
         {
-            SpawnBullets(numberOfProjectiles, bulletIndex);
+            SpawnBullets(numberOfProjectiles, bulletMember);
         }
     }
 }

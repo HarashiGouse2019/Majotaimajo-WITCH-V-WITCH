@@ -44,7 +44,7 @@ public class Standard_Shoot : Shoot_Trig
         UpdateStartPoint();
     }
 
-    public override void SpawnBullets(int _numberOfProjectiles, int _index = 0)
+    public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
 
    
@@ -52,10 +52,13 @@ public class Standard_Shoot : Shoot_Trig
         {
 
             Vector3 targetVector = (target.position - origin.transform.position).normalized;
-            GameObject tmpObj = Instantiate(bullet[0], transform.position, transform.rotation);
+            //GameObject tmpObj = Instantiate(bullet[0], transform.position, transform.rotation);
+            GameObject tmpObj = pool.GetMember(bulletMember);
+            tmpObj.SetActive(true);
+            tmpObj.transform.position = transform.position;
+            tmpObj.transform.rotation = transform.rotation;
 
             tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
-            existingProjectiles.Add(tmpObj);
             
             //This is what I wanted
             tmpObj.transform.rotation = Quaternion.FromToRotation(target.position, transform.position) ;

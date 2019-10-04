@@ -62,7 +62,7 @@ public class Shoot_Trig : MonoBehaviour
 
     [Header("Prefabs")]
     public List<GameObject> bullet = new List<GameObject>();
-    public int bulletIndex;
+    public string bulletMember;
 
     [Header("Origin")]
     public GameObject origin;
@@ -75,6 +75,7 @@ public class Shoot_Trig : MonoBehaviour
     protected Vector3 startPoint;
     private Timer loopTimer;
     private AudioClip sound;
+    protected ObjectPooler pool;
     #endregion
 
     void OnEnable()
@@ -88,6 +89,7 @@ public class Shoot_Trig : MonoBehaviour
         loopTimer = new Timer(3); //Reintergrated timer!
         existingProjectiles = new List<GameObject>();
         origin = gameObject;
+        pool = GetComponent<ObjectPooler>();
     }
 
     void FixedUpdate()
@@ -107,7 +109,7 @@ public class Shoot_Trig : MonoBehaviour
         }
     }
 
-    public virtual void SpawnBullets(int _numberOfProjectiles, int _index = 0)
+    public virtual void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         //Update rotation focus
         rotationFocus += rotationFocusIncrementVal;
@@ -162,12 +164,15 @@ public class Shoot_Trig : MonoBehaviour
             Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
             Vector3 projectileMoveDir = (projectileVector - startPoint).normalized * speed;
 
-            GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
+            //GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
+            GameObject tmpObj = pool.GetMember(bulletMember);
+            tmpObj.SetActive(true);
+            tmpObj.transform.position = startPoint;
+            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
             //From here, we tell our temporary object where it came from
             tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
 
-            existingProjectiles.Add(tmpObj);
             tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
 
             angle += angleStep;
@@ -180,7 +185,7 @@ public class Shoot_Trig : MonoBehaviour
         if (loopTimer.SetFor(loopSpeed, 0))
         {
             g_angle += (int)rotation;
-            SpawnBullets(numberOfProjectiles, bulletIndex);
+            SpawnBullets(numberOfProjectiles, bulletMember);
         }
     }
 

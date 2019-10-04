@@ -6,6 +6,8 @@ TagManager:
   tags:
   - target
   - player
+  - Border
+  - Lavender
   layers:
   - Default
   - TransparentFX
