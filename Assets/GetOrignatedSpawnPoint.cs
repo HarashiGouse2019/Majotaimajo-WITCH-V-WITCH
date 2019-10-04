@@ -16,7 +16,7 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
+
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -26,9 +26,13 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
         if (originPoint != null)
         {
             if (originPoint.priority > priority + demolishVal && (originPoint.priority != 999))
-            {
                 gameObject.SetActive(false);
-            }
+
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Border") gameObject.SetActive(false);
     }
 }

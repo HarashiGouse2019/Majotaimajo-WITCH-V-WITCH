@@ -61,7 +61,7 @@ public class ObjectPooler : MonoBehaviour
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             
-            if (!pooledObjects[i].activeSelf && (name + "(Clone)") == pooledObjects[i].name)
+            if (!pooledObjects[i].activeInHierarchy && (name + "(Clone)") == pooledObjects[i].name)
             {
                 return pooledObjects[i];
             }
