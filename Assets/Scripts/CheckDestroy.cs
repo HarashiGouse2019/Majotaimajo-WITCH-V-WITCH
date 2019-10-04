@@ -29,6 +29,7 @@ public class CheckDestroy : MonoBehaviour
         if (destroyTimer.currentTime[0] > 10)
         {
             gameObject.SetActive(false);
+            destroyTimer.SetToZero(0, true);
         }
     }
 }

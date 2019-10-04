@@ -166,9 +166,15 @@ public class Shoot_Trig : MonoBehaviour
 
             //GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
             GameObject tmpObj = pool.GetMember(bulletMember);
-            tmpObj.SetActive(true);
-            tmpObj.transform.position = startPoint;
-            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+            if (!tmpObj.activeInHierarchy)
+            {
+                tmpObj.SetActive(true);
+                tmpObj.transform.position = startPoint;
+                tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+            } else
+            {
+                Debug.LogWarning("For some reason, this object is inactive.");
+            }
 
             //From here, we tell our temporary object where it came from
             tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;

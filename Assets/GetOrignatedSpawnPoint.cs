@@ -29,7 +29,7 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
         if (originPoint != null)
         {
-            if (originPoint.priority > priority + demolishVal || col.gameObject.tag == "Border")
+            if (originPoint.priority > priority + demolishVal)
             {
                 gameObject.SetActive(false);
             }

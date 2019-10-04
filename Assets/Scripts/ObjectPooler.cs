@@ -62,6 +62,7 @@ public class ObjectPooler : MonoBehaviour
             
             if (!pooledObjects[i].activeInHierarchy && (name + "(Clone)") == pooledObjects[i].name)
             {
+                Debug.Log("Find a member. Giving it to you!");
                 return pooledObjects[i];
             }
         }
@@ -69,12 +70,11 @@ public class ObjectPooler : MonoBehaviour
 
         foreach (ObjectPoolItem item in itemsToPool)
         {
-            Debug.Log("Ran out of members in pool. Creating more!!!");
-            Debug.Log(item.projectile.name);
             if (name == item.projectile.name)
             {
                 if (item.expandPool)
                 {
+                    Debug.Log("Ran out of members in pool. Creating more members!!!");
                     GameObject newMember = Instantiate(item.projectile);
                     newMember.SetActive(false);
                     pooledObjects.Add(newMember);
@@ -82,7 +82,7 @@ public class ObjectPooler : MonoBehaviour
                 }
             }
         }
-        Debug.Log("We couldn't find a prefab of this name");
+        Debug.LogWarning("We couldn't find a prefab of this name");
         return null;
     }
 }
