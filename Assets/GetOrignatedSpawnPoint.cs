@@ -25,9 +25,8 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
         if (originPoint != null)
         {
-            if (originPoint.priority > priority + demolishVal)
+            if (originPoint.priority > priority + demolishVal && (originPoint.priority != 999))
             {
-                Debug.Log("If you're getting this message, these bullets are probably destroying themselves!!!!\n Comparing priorities: " + priority + " : " + originPoint.priority);
                 gameObject.SetActive(false);
             }
         }
