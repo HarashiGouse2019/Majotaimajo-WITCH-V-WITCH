@@ -41,7 +41,6 @@ public class PlayerPawn : Pawn
         }
         else
         {
-
             isVisible = true;
             srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
         }
@@ -114,7 +113,7 @@ public class PlayerPawn : Pawn
     {
         timer.StartTimer(2);
         returnVal = timer.SetFor(_duration, 2);
-        if (returnVal == true) recoil = false;
+        if (returnVal == true) { recoil = false; timer.SetToZero(2, true); }
     }
 
     public override void GetHurt(float _blinkRate, float _duration)
@@ -154,6 +153,7 @@ public class PlayerPawn : Pawn
             if (returnVal)
             {
                 hit = false;
+                timer.SetToZero(1, true);
                 timer.SetToZero(0, true);
             }
         }
@@ -162,7 +162,7 @@ public class PlayerPawn : Pawn
     private void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name == "Luu_Obj")
+        if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name != "Raven_Obj")
         {
             if (hit == false)
             {

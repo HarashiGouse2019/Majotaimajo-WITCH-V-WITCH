@@ -40,7 +40,7 @@ public class LuuPawn : Pawn
 
     private void OnTriggerStay2D(Collider2D bullets)
     {
-        if (bullets.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name == "Raven_Obj")
+        if (bullets.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name != "Luu_Obj")
         {
             GameManager.Instance.DecrementProgress(0.05f);
             GameManager.Instance.timesHit++;

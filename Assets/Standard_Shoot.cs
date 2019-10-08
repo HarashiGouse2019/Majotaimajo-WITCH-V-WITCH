@@ -51,7 +51,6 @@ public class Standard_Shoot : Shoot_Trig
    
         for (int i = 0; i <= _numberOfProjectiles - 1; i++)
         {
-
             Vector3 targetVector = (target.position - origin.transform.position).normalized;
             GameObject tmpObj = pool.GetMember(bulletMember);
             if (!tmpObj.activeInHierarchy)
