@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Alarm;
+﻿using UnityEngine;
 using TMPro;
 public class PlayerPawn : Pawn
 {
@@ -84,6 +81,8 @@ public class PlayerPawn : Pawn
     {
         Spell spell = library.FindSpell(_name);
 
+        GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true) ;
+
         if (GameManager.Instance.GetMagic() > spell.magicConsumtion && SpellLibrary.library.spellInUse == null)
         {
             library.spellInUse = spell;
@@ -162,7 +161,9 @@ public class PlayerPawn : Pawn
     private void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name != "Raven_Obj")
+        GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
+
+        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Raven_Obj")
         {
             if (hit == false)
             {
@@ -198,10 +199,5 @@ public class PlayerPawn : Pawn
         move = new Vector2(movementSpeed, rb.velocity.y);
         if (rb.velocity.magnitude < maxSpeed)
             rb.velocity += move * Time.fixedDeltaTime;
-    }
-
-    public void FindRadius()
-    {
-        radius = Vector2.Distance(originOfRotation.position, transform.position);
     }
 }

@@ -104,13 +104,13 @@ public class PlayerController : MonoBehaviour
 
         //We do this for Ui Purposes
         if (Input.GetKeyUp(special1))
-            manager.ActivateSlot(manager.SLOTS[0], false);
+            manager.ActivateSlot(0, false);
 
         if (Input.GetKeyUp(special2))
-            manager.ActivateSlot(manager.SLOTS[1], false);
+            manager.ActivateSlot(1, false);
 
         if (Input.GetKeyUp(special3))
-            manager.ActivateSlot(manager.SLOTS[2], false);
+            manager.ActivateSlot(2, false);
     }
        
 }

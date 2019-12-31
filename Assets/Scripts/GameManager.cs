@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     bool isDone = false;
 
     readonly float flashVal = 255f;
-    float rVal, gVal, bVal;
+    public float rVal, gVal, bVal;
 
 
     #endregion
@@ -113,21 +113,21 @@ public class GameManager : MonoBehaviour
         MAGIC.fillAmount = magic / 100f;
     }
 
-    public void ActivateSlot(Image _slot, bool _on)
+    public void ActivateSlot(int _slotIndex, bool _on)
     {
 
         switch (_on)
         {
             case true:
-                rVal = _slot.color.r;
-                gVal = _slot.color.g;
-                bVal = _slot.color.b;
+                rVal = SLOTS[_slotIndex].color.r;
+                gVal = SLOTS[_slotIndex].color.g;
+                bVal = SLOTS[_slotIndex].color.b;
 
-                _slot.color = new Color(_slot.color.r, flashVal, _slot.color.r);
+                SLOTS[_slotIndex].color = new Color(rVal, flashVal, bVal);
 
                 break;
             case false:
-                _slot.color = new Color(rVal, gVal, bVal);
+                SLOTS[_slotIndex].color = new Color(rVal, gVal, bVal);
 
                 break;
         }

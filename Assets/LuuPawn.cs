@@ -38,14 +38,15 @@ public class LuuPawn : Pawn
         }
     }
 
-    private void OnTriggerStay2D(Collider2D bullets)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (bullets.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name != "Luu_Obj")
+        GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
+        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj")
         {
             GameManager.Instance.DecrementProgress(0.05f);
             GameManager.Instance.timesHit++;
             GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
-            bullets.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
     }
 }

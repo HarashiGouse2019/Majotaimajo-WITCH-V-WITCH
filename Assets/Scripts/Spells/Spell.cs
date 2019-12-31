@@ -19,6 +19,15 @@ public class Spell : ScriptableObject
         public uint stepPos;
     }
 
+    [System.Serializable]
+    public class Layer
+    {
+        public List<Routine> routine = new List<Routine>();
+        public bool enableSequenceLooping;
+    }
+
+    public List<Layer> routineLayer = new List<Layer>();
+
     public List<Routine> routine = new List<Routine>();
 
     public bool enableSequenceLooping;

@@ -15,6 +15,14 @@ MonoBehaviour:
   spellPriority: 14
   magicConsumtion: 45
   stepSpeed: 0.1
+  routineLayer:
+  - routine:
+    - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}
+      stepPos: 0
+    - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
+      stepPos: 15
+    - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
+      stepPos: 30
   routine:
   - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}
     stepPos: 0

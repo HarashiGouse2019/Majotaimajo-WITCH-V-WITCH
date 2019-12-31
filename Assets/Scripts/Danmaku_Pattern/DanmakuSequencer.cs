@@ -12,18 +12,11 @@ public class DanmakuSequencer : MonoBehaviour
 
     public float progress;
 
-    [System.Serializable]
-    public class Routine
-    {
-        public Pattern pattern;
-        public uint stepPos;
-    }
+    public List<Spell.Routine> routine = new List<Spell.Routine>();
 
     public uint runningRoutine = 0;
     public int completedRoutines = 0;
     public int completedLoops = 0;
-
-    public List<Spell.Routine> routine = new List<Spell.Routine>();
 
     public bool enableSequenceLooping;
     #endregion
@@ -66,7 +59,7 @@ public class DanmakuSequencer : MonoBehaviour
 
     void Sequence()
     {
-
+        Debug.Log("Doing sequence desu!!!");
         currentStep++;
 
         if (currentStep == nextStep)
@@ -82,17 +75,31 @@ public class DanmakuSequencer : MonoBehaviour
         }
 
         if (GetRoutineCompletionInPercentage() < 0.1f)
+        {
             RunPattern(routine[(int)runningRoutine].pattern);
+        }
     }
 
     public uint GetNextStep()
     {
-        return routine[(int)runningRoutine + 1].stepPos;
+        Spell.Routine routineCheck = null;
+
+        routineCheck = routine[(int)runningRoutine + 1];
+
+        RunPattern(routineCheck.pattern);
+
+        return routineCheck.stepPos;
     }
 
     public uint GetPreviousStep()
     {
-        return routine[(int)runningRoutine].stepPos;
+        Spell.Routine routineCheck = null;
+
+        routineCheck = routine[(int)runningRoutine];
+
+        RunPattern(routineCheck.pattern);
+
+        return routineCheck.stepPos;
     }
 
     public float GetRoutineCompletionInPercentage()
@@ -105,6 +112,7 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
+        Debug.Log("Okay! So it's hitting this function now!!!");
         #region Assing Values
         trig.numberOfProjectiles = _pattern.block.amount;
 
@@ -123,9 +131,8 @@ public class DanmakuSequencer : MonoBehaviour
 
         trig.rotationFocus = _pattern.block.rotationFocus;
 
-        trig.rotationIntensity = _pattern.block.rotationIntensity; 
+        trig.rotationIntensity = _pattern.block.rotationIntensity;
         #endregion
-
         #region Rotation
         //No idea, but Imma do it!!
         switch ((int)_pattern.block.rotation)
@@ -162,7 +169,6 @@ public class DanmakuSequencer : MonoBehaviour
                 break;
         }
         #endregion
-
         #region Distribution
         //And then again...
         switch (_pattern.block.distribution)
@@ -187,7 +193,6 @@ public class DanmakuSequencer : MonoBehaviour
                 break;
         }
         #endregion
-
         #region Rotation Focus Effect
         switch (_pattern.block.rotationFocusEffect)
         {
@@ -201,7 +206,6 @@ public class DanmakuSequencer : MonoBehaviour
                 break;
         }
         #endregion
-
         #region Rotation Intensity Effect
         switch (_pattern.block.rotationIntensityEffect)
         {
@@ -213,9 +217,8 @@ public class DanmakuSequencer : MonoBehaviour
                 break;
             default:
                 break;
-        } 
+        }
         #endregion
-
     }
 
     bool CheckIfAtLastRoutine()
@@ -238,6 +241,7 @@ public class DanmakuSequencer : MonoBehaviour
             completedRoutines++;
             return true;
         }
+
         return false;
     }
 

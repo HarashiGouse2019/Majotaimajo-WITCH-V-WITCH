@@ -48,6 +48,7 @@ public class Pawn : MonoBehaviour
     protected Vector2 move;
     protected bool isVisible;
     protected Color srendererColor;
+    protected GetOrignatedSpawnPoint objectOrigin;
 
     #endregion
     private void Awake()
