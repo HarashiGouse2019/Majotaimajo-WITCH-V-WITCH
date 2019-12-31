@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b50db8d9b3a937646bc85a13a5fd03d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 088780afea1e0dc4db20f38058de8280, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,6 +170,9 @@ MonoBehaviour:
   originOfRotation: {fileID: 0}
   radius: 7
   isMoving: 0
+  priority: 1
+  basePriority: 0
+  library: {fileID: 0}
   g_angle: 0
 --- !u!114 &1202548112172699522
 MonoBehaviour:
@@ -189,12 +192,16 @@ MonoBehaviour:
   g_angle: 0
   rotation: 0
   distribution: 0
+  rotationFocus: 0
+  rotationFocusIncrementVal: 0
+  rotationIntensity: 0
+  rotationIntensityIncrementVal: 0
   existingProjectiles: []
   steps: 0
   loop: 0
   loopSpeed: 0.05
   bullet: []
-  bulletIndex: 0
+  bulletMember: 
   origin: {fileID: 1202548111567478765}
 --- !u!114 &1202548112172699525
 MonoBehaviour:
@@ -214,13 +221,17 @@ MonoBehaviour:
   g_angle: 0
   rotation: 0
   distribution: 0
+  rotationFocus: 0
+  rotationFocusIncrementVal: 0
+  rotationIntensity: 0
+  rotationIntensityIncrementVal: 0
   existingProjectiles: []
   steps: 0
   loop: 0
   loopSpeed: 0.05
   bullet:
   - {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6, type: 3}
-  bulletIndex: 0
+  bulletMember: 
   origin: {fileID: 1202548111567478764}
   target: {fileID: 0}
 --- !u!114 &1202548112172699524
@@ -235,17 +246,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowOverride: 0
   startStep: 0
   currentStep: 0
   nextStep: 0
   stepSpeed: 0.5
   progress: 0
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
   routine:
   - pattern: {fileID: 11400000, guid: e4c2b0e7bf4ac344ba010ac5a38a91ab, type: 2}
     stepPos: 0
+  runningRoutine: 0
+  completedRoutines: 0
+  completedLoops: 0
   enableSequenceLooping: 0
 --- !u!58 &6089921367965787053
 CircleCollider2D:
@@ -260,6 +272,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06428522, y: -0.17}
+  m_Offset: {x: 0.034525283, y: -0.11}
   serializedVersion: 2
-  m_Radius: 0.050316557
+  m_Radius: 0.046596568

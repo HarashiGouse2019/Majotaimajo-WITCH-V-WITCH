@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block:
     amount: 2
-    speed: 100
+    speed: 80
     incrementVal: 75
     overrideRotation: 0
     initialRotation: 0
