@@ -12,8 +12,8 @@ public class Pattern : ScriptableObject
     public class Block
     {
         public int amount;
-        public float speed;
-        public int incrementVal;
+        public float initialSpeed;
+        public int incrementalSpeed;
         public bool overrideRotation;
         [Range(1, 360)]
         public float initialRotation;
@@ -69,7 +69,8 @@ public class Pattern : ScriptableObject
         public float transitionDuration;
     }
 
-    public Block block;
+    [Header("Block Layer")]
+    public Block[] blocks;
 }
 
 //And I think that's it... I think...

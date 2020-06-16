@@ -22,8 +22,10 @@ public class LuuPawn : Pawn
 
             //Increate pawn's priority!!!
             priority += spell.spellPriority;
+
             //We give all values to our Sequencer
             sequencer.stepSpeed = spell.stepSpeed;
+
             //We have to loop each routine, and add them the list
             for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
             {

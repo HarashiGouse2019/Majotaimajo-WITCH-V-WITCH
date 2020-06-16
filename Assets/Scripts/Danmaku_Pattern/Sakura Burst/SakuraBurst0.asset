@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: SakuraBurst0
   m_EditorClassIdentifier: 
-  block:
-    amount: 2
-    speed: 80
-    incrementVal: 75
+  blocks:
+  - amount: 2
+    initialSpeed: 340
+    incrementalSpeed: 235
     overrideRotation: 0
     initialRotation: 1
     rotationSpeed: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     rotation: 3
     distribution: 2
     rotationFocusEffect: 0
-    rotationFocus: 1
+    rotationFocus: 0
     rotationFocusIncrementVal: 0
     rotationIntensityEffect: 0
     rotationIntensity: 1

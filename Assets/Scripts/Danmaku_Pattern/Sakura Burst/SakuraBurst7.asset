@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: SakuraBurst7
   m_EditorClassIdentifier: 
-  block:
-    amount: 5
-    speed: 10
-    incrementVal: 20
+  blocks:
+  - amount: 5
+    initialSpeed: 130
+    incrementalSpeed: 140
     overrideRotation: 0
-    initialRotation: 225
+    initialRotation: 0
     rotationSpeed: 0
     bulletType: Sakura
     loop: 1

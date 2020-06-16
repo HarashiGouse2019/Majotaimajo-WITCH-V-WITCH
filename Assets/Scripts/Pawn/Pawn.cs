@@ -38,7 +38,7 @@ public class Pawn : MonoBehaviour
     protected bool returnVal;
     protected bool hit;
 
-    protected readonly Timer timer = new Timer(3, true);
+    protected readonly Timer timer = new Timer(3);
     protected Vector3 xScale;
     protected float xScaleVal;
     protected SpriteRenderer srenderer;

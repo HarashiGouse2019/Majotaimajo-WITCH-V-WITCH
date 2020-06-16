@@ -112,111 +112,118 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
-        Debug.Log("Okay! So it's hitting this function now!!!");
         #region Assing Values
-        trig.numberOfProjectiles = _pattern.block.amount;
-
-        trig.loop = _pattern.block.loop;
-
-        trig.loopSpeed = _pattern.block.loopRate;
-
-        trig.bulletMember = _pattern.block.bulletType;
-
-        trig.speed = _pattern.block.speed;
-
-        trig.incrementVal = _pattern.block.incrementVal;
-
-        if (_pattern.block.overrideRotation)
-            trig.g_angle = _pattern.block.initialRotation;
-
-        trig.rotationFocus = _pattern.block.rotationFocus;
-
-        trig.rotationIntensity = _pattern.block.rotationIntensity;
-        #endregion
-        #region Rotation
-        //No idea, but Imma do it!!
-        switch ((int)_pattern.block.rotation)
+        foreach (Pattern.Block block in _pattern.blocks)
         {
-            case 0:
-                trig.rotation = Shoot_Trig.RotationType.NoRotation;
-                break;
+            trig.numberOfProjectiles = block.amount;
 
-            case 1:
-                trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
-                break;
+            trig.loop = block.loop;
 
-            case 2:
-                trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
-                break;
+            trig.loopSpeed = block.loopRate;
 
-            case 3:
-                trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
-                break;
+            trig.bulletMember = block.bulletType;
 
-            case -1:
-                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
-                break;
+            trig.speed = block.initialSpeed;
 
-            case -2:
-                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
-                break;
+            trig.incrementVal = block.incrementalSpeed;
 
-            case -3:
-                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
-                break;
+            if (block.overrideRotation)
+                trig.g_angle = block.initialRotation;
 
-            default:
-                break;
-        }
-        #endregion
-        #region Distribution
-        //And then again...
-        switch (_pattern.block.distribution)
-        {
-            case Pattern.Block.DistributionType.Uniformed:
-                trig.distribution = Shoot_Trig.DistributionType.Uniformed;
-                break;
+            trig.rotationFocus = block.rotationFocus;
 
-            case Pattern.Block.DistributionType.Biformed:
-                trig.distribution = Shoot_Trig.DistributionType.Biformed;
-                break;
+            trig.rotationIntensity = block.rotationIntensity;
 
-            case Pattern.Block.DistributionType.Increment:
-                trig.distribution = Shoot_Trig.DistributionType.Increment;
-                break;
 
-            case Pattern.Block.DistributionType.Scattered:
-                trig.distribution = Shoot_Trig.DistributionType.Scattered;
-                break;
+            #region Rotation
+            //No idea, but Imma do it!!
+            switch ((int)block.rotation)
+            {
+                case 0:
+                    trig.rotation = Shoot_Trig.RotationType.NoRotation;
+                    break;
 
-            default:
-                break;
-        }
-        #endregion
-        #region Rotation Focus Effect
-        switch (_pattern.block.rotationFocusEffect)
-        {
-            case Pattern.Block.RotationFocusEffect.Static:
-                //Do Nothing
-                break;
-            case Pattern.Block.RotationFocusEffect.Increment:
-                trig.rotationFocusIncrementVal = _pattern.block.rotationFocusIncrementVal;
-                break;
-            default:
-                break;
-        }
-        #endregion
-        #region Rotation Intensity Effect
-        switch (_pattern.block.rotationIntensityEffect)
-        {
-            case Pattern.Block.RotationIntensityEffect.Static:
-                //Do Nothing
-                break;
-            case Pattern.Block.RotationIntensityEffect.Increment:
-                trig.rotationIntensityIncrementVal = _pattern.block.rotationIntensityIncrementVal;
-                break;
-            default:
-                break;
+                case 1:
+                    trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
+                    break;
+
+                case 2:
+                    trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
+                    break;
+
+                case 3:
+                    trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
+                    break;
+
+                case -1:
+                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
+                    break;
+
+                case -2:
+                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
+                    break;
+
+                case -3:
+                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
+                    break;
+
+                default:
+                    break;
+            }
+            #endregion
+
+            #region Distribution
+            //And then again...
+            switch (block.distribution)
+            {
+                case Pattern.Block.DistributionType.Uniformed:
+                    trig.distribution = Shoot_Trig.DistributionType.Uniformed;
+                    break;
+
+                case Pattern.Block.DistributionType.Biformed:
+                    trig.distribution = Shoot_Trig.DistributionType.Biformed;
+                    break;
+
+                case Pattern.Block.DistributionType.Increment:
+                    trig.distribution = Shoot_Trig.DistributionType.Increment;
+                    break;
+
+                case Pattern.Block.DistributionType.Scattered:
+                    trig.distribution = Shoot_Trig.DistributionType.Scattered;
+                    break;
+
+                default:
+                    break;
+            }
+            #endregion
+
+            #region Rotation Focus Effect
+            switch (block.rotationFocusEffect)
+            {
+                case Pattern.Block.RotationFocusEffect.Static:
+                    //Do Nothing
+                    break;
+                case Pattern.Block.RotationFocusEffect.Increment:
+                    trig.rotationFocusIncrementVal = block.rotationFocusIncrementVal;
+                    break;
+                default:
+                    break;
+            }
+            #endregion
+
+            #region Rotation Intensity Effect
+            switch (block.rotationIntensityEffect)
+            {
+                case Pattern.Block.RotationIntensityEffect.Static:
+                    //Do Nothing
+                    break;
+                case Pattern.Block.RotationIntensityEffect.Increment:
+                    trig.rotationIntensityIncrementVal = block.rotationIntensityIncrementVal;
+                    break;
+                default:
+                    break;
+            }
+            #endregion
         }
         #endregion
     }
