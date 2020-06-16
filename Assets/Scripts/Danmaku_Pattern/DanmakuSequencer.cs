@@ -59,7 +59,6 @@ public class DanmakuSequencer : MonoBehaviour
 
     void Sequence()
     {
-        Debug.Log("Doing sequence desu!!!");
         currentStep++;
 
         if (currentStep == nextStep)

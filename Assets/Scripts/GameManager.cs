@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     bool isDone = false;
 
     readonly float flashVal = 255f;
-    public float rVal, gVal, bVal;
+    float rVal, gVal, bVal;
 
 
     #endregion
@@ -88,12 +88,19 @@ public class GameManager : MonoBehaviour
         if (isDone == true) ToNextDialogue();
     }
 
+    /// <summary>
+    /// Add any value to current score.
+    /// </summary>
+    /// <param name="_total"></param>
     public void AddToScore(int _total)
     {
         score += _total;
-        if (score > hiScore) PostHighScore();
+        if (score > hiScore) UpdateHighScore();
     }
 
+    /// <summary>
+    /// Decrement the player's lives
+    /// </summary>
     public void DecrementLives()
     {
         tSpirits--;
@@ -102,17 +109,30 @@ public class GameManager : MonoBehaviour
         ResetScore();
     }
 
-    public void DecrementProgress(float _value)
+    /// <summary>
+    /// Decrease Patience Value by a certain amount
+    /// </summary>
+    /// <param name="_value"></param>
+    public void DecrementPatience(float _value)
     {
         BOSSHEALTH.fillAmount -= _value / 100f;
     }
 
+    /// <summary>
+    /// Decrement player magic
+    /// </summary>
+    /// <param name="_value"></param>
     public void DecrementMagic(float _value)
     {
         magic -= _value;
         MAGIC.fillAmount = magic / 100f;
     }
 
+    /// <summary>
+    /// Activate a slot based on the key pressed (A, S, or D)
+    /// </summary>
+    /// <param name="_slotIndex"></param>
+    /// <param name="_on"></param>
     public void ActivateSlot(int _slotIndex, bool _on)
     {
 
@@ -133,14 +153,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PostHighScore()
+    /// <summary>
+    /// Update the High Score value
+    /// </summary>
+    public void UpdateHighScore()
     {
         hiScore = score;
     }
 
+    /// <summary>
+    /// Reset the Score Completely
+    /// </summary>
     public void ResetScore()
     {
         score = 0;
+    }
+
+    /// <summary>
+    /// Decrease the score by a certain amount.
+    /// </summary>
+    /// <param name="_value"></param>
+    public void DecrementScore(int _value)
+    {
+        score -= _value;
     }
 
     public int GetLives()

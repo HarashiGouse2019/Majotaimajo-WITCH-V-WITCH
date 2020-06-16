@@ -15,7 +15,7 @@ MonoBehaviour:
   blocks:
   - amount: 5
     initialSpeed: 130
-    incrementalSpeed: 140
+    incrementalSpeed: 200
     overrideRotation: 0
     initialRotation: 0
     rotationSpeed: 0
@@ -29,5 +29,5 @@ MonoBehaviour:
     rotationFocusIncrementVal: 0
     rotationIntensityEffect: 0
     rotationIntensity: 1
-    rotationIntensityIncrementVal: 0
+    rotationIntensityIncrementVal: 0.25
     transitionDuration: 0

@@ -38,7 +38,5 @@ public class TextureRenderer : MonoBehaviour
         }
 
         spirits[startLives - (startLives - GameManager.Instance.GetLives())].gameObject.SetActive(false);
-        
-        Debug.Log(GameManager.Instance.GetLives());
     }
 }

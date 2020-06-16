@@ -45,7 +45,7 @@ public class LuuPawn : Pawn
         GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
         if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj")
         {
-            GameManager.Instance.DecrementProgress(0.05f);
+            GameManager.Instance.DecrementPatience(0.05f);
             GameManager.Instance.timesHit++;
             GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
             other.gameObject.SetActive(false);

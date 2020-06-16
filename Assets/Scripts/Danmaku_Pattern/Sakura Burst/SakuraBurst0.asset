@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blocks:
   - amount: 2
-    initialSpeed: 340
-    incrementalSpeed: 235
+    initialSpeed: 1
+    incrementalSpeed: 840
     overrideRotation: 0
     initialRotation: 1
     rotationSpeed: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
     rotation: 3
     distribution: 2
     rotationFocusEffect: 0
-    rotationFocus: 0
+    rotationFocus: 1
     rotationFocusIncrementVal: 0
     rotationIntensityEffect: 0
-    rotationIntensity: 1
-    rotationIntensityIncrementVal: 0
+    rotationIntensity: 2
+    rotationIntensityIncrementVal: 1
     transitionDuration: 0

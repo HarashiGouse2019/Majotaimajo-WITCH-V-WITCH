@@ -31,11 +31,6 @@ public class ObjectPooler : MonoBehaviour
         InitObjectPooler();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void InitObjectPooler()
     {
@@ -60,7 +55,7 @@ public class ObjectPooler : MonoBehaviour
         #region Iteration
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            
+
             if (!pooledObjects[i].activeInHierarchy && (name + "(Clone)") == pooledObjects[i].name)
             {
                 return pooledObjects[i];
@@ -70,16 +65,13 @@ public class ObjectPooler : MonoBehaviour
 
         foreach (ObjectPoolItem item in itemsToPool)
         {
-            if (name == item.projectile.name)
+            if (name == item.projectile.name && item.expandPool)
             {
-                if (item.expandPool)
-                {
-                    Debug.Log("Ran out of members in pool. Creating more members!!!");
-                    GameObject newMember = Instantiate(item.projectile);
-                    newMember.SetActive(false);
-                    pooledObjects.Add(newMember);
-                    return newMember;
-                }
+
+                GameObject newMember = Instantiate(item.projectile);
+                newMember.SetActive(false);
+                pooledObjects.Add(newMember);
+                return newMember;
             }
         }
         Debug.LogWarning("We couldn't find a prefab of this name");
