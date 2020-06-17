@@ -44,7 +44,6 @@ public class Standard_Shoot : Shoot_Trig
         GameObject tmpObj = pool.GetMember(bulletMember);
         float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
-        Debug.Log(angle + " degrees");
         if (!tmpObj.activeInHierarchy)
         {
             tmpObj.SetActive(true);

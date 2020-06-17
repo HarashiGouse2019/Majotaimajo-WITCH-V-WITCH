@@ -86,4 +86,12 @@ public class LuuPawn : Pawn, IBossEntity
     {
 
     }
+
+    /// <summary>
+    /// On the start of this pawn beginning to fight
+    /// </summary>
+    public void OnInitialized()
+    {
+
+    }
 }

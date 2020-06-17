@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +7,18 @@ public class UI_BossHealth : MonoBehaviour
 {
     private static UI_BossHealth Instance;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The slider associated with the boss' health.")]
     private Slider bossHealthSlider;
+
+    [SerializeField, Tooltip("The text mesh pro associated with how much to lower her hp.")]
+    private TextMeshProUGUI bossLayerCount;
 
     //Values used to size slider between values 0 and 1
     public static float Value { get; private set; }
     public static float MaxValue { get; private set; }
+
+    //Health Counter (Acts as a layer)
+    public static uint Layer { get; private set; }
 
     private void Awake()
     {
@@ -60,6 +67,18 @@ public class UI_BossHealth : MonoBehaviour
     }
 
     /// <summary>
+    /// Set's how many layers of their HP do they have.
+    /// </summary>
+    /// <param name="value"></param>
+    static void SetLayerCount(uint value)
+    {
+        Layer = value;
+
+        //Update UI
+
+    }
+
+    /// <summary>
     /// Updates the sliderUi with the set value and maxValue.
     /// Only call this when you need to update, since UI calls are 
     /// taxing to the processor.
@@ -69,6 +88,15 @@ public class UI_BossHealth : MonoBehaviour
         //Update the slider
         Instance.bossHealthSlider.maxValue = (float)MaxValue;
         Instance.bossHealthSlider.value = (float)Value;
+    }
+
+    /// <summary>
+    /// Update value that represents the layer of HP
+    /// </summary>
+    static void UpdateLayerValue()
+    {
+        //Update the text
+        Instance.bossLayerCount.text = Layer.ToString();
     }
 
 }
