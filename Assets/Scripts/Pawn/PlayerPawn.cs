@@ -2,6 +2,33 @@
 using TMPro;
 public class PlayerPawn : Pawn
 {
+    public static new PlayerPawn Instance;
+
+    public PlayerController controller;
+
+    public float movementSpeed;
+    public float rotationSpeed;
+    public float maxSpeed;
+
+    public Transform originOfRotation;
+
+    public float radius = 6f;
+    readonly public float radiusSpeed = 5f;
+    public bool isMoving;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
     //Either circle around Luu, or go towards her.
     private void Start()
@@ -34,7 +61,7 @@ public class PlayerPawn : Pawn
         //For our blinking effect
         if (hit == true)
         {
-            GetHurt(0.15f, 5f);
+            Blink(0.15f, 5f);
         }
         else
         {
@@ -81,9 +108,9 @@ public class PlayerPawn : Pawn
     {
         Spell spell = library.FindSpell(_name);
 
-        GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true) ;
+        GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true);
 
-        if (GameManager.Instance.GetMagic() > spell.magicConsumtion && SpellLibrary.library.spellInUse == null)
+        if (GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && SpellLibrary.library.spellInUse == null)
         {
             library.spellInUse = spell;
 
@@ -91,8 +118,10 @@ public class PlayerPawn : Pawn
 
             //Increate pawn's priority!!!
             priority += spell.spellPriority;
+
             //We give all values to our Sequencer
             sequencer.stepSpeed = spell.stepSpeed;
+
             //We have to loop each routine, and add them the list
             for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
             {
@@ -115,38 +144,35 @@ public class PlayerPawn : Pawn
         if (returnVal == true) { recoil = false; timer.SetToZero(2, true); }
     }
 
-    public override void GetHurt(float _blinkRate, float _duration)
+    public override void Blink(float _blinkRate, float _duration)
     {
         if (hit == true)
         {
-            if (GameManager.Instance.GetLives() < 1)
+            if (GameManager.Instance.GetPlayerLives() < 1)
             {
                 Application.Quit();
             }
 
+            //Timer for blinking rate
             timer.StartTimer(0);
+
+            //Timer for duration
             timer.StartTimer(1);
-            //I want it so that the player is blinking on and off for a certain duration of time.
-            //That would mean getting to the Sprite Renderer, and enabling it and disabling it after
-            //certain intervals.
 
             //Since there's a timer in Pawn, and I've initialized 12, I'm going to use alarm 6
             //We'll pass the blink rate to our SetFor method.
             returnVal = timer.SetFor(_duration, 1, true);
-            if (timer.SetFor(_blinkRate, 0))
+            if (timer.SetFor(_blinkRate, 0) && isVisible)
             {
-                if (isVisible)
-                {
-                    Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
-                    srenderer.color = invisible;
-                    isVisible = false;
-                }
-                else if (isVisible == false)
-                {
-                    Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
-                    srenderer.color = visible;
-                    isVisible = true;
-                }
+                Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
+                srenderer.color = invisible;
+                isVisible = false;
+            }
+            else if (timer.SetFor(_blinkRate, 0) && isVisible == false)
+            {
+                Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
+                srenderer.color = visible;
+                isVisible = true;
             }
 
             if (returnVal)

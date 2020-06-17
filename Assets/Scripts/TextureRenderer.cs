@@ -20,7 +20,7 @@ public class TextureRenderer : MonoBehaviour
 
     private void Start()
     {
-        startLives = GameManager.Instance.GetLives();
+        startLives = GameManager.Instance.GetPlayerLives();
     }
     private void Update()
     {
@@ -32,11 +32,11 @@ public class TextureRenderer : MonoBehaviour
     private void UpdateLives()
     {
         check = false;
-        for (int i = 0; i < GameManager.Instance.GetLives(); i++)
+        for (int i = 0; i < GameManager.Instance.GetPlayerLives(); i++)
         {
             spirits[i].gameObject.SetActive(true);
         }
 
-        spirits[startLives - (startLives - GameManager.Instance.GetLives())].gameObject.SetActive(false);
+        spirits[startLives - (startLives - GameManager.Instance.GetPlayerLives())].gameObject.SetActive(false);
     }
 }

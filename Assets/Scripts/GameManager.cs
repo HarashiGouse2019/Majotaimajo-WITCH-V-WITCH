@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SetLives(5);
+        SetPlayerLives(5);
+        Application.targetFrameRate = 60;
         #region Singleton
         if (Instance == null)
         {
@@ -178,17 +179,17 @@ public class GameManager : MonoBehaviour
         score -= _value;
     }
 
-    public int GetLives()
+    public int GetPlayerLives()
     {
         return tSpirits;
     }
 
-    public float GetMagic()
+    public float GetPlayerMagic()
     {
         return magic;
     }
 
-    void SetLives(int _value)
+    void SetPlayerLives(int _value)
     {
         tSpirits = _value;
     }

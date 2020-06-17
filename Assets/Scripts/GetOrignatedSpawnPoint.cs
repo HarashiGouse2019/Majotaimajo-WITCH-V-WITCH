@@ -11,13 +11,13 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     readonly uint demolishVal = 5;
 
-    private Pawn origin;
 
     private void Awake()
     {
         Instance = this;
 
     }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         //Check the priority level of a character
@@ -35,4 +35,5 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     {
         if (col.gameObject.tag == "Border") gameObject.SetActive(false);
     }
+
 }

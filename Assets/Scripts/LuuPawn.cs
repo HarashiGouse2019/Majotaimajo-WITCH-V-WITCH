@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LuuPawn : Pawn
+public class LuuPawn : Pawn, IBossEntity
 {
+    public float BossCurrentHealth { get; set; }
+    public float BossMaxHealth { get; set; } = 100f;
+    public float CurrentPatience { get; set; } = 500f;
+    public float MaxPatience { get; set; }
+    public float PatienceDepletionRate { get; set; }
+
+    //How many seconds it takes to deplete patience
+    const float DEPLETEION_PER_SEC = 0.001f; 
 
     void Start()
     {
@@ -12,6 +20,7 @@ public class LuuPawn : Pawn
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
     }
+
     public override void ActivateSpell(string _name)
     {
         Spell spell = library.FindSpell(_name);
@@ -50,5 +59,31 @@ public class LuuPawn : Pawn
             GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
             other.gameObject.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Set the total amount of phases that the boss can have
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetTotalPhases(int value)
+    {
+
+    }
+
+    /// <summary>
+    /// Set the amount of patience the boss has
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetPatienceValue(int value)
+    {
+
+    }
+
+    /// <summary>
+    /// Decreases the number you see on the right side of the boss' HP
+    /// </summary>
+    public void DecrementHPLayer()
+    {
+
     }
 }

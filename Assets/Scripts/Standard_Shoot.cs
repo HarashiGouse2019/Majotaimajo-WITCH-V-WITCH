@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Alarm;
-
-using Debug = UnityEngine.Debug;
-using Random = UnityEngine.Random;
 //This is a set up for the near future
 //This will be important for creating this game
 //That has existing mechanics such as these
@@ -47,25 +40,26 @@ public class Standard_Shoot : Shoot_Trig
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
+        Vector3 targetVector = (target.position - origin.transform.position).normalized;
+        GameObject tmpObj = pool.GetMember(bulletMember);
+        float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
-   
-        for (int i = 0; i <= _numberOfProjectiles - 1; i++)
+        Debug.Log(angle + " degrees");
+        if (!tmpObj.activeInHierarchy)
         {
-            Vector3 targetVector = (target.position - origin.transform.position).normalized;
-            GameObject tmpObj = pool.GetMember(bulletMember);
-            if (!tmpObj.activeInHierarchy)
-            {
-                tmpObj.SetActive(true);
-                tmpObj.transform.position = transform.position;
-                tmpObj.transform.rotation = transform.rotation;
+            tmpObj.SetActive(true);
 
-                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
+            
+            GetOrignatedSpawnPoint spawnPoint = tmpObj.GetComponent<GetOrignatedSpawnPoint>();
 
-                //This is what I wanted
-                tmpObj.transform.rotation = Quaternion.FromToRotation(target.position, transform.position);
+            Rigidbody2D rigidbody = tmpObj.GetComponent<Rigidbody2D>();
 
-                tmpObj.GetComponent<Rigidbody2D>().AddForce(targetVector * speed * Time.fixedDeltaTime);
-            }
+            tmpObj.transform.position = transform.position;
+            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, angle + 270f);
+
+            spawnPoint.originatedSpawnPoint = origin;
+
+            rigidbody.AddForce(targetVector * speed * Time.fixedDeltaTime);
         }
     }
     public override void Remove(GameObject obj)

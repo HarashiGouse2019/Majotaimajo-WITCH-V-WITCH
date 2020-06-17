@@ -2,26 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Alarm;
+using System;
 
 public class Pawn : MonoBehaviour
 {
     public static Pawn Instance;
 
-
     #region Public Members
     //Our movment speeds
-    public PlayerController controller;
-
-    public float movementSpeed;
-    public float rotationSpeed;
-    public float maxSpeed;
-
-    public Transform originOfRotation;
-
-    public float radius = 6f;
-    readonly public float radiusSpeed = 5f;
-    public bool isMoving;
-
     public uint priority = 1;
     public uint basePriority;
 
@@ -61,52 +49,98 @@ public class Pawn : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// Shoot a projectile based on its name.
+    /// </summary>
+    /// <param name="bulletName"></param>
     public virtual void Shoot(string bulletName)
     {
 
     }
 
+    /// <summary>
+    /// Check if the pawn is moving
+    /// </summary>
+    /// <returns></returns>
     public virtual bool CheckIfMoving()
     {
         return false;
     }
 
+    /// <summary>
+    /// Flip the pawn to either -1 (left) or 1 (right)
+    /// </summary>
+    /// <param name="_direction"></param>
     public virtual void Flip(int _direction)
     {
 
     }
 
+    /// <summary>
+    /// Activate a spell from the pawn's Spell Library
+    /// </summary>
+    /// <param name="_name"></param>
     public virtual void ActivateSpell(string _name)
     {
 
     }
 
+    /// <summary>
+    /// Wait for a duration amount of time
+    /// </summary>
+    /// <param name="_duration"></param>
     public virtual void Wait(float _duration)
     {
 
     }
 
-    public virtual void GetHurt(float _blinkRate, float _duration)
+    /// <summary>
+    /// Wait for a duration amount of time before executing a method
+    /// </summary>
+    /// <param name="_duration"></param>
+    /// <param name="method"></param>
+    public virtual void Wait(float _duration, Action method)
+    {
+        
+    }
+
+    /// <summary>
+    /// Blink the sprite at a rate for a set duration of time
+    /// </summary>
+    /// <param name="_blinkRate"></param>
+    /// <param name="_duration"></param>
+    public virtual void Blink(float _blinkRate, float _duration)
     {
 
     }
 
+    /// <summary>
+    /// Move foward.
+    /// </summary>
     public virtual void Foward()
     {
 
     }
 
+    /// <summary>
+    /// Move backwards
+    /// </summary>
     public virtual void Back()
     {
 
     }
 
+    /// <summary>
+    /// Move left
+    /// </summary>
     public virtual void Left()
     {
 
     }
 
+    /// <summary>
+    /// Move right
+    /// </summary>
     public virtual void Right()
     {
 
