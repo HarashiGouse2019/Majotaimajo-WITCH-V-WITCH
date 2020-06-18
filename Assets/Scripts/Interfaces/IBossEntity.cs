@@ -15,6 +15,8 @@
 
     bool HasHealthLowered { get; set; }
 
+    bool IsDefeated { get; set; }
+
     //How fast their patience go down
     //Every 0.001 seconds, patience decreases
     float PatienceDepletionRate { get; set; }

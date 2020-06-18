@@ -21,6 +21,8 @@ public class LuuPawn : PawnProgrammable, IBossEntity
 
     public bool HasHealthLowered { get; set; } = false;
 
+    public bool IsDefeated { get; set; } = false;
+
     //How many seconds it takes to deplete patience
     const float DEPLETEION_PER_SEC = 0.001f;
 
@@ -55,15 +57,15 @@ public class LuuPawn : PawnProgrammable, IBossEntity
         GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
 
         //If this bullet did not come from Luu herself, she'll take damage
-        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj")
+        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj" && !IsDefeated)
         {
             //If no patience has been lost, decrease that
             if (!HasLostPatience)
-                SetPatienceValue(-0.05f, true);
+                SetPatienceValue(-5f, true);
 
             //Otherwise, she has lost her patience, which leave her vulnerable
             else
-                SetHealthValue(-0.1f, true);
+                SetHealthValue(-10f, true);
 
             //Keep track of how many times you've hit her without losing a life
             GameManager.Instance.timesHit++;
@@ -125,6 +127,15 @@ public class LuuPawn : PawnProgrammable, IBossEntity
     void CheckHealthStatus()
     {
         HasHealthLowered = (BossCurrentHealth <= ZERO_HEALTH);
+    }
+
+    /// <summary>
+    /// Checks if the boss is defeated, IsDefeated will be set to true if
+    /// health is lowered and there's no patience
+    /// </summary>
+    void CheckDefeated()
+    {
+        IsDefeated = (HPLayer == ZERO_HEALTH && HasHealthLowered && HasLostPatience);
     }
 
     /// <summary>
@@ -232,7 +243,7 @@ public class LuuPawn : PawnProgrammable, IBossEntity
     /// <returns></returns>
     IEnumerator PatienceCycle()
     {
-        while (true)
+        while (!IsDefeated)
         {
             try
             {
@@ -261,10 +272,16 @@ public class LuuPawn : PawnProgrammable, IBossEntity
     /// </summary>
     void ResetValues()
     {
-        SetPatienceValue(MaxPatience);
-        SetHealthValue(BossMaxHealth);
+        //As we reset, check if she has been defeated
+        CheckDefeated();
 
-        //Decrement Layer
-        DecrementHPLayer();
+        if (!IsDefeated)
+        {
+            SetPatienceValue(MaxPatience);
+            SetHealthValue(BossMaxHealth);
+
+            //Decrement Layer
+            DecrementHPLayer();
+        }
     }
 }
