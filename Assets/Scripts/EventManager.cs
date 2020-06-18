@@ -14,9 +14,10 @@ public class EventManager
         int uniqueID;
         string eventCode; 
 
-        
+        public Event(int uniqueID, string eventCode, CallBackMethod newListener) {
 
-        public Event(string eventCode, params CallBackMethod[] newListeners) {
+            this.uniqueID = uniqueID;
+            
             //Null-Checking
             if (string.IsNullOrEmpty(eventCode))
             {
@@ -27,14 +28,8 @@ public class EventManager
             {
                 this.eventCode = eventCode;
             }
-
-            uniqueID = Events.Count;
-
             //Assign all listeners into delegate
-            foreach(CallBackMethod listener in newListeners)
-            {
-                AddNewListener(listener);
-            }
+              AddNewListener(newListener);
         }
 
         /// <summary>
@@ -80,42 +75,48 @@ public class EventManager
     //This associated an event with
     static List<Event> Events = new List<Event>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     /// <summary>
     /// Add a new event with a uniqueID, name, and defined listeners
     /// </summary>
     /// <param name="uniqueID"></param>
     /// <param name="name"></param>
     /// <param name="listeners"></param>
-    public static void AddNewEvent(string name, params CallBackMethod[] listeners)
+    public static void AddNewEvent(int uniqueID, string name, CallBackMethod listener)
     {
-        Event newEvent = new Event(name, listeners);
+        Event newEvent = new Event(uniqueID, name, listener);
         Events.Add(newEvent);
+    }
+
+    /// <summary>
+    /// Remove an event based on it's eventCode
+    /// </summary>
+    /// <param name="eventCode"></param>
+    public static void RemoveEvent(string eventCode)
+    {
+        for(int idIndex = 0; idIndex < Events.Count - 1; idIndex++)
+        {
+            //If we found the event with this eventCode, remove it
+            if (eventCode.Equals(Events[idIndex].GetEventCode()))
+            {
+                Events[idIndex].RemoveListener(listeners);
+                return;
+            }
+        }
     }
 
     /// <summary>
     /// Remove an event based on it's uniqueID
     /// </summary>
-    /// <param name="uniqueID"></param>
-    public static void RemoveEvent(int uniqueID)
+    /// <param name="eventCode"></param>
+    public static void RemoveEvent(int uniqueId)
     {
-        for(int idIndex = 0; idIndex < Events.Count - 1; idIndex++)
+        for (int idIndex = 0; idIndex < Events.Count - 1; idIndex++)
         {
-            //If we found the event with this uniqueID, remove it
-            if (uniqueID.Equals(Events[idIndex].GetUniqueID()))
+            //If we found the event with this eventCode, remove it
+            if (uniqueId.Equals(Events[idIndex].GetUniqueID()))
             {
-                Events[idIndex].RemoveListener();
+                Events[idIndex].RemoveListener(listeners);
+                return;
             }
         }
     }

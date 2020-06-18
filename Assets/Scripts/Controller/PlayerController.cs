@@ -76,7 +76,11 @@ public class PlayerController : MonoBehaviour
             {
                 pawn.Shoot("Crystal");
                 GameManager.Instance.DecrementMagic(0.01f);
+                pawn.isMagicActivelyUsed = true;
             }
+        } else
+        {
+            pawn.isMagicActivelyUsed = false;
         }
 
         RunSpecial();

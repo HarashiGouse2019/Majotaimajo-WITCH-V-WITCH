@@ -11,12 +11,24 @@ public class Pattern : ScriptableObject
     [Serializable]
     public class Block
     {
+        [Tooltip("How many bullets will you spawn?")]
         public int amount;
+
+        [Tooltip("Will the pattern be tracking the target. Make sure overrideRotation is enabled")]
+        public bool isHoming;
+
+        [Tooltip("The starting speed of the bullets")]
         public float initialSpeed;
+
+        [Tooltip("The change in speed over time")]
         public int incrementalSpeed;
+
+        [Tooltip("Override the rotation")]
         public bool overrideRotation;
-        [Range(1, 360)]
+
+        [Tooltip("The starting rotation of the bullets"), Range(1, 360)]
         public float initialRotation;
+
         public float rotationSpeed;
 
         public string bulletType;

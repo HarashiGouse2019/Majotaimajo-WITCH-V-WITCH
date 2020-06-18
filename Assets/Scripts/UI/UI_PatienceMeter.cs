@@ -32,14 +32,14 @@ public class UI_PatienceMeter : MonoBehaviour
     /// <summary>
     /// Get the slider associated with this UI
     /// </summary>
-    static Slider GetSlider() => Instance.bossPatienceSlider;
+    public static Slider GetSlider() => Instance.bossPatienceSlider;
 
     /// <summary>
     /// Set the Value of Slider
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="value"></param>
-    static void SetValue(float value)
+    public static void SetValue(float value)
     {
         Value = value;
 
@@ -52,7 +52,7 @@ public class UI_PatienceMeter : MonoBehaviour
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="value"></param>
-    static void SetMaxValue(float value)
+    public static void SetMaxValue(float value)
     {
         MaxValue = value;
 

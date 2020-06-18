@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: SakuraBurst5
+  m_Name: WitchsRitual2
   m_EditorClassIdentifier: 
   blocks:
   - amount: 4
-    initialSpeed: 1
-    incrementalSpeed: 840
+    isHoming: 0
+    initialSpeed: 5500
+    incrementalSpeed: 500
     overrideRotation: 0
     initialRotation: 0
     rotationSpeed: 0
-    bulletType: Sakura
+    bulletType: Lavender
     loop: 1
-    loopRate: 0.05
-    rotation: -3
-    distribution: 2
+    loopRate: 0.01
+    rotation: -2
+    distribution: 1
     rotationFocusEffect: 0
     rotationFocus: 1
     rotationFocusIncrementVal: 0
     rotationIntensityEffect: 0
-    rotationIntensity: 2
-    rotationIntensityIncrementVal: 5
+    rotationIntensity: 5
+    rotationIntensityIncrementVal: 0
     transitionDuration: 0

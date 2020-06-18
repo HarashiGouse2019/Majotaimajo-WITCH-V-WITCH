@@ -19,9 +19,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI HISCORETEXT;
     public TextMeshProUGUI SCORETEXT;
     public Image SPIRITS;
-    public Image MAGIC;
+    public Slider MAGIC;
     public Image[] SLOTS = new Image[3];
-    public Image BOSSHEALTH;
 
     [Header("Text Box")]
     public Image textBoxUI;
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     //Score System
     public int timesHit;
-
 
     #endregion
 
@@ -76,7 +74,10 @@ public class GameManager : MonoBehaviour
         Dialogue.Instance.Run(0);
         tRenderer.check = true;
         magic = 100;
+
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -111,12 +112,13 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Decrease Patience Value by a certain amount
+    /// Decrement player magic
     /// </summary>
     /// <param name="_value"></param>
-    public void DecrementPatience(float _value)
+    public void IncrementMagic(float _value)
     {
-        BOSSHEALTH.fillAmount -= _value / 100f;
+        magic += _value;
+        MAGIC.value = magic / 100f;
     }
 
     /// <summary>
@@ -126,7 +128,7 @@ public class GameManager : MonoBehaviour
     public void DecrementMagic(float _value)
     {
         magic -= _value;
-        MAGIC.fillAmount = magic / 100f;
+        MAGIC.value = magic / 100f;
     }
 
     /// <summary>
@@ -273,7 +275,7 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                PlayerPawn.Instance.originOfRotation.GetComponent<LuuPawn>().ActivateSpell("Sakura Burst");
+                PlayerPawn.Instance.originOfRotation.GetComponent<LuuPawn>().OnInitialized();
                 //This is where we start our Danmaku routines
                 //In another script of course!!
 

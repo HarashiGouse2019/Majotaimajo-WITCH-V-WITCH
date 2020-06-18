@@ -23,11 +23,14 @@ MonoBehaviour:
       stepPos: 15
     - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
       stepPos: 30
+    enableSequenceLooping: 0
   routine:
   - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}
     stepPos: 0
   - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
     stepPos: 15
-  - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
-    stepPos: 35
+  - pattern: {fileID: 11400000, guid: 4b018d9658808f040b370d073f0439f8, type: 2}
+    stepPos: 60
+  - pattern: {fileID: 11400000, guid: 4b018d9658808f040b370d073f0439f8, type: 2}
+    stepPos: 125
   enableSequenceLooping: 0

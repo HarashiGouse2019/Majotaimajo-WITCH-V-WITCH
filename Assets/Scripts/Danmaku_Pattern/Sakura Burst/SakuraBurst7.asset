@@ -17,7 +17,7 @@ MonoBehaviour:
     initialSpeed: 130
     incrementalSpeed: 200
     overrideRotation: 0
-    initialRotation: 0
+    initialRotation: 45
     rotationSpeed: 0
     bulletType: Sakura
     loop: 1

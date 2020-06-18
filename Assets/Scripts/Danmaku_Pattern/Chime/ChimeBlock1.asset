@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: ChimeBlock1
   m_EditorClassIdentifier: 
-  block:
-    amount: 2
-    speed: 50
-    incrementVal: 10
-    overrideRotation: 0
+  blocks:
+  - amount: 4
+    isHoming: 0
+    initialSpeed: 5000
+    incrementalSpeed: 0
+    overrideRotation: 1
     initialRotation: 1
-    rotationSpeed: 0
+    rotationSpeed: 180
     bulletType: Lavender
     loop: 1
-    loopRate: 0.05
+    loopRate: 0.125
     rotation: -3
-    distribution: 2
+    distribution: 0
     rotationFocusEffect: 0
-    rotationFocus: 1
+    rotationFocus: 5
     rotationFocusIncrementVal: 0
-    rotationIntensityEffect: 1
+    rotationIntensityEffect: 0
     rotationIntensity: 1
-    rotationIntensityIncrementVal: 0.1
+    rotationIntensityIncrementVal: 0
     transitionDuration: 0

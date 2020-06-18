@@ -38,14 +38,14 @@ public class UI_BossHealth : MonoBehaviour
     /// <summary>
     /// Get the slider associated with this UI
     /// </summary>
-    static Slider GetSlider() => Instance.bossHealthSlider;
+    public static Slider GetSlider() => Instance.bossHealthSlider;
 
     /// <summary>
     /// Set the Value of Slider
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="value"></param>
-    static void SetValue(float value)
+    public static void SetValue(float value)
     {
         Value = value;
 
@@ -58,7 +58,7 @@ public class UI_BossHealth : MonoBehaviour
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="value"></param>
-    static void SetMaxValue(float value)
+    public static void SetMaxValue(float value)
     {
         MaxValue = value;
 
@@ -70,12 +70,12 @@ public class UI_BossHealth : MonoBehaviour
     /// Set's how many layers of their HP do they have.
     /// </summary>
     /// <param name="value"></param>
-    static void SetLayerCount(uint value)
+    public static void SetLayerCount(uint value)
     {
         Layer = value;
 
         //Update UI
-
+        UpdateLayerValue();
     }
 
     /// <summary>

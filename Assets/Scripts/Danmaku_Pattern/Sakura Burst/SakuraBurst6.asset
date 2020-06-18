@@ -29,5 +29,5 @@ MonoBehaviour:
     rotationFocusIncrementVal: 0
     rotationIntensityEffect: 0
     rotationIntensity: 2
-    rotationIntensityIncrementVal: 1
+    rotationIntensityIncrementVal: 5
     transitionDuration: 0

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
+
 public class PlayerPawn : Pawn
 {
     public static new PlayerPawn Instance;
@@ -15,6 +17,8 @@ public class PlayerPawn : Pawn
     public float radius = 6f;
     readonly public float radiusSpeed = 5f;
     public bool isMoving;
+
+    public bool isMagicActivelyUsed = false;
 
     private void Awake()
     {
@@ -46,6 +50,9 @@ public class PlayerPawn : Pawn
         xScaleVal = xScale.x;
         srendererColor = srenderer.color;
 
+        //Start Recovery Sequence
+        StartCoroutine(PassiveRecoveryCycle());
+
         //Read your SpellLibrary, and override GameUi spell text
         for (int i = 0; i < library.spells.Length; i++)
         {
@@ -69,6 +76,31 @@ public class PlayerPawn : Pawn
             srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
         }
     }
+
+    #region Unique
+
+    void RecoverMagic(float value)
+    {
+        GameManager.Instance.IncrementMagic(value);
+    }
+
+    /// <summary>
+    /// Recover Raven's magic slowly when not actively using spells or shooting
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator PassiveRecoveryCycle()
+    {
+        while (true)
+        {
+            if (!isMagicActivelyUsed && GameManager.Instance.GetPlayerMagic() < 100f)
+            {
+                RecoverMagic(0.05f);
+            }
+
+            yield return new WaitForSeconds(0.025f);
+        }
+    } 
+    #endregion
 
     public override void Shoot(string bulletName)
     {
@@ -115,6 +147,8 @@ public class PlayerPawn : Pawn
             library.spellInUse = spell;
 
             GameManager.Instance.DecrementMagic(spell.magicConsumtion);
+
+            isMagicActivelyUsed = true;
 
             //Increate pawn's priority!!!
             priority += spell.spellPriority;

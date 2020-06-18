@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blocks:
   - amount: 8
-    initialSpeed: 1500
-    incrementalSpeed: -10
+    initialSpeed: 5500
+    incrementalSpeed: -200
     overrideRotation: 0
-    initialRotation: 0
+    initialRotation: 1
     rotationSpeed: 0
     bulletType: Lavender
     loop: 1
@@ -28,6 +28,6 @@ MonoBehaviour:
     rotationFocus: 1.25
     rotationFocusIncrementVal: 0
     rotationIntensityEffect: 0
-    rotationIntensity: 20
-    rotationIntensityIncrementVal: 0
+    rotationIntensity: 10
+    rotationIntensityIncrementVal: 1
     transitionDuration: 0
