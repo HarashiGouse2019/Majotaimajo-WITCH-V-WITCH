@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     int hiScore;
     int score;
     int tSpirits;
+
     float magic;
+    float maxMagic = 100f;
 
 
     readonly KeyCode skipKey = KeyCode.Return;
@@ -73,7 +75,7 @@ public class GameManager : MonoBehaviour
     {
         Dialogue.Instance.Run(0);
         tRenderer.check = true;
-        magic = 100;
+        IncrementMagic(maxMagic);
 
     }
 

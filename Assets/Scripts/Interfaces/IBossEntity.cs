@@ -13,6 +13,8 @@
 
     bool HasLostPatience { get; set; }
 
+    bool HasHealthLowered { get; set; }
+
     //How fast their patience go down
     //Every 0.001 seconds, patience decreases
     float PatienceDepletionRate { get; set; }
@@ -21,7 +23,7 @@
     /// Set the total amount of phases that the boss can have
     /// </summary>
     /// <param name="value"></param>
-    void SetTotalPhases(int value);
+    void SetHealthLayer(int value);
 
     /// <summary>
     /// Set the amount of patience the boss has

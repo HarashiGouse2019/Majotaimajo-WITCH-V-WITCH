@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class LuuPawn : PawnProgrammable, IBossEntity
@@ -13,14 +14,17 @@ public class LuuPawn : PawnProgrammable, IBossEntity
     public float PatienceDepletionRate { get; set; } = 0.02f;
     public int HPLayer { get; set; } = 4;
 
-
     //State that the boss is active
     public bool IsActive { get; set; } = false;
 
     public bool HasLostPatience { get; set; } = false;
 
+    public bool HasHealthLowered { get; set; } = false;
+
     //How many seconds it takes to deplete patience
     const float DEPLETEION_PER_SEC = 0.001f;
+
+    const float ZERO_HEALTH = 0f;
 
 
     void Start()
@@ -38,14 +42,50 @@ public class LuuPawn : PawnProgrammable, IBossEntity
         SetHealthValue(BossMaxHealth);
         SetPatienceValue(MaxPatience);
 
+        //Set Layer
+        SetHealthLayer(HPLayer);
+
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        //Get the information that tells  where the bullet came from
+        GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
+
+        //If this bullet did not come from Luu herself, she'll take damage
+        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj")
+        {
+            //If no patience has been lost, decrease that
+            if (!HasLostPatience)
+                SetPatienceValue(-0.05f, true);
+
+            //Otherwise, she has lost her patience, which leave her vulnerable
+            else
+                SetHealthValue(-0.1f, true);
+
+            //Keep track of how many times you've hit her without losing a life
+            GameManager.Instance.timesHit++;
+
+            //Add it to your current score
+            GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
+
+            //Set the projectile object to false
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Activate a spell from the spell library by name
+    /// </summary>
+    /// <param name="_name"></param>
     public override void ActivateSpell(string _name)
     {
+        //Find a spell in the library by name
         Spell spell = library.FindSpell(_name);
 
+        //If a spell is not in used, use it
         if (SpellLibrary.library.spellInUse == null)
         {
             library.spellInUse = spell;
@@ -70,54 +110,106 @@ public class LuuPawn : PawnProgrammable, IBossEntity
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    /// <summary>
+    /// HasLostPatience will be true if patience value is 0.
+    /// </summary>
+    /// <returns></returns>
+    void CheckPatienceStatus()
     {
-        GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
-        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj")
-        {
-            if (!HasLostPatience)
-                SetPatienceValue(-0.05f, true);
-            else
-                SetHealthValue(-0.05f, true);
-
-            GameManager.Instance.timesHit++;
-            GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
-            other.gameObject.SetActive(false);
-        }
+        HasLostPatience = (CurrentPatience <= ZERO_HEALTH);
     }
 
-    public void SetTotalPhases(int value)
+    /// <summary>
+    /// Check if health is zero. If it is, isHealthLowered is set to true;
+    /// </summary>
+    void CheckHealthStatus()
+    {
+        HasHealthLowered = (BossCurrentHealth <= ZERO_HEALTH);
+    }
+
+    /// <summary>
+    /// Set the total amount of health layers
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetHealthLayer(int value)
     {
         HPLayer = value;
+
+        //Update UI
         UI_BossHealth.SetLayerCount((uint)value);
     }
 
+    /// <summary>
+    /// Set the current patience value
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="addTo"></param>
     public void SetPatienceValue(float value, bool addTo = false)
     {
+        //Set CurrentPatience based on addTo boolean
         CurrentPatience = addTo ? CurrentPatience += value : CurrentPatience = value;
 
+        //Check Patience Status
+        CheckPatienceStatus();
+
+        //Update UI
         UI_PatienceMeter.SetValue(CurrentPatience);
     }
 
+    /// <summary>
+    /// Set the max patience value
+    /// </summary>
+    /// <param name="value"></param>
     public void SetMaxPatienceValue(int value)
     {
         MaxPatience = value;
+
+        //Check Patience Status
+        CheckPatienceStatus();
+
+        //Update UI
         UI_PatienceMeter.SetMaxValue(value);
     }
 
+    /// <summary>
+    /// Set the health value
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="addTo"></param>
     public void SetHealthValue(float value, bool addTo = false)
     {
         BossCurrentHealth = addTo ? BossCurrentHealth += value : BossCurrentHealth = value;
 
+        //Check Health Status
+        CheckHealthStatus();
+
+        //Check if we can reset values (Temporary)
+        if (HasHealthLowered)
+            ResetValues();
+
+        //Update UI
         UI_BossHealth.SetValue(BossCurrentHealth);
     }
 
+    /// <summary>
+    /// Set the max health value
+    /// </summary>
+    /// <param name="value"></param>
     public void SetMaxHealthValue(int value)
     {
         BossMaxHealth = value;
+
+        //Check Health Status
+        CheckHealthStatus();
+
+        //Update UI
         UI_BossHealth.SetMaxValue(value);
     }
 
+    /// <summary>
+    /// Set pawn to active (not the gameObject)
+    /// </summary>
+    /// <param name="active"></param>
     public void SetActive(bool active)
     {
         IsActive = active;
@@ -129,6 +221,8 @@ public class LuuPawn : PawnProgrammable, IBossEntity
     public void DecrementHPLayer()
     {
         HPLayer--;
+
+        //Update UI
         UI_BossHealth.SetLayerCount((uint)HPLayer);
     }
 
@@ -160,5 +254,17 @@ public class LuuPawn : PawnProgrammable, IBossEntity
     {
         IsActive = true;
         ActivateSpell("Sakura Burst");
+    }
+
+    /// <summary>
+    /// (Temporary) Resets Patience and HP to MaxValues
+    /// </summary>
+    void ResetValues()
+    {
+        SetPatienceValue(MaxPatience);
+        SetHealthValue(BossMaxHealth);
+
+        //Decrement Layer
+        DecrementHPLayer();
     }
 }
