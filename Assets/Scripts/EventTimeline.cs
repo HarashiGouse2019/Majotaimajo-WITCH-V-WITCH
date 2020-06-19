@@ -16,13 +16,13 @@ public abstract class EventTimeline : MonoBehaviour
     protected static int TimelineIndex = -1;
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
 
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected virtual void Update()
     {
 
     }
@@ -50,25 +50,17 @@ public abstract class EventTimeline : MonoBehaviour
         }
     }
 
-    protected virtual void Next(params EventManager.Event[] events)
+    protected virtual void Next()
     {
         TimelineIndex++;
-        OnNext(events);
     }
 
-    void OnNext(params EventManager.Event[] events)
-    {
-        foreach (EventManager.Event _event in events)
-        {
-            _event.Trigger();
-        }
-    }
 
     IEnumerator TimelineCycle()
     {
         while (true)
         {
-            if(!Dialogue.IsRunning) MainTimeline();
+            MainTimeline();
 
             yield return null;
         }

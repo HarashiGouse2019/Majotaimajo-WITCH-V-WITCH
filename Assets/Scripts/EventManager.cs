@@ -2,14 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class EventManager
+public static class EventManager
 {
     public delegate void CallBackMethod();
     public static CallBackMethod listeners;
 
-    public struct Event
+    public class Event
     {
         int uniqueID;
         string eventCode;
@@ -66,6 +67,7 @@ public class EventManager
         {
             if (listeners != null)
             {
+                hasTriggered = true;
                 listeners.Invoke();
                 return;
             }
@@ -110,7 +112,9 @@ public class EventManager
             //If we found the event with this eventCode, remove it
             if (eventCode.Equals(Events[idIndex].GetEventCode()))
             {
-                Events[idIndex].RemoveListener(listeners);
+                //Now delete the event itself
+                Debug.Log("Event " + Events[idIndex].GetEventCode() + " has been removed");
+                Events.Remove(Events[idIndex]);
                 return;
             }
         }
@@ -127,11 +131,79 @@ public class EventManager
             //If we found the event with this eventCode, remove it
             if (uniqueId.Equals(Events[idIndex].GetUniqueID()))
             {
-                Events[idIndex].RemoveListener(listeners);
-                return;
+                //Now delete the event itself
+                Debug.Log("Event " + Events[idIndex].GetEventCode() + " has been removed");
+                Events.Remove(Events[idIndex]);
             }
         }
     }
 
+    /// <summary>
+    /// Retuns all events of this event code
+    /// </summary>
+    /// <param name="eventCode"></param>
+    /// <returns></returns>
+    public static Event[] FindEventsOfEventCode(string eventCode)
+    {
+        List<Event> foundEvents = new List<Event>();
+        for (int idIndex = 0; idIndex < Events.Count - 1; idIndex++)
+        {
+            //If we found the event with this eventCode, remove it
+            if (eventCode.Equals(Events[idIndex].GetEventCode()))
+            {
+                //Add it to our discorvered events
+                foundEvents.Add(Events[idIndex]);
+            }
+        }
+
+        //Return the foundEvents
+        return foundEvents.ToArray();
+    }
+
+    /// <summary>
+    /// Check if all events of this kind have been triggered
+    /// </summary>
+    /// <param name="events"></param>
+    /// <returns></returns>
+    public static bool HaveAllTriggered(this Event[] events)
+    {
+        foreach(Event @event in events)
+        {
+            if (!@event.HasTriggered()) return false;
+        }
+
+        return true;
+    }
+
+    public static void TriggerEvent(int uniqueId)
+    {
+        for (int idIndex = 0; idIndex < Events.Count - 1; idIndex++)
+        {
+            //If we found the event with this eventCode, remove it
+            if (uniqueId.Equals(Events[idIndex].GetUniqueID()))
+            {
+                //Trigger events of this uniqueID
+                Events[idIndex].Trigger();
+            }
+        }
+    }
+
+    public static void TriggerEvent(string eventCode)
+    {
+        for (int idIndex = 0; idIndex < Events.Count - 1; idIndex++)
+        {
+            //If we found the event with this eventCode, remove it
+            if (eventCode.Equals(Events[idIndex].GetEventCode()))
+            {
+                //Trigger events of this eventCode
+                Events[idIndex].Trigger();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Returns all events of different IDs and EventCodes
+    /// </summary>
+    /// <returns></returns>
     public static Event[] GetAllEvents() => Events.ToArray();
 }

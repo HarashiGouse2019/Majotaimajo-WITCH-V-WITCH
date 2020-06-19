@@ -54,12 +54,7 @@ public class Dialogue : MonoBehaviour
     {
         if (!IsRunning)
         {
-            foreach (EventManager.Event _event in EventManager.GetAllEvents())
-            {
-                if (_event.GetEventCode() == "DialogueEnd"){
-                    _event.Trigger();
-                }
-            }
+            EventManager.TriggerEvent("DialogueEnd");
         }
     }
 }

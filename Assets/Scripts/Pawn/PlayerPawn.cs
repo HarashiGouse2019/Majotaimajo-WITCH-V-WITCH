@@ -10,7 +10,6 @@ public class PlayerPawn : Pawn
 
     public float movementSpeed;
     public float rotationSpeed;
-    public float maxSpeed;
 
     public Transform originOfRotation;
 
@@ -20,9 +19,12 @@ public class PlayerPawn : Pawn
 
     public bool isMagicActivelyUsed = false;
 
+    //Player Stats
+    Stats PlayerStats;
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
@@ -37,7 +39,12 @@ public class PlayerPawn : Pawn
     //Either circle around Luu, or go towards her.
     private void Start()
     {
+        PlayerStats = Stats.New();
+
+        AssignValuesFromStats();
+
         priority = basePriority;
+
 
         //Get Components
         srenderer = GetComponent<SpriteRenderer>();
@@ -79,6 +86,15 @@ public class PlayerPawn : Pawn
 
     #region Unique
 
+    /// <summary>
+    /// Assign Game Values to PlayerPawn
+    /// </summary>
+    void AssignValuesFromStats()
+    {
+        basePriority = (uint)PlayerStats.GameValuePriority;
+        movementSpeed = PlayerStats.GameValueSpeed;
+    }
+
     void RecoverMagic(float value)
     {
         GameManager.Instance.IncrementMagic(value);
@@ -99,7 +115,7 @@ public class PlayerPawn : Pawn
 
             yield return new WaitForSeconds(0.025f);
         }
-    } 
+    }
     #endregion
 
     public override void Shoot(string bulletName)
@@ -235,29 +251,25 @@ public class PlayerPawn : Pawn
 
     public override void Foward()
     {
-        move = new Vector2(rb.velocity.x, movementSpeed);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(rb.velocity.x, movementSpeed * 10);
+        rb.AddForce(move * Time.fixedDeltaTime);
 
     }
     public override void Back()
     {
-        move = new Vector2(rb.velocity.x, -movementSpeed);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(rb.velocity.x, -movementSpeed * 10);
+        rb.AddForce(move * Time.fixedDeltaTime);
     }
 
     public override void Left()
     {
-        move = new Vector2(-movementSpeed, rb.velocity.y);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(-movementSpeed * 10, rb.velocity.y);
+        rb.AddForce(move * Time.fixedDeltaTime);
     }
 
     public override void Right()
     {
-        move = new Vector2(movementSpeed, rb.velocity.y);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(movementSpeed * 10, rb.velocity.y);
+        rb.AddForce(move * Time.fixedDeltaTime);
     }
 }
