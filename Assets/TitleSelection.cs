@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TitleSelection : MonoBehaviour
@@ -14,6 +15,9 @@ public class TitleSelection : MonoBehaviour
 
     [SerializeField]
     int selectedFontSize, unselectedFontSize;
+
+    //The images for each selectableObject
+    List<Image> images;
 
     //SelectionIndex
     int SelectionIndex = 0;
@@ -41,6 +45,7 @@ public class TitleSelection : MonoBehaviour
     void GetSelections()
     {
         selectableObjects = new List<TextMeshProUGUI>();
+        images = new List<Image>();
 
         //Get all gameobject in hierarchy
         TextMeshProUGUI[] objectsInHierarchy = GetComponentsInChildren<TextMeshProUGUI>();
@@ -48,10 +53,10 @@ public class TitleSelection : MonoBehaviour
         //Check the tag and layer
         foreach (TextMeshProUGUI obj in objectsInHierarchy)
         {
-            Debug.Log(obj.name);
             if (obj.gameObject.tag == SELECTABLE_TAG && obj.gameObject.layer == LayerMask.NameToLayer(TITLE_LAYER))
             {
                 selectableObjects.Add(obj);
+                images.Add(obj.GetComponentInChildren<Image>());
             }
         }
 
@@ -98,6 +103,12 @@ public class TitleSelection : MonoBehaviour
         {
             keyDown = false;
         }
+
+        //If enter wwas hit
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            selectableObjects[SelectionIndex].GetComponent<SelectionEvent>().GetUnityEvent().Invoke();
+        }
     }
 
     /// <summary>
@@ -113,12 +124,16 @@ public class TitleSelection : MonoBehaviour
                 selectableObjects[index].color = selectedColor;
                 selectableObjects[index].text = TAB + selectableObjects[index].text;
                 selectableObjects[index].fontSize = selectedFontSize;
+                images[index].gameObject.SetActive(true);
+                AudioManager.audio.Play("chooseSelection");
+                
             }
             else
             {
                 selectableObjects[index].color = unselectedColor;
                 selectableObjects[index].text = selectableObjects[index].text.Replace(TAB, STRING_NULL);
                 selectableObjects[index].fontSize = unselectedFontSize;
+                images[index].gameObject.SetActive(false);
             }
         }
     }
