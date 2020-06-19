@@ -13,6 +13,10 @@ public class LuuEventTimeline : EventTimeline
     //This will be a test...
     protected override void MainTimeline()
     {
+        if (string.IsNullOrEmpty(testString))
+        {
+            //Fjdkoaso
+        }
         Luu = Entity as LuuPawn;
 
         switch (TimelineIndex)
