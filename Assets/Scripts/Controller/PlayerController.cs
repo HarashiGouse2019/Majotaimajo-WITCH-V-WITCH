@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode up = KeyCode.UpArrow;
     public KeyCode down = KeyCode.DownArrow;
     public KeyCode shoot = KeyCode.Z;
+    public KeyCode sneak = KeyCode.LeftShift;
     public KeyCode special1 = KeyCode.A;
     public KeyCode special2 = KeyCode.S;
     public KeyCode special3 = KeyCode.D;
@@ -40,7 +41,6 @@ public class PlayerController : MonoBehaviour
         //Movement
         if (Input.GetKey(left))
         {
-            //pawn.MoveInCircle(pawn.rotationSpeed);
             pawn.Left();
             pawn.isMoving = true;
         }
@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(right))
         {
-            //pawn.MoveInCircle(-pawn.rotationSpeed);
             pawn.Right();
             pawn.isMoving = true;
         }
@@ -61,14 +60,12 @@ public class PlayerController : MonoBehaviour
             pawn.Foward();
             pawn.isMoving = true;
         }
-        //pawn.MoveOnDiameter(-pawn.movementSpeed, pawn.originOfRotation);
 
         if (Input.GetKey(down))
         {
             pawn.Back();
             pawn.isMoving = true;
         }
-            //pawn.MoveOnDiameter(pawn.movementSpeed, pawn.originOfRotation);
 
         if (Input.GetKey(shoot))
         {
@@ -82,6 +79,8 @@ public class PlayerController : MonoBehaviour
         {
             pawn.isMagicActivelyUsed = false;
         }
+
+       pawn.isSneaking = Input.GetKey(sneak);
 
         RunSpecial();
 

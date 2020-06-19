@@ -8,10 +8,10 @@ public class LuuPawn : Pawn, IBossEntity
 {
     public int UniqueIdentifier { get; set; } = 1;
     public float BossCurrentHealth { get; set; } = 0f;
-    public float BossMaxHealth { get; set; } = 100f;
+    public float BossMaxHealth { get; set; } = 1000f;
     public float CurrentPatience { get; set; } = 0f;
-    public float MaxPatience { get; set; } = 500f;
-    public float PatienceDepletionRate { get; set; } = 0.02f;
+    public float MaxPatience { get; set; } = 5000f;
+    public float PatienceDepletionRate { get; set; } = 2f;
     public int HPLayer { get; set; } = 4;
 
     //State that the boss is active
@@ -26,7 +26,7 @@ public class LuuPawn : Pawn, IBossEntity
     //How many seconds it takes to deplete patience
     const float DEPLETEION_PER_SEC = 0.001f;
 
-    const float ZERO_HEALTH = 0f;
+    const float ZERO = 0f;
 
     LuuEventTimeline LuuEventTimeline;
 
@@ -63,15 +63,18 @@ public class LuuPawn : Pawn, IBossEntity
         GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
 
         //If this bullet did not come from Luu herself, she'll take damage
-        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Luu_Obj" && !IsDefeated)
+        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name == "Raven_Obj" && !IsDefeated)
         {
+            PlayerPawn player = objectOrigin.pawn as PlayerPawn;
+            Stats playerStats = player.GetStats();
+
             //If no patience has been lost, decrease that
             if (!HasLostPatience)
-                SetPatienceValue(-5f, true);
+                SetPatienceValue(-playerStats.GetCurrentAttributeValue(Stats.StatsAttribute.ANNOYANCE), true);
 
             //Otherwise, she has lost her patience, which leave her vulnerable
             else
-                SetHealthValue(-10f, true);
+                SetHealthValue(-playerStats.GetCurrentAttributeValue(Stats.StatsAttribute.POWER), true);
 
             //Keep track of how many times you've hit her without losing a life
             GameManager.Instance.timesHit++;
@@ -124,7 +127,7 @@ public class LuuPawn : Pawn, IBossEntity
     /// <returns></returns>
     void CheckPatienceStatus()
     {
-        HasLostPatience = (CurrentPatience <= ZERO_HEALTH);
+        HasLostPatience = (CurrentPatience <= ZERO);
     }
 
     /// <summary>
@@ -132,7 +135,7 @@ public class LuuPawn : Pawn, IBossEntity
     /// </summary>
     void CheckHealthStatus()
     {
-        HasHealthLowered = (BossCurrentHealth <= ZERO_HEALTH);
+        HasHealthLowered = (BossCurrentHealth <= ZERO);
     }
 
     /// <summary>
@@ -141,7 +144,7 @@ public class LuuPawn : Pawn, IBossEntity
     /// </summary>
     void CheckDefeated()
     {
-        IsDefeated = (HPLayer == ZERO_HEALTH && HasHealthLowered && HasLostPatience);
+        IsDefeated = (HPLayer == ZERO && HasHealthLowered && HasLostPatience);
     }
 
     /// <summary>
@@ -199,10 +202,6 @@ public class LuuPawn : Pawn, IBossEntity
 
         //Check Health Status
         CheckHealthStatus();
-
-        //Check if we can reset values (Temporary)
-        if (HasHealthLowered)
-            ResetValues();
 
         //Update UI
         UI_BossHealth.SetValue(BossCurrentHealth);
@@ -276,7 +275,7 @@ public class LuuPawn : Pawn, IBossEntity
     /// <summary>
     /// (Temporary) Resets Patience and HP to MaxValues
     /// </summary>
-    void ResetValues()
+    public void ResetValues()
     {
         //As we reset, check if she has been defeated
         CheckDefeated();

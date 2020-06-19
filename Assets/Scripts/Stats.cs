@@ -24,62 +24,59 @@ public class Stats
     //Game value is the value calculated to affect the actual gameplay of the game (which are calculated in here)
     public int BaseSpeed { get; private set; }
     public int SpeedEnhancementValue { get; private set; } = ZERO;
-    public int GameValueSpeed { get; private set; }
 
     public int BasePower { get; private set; }
     public int PowerEnhancementValue { get; private set; } = ZERO;
-    public int GameValuePower { get; private set; }
 
     public int BaseAnnoyance { get; private set; }
     public int AnnoyanceEnhancementValue { get; private set; } = ZERO;
-    public int GameValueAnnoyance { get; private set; }
 
     public int BasePriority { get; private set; }
     public int PriorityEnhancementValue { get; private set; } = ZERO;
-    public int GameValuePriority { get; private set; }
 
     public int BaseMagic { get; private set; }
     public int MagicEnhancementValue { get; private set; } = ZERO;
-    public int GameValueMagic { get; private set; }
 
     public int BaseKnowledge { get; private set; }
     public int KnowledgeEnhancementValue { get; private set; } = ZERO;
-    public int GameValueKnowledge { get; private set; }
 
     public int BaseEvasiveness { get; private set; }
     public int EvasivenessEnhancementValue { get; private set; } = ZERO;
-    public int GameValueEvasiveness { get; private set; }
+
+    //Prominent Attribute bonus (25% of current attribute)
+    const float PROMINENT_ATTRIBUTE_BONUS = 0.25f;
 
     //Ravens base prominentAttribute
+    //Player can pick a prominentAttribute after the first play through
+    //But can not change it until the end of the game.
     public StatsAttribute StartingProminentAttribute { get; set; }
 
     //Ravens Default Stats
-    const int DEFAULT_SPEED = 20;
-    const int DEFAULT_POWER = 30;
+    //Get 100 + number of plays points
+    //And the bosses get much harder with the number of times you play
+    const int DEFAULT_SPEED = 30;
+    const int DEFAULT_POWER = 10;
     const int DEFAULT_ANNOYANCE = 15;
     const int DEFAULT_PRIORITY = 13;
-    const int DEFAULT_MAGIC = 50;
+    const int DEFAULT_MAGIC = 25;
     const int DEFAULT_KNOWLEDGE = 10;
-    const int DEFAULT_EVASIVENESS = 10;
+    const int DEFAULT_EVASIVENESS = 40;
     const int ZERO = 0;
     const StatsAttribute DEFAULT_ATTRIBUTE = StatsAttribute.MAGIC;
 
     //Constructor (Will be given Raven's base stats)
+    //ProminentAttribute Boost on start
     Stats(int speed, int power, int annoyance, int basePriority, int magic, int knowledge, int evasiveness, StatsAttribute prominentAttribute)
     {
-        BaseSpeed = speed;
-        BasePower = power;
-        BaseAnnoyance = annoyance;
-        BasePriority = basePriority;
-        BaseMagic = magic;
-        BaseKnowledge = knowledge;
-        BaseEvasiveness = evasiveness;
-
         StartingProminentAttribute = prominentAttribute;
 
-        //Update Game Values
-        UpdateGameValues();
-
+        BaseSpeed       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.SPEED ? speed / PROMINENT_ATTRIBUTE_BONUS : speed);
+        BasePower       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.POWER ? power / PROMINENT_ATTRIBUTE_BONUS : power);
+        BaseAnnoyance   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.ANNOYANCE ? annoyance / PROMINENT_ATTRIBUTE_BONUS : annoyance);
+        BasePriority    = Mathf.RoundToInt(prominentAttribute == StatsAttribute.BASEPRIORITY ? basePriority / PROMINENT_ATTRIBUTE_BONUS : basePriority);
+        BaseMagic       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.MAGIC ? magic / PROMINENT_ATTRIBUTE_BONUS : magic);
+        BaseKnowledge   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.KNOWLEDGE ? knowledge / PROMINENT_ATTRIBUTE_BONUS : knowledge);
+        BaseEvasiveness = Mathf.RoundToInt(prominentAttribute == StatsAttribute.EVASIVENESS ? evasiveness / PROMINENT_ATTRIBUTE_BONUS : evasiveness);
     }
 
     /// <summary>
@@ -116,39 +113,36 @@ public class Stats
         switch (attribute)
         {
             case StatsAttribute.SPEED:
-                BaseSpeed += amount;
+                SpeedEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.SPEED ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             case StatsAttribute.POWER:
-                BasePower += amount;
+                PowerEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.POWER ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             case StatsAttribute.ANNOYANCE:
-                BaseAnnoyance += amount;
+                AnnoyanceEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.ANNOYANCE ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             case StatsAttribute.BASEPRIORITY:
-                BasePriority += amount;
+                PriorityEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.BASEPRIORITY ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             case StatsAttribute.MAGIC:
-                BaseMagic += amount;
+                MagicEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.MAGIC ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             case StatsAttribute.KNOWLEDGE:
-                BaseKnowledge += amount;
+                KnowledgeEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.KNOWLEDGE ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             case StatsAttribute.EVASIVENESS:
-                BaseEvasiveness += amount;
+                EvasivenessEnhancementValue += Mathf.RoundToInt(StartingProminentAttribute == StatsAttribute.EVASIVENESS ? amount + PROMINENT_ATTRIBUTE_BONUS : amount);
                 break;
 
             default:
                 break;
         }
-
-        //Update Values
-        UpdateGameValues();
 
         //Update Level
         UpdateLevel();
@@ -197,36 +191,6 @@ public class Stats
         }
 
         return result;
-    }
-
-    void UpdateGameValues()
-    {
-        //Get our current values first
-        int currentSpeed = GetCurrentAttributeValue(StatsAttribute.SPEED);
-        int currentPower = GetCurrentAttributeValue(StatsAttribute.POWER);
-        int currentAnnoyance = GetCurrentAttributeValue(StatsAttribute.ANNOYANCE);
-        int currentPriority = GetCurrentAttributeValue(StatsAttribute.BASEPRIORITY);
-        int currentMagic = GetCurrentAttributeValue(StatsAttribute.MAGIC);
-        int currentKnowledge = GetCurrentAttributeValue(StatsAttribute.KNOWLEDGE);
-        int currentEvasiveness = GetCurrentAttributeValue(StatsAttribute.EVASIVENESS);
-
-        //This is where our game values are calculated for programming
-        GameValueSpeed = currentSpeed + ((currentAnnoyance * currentEvasiveness) / currentKnowledge);
-        GameValuePower = (currentPower * currentSpeed) / (currentPriority * currentMagic);
-        GameValueAnnoyance = currentAnnoyance / ((currentSpeed * currentPower) / currentEvasiveness);
-        GameValuePriority = currentPriority;
-        GameValueMagic = currentMagic + ((currentPower * currentKnowledge) / currentSpeed);
-        GameValueKnowledge = currentKnowledge;
-        GameValueEvasiveness = currentEvasiveness + (currentAnnoyance / (currentSpeed * currentKnowledge));
-
-        //test that it works
-        Debug.Log(GameValueSpeed + "\n" +
-                GameValuePower + "\n" +
-                GameValueAnnoyance + "\n" +
-                GameValuePriority + "\n" +
-                GameValueMagic + "\n" +
-                GameValueKnowledge + "\n" +
-                GameValueEvasiveness + "\n");
     }
 
     void UpdateLevel()

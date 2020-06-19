@@ -7,6 +7,9 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     public static GetOrignatedSpawnPoint Instance;
 
     public GameObject originatedSpawnPoint;
+
+    public Pawn pawn;
+
     public uint priority;
 
     readonly uint demolishVal = 5;
@@ -16,6 +19,11 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     {
         Instance = this;
 
+    }
+
+    private void Start()
+    {
+        pawn = originatedSpawnPoint.GetComponent<Pawn>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
