@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Dialogue.Instance.Run(0);
         tRenderer.check = true;
         IncrementMagic(maxMagic);
 
@@ -277,10 +276,11 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                PlayerPawn.Instance.originOfRotation.GetComponent<LuuPawn>().OnInitialized();
+                
                 //This is where we start our Danmaku routines
                 //In another script of course!!
-
+                Dialogue.IsRunning = false;
+                Dialogue.OnDialogueEnd();
             }
         }
     }

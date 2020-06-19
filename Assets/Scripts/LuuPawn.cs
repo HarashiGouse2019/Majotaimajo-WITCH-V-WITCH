@@ -4,7 +4,7 @@ using System.IO;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class LuuPawn : PawnProgrammable, IBossEntity
+public class LuuPawn : Pawn, IBossEntity
 {
     public int UniqueIdentifier { get; set; } = 1;
     public float BossCurrentHealth { get; set; } = 0f;
@@ -28,9 +28,15 @@ public class LuuPawn : PawnProgrammable, IBossEntity
 
     const float ZERO_HEALTH = 0f;
 
+    LuuEventTimeline LuuEventTimeline;
 
+    void Awake() {
+        LuuEventTimeline = gameObject.AddComponent<LuuEventTimeline>();
+    }
     void Start()
     {
+        LuuEventTimeline.Initialize(this);
+
         priority = basePriority;
 
         //Initialize Patience Cycle

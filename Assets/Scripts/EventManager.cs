@@ -12,7 +12,8 @@ public class EventManager
     public struct Event
     {
         int uniqueID;
-        string eventCode; 
+        string eventCode;
+        bool hasTriggered;
 
         public Event(int uniqueID, string eventCode, CallBackMethod newListener) {
 
@@ -28,8 +29,10 @@ public class EventManager
             {
                 this.eventCode = eventCode;
             }
+
+            hasTriggered = false;
             //Assign all listeners into delegate
-              AddNewListener(newListener);
+             AddNewListener(newListener);
         }
 
         /// <summary>
@@ -59,7 +62,7 @@ public class EventManager
         /// <summary>
         /// Trigger this event, executing all listeners assigned to it.
         /// </summary>
-        public void Invoke()
+        public void Trigger()
         {
             if (listeners != null)
             {
@@ -69,6 +72,14 @@ public class EventManager
 
             Debug.LogError("There are no listeners in this event...");
             return;
+        }
+
+        /// <summary>
+        /// Returns if this even has been triggered
+        /// </summary>
+        public bool HasTriggered()
+        {
+            return hasTriggered;
         }
     }
 
@@ -81,10 +92,11 @@ public class EventManager
     /// <param name="uniqueID"></param>
     /// <param name="name"></param>
     /// <param name="listeners"></param>
-    public static void AddNewEvent(int uniqueID, string name, CallBackMethod listener)
+    public static Event AddNewEvent(int uniqueID, string name, CallBackMethod listener)
     {
         Event newEvent = new Event(uniqueID, name, listener);
         Events.Add(newEvent);
+        return newEvent;
     }
 
     /// <summary>

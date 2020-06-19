@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class Dialogue : MonoBehaviour
@@ -32,6 +30,8 @@ public class Dialogue : MonoBehaviour
     GameManager manager;
 
     public IEnumerator displayText;
+
+    public static bool IsRunning = false;
     private void Awake()
     {
         Instance = this;
@@ -39,12 +39,27 @@ public class Dialogue : MonoBehaviour
     public void Run(int _index, float _speed = 0.05f)
     {
 
-        manager= GameManager.Instance;
+        manager = GameManager.Instance;
 
         GameManager.Instance.expression.sprite = dialogue[_index].expression.image;
 
         displayText = manager.DisplayText(dialogue[_index].speech, _speed, dialogue[_index].voice);
 
+        IsRunning = true;
+
         StartCoroutine(displayText);
+    }
+
+    public static void OnDialogueEnd()
+    {
+        if (!IsRunning)
+        {
+            foreach (EventManager.Event _event in EventManager.GetAllEvents())
+            {
+                if (_event.GetEventCode() == "DialogueEnd"){
+                    _event.Trigger();
+                }
+            }
+        }
     }
 }
