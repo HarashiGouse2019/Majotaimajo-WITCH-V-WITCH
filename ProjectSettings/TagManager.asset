@@ -9,6 +9,16 @@ TagManager:
   - Border
   - Lavender
   - Selectable
+  - HiScoreUI
+  - ScoreUI
+  - MagicUI
+  - Slot001
+  - Slot002
+  - Slot003
+  - DialogueBox
+  - Dialogue
+  - Expression
+  - TextureRenderer
   layers:
   - Default
   - TransparentFX

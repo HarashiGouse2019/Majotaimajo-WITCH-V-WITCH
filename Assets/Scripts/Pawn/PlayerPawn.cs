@@ -49,6 +49,9 @@ public class PlayerPawn : Pawn
 
         priority = basePriority;
 
+        GameManager.Instance.tRenderer.check = true;
+        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
+        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
 
         //Get Components
         srenderer = GetComponent<SpriteRenderer>();
@@ -139,7 +142,7 @@ public class PlayerPawn : Pawn
         {
             Standard_Shoot.Instance = GetComponent<Standard_Shoot>();
             Standard_Shoot.Instance.SpawnBullets(1, bulletName);
-            AudioManager.audio.Play("Shoot000", 100f);
+            AudioManager.Play("Shoot000", _oneShot: true);
             recoil = true;
         }
     }
@@ -214,7 +217,7 @@ public class PlayerPawn : Pawn
         {
             if (GameManager.Instance.GetPlayerLives() < 1)
             {
-                Application.Quit();
+                GameSceneManager.Instance.LoadScene("RECORDSANDHIGHSCORE");
             }
 
             //Timer for blinking rate

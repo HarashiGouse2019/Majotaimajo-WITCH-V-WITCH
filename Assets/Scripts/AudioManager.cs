@@ -5,22 +5,45 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    public new static AudioManager audio;
+    private static AudioManager Instance;
 
-    public Slider musicVolumeAdjust, soundVolumeAdjust; //Reference to our volume sliders
+    [System.Serializable]
+    public class Audio
+    {
+        public string name; // Name of the audio
+
+        public AudioClip clip; //The Audio Clip Reference
+
+        [Range(0f, 1f)]
+        public float volume; //Adjust Volume
+
+        [Range(.1f, 3f)]
+        public float pitch; //Adject pitch
+
+        public bool enableLoop; //If the audio can repeat
+
+        [HideInInspector] public AudioSource source;
+    }
+
+    public AudioMixerGroup audioMixer;
+
+    public Slider soundVolumeAdjust; //Reference to our volume sliders
 
     public Audio[] getAudio;
 
     private void Awake()
     {
-        if (audio == null)
+        #region Singleton
+        if (Instance == null)
         {
-            audio = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
-        } else
+        }
+        else
         {
             Destroy(gameObject);
-        }
+        } 
+        #endregion
 
         foreach (Audio a in getAudio)
         {
@@ -31,6 +54,7 @@ public class AudioManager : MonoBehaviour
             a.source.volume = a.volume;
             a.source.pitch = a.pitch;
             a.source.loop = a.enableLoop;
+            a.source.outputAudioMixerGroup = audioMixer;
         }
     }
     /// <summary>
@@ -44,22 +68,32 @@ public class AudioManager : MonoBehaviour
     /// Support values between 0 and 100.
     ///
 
-    public void Play(string _name, float _volume = 100)
+    public static void Play(string _name, float _volume = 100, bool _oneShot = false)
     {
-        Audio a = Array.Find(getAudio, sound => sound.name == _name);
+        Audio a = Array.Find(Instance.getAudio, sound => sound.name == _name);
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
             return;
-        } else
+        }
+        else
         {
-            a.source.Play();
-            a.source.volume = _volume / 100;
+            switch (_oneShot)
+            {
+                case true:
+                    a.source.PlayOneShot(a.clip, _volume / 100);
+                    break;
+                default:
+                    a.source.Play();
+                    a.source.volume = _volume / 100;
+                    break;
+            }
+
         }
     }
-    public void Stop(string _name)
+    public static void Stop(string _name)
     {
-        Audio a = Array.Find(getAudio, sound => sound.name == _name);
+        Audio a = Array.Find(Instance.getAudio, sound => sound.name == _name);
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
@@ -68,6 +102,22 @@ public class AudioManager : MonoBehaviour
         else
         {
             a.source.Stop();
+        }
+    }
+
+    public AudioClip GetAudio(string _name, float _volume = 100)
+    {
+        Audio a = Array.Find(getAudio, sound => sound.name == _name);
+        if (a == null)
+        {
+            Debug.LogWarning("Sound name " + _name + " was not found.");
+            return null;
+        }
+        else
+        {
+            a.source.Play();
+            a.source.volume = _volume / 100;
+            return a.source.clip;
         }
     }
 }

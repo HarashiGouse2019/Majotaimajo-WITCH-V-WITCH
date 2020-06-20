@@ -65,25 +65,29 @@ public class LuuPawn : Pawn, IBossEntity
         //If this bullet did not come from Luu herself, she'll take damage
         if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name == "Raven_Obj" && !IsDefeated)
         {
-            PlayerPawn player = objectOrigin.pawn as PlayerPawn;
-            Stats playerStats = player.GetStats();
+            try
+            {
+                PlayerPawn player = objectOrigin.pawn as PlayerPawn;
+                Stats playerStats = player.GetStats();
 
-            //If no patience has been lost, decrease that
-            if (!HasLostPatience)
-                SetPatienceValue(-playerStats.GetCurrentAttributeValue(Stats.StatsAttribute.ANNOYANCE), true);
+                //If no patience has been lost, decrease that
+                if (!HasLostPatience)
+                    SetPatienceValue(-playerStats.GetCurrentAttributeValue(Stats.StatsAttribute.ANNOYANCE), true);
 
-            //Otherwise, she has lost her patience, which leave her vulnerable
-            else
-                SetHealthValue(-playerStats.GetCurrentAttributeValue(Stats.StatsAttribute.POWER), true);
+                //Otherwise, she has lost her patience, which leave her vulnerable
+                else
+                    SetHealthValue(-playerStats.GetCurrentAttributeValue(Stats.StatsAttribute.POWER), true);
 
-            //Keep track of how many times you've hit her without losing a life
-            GameManager.Instance.timesHit++;
+                //Keep track of how many times you've hit her without losing a life
+                GameManager.Instance.timesHit++;
 
-            //Add it to your current score
-            GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
+                //Add it to your current score
+                GameManager.Instance.AddToScore((10 * GameManager.Instance.timesHit) + 1);
 
-            //Set the projectile object to false
-            other.gameObject.SetActive(false);
+                //Set the projectile object to false
+                other.gameObject.SetActive(false);
+            }
+            catch { return; }
         }
     }
 

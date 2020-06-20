@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     //Score System
     public int timesHit;
 
+    public static bool IsPractice = false;
     #endregion
 
     #region Private Members
@@ -49,14 +51,14 @@ public class GameManager : MonoBehaviour
     readonly float flashVal = 255f;
     float rVal, gVal, bVal;
 
-
+    List<ExposeAs> exposedObj = new List<ExposeAs>();
     #endregion
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        SetPlayerLives(5);
+        
         Application.targetFrameRate = 60;
         #region Singleton
         if (Instance == null)
@@ -73,22 +75,33 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        tRenderer.check = true;
-        IncrementMagic(maxMagic);
 
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        HISCORETEXT.text = hiScore.ToString("D10");
-        SCORETEXT.text = score.ToString("D10");
+        if(HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
+        if(SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
 
-        if (!textBoxUI.gameObject.activeSelf) AddToScore(1);
+        if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) AddToScore(1);
 
         if (isDone == true) ToNextDialogue();
+    }
+
+    public static void StartGame()
+    {
+        switch (IsPractice) {
+            case true:
+                Instance.SetPlayerLives(10);
+                break;
+
+            case false:
+                Instance.SetPlayerLives(5);
+                break;
+        }
     }
 
     /// <summary>
@@ -112,6 +125,12 @@ public class GameManager : MonoBehaviour
         ResetScore();
     }
 
+    public void SetMaxMagic(int _value)
+    {
+        maxMagic = _value;
+        MAGIC.maxValue = maxMagic;
+    }
+
     /// <summary>
     /// Decrement player magic
     /// </summary>
@@ -119,7 +138,7 @@ public class GameManager : MonoBehaviour
     public void IncrementMagic(float _value)
     {
         magic += _value;
-        MAGIC.value = magic / 100f;
+        MAGIC.value = magic;
     }
 
     /// <summary>
@@ -129,7 +148,7 @@ public class GameManager : MonoBehaviour
     public void DecrementMagic(float _value)
     {
         magic -= _value;
-        MAGIC.value = magic / 100f;
+        MAGIC.value = magic;
     }
 
     /// <summary>
@@ -163,6 +182,7 @@ public class GameManager : MonoBehaviour
     public void UpdateHighScore()
     {
         hiScore = score;
+        ScoreSystem.SetHighScore(hiScore);
     }
 
     /// <summary>
@@ -216,25 +236,25 @@ public class GameManager : MonoBehaviour
                 switch (voice)
                 {
                     case Dialogue.Script.Voices.None:
-                        AudioManager.audio.Play("Type000");
+                        AudioManager.Play("Type000", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Amber:
-                        AudioManager.audio.Play("Type000");
+                        AudioManager.Play("Type000", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.August:
-                        AudioManager.audio.Play("Type000");
+                        AudioManager.Play("Type000", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Crystal:
-                        AudioManager.audio.Play("Type000");
+                        AudioManager.Play("Type000", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Luu:
-                        AudioManager.audio.Play("LuuVoice");
+                        AudioManager.Play("LuuVoice", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Maple:
-                        AudioManager.audio.Play("Type000");
+                        AudioManager.Play("MapleVoice", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Raven:
-                        AudioManager.audio.Play("RavenVoice");
+                        AudioManager.Play("RavenVoice", _oneShot: true);
                         break;
                     default:
                         break;
@@ -263,7 +283,7 @@ public class GameManager : MonoBehaviour
 
     public void ToNextDialogue()
     {
-        if (Input.GetKeyDown(skipKey))
+        if (Input.GetKeyDown(skipKey) && textBoxUI != null)
         {
             if (dialoguePos < Dialogue.Instance.dialogue.Length - 1)
             {
@@ -276,12 +296,76 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                
+
                 //This is where we start our Danmaku routines
                 //In another script of course!!
                 Dialogue.IsRunning = false;
                 Dialogue.OnDialogueEnd();
             }
         }
+    }
+
+    void FindAllExposedValues()
+    {
+        exposedObj = FindObjectsOfType<ExposeAs>().ToList();
+    }
+
+    void AssignUIElements()
+    {
+        //Wait til 100
+        int ping = 0;
+        while (ping < 1000)
+        {
+            FindAllExposedValues();
+
+            if (exposedObj == null)
+                return;
+
+            foreach (ExposeAs obj in exposedObj)
+            {
+                switch (obj.GetExposedAs())
+                {
+                    case "DialogueBox":
+                        textBoxUI = obj.GetComponent<Image>();
+                        break;
+                    case "DialogueText":
+                        dialogue = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    case "ExpressionImage":
+                        expression = obj.GetComponent<Image>();
+                        break;
+                    case "HighScore":
+                        HISCORETEXT = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    case "Score":
+                        SCORETEXT = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    case "TextureRenderer":
+                        tRenderer = obj.GetComponent<TextureRenderer>();
+                        break;
+                    case "Magic":
+                        MAGIC = obj.GetComponent<Slider>();
+                        break;
+                    case "Slot1":
+                        SLOTS[0] = obj.GetComponent<Image>();
+                        break;
+                    case "Slot2":
+                        SLOTS[1] = obj.GetComponent<Image>();
+                        break;
+                    case "Slot3":
+                        SLOTS[2] = obj.GetComponent<Image>();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            ping++;
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        AssignUIElements();
     }
 }

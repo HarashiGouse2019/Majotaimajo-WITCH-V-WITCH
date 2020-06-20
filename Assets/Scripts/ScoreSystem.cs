@@ -10,7 +10,8 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     readonly int hitpoint = 30;
     readonly int stallpoint = 1;
 
-    int score = 0;
+    public static int Score { get; private set; } = 0;
+    public static int HighScore { get; private set; } = 0;
 
     Timer timer = new Timer(1);
 
@@ -31,12 +32,12 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
 
     private void Update()
     {
-        score += stallpoint;
+        Score += stallpoint;
     }
 
     public void Amplify()
     {
-        score += (hitpoint * timesHit) + stallpoint;
+        Score += (hitpoint * timesHit) + stallpoint;
         timer.StartTimer(0);
         timer.currentTime[0] = 0;
     }
@@ -57,6 +58,11 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
 
     public int GetScore()
     {
-        return score;
+        return Score;
+    }
+
+    public static void SetHighScore(int score)
+    {
+        HighScore = score;
     }
 }
