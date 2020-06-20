@@ -35,9 +35,6 @@ public class TitleSelection : MonoBehaviour
     //Controlls
     float horizontalDir, verticalDir;
 
-    [SerializeField]
-    EventManager.Event[] events;
-
     EventManager.Event @StartSelected;
     EventManager.Event @PracticeSelected;
     EventManager.Event @ExitSelected;
@@ -46,10 +43,11 @@ public class TitleSelection : MonoBehaviour
     void Awake()
     {
         GetSelections();
+
         SetUpEvents();
+
         //Play Title Music
         MusicManager.Play("WVWOST");
-        events = EventManager.GetAllEvents();
     }
 
     void GetSelections()
@@ -210,8 +208,4 @@ public class TitleSelection : MonoBehaviour
         ExitSelected.Trigger();
     }
 
-    private void OnApplicationQuit()
-    {
-        Debug.Log("Bye!!!");
-    }
 }

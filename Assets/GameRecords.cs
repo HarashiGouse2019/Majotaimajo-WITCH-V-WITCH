@@ -62,7 +62,6 @@ public class GameRecords : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         GetAllScoreEntries();
 
         //New Event

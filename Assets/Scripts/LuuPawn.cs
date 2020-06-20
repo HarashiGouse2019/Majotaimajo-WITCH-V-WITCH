@@ -148,7 +148,7 @@ public class LuuPawn : Pawn, IBossEntity
     /// </summary>
     void CheckDefeated()
     {
-        IsDefeated = (HPLayer == ZERO && HasHealthLowered && HasLostPatience);
+        IsDefeated = (HPLayer <= ZERO + 1 && HasHealthLowered && HasLostPatience);
     }
 
     /// <summary>
