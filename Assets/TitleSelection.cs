@@ -35,14 +35,11 @@ public class TitleSelection : MonoBehaviour
     //Controlls
     float horizontalDir, verticalDir;
 
-    //Events
+    [SerializeField]
+    EventManager.Event[] events;
+
     EventManager.Event @StartSelected;
     EventManager.Event @PracticeSelected;
-    EventManager.Event @ReplaySelected;
-    EventManager.Event @RecordsSelected;
-    EventManager.Event @MusicRoomSelected;
-    EventManager.Event @GallerySelected;
-    EventManager.Event @OptionsSelected;
     EventManager.Event @ExitSelected;
 
     // Start is called before the first frame update
@@ -52,6 +49,7 @@ public class TitleSelection : MonoBehaviour
         SetUpEvents();
         //Play Title Music
         MusicManager.Play("WVWOST");
+        events = EventManager.GetAllEvents();
     }
 
     void GetSelections()
@@ -126,7 +124,7 @@ public class TitleSelection : MonoBehaviour
         }
 
         //If horizontal or vertical not being pressed, keyDown is false
-        if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
             keyDown = false;
         }
@@ -180,20 +178,20 @@ public class TitleSelection : MonoBehaviour
 
     void SetUpEvents()
     {
-        //Creating new events
-        StartSelected = EventManager.AddNewEvent(100, "StartSelected", null);
-        PracticeSelected = EventManager.AddNewEvent(101, "PracticeSelected", null);
-        ExitSelected = EventManager.AddNewEvent(102, "ExitSelected", null);
+        @StartSelected = EventManager.AddNewEvent(100, "StartSelected", null);
+        @PracticeSelected = EventManager.AddNewEvent(101, "PracticeSelected", null);
+        @ExitSelected = EventManager.AddNewEvent(102, "ExitSelected", null);
 
         //Adding Listeners to StartSelected
         StartSelected.AddNewListener(() => GameSceneManager.Instance.LoadScene("LUU_STAGE"));
+        StartSelected.AddNewListener(() => GameManager.StartGame());
 
-        //Adding Listeners to PracticeSelected
+        //Adding Listeners to Practice Selected
         PracticeSelected.AddNewListener(() => GameSceneManager.Instance.LoadScene("LUU_STAGE"));
         PracticeSelected.AddNewListener(() => GameManager.IsPractice = true);
         PracticeSelected.AddNewListener(() => GameManager.StartGame());
 
-        //Adding Listeners to ExitSelected
+        //Adding Listeners to Exit Selected
         ExitSelected.AddNewListener(() => Application.Quit());
     }
 
