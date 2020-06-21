@@ -62,4 +62,6 @@
     /// </summary>
     /// <param name="active"></param>
     void SetActive(bool active);
+
+    void SetBasePriority(int value);
 }

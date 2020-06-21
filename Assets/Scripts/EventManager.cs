@@ -107,10 +107,15 @@ public static class EventManager
     /// <param name="uniqueID"></param>
     /// <param name="name"></param>
     /// <param name="listeners"></param>
-    public static Event AddNewEvent(int uniqueID, string name, CallBackMethod listener)
+    public static Event AddNewEvent(int uniqueID, string name, params CallBackMethod[] listeners)
     {
-        Event newEvent = new Event(uniqueID, name, listener);
-        Events.Add(newEvent);
+        Event newEvent = new Event(uniqueID, name, null);
+        foreach (CallBackMethod listener in listeners)
+        {
+            newEvent.AddNewListener(listener);
+            Events.Add(newEvent);
+        }
+
         return newEvent;
     }
 
@@ -126,7 +131,6 @@ public static class EventManager
             if (eventCode == Events[idIndex].GetEventCode())
             {
                 //Now delete the event itself
-                Debug.Log("Event " + Events[idIndex].GetEventCode() + " has been removed");
                 Events.Remove(Events[idIndex]);
                 return;
             }
@@ -145,7 +149,23 @@ public static class EventManager
             if (uniqueId.Equals(Events[idIndex].GetUniqueID()))
             {
                 //Now delete the event itself
-                Debug.Log("Event " + Events[idIndex].GetEventCode() + " has been removed");
+                Events.Remove(Events[idIndex]);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Remove an event 
+    /// </summary>
+    /// <param name="eventCode"></param>
+    public static void RemoveEvent(Event @event)
+    {
+        for (int idIndex = 0; idIndex < Events.Count; idIndex++)
+        {
+            //If we found the event with this eventCode, remove it
+            if (@event.Equals(Events[idIndex]))
+            {
+                //Now delete the event itself
                 Events.Remove(Events[idIndex]);
             }
         }

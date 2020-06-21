@@ -1924,7 +1924,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -7402,7 +7402,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -12160,7 +12160,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -17014,7 +17014,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -21772,7 +21772,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -26917,7 +26917,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -32540,7 +32540,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -38187,7 +38187,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8915094, b: 0.959075, a: 1}
+        key0: {r: 1, g: 0.6650944, b: 0.9241271, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -41649,76 +41649,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962958845}
   m_CullTransparentMesh: 0
---- !u!1 &4961460815733682784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4961460815733682799}
-  - component: {fileID: 4961460815733682798}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &4961460815733682798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460815733682784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f559a3483ecea4d878405581d0d50a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
-  soundVolumeAdjust: {fileID: 0}
-  getAudio:
-  - name: Shoot000
-    clip: {fileID: 8300000, guid: 179da9a684a628b43a4904f8e8855f3e, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 0
-    source: {fileID: 0}
-  - name: Shoot001
-    clip: {fileID: 8300000, guid: 476c31f073a9e3c4b92bc554ce311992, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 0
-    source: {fileID: 0}
-  - name: RavenVoice
-    clip: {fileID: 8300000, guid: d59f129cc90e9b74bb31a04eef6e317e, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 0
-    source: {fileID: 0}
-  - name: LuuVoice
-    clip: {fileID: 8300000, guid: 9b897bdab6145ae44bc0686801d7ca1a, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 0
-    source: {fileID: 0}
---- !u!4 &4961460815733682799
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460815733682784}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4961460816258815230}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4961460816258815227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41762,6 +41692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d26d7494fcf7e429be4659cacfa180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreSystem: {fileID: 515085987}
   Canvas: []
   tRenderer: {fileID: 0}
   HISCORETEXT: {fileID: 0}
@@ -41788,7 +41719,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4961460816368090415}
-  - {fileID: 4961460815733682799}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41820,7 +41750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4961460816368090415}
-  - component: {fileID: 4961460816368090414}
+  - component: {fileID: 4961460816368090401}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -41828,7 +41758,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4961460816368090414
+--- !u!114 &4961460816368090401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41843,7 +41773,7 @@ MonoBehaviour:
   dialogue:
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
     voice: 6
-    speech: Here I go I guess....
+    speech: Here we go I guess...
 --- !u!4 &4961460816368090415
 Transform:
   m_ObjectHideFlags: 0

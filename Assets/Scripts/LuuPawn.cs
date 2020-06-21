@@ -32,7 +32,9 @@ public class LuuPawn : Pawn, IBossEntity
 
     void Awake() {
         LuuEventTimeline = gameObject.AddComponent<LuuEventTimeline>();
+        LuuEventTimeline.SetupEvents();
     }
+
     void Start()
     {
         LuuEventTimeline.Initialize(this);
@@ -224,6 +226,11 @@ public class LuuPawn : Pawn, IBossEntity
 
         //Update UI
         UI_BossHealth.SetMaxValue(value);
+    }
+
+    public void SetBasePriority(int value)
+    {
+        basePriority = (uint)value;
     }
 
     /// <summary>

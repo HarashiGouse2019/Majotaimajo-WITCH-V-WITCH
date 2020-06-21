@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-public class TitleSelection : MonoBehaviour
+public class TitleSelection : MonoBehaviour, IEventSetup
 {
     [SerializeField]
     Color selectedColor, unselectedColor;
@@ -44,7 +44,7 @@ public class TitleSelection : MonoBehaviour
     {
         GetSelections();
 
-        SetUpEvents();
+        SetupEvents();
 
         //Play Title Music
         MusicManager.Play("WVWOST");
@@ -174,23 +174,35 @@ public class TitleSelection : MonoBehaviour
         }
     }
 
-    void SetUpEvents()
+    public void SetupEvents()
     {
-        @StartSelected = EventManager.AddNewEvent(100, "StartSelected", null);
-        @PracticeSelected = EventManager.AddNewEvent(101, "PracticeSelected", null);
-        @ExitSelected = EventManager.AddNewEvent(102, "ExitSelected", null);
+        //Set up Start Selected Event
+        StartSelected = EventManager.AddNewEvent(100, "StartSelected",
+            () => GameSceneManager.Instance.LoadScene("LUU_STAGE"),
+            () => GameManager.StartGame(),
+            () => StopTitleBGM(),
+            () => ClearEvents());
 
-        //Adding Listeners to StartSelected
-        StartSelected.AddNewListener(() => GameSceneManager.Instance.LoadScene("LUU_STAGE"));
-        StartSelected.AddNewListener(() => GameManager.StartGame());
+        //Set up Practice Selected Event
+        PracticeSelected = EventManager.AddNewEvent(101, "PracticeSelected", 
+            () => GameSceneManager.Instance.LoadScene("LUU_STAGE"),
+            () => GameManager.IsPractice = true,
+            () => GameManager.StartGame(),
+            () => GameManager.StartGame(),
+            () => ClearEvents());
 
-        //Adding Listeners to Practice Selected
-        PracticeSelected.AddNewListener(() => GameSceneManager.Instance.LoadScene("LUU_STAGE"));
-        PracticeSelected.AddNewListener(() => GameManager.IsPractice = true);
-        PracticeSelected.AddNewListener(() => GameManager.StartGame());
+        //Set up Exit Selected Event
+        ExitSelected = EventManager.AddNewEvent(102, "ExitSelected", 
+            () => Application.Quit(), 
+            () => ClearEvents());
+    }
 
-        //Adding Listeners to Exit Selected
-        ExitSelected.AddNewListener(() => Application.Quit());
+    void ClearEvents()
+    {
+        //Remove StartSelected Event
+        EventManager.RemoveEvent(StartSelected);
+        EventManager.RemoveEvent(PracticeSelected);
+        EventManager.RemoveEvent(ExitSelected);
     }
 
     public void OnStart()
@@ -207,5 +219,4 @@ public class TitleSelection : MonoBehaviour
     {
         ExitSelected.Trigger();
     }
-
 }

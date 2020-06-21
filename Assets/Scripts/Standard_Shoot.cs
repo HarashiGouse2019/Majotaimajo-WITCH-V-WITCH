@@ -61,10 +61,6 @@ public class Standard_Shoot : Shoot_Trig
             rigidbody.AddForce(targetVector * speed * Time.fixedDeltaTime);
         }
     }
-    public override void Remove(GameObject obj)
-    {
-        existingProjectiles.Remove(obj);
-    }
 
     public override void UpdateStartPoint()
     {

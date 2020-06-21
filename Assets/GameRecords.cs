@@ -65,8 +65,9 @@ public class GameRecords : MonoBehaviour
         GetAllScoreEntries();
 
         //New Event
-        entryEvent = EventManager.AddNewEvent(50, "NewEntry", null);
-        entryEvent.AddNewListener(() => SwitchTo(State.RECORD));
+        entryEvent = EventManager.AddNewEvent(50, "NewEntry",
+            () => SwitchTo(State.RECORD));
+
         entryEvent.Trigger();
         ScoreSystem.SetHighScore(10291827);
         DetermineRanking(ScoreSystem.HighScore);

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class EventTimeline : MonoBehaviour
+public abstract class EventTimeline : MonoBehaviour, IEventSetup
 {
     public class TimelineException : Exception
     {
@@ -53,6 +53,11 @@ public abstract class EventTimeline : MonoBehaviour
     protected virtual void Next()
     {
         TimelineIndex++;
+    }
+
+    public virtual void SetupEvents()
+    {
+
     }
 
 

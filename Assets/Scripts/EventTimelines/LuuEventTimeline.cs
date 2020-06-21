@@ -1,14 +1,11 @@
-﻿using System.Diagnostics;
-using UnityEngine;
-
-public class LuuEventTimeline : EventTimeline
+﻿public class LuuEventTimeline : EventTimeline, IEventSetup
 {
     private LuuPawn Luu;
     string testString = "";
 
     //Create some events
-    EventManager.Event ev_dialogueEnd = EventManager.AddNewEvent(0, "DialogueEnd", null);
-    EventManager.Event ev_patternChange = EventManager.AddNewEvent(1, "PatternChange", null);
+    EventManager.Event @ev_dialogueEnd;
+    EventManager.Event @ev_patternChange;
 
     //This will be a test...
     protected override void MainTimeline()
@@ -23,11 +20,14 @@ public class LuuEventTimeline : EventTimeline
         {
             //Start of Luu Stage
             case 0:
+                Luu.SetBasePriority(3);
+
                 //Add events for Dialouge End
-                if (!Dialogue.IsRunning) Dialogue.Instance.Run(0);
-
-
-                ev_dialogueEnd.AddNewListener(Luu.OnInitialized);
+                if (!Dialogue.IsRunning)
+                {
+                    //Request for Dialogue Set 0
+                    Dialogue.Instance.Run(0);
+                }
 
                 //Check if all events with DialogueEnd eventCode has been triggered
                 if (ev_dialogueEnd.HasTriggered())
@@ -71,5 +71,14 @@ public class LuuEventTimeline : EventTimeline
                 }
                 break;
         }
+    }
+
+    public override void SetupEvents()
+    {
+        ev_dialogueEnd = EventManager.AddNewEvent(0, "DialogueEnd",
+            () => Luu.OnInitialized(),
+            () => EventManager.RemoveEvent(ev_dialogueEnd));
+
+        ev_patternChange = EventManager.AddNewEvent(1, "PatternChange");
     }
 }
