@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 
 [Serializable]
 public class Stats
@@ -54,9 +53,9 @@ public class Stats
     //Ravens Default Stats
     //Get 100 + number of plays points
     //And the bosses get much harder with the number of times you play
-    const int DEFAULT_SPEED = 60;
-    const int DEFAULT_POWER = 10;
-    const int DEFAULT_ANNOYANCE = 15;
+    const int DEFAULT_SPEED = 80;
+    const int DEFAULT_POWER = 5;
+    const int DEFAULT_ANNOYANCE = 3;
     const int DEFAULT_PRIORITY = 13;
     const int DEFAULT_MAGIC = 25;
     const int DEFAULT_KNOWLEDGE = 10;
@@ -70,13 +69,13 @@ public class Stats
     {
         StartingProminentAttribute = prominentAttribute;
 
-        BaseSpeed       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.SPEED ? speed / PROMINENT_ATTRIBUTE_BONUS : speed);
-        BasePower       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.POWER ? power / PROMINENT_ATTRIBUTE_BONUS : power);
-        BaseAnnoyance   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.ANNOYANCE ? annoyance / PROMINENT_ATTRIBUTE_BONUS : annoyance);
-        BasePriority    = Mathf.RoundToInt(prominentAttribute == StatsAttribute.BASEPRIORITY ? basePriority / PROMINENT_ATTRIBUTE_BONUS : basePriority);
-        BaseMagic       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.MAGIC ? magic / PROMINENT_ATTRIBUTE_BONUS : magic);
-        BaseKnowledge   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.KNOWLEDGE ? knowledge / PROMINENT_ATTRIBUTE_BONUS : knowledge);
-        BaseEvasiveness = Mathf.RoundToInt(prominentAttribute == StatsAttribute.EVASIVENESS ? evasiveness / PROMINENT_ATTRIBUTE_BONUS : evasiveness);
+        BaseSpeed       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.SPEED           ? speed / PROMINENT_ATTRIBUTE_BONUS         : speed);
+        BasePower       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.POWER           ? power / PROMINENT_ATTRIBUTE_BONUS         : power);
+        BaseAnnoyance   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.ANNOYANCE       ? annoyance / PROMINENT_ATTRIBUTE_BONUS     : annoyance);
+        BasePriority    = Mathf.RoundToInt(prominentAttribute == StatsAttribute.BASEPRIORITY    ? basePriority / PROMINENT_ATTRIBUTE_BONUS  : basePriority);
+        BaseMagic       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.MAGIC           ? magic / PROMINENT_ATTRIBUTE_BONUS         : magic);
+        BaseKnowledge   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.KNOWLEDGE       ? knowledge / PROMINENT_ATTRIBUTE_BONUS     : knowledge);
+        BaseEvasiveness = Mathf.RoundToInt(prominentAttribute == StatsAttribute.EVASIVENESS     ? evasiveness / PROMINENT_ATTRIBUTE_BONUS   : evasiveness);
     }
 
     /// <summary>
@@ -91,14 +90,14 @@ public class Stats
     /// <param name="evasiveness"></param>
     /// <returns></returns>
     public static Stats New(
-        int speed = DEFAULT_SPEED, 
-        int power = DEFAULT_POWER, 
-        int annoyance = DEFAULT_ANNOYANCE, 
-        int basePriority = DEFAULT_PRIORITY, 
-        int magic = DEFAULT_MAGIC, 
-        int knowledge = DEFAULT_KNOWLEDGE, 
-        int evasiveness = DEFAULT_EVASIVENESS, 
-        StatsAttribute prominentAttribute = DEFAULT_ATTRIBUTE)
+        int speed                           = DEFAULT_SPEED, 
+        int power                           = DEFAULT_POWER, 
+        int annoyance                       = DEFAULT_ANNOYANCE, 
+        int basePriority                    = DEFAULT_PRIORITY, 
+        int magic                           = DEFAULT_MAGIC, 
+        int knowledge                       = DEFAULT_KNOWLEDGE, 
+        int evasiveness                     = DEFAULT_EVASIVENESS, 
+        StatsAttribute prominentAttribute   = DEFAULT_ATTRIBUTE)
     {
         return new Stats(speed, power, annoyance, basePriority, magic, knowledge, evasiveness, prominentAttribute);
     }

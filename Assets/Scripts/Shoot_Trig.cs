@@ -23,6 +23,7 @@ public class Shoot_Trig : MonoBehaviour
     [Range(1, 10)] public int numberOfProjectiles = 1;
     public float speed;
     public int incrementVal;
+    public int speedLimit;
     public float g_angle;
     public enum RotationType
     {
@@ -39,7 +40,8 @@ public class Shoot_Trig : MonoBehaviour
     {
         Uniformed,
         Biformed,
-        Increment,
+        UniformedIncrement,
+        BiformedIncrement,
         Scattered
     }
 
@@ -48,9 +50,11 @@ public class Shoot_Trig : MonoBehaviour
 
     public float rotationFocus;
     public float rotationFocusIncrementVal;
+    public float rotationFocusLimit;
 
     public float rotationIntensity;
     public float rotationIntensityIncrementVal;
+    public float rotationIntensityLimit;
 
     //Statistics
     [HideInInspector] public List<GameObject> existingProjectiles;
@@ -114,10 +118,12 @@ public class Shoot_Trig : MonoBehaviour
     public virtual void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         //Update rotation focus
-        rotationFocus += rotationFocusIncrementVal;
+        if(rotationFocus < rotationFocusLimit)
+            rotationFocus += rotationFocusIncrementVal;
 
         //Update rotation intensity
-        rotationIntensity += rotationIntensityIncrementVal;
+        if(rotationIntensity < rotationIntensityLimit)
+            rotationIntensity += rotationIntensityIncrementVal;
 
         //Assing those values to our basic algorithm
 
@@ -144,12 +150,25 @@ public class Shoot_Trig : MonoBehaviour
                 }
                 break;
 
-            case DistributionType.Increment:
-                speed += incrementVal;
+            case DistributionType.UniformedIncrement:
+                if(speed<speedLimit) speed += incrementVal;
+                break;
+
+            case DistributionType.BiformedIncrement:
+                if (distStep == 0)
+                {
+                    speed *= 2 + (speed < speedLimit ? incrementVal : 0);
+                    distStep++;
+                }
+                else if (distStep == 1)
+                {
+                    speed /= 2 + (speed < speedLimit ? incrementVal : 0);
+                    distStep--;
+                }
                 break;
 
             case DistributionType.Scattered:
-                speed = Random.Range(20f, speed + 50);
+                speed = Random.Range(speed, speedLimit + 500);
                 break;
 
             default:

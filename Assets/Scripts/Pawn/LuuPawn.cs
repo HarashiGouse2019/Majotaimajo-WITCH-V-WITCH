@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class LuuPawn : Pawn, IBossEntity
@@ -11,7 +12,7 @@ public class LuuPawn : Pawn, IBossEntity
     public float BossMaxHealth { get; set; } = 1000f;
     public float CurrentPatience { get; set; } = 0f;
     public float MaxPatience { get; set; } = 5000f;
-    public float PatienceDepletionRate { get; set; } = 2f;
+    public float PatienceDepletionRate { get; set; }
     public int HPLayer { get; set; } = 4;
 
     //State that the boss is active
@@ -55,6 +56,9 @@ public class LuuPawn : Pawn, IBossEntity
         //Set Layer
         SetHealthLayer(HPLayer);
 
+        //Patience Depletion Rate is affected by player
+        PatienceDepletionRate = 0.2f;
+
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
     }
@@ -97,34 +101,47 @@ public class LuuPawn : Pawn, IBossEntity
     /// Activate a spell from the spell library by name
     /// </summary>
     /// <param name="_name"></param>
-    public override void ActivateSpell(string _name)
+    public override void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
         //Find a spell in the library by name
         Spell spell = library.FindSpell(_name);
 
+        if (cancelRunningSpell)
+        {
+            sequencer.CallReset();
+            SetupSpell(spell);
+            return;
+        }
+
         //If a spell is not in used, use it
         if (SpellLibrary.library.spellInUse == null)
         {
-            library.spellInUse = spell;
-
-            //Increate pawn's priority!!!
-            priority += spell.spellPriority;
-
-            //We give all values to our Sequencer
-            sequencer.stepSpeed = spell.stepSpeed;
-
-            //We have to loop each routine, and add them the list
-            for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
-            {
-                sequencer.routine.Add(spell.routine[routinePos]);
-
-                //And then we check if we enable looping
-                if (sequencer.allowOverride) sequencer.enableSequenceLooping = spell.enableSequenceLooping;
-            }
-
-            //Now that all value have passed in, we enable
-            sequencer.enabled = true;
+            SetupSpell(spell);
+            return;
         }
+    }
+
+    void SetupSpell(Spell spell)
+    {
+        library.spellInUse = spell;
+
+        //Increate pawn's priority!!!
+        priority += spell.spellPriority;
+
+        //We give all values to our Sequencer
+        sequencer.stepSpeed = spell.stepSpeed;
+
+        //We have to loop each routine, and add them the list
+        for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
+        {
+            sequencer.routine.Add(spell.routine[routinePos]);
+
+            //And then we check if we enable looping
+            if (sequencer.allowOverride) sequencer.enableSequenceLooping = spell.enableSequenceLooping;
+        }
+
+        //Now that all value have passed in, we enable
+        sequencer.enabled = true;
     }
 
     /// <summary>
@@ -277,10 +294,10 @@ public class LuuPawn : Pawn, IBossEntity
     /// <summary>
     /// On the start of this pawn beginning to fight
     /// </summary>
-    public void OnInitialized()
+    public void OnInitialized(EventManager.Event @event)
     {
         IsActive = true;
-        ActivateSpell("Sakura Burst");
+        @event.Trigger();
     }
 
     /// <summary>

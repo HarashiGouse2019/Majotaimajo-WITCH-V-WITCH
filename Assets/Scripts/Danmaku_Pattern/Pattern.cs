@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Alarm;
 
 [CreateAssetMenu(fileName = "New Pattern", menuName = "Pattern")]
 public class Pattern : ScriptableObject
@@ -23,10 +20,16 @@ public class Pattern : ScriptableObject
         [Tooltip("The change in speed over time")]
         public int incrementalSpeed;
 
+        [Tooltip("The speed limit")]
+        public int speedLimit;
+
+        [Tooltip("Carry over the speed from the previous pattern")]
+        public bool carryOverSpeed;
+
         [Tooltip("Override the rotation")]
         public bool overrideRotation;
 
-        [Tooltip("The starting rotation of the bullets"), Range(1, 360)]
+        [Tooltip("The starting rotation of the bullets"), Range(0, 360)]
         public float initialRotation;
 
         public float rotationSpeed;
@@ -51,7 +54,8 @@ public class Pattern : ScriptableObject
         {
             Uniformed,
             Biformed,
-            Increment,
+            UniformedIncrement,
+            BiFormedIncrement,
             Scattered
         }
 
@@ -73,10 +77,12 @@ public class Pattern : ScriptableObject
         public RotationFocusEffect rotationFocusEffect;
         public float rotationFocus;
         public float rotationFocusIncrementVal;
+        public float rotationFocusLimit;
 
         public RotationIntensityEffect rotationIntensityEffect;
         public float rotationIntensity;
         public float rotationIntensityIncrementVal;
+        public float rotationIntensityLimit;
 
         public float transitionDuration;
     }

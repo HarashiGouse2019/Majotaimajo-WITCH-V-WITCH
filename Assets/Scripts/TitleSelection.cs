@@ -148,7 +148,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 selectableObjects[index].text = TAB + selectableObjects[index].text;
                 selectableObjects[index].fontSize = selectedFontSize;
                 images[index].gameObject.SetActive(true);
-                AudioManager.Play("ChooseSelection");
+                AudioManager.Play("CursorMovement");
             }
             else
             {

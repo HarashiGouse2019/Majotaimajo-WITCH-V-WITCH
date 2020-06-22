@@ -5590,8 +5590,8 @@ MonoBehaviour:
     type: 2}
   soundVolumeAdjust: {fileID: 0}
   getAudio:
-  - name: ChooseSelection
-    clip: {fileID: 8300000, guid: 3d72da87b794c944589c0ebaf33dad7a, type: 3}
+  - name: CursorMovement
+    clip: {fileID: 8300000, guid: 028d41257396456438bf8261f6e7e164, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 0
@@ -31052,7 +31052,7 @@ MonoBehaviour:
   musicVolumeAdjust: {fileID: 0}
   getMusic:
   - name: WVWOST
-    clip: {fileID: 8300000, guid: 6205f1f338fa2a546a285904c78111fb, type: 3}
+    clip: {fileID: 0}
     volume: 1
     pitch: 1
     enableLoop: 1
@@ -41692,7 +41692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d26d7494fcf7e429be4659cacfa180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreSystem: {fileID: 515085987}
   Canvas: []
   tRenderer: {fileID: 0}
   HISCORETEXT: {fileID: 0}

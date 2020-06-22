@@ -80,7 +80,7 @@ public class Pawn : MonoBehaviour
     /// Activate a spell from the pawn's Spell Library
     /// </summary>
     /// <param name="_name"></param>
-    public virtual void ActivateSpell(string _name)
+    public virtual void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
 
     }

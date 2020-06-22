@@ -169,7 +169,7 @@ public class PlayerPawn : Pawn
         transform.localScale = xScale;
     }
 
-    public override void ActivateSpell(string _name)
+    public override void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
         Spell spell = library.FindSpell(_name);
 

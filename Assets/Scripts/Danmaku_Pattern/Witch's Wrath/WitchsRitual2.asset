@@ -17,6 +17,8 @@ MonoBehaviour:
     isHoming: 0
     initialSpeed: 5500
     incrementalSpeed: 500
+    speedLimit: 10000
+    carryOverSpeed: 0
     overrideRotation: 0
     initialRotation: 0
     rotationSpeed: 0
@@ -28,7 +30,9 @@ MonoBehaviour:
     rotationFocusEffect: 0
     rotationFocus: 1
     rotationFocusIncrementVal: 0
+    rotationFocusLimit: 0
     rotationIntensityEffect: 0
     rotationIntensity: 5
-    rotationIntensityIncrementVal: 0
+    rotationIntensityIncrementVal: 1
+    rotationIntensityLimit: 0
     transitionDuration: 0

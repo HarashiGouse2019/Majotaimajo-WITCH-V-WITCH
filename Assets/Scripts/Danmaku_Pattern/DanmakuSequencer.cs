@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using TreeEditor;
 using UnityEngine;
 
 public class DanmakuSequencer : MonoBehaviour
@@ -122,7 +124,10 @@ public class DanmakuSequencer : MonoBehaviour
 
             trig.bulletMember = block.bulletType;
 
-            trig.speed = block.initialSpeed;
+            trig.speedLimit = block.speedLimit;
+
+            if (!block.carryOverSpeed && block.initialSpeed < block.speedLimit)
+                trig.speed = block.initialSpeed;
 
             trig.incrementVal = block.incrementalSpeed;
 
@@ -131,7 +136,11 @@ public class DanmakuSequencer : MonoBehaviour
 
             trig.rotationFocus = block.rotationFocus;
 
+            trig.rotationFocusLimit = block.rotationFocusLimit;
+
             trig.rotationIntensity = block.rotationIntensity;
+
+            trig.rotationIntensityLimit = block.rotationIntensityLimit;
 
 
             #region Rotation
@@ -183,8 +192,12 @@ public class DanmakuSequencer : MonoBehaviour
                     trig.distribution = Shoot_Trig.DistributionType.Biformed;
                     break;
 
-                case Pattern.Block.DistributionType.Increment:
-                    trig.distribution = Shoot_Trig.DistributionType.Increment;
+                case Pattern.Block.DistributionType.UniformedIncrement:
+                    trig.distribution = Shoot_Trig.DistributionType.UniformedIncrement;
+                    break;
+
+                case Pattern.Block.DistributionType.BiFormedIncrement:
+                    trig.distribution = Shoot_Trig.DistributionType.BiformedIncrement;
                     break;
 
                 case Pattern.Block.DistributionType.Scattered:
@@ -253,6 +266,7 @@ public class DanmakuSequencer : MonoBehaviour
 
     void ResetAllValues()
     {
+        Debug.Log("Resetting");
         //Get the pawn
         Pawn pawn = GetComponent<Pawn>();
 
@@ -263,14 +277,40 @@ public class DanmakuSequencer : MonoBehaviour
         completedLoops = (int)reset;
         completedRoutines = (int)reset;
         runningRoutine = reset;
+
         enabled = false;
+
         trig.loop = false;
+        trig.distribution = default;
+        trig.rotation = default;
+        trig.speed = reset;
+        trig.speedLimit = (int)reset;
+        trig.loopSpeed = reset;
+        trig.numberOfProjectiles = 1;
+        trig.g_angle = reset;
+        trig.incrementVal = (int)reset;
+        trig.rotationFocus = reset;
+        trig.rotationIntensity = reset;
+        trig.rotationFocusIncrementVal = reset;
+        trig.rotationIntensityIncrementVal = reset;
+        trig.rotationIntensityLimit = reset;
+        trig.rotationFocusLimit = reset;
 
         //Reset pawn stat
         pawn.priority = pawn.basePriority;
         pawn.library.spellInUse = null;
 
-        //Clear routine
+        Clear();
+
+    }
+
+    void Clear()
+    {
         routine.Clear();
+    }
+
+    public void CallReset()
+    {
+        ResetAllValues();
     }
 }
