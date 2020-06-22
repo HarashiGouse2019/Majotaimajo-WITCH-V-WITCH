@@ -59,7 +59,7 @@ public class Stats
     const int DEFAULT_PRIORITY = 13;
     const int DEFAULT_MAGIC = 25;
     const int DEFAULT_KNOWLEDGE = 10;
-    const int DEFAULT_EVASIVENESS = 80;
+    const int DEFAULT_EVASIVENESS = 120;
     const int ZERO = 0;
     const StatsAttribute DEFAULT_ATTRIBUTE = StatsAttribute.MAGIC;
 

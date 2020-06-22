@@ -9,9 +9,9 @@ public class LuuPawn : Pawn, IBossEntity
 {
     public int UniqueIdentifier { get; set; } = 1;
     public float BossCurrentHealth { get; set; } = 0f;
-    public float BossMaxHealth { get; set; } = 1000f;
+    public float BossMaxHealth { get; set; } = 100f;
     public float CurrentPatience { get; set; } = 0f;
-    public float MaxPatience { get; set; } = 5000f;
+    public float MaxPatience { get; set; } = 2000f;
     public float PatienceDepletionRate { get; set; }
     public int HPLayer { get; set; } = 4;
 

@@ -5801,6 +5801,81 @@ PrefabInstance:
       objectReference: {fileID: 1336313011}
     - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
+      propertyPath: numberOfProjectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: speed.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: incrementVal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: speedLimit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: g_angle.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotation.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: distribution.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationFocus.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationFocusIncrementVal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationFocusLimit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationIntensity.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationIntensityIncrementVal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationIntensityLimit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: loop.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: loopSpeed.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 560486103}
@@ -5823,6 +5898,91 @@ PrefabInstance:
     - target: {fileID: 17790889872032897, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: numberOfProjectiles.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: speed.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: incrementVal.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: speedLimit.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: g_angle.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotation.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: distribution.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationFocus.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationFocusIncrementVal.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationFocusLimit.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationIntensity.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationIntensityIncrementVal.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: rotationIntensityLimit.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: loop.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: loopSpeed.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: bullet.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: bulletMember.Array.size
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []

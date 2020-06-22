@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: SakuraDance007
+  m_Name: SakuraHanabi001
   m_EditorClassIdentifier: 
   blocks:
-  - amount: 6
+  - amount: 8
     isHoming: 0
-    initialSpeed: 50
-    incrementalSpeed: 500
+    initialSpeed: 500
+    incrementalSpeed: 0
     speedLimit: 3000
-    carryOverSpeed: 0
+    carryOverSpeed: 1
     overrideRotation: 1
-    initialRotation: 180
+    initialRotation: 45
     rotationSpeed: 0
     bulletType: Sakura
     loop: 1
     loopRate: 0.025
-    rotation: 3
+    rotation: 0
     distribution: 4
     rotationFocusEffect: 0
     rotationFocus: 1
     rotationFocusIncrementVal: 0
     rotationFocusLimit: 1
-    rotationIntensityEffect: 1
-    rotationIntensity: 1
-    rotationIntensityIncrementVal: 1
-    rotationIntensityLimit: 6
+    rotationIntensityEffect: 0
+    rotationIntensity: 0
+    rotationIntensityIncrementVal: 0
+    rotationIntensityLimit: 0
     transitionDuration: 0

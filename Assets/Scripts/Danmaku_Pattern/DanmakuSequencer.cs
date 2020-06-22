@@ -113,6 +113,7 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
+        int index = 0;
         #region Assing Values
         foreach (Pattern.Block block in _pattern.blocks)
         {
@@ -236,6 +237,8 @@ public class DanmakuSequencer : MonoBehaviour
                     break;
             }
             #endregion
+
+            index++;
         }
         #endregion
     }
@@ -266,7 +269,6 @@ public class DanmakuSequencer : MonoBehaviour
 
     void ResetAllValues()
     {
-        Debug.Log("Resetting");
         //Get the pawn
         Pawn pawn = GetComponent<Pawn>();
 

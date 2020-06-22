@@ -7,6 +7,8 @@
     EventManager.Event @ev_dialogueEnd;
     EventManager.Event @ev_sakuraBurst;
     EventManager.Event @ev_sakuraFan;
+    EventManager.Event @ev_sakuraDance;
+    EventManager.Event @ev_sakuraHanabi;
 
     //This will be a test...
     protected override void MainTimeline()
@@ -59,6 +61,7 @@
                     print("Got her!!!");
                     Luu.SetMaxHealthValue(5000);
                     Luu.SetPatienceValue(10000);
+                    ev_sakuraDance.Trigger();
                     Luu.ResetValues();
                     Next();
                 }
@@ -71,7 +74,7 @@
                 if (Luu.HasLostPatience)
                 {
                     print("She lost patience again!");
-
+                    ev_sakuraHanabi.Trigger();
                     Next();
                 }
                 break;
@@ -106,5 +109,13 @@
         ev_sakuraFan = EventManager.AddNewEvent(2, "Sakura Fan",
             () => print("Activate Sakura Fan"),
             () => Luu.ActivateSpell("Sakura Fan", true));
+
+        ev_sakuraDance = EventManager.AddNewEvent(3, "Sakura Dance",
+            () => print("Activate Sakura Dance"),
+            () => Luu.ActivateSpell("Sakura Dance", true));
+
+        ev_sakuraHanabi = EventManager.AddNewEvent(3, "Sakura Hanabi",
+            () => print("Activate Sakura Hanabi"),
+            () => Luu.ActivateSpell("Sakura Hanabi", true));
     }
 }

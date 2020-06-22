@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
+  m_Name: Sakura Dance
+  m_EditorClassIdentifier: 
+  spellPriority: 10
+  magicConsumtion: 35
+  stepSpeed: 0.025
+  routineLayer: []
+  routine:
+  - pattern: {fileID: 11400000, guid: bb823af31d7fe4649a7a487600f0b50b, type: 2}
+    stepPos: 0
+  - pattern: {fileID: 11400000, guid: c0e2d24497af7d041876b208c4186717, type: 2}
+    stepPos: 50
+  - pattern: {fileID: 11400000, guid: a8aadbe0601a85f46a3e7bf2195d03b3, type: 2}
+    stepPos: 100
+  - pattern: {fileID: 11400000, guid: 134e6e5df406b1145bbf7c04be909bd8, type: 2}
+    stepPos: 150
+  - pattern: {fileID: 11400000, guid: 19f5392a2045f9741a8bc5c2e25bc88a, type: 2}
+    stepPos: 200
+  - pattern: {fileID: 11400000, guid: 7439a1042130bdf47a6235c36cd54f6b, type: 2}
+    stepPos: 250
+  - pattern: {fileID: 11400000, guid: 5151daee473d5a84da93ce791015cf2c, type: 2}
+    stepPos: 300
+  - pattern: {fileID: 11400000, guid: 91502027a9dfe4a44845973c432debb4, type: 2}
+    stepPos: 350
+  - pattern: {fileID: 11400000, guid: 0f689d5212019dc4d878f513118661be, type: 2}
+    stepPos: 400
+  - pattern: {fileID: 11400000, guid: bb823af31d7fe4649a7a487600f0b50b, type: 2}
+    stepPos: 450
+  enableSequenceLooping: 1

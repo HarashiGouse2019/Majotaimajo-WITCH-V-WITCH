@@ -145,13 +145,16 @@ MonoBehaviour:
   numberOfProjectiles: 3
   speed: 100
   incrementVal: 0
+  speedLimit: 0
   g_angle: 0
   rotation: -3
   distribution: 0
   rotationFocus: 1
   rotationFocusIncrementVal: 0
+  rotationFocusLimit: 0
   rotationIntensity: 1
   rotationIntensityIncrementVal: 0
+  rotationIntensityLimit: 0
   existingProjectiles: []
   steps: 0
   loop: 0
@@ -231,4 +234,6 @@ MonoBehaviour:
   spells:
   - {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
   - {fileID: 11400000, guid: e5a5533b3edf0bb4db1f9eafdf83e081, type: 2}
+  - {fileID: 11400000, guid: 91ee2477a4db0314c8990948d0e4a504, type: 2}
+  - {fileID: 11400000, guid: 9a9fb47c99f429748a31985d45d820b6, type: 2}
   spellIndex: 0
