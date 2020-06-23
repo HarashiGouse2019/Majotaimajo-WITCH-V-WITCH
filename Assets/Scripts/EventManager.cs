@@ -217,7 +217,10 @@ public static class EventManager
             {
                 //Trigger events of this uniqueID
                 Events[idIndex].Trigger();
-                return;
+            }
+            else
+            {
+                Events[idIndex].hasTriggered = false;
             }
         }
     }
@@ -231,7 +234,10 @@ public static class EventManager
             {
                 //Trigger events of this eventCode
                 Events[idIndex].Trigger();
-                return;
+            }
+            else
+            {
+                Events[idIndex].hasTriggered = false;
             }
         }
     }

@@ -41773,6 +41773,7 @@ MonoBehaviour:
   - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
     voice: 6
     speech: Here we go I guess...
+  isRunning: 0
 --- !u!4 &4961460816368090415
 Transform:
   m_ObjectHideFlags: 0

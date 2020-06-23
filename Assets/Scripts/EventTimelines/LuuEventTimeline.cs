@@ -1,9 +1,12 @@
-﻿public class LuuEventTimeline : EventTimeline, IEventSetup
+﻿using System.Diagnostics;
+
+public class LuuEventTimeline : EventTimeline, IEventSetup
 {
     private LuuPawn Luu;
     string testString = "";
 
     //Create some events
+    EventManager.Event @ev_dialogueRun;
     EventManager.Event @ev_dialogueEnd;
     EventManager.Event @ev_sakuraBurst;
     EventManager.Event @ev_sakuraFan;
@@ -24,16 +27,17 @@
                 Luu.SetBasePriority(3);
 
                 //Add events for Dialouge End
-                if (!Dialogue.IsRunning)
+                if (!ev_dialogueRun.HasTriggered())
                 {
+                    print("Running");
                     //Request for Dialogue Set 0
-                    Dialogue.Instance.Run(0);
+                    ev_dialogueRun.Trigger();
                 }
 
                 //Check if all events with DialogueEnd eventCode has been triggered
                 if (ev_dialogueEnd.HasTriggered())
                 {
-                    ev_dialogueEnd.RemoveListener(ev_dialogueEnd.listeners);
+                    ev_dialogueRun.hasTriggered = false;
                     Next();
                 }
 
@@ -59,8 +63,8 @@
                 if (Luu.HasHealthLowered)
                 {
                     print("Got her!!!");
-                    Luu.SetMaxHealthValue(5000);
-                    Luu.SetPatienceValue(10000);
+                    Luu.SetMaxHealthValue(2500);
+                    Luu.SetPatienceValue(5000);
                     ev_sakuraDance.Trigger();
                     Luu.ResetValues();
                     Next();
@@ -86,8 +90,8 @@
                 if (Luu.HasHealthLowered)
                 {
                     print("Got her again!");
-                    Luu.SetMaxHealthValue(10000);
-                    Luu.SetPatienceValue(15000);
+                    Luu.SetMaxHealthValue(5000);
+                    Luu.SetPatienceValue(7500);
                     Luu.ResetValues();
                     Next();
                 }
@@ -99,8 +103,7 @@
     public override void SetupEvents()
     {
         ev_dialogueEnd = EventManager.AddNewEvent(0, "DialogueEnd",
-            () => Luu.OnInitialized(ev_sakuraBurst),
-            () => EventManager.RemoveEvent(ev_dialogueEnd));
+            () => Luu.OnInitialized(ev_sakuraBurst));
 
         ev_sakuraBurst = EventManager.AddNewEvent(1, "Sakura Burst",
             () => print("Activate Sakura Burst"),
@@ -114,8 +117,11 @@
             () => print("Activate Sakura Dance"),
             () => Luu.ActivateSpell("Sakura Dance", true));
 
-        ev_sakuraHanabi = EventManager.AddNewEvent(3, "Sakura Hanabi",
+        ev_sakuraHanabi = EventManager.AddNewEvent(4, "Sakura Hanabi",
             () => print("Activate Sakura Hanabi"),
             () => Luu.ActivateSpell("Sakura Hanabi", true));
+
+        ev_dialogueRun = EventManager.AddNewEvent(5, "DialogueRun",
+            () => Dialogue.Instance.Run(0));
     }
 }

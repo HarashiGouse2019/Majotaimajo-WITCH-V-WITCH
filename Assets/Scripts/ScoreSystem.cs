@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Alarm;
 public class ScoreSystem : UnityEngine.MonoBehaviour
@@ -64,5 +65,10 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     public static void SetHighScore(int score)
     {
         HighScore = score;
+    }
+
+    public static void ClearHighScore()
+    {
+        HighScore = default;
     }
 }

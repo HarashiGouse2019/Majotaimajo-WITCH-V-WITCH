@@ -22,7 +22,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     int SelectionIndex = 0;
 
     //KeyDown
-    bool keyDown = false;
+    bool keyDown = true;
 
     //Constants
     const string SELECTABLE_TAG = "Selectable";
@@ -95,6 +95,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
             //Check if input is being received
             if (horizontalDir == NEXT_SELECTION || verticalDir == PREVIOUS_SELECTION)
             {
+                AudioManager.Play("CursorMovement");
                 SelectionIndex += NEXT_SELECTION;
 
                 //Check if bigger than size
@@ -103,10 +104,12 @@ public class TitleSelection : MonoBehaviour, IEventSetup
 
                 //Update Text UI
                 UpdateTextUI();
+
             }
 
             if (horizontalDir == PREVIOUS_SELECTION || verticalDir == NEXT_SELECTION)
             {
+                AudioManager.Play("CursorMovement");
                 SelectionIndex += PREVIOUS_SELECTION;
 
                 //Check if smaller than 0
@@ -116,6 +119,8 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 //Update Text UI
                 UpdateTextUI();
             }
+
+           
 
             //Button is down
             keyDown = true;
@@ -148,7 +153,6 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 selectableObjects[index].text = TAB + selectableObjects[index].text;
                 selectableObjects[index].fontSize = selectedFontSize;
                 images[index].gameObject.SetActive(true);
-                AudioManager.Play("CursorMovement");
             }
             else
             {

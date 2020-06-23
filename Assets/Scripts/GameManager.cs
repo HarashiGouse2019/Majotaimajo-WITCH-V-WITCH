@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        SceneManager.sceneLoaded += OnLoadedScene;
     }
 
 
@@ -278,7 +280,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
         textBoxUI.gameObject.SetActive(false);
-        StopCoroutine(DisableDelay(_delay));
+        StopAllCoroutines();
     }
 
     public void ToNextDialogue()
@@ -300,6 +302,7 @@ public class GameManager : MonoBehaviour
                 //This is where we start our Danmaku routines
                 //In another script of course!!
                 Dialogue.IsRunning = false;
+                Dialogue.Instance.isRunning = Dialogue.IsRunning;
                 Dialogue.OnDialogueEnd();
             }
         }
@@ -364,7 +367,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void OnLoadedScene(Scene _scene, LoadSceneMode mode)
     {
         AssignUIElements();
     }

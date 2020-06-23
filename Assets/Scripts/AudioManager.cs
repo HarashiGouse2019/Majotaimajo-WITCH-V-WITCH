@@ -55,6 +55,7 @@ public class AudioManager : MonoBehaviour
             a.source.pitch = a.pitch;
             a.source.loop = a.enableLoop;
             a.source.outputAudioMixerGroup = audioMixer;
+            a.source.playOnAwake = false;
         }
     }
     /// <summary>

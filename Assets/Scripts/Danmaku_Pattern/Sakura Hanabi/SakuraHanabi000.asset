@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: SakuraHanabi000
   m_EditorClassIdentifier: 
   blocks:
-  - amount: 4
+  - amount: 2
     isHoming: 0
     initialSpeed: 500
     incrementalSpeed: 0
     speedLimit: 3000
     carryOverSpeed: 1
-    overrideRotation: 1
+    overrideRotation: 0
     initialRotation: 0
     rotationSpeed: 0
     bulletType: Sakura
     loop: 1
     loopRate: 0.025
-    rotation: 0
+    rotation: 1
     distribution: 4
     rotationFocusEffect: 0
     rotationFocus: 1
@@ -33,6 +33,6 @@ MonoBehaviour:
     rotationFocusLimit: 1
     rotationIntensityEffect: 1
     rotationIntensity: 1
-    rotationIntensityIncrementVal: 0.02
-    rotationIntensityLimit: 10
+    rotationIntensityIncrementVal: 1
+    rotationIntensityLimit: 8
     transitionDuration: 0

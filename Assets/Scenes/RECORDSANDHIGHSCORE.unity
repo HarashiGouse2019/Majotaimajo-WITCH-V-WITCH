@@ -514,6 +514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &377840310
@@ -575,7 +581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aeedc47a6aa7f4cb9ba9a94150848d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerEntries: []
+  entries: []
+  entryObjects: []
 --- !u!222 &377840313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -830,6 +837,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &806958341
@@ -1004,6 +1017,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1015119740
@@ -1178,6 +1197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1021872826
@@ -1500,6 +1525,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1061901754
@@ -1906,6 +1937,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1482684254
@@ -2080,6 +2117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1554083143
@@ -2328,6 +2371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1707787387
@@ -2502,6 +2551,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1858731469
@@ -2676,6 +2731,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe476e00ed840249ab29d9b37f59a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entry:
+    EntryID: 1
+    PlayerName: '----------'
+    PlayerScore: 0
+    StageNumber: 1
+    GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
 --- !u!1 &1911534431

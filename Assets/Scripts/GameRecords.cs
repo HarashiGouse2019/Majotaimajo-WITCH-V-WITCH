@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Record
 {
-    public List<ScoreEntry> scoreEntries;
-    public Record(List<ScoreEntry> entries)
+    public List<Entry> scoreEntries;
+    public Record(List<Entry> entries)
     {
         scoreEntries = entries;
     }
@@ -32,8 +34,11 @@ public class GameRecords : MonoBehaviour
     //Input Obj
 
     //All Entries
-    [SerializeField]
-    public List<ScoreEntry> PlayerEntries = new List<ScoreEntry>();
+    public static List<Entry> Entries = new List<Entry>();
+    public List<Entry> entries = new List<Entry>();
+
+    public static List<ScoreEntryObj> EntryObjects = new List<ScoreEntryObj>();
+    public List<ScoreEntryObj> entryObjects = new List<ScoreEntryObj>();
 
     //Positioning
     public static int Positioning { get; private set; } = 0;
@@ -69,7 +74,6 @@ public class GameRecords : MonoBehaviour
             () => SwitchTo(State.RECORD));
 
         entryEvent.Trigger();
-        ScoreSystem.SetHighScore(10291827);
         DetermineRanking(ScoreSystem.HighScore);
     }
 
@@ -89,39 +93,96 @@ public class GameRecords : MonoBehaviour
         CurrentMode = state;
     }
 
-    public static void AddNewEntry(ScoreEntry entry)
+    public static void AddNewEntry(ScoreEntryObj entry)
     {
-        Instance.PlayerEntries.Add(entry);
+        EntryObjects.Add(entry);
     }
 
     public static void WriteAtRank(int position)
     {
-        Instance.PlayerEntries[position].UpdateEntry(position + 1, EntryInput.GetSubmittedName(), ScoreSystem.HighScore, DateTime.Now, 0, 0f);
+        EntryObjects[position].UpdateEntry(position + 1, EntryInput.GetSubmittedName(), ScoreSystem.HighScore, DateTime.Now, 1, 0f);
+        Entries.Add(EntryObjects[position].GetEntry());
+        Record newRecord = new Record(Entries);
+        SaveRecord(newRecord);
+
+        //Now we clear highscore in the system
+        ScoreSystem.ClearHighScore();
         Instance.ready = true;
     }
 
     public static void GetAllScoreEntries()
     {
-        ScoreEntry[] entries = Instance.GetComponentsInChildren<ScoreEntry>();
-        Instance.PlayerEntries = entries.ToList();
+        ScoreEntryObj[] objs = Instance.GetComponentsInChildren<ScoreEntryObj>();
+
+        //Load Json File
+        try
+        {
+            Record savedRecord = LoadRecord();
+            if (savedRecord != null)
+            {
+                int index = 0;
+                foreach (ScoreEntryObj obj in objs)
+                {
+                    //Get entry information saved from json
+                    Entry entry = savedRecord.scoreEntries[index];
+
+                    //Update UI Text 
+                    obj.UpdateEntry(
+                        entry.EntryID,
+                        entry.PlayerName,
+                        entry.PlayerScore,
+                        entry.DateAchieved,
+                        entry.StageNumber,
+                        entry.GameCompletionPercentage);
+
+                    Entries.Add(obj.entry);
+
+                    index++;
+                }
+
+            }
+        }
+        catch
+        {
+            Debug.LogError("No Records Found");
+        }
+        EntryObjects = objs.ToList();
     }
 
     public static void DetermineRanking(int score)
     {
         int index = 0;
+
         //Compares the score of all other users
-        foreach (ScoreEntry entry in Instance.PlayerEntries)
+        foreach (ScoreEntryObj obj in EntryObjects)
         {
-            if (score >= entry.PlayerScore)
+            if (score >= obj.GetEntry().PlayerScore)
             {
-                Positioning = index;
+                Positioning = 9 - index;
                 Debug.Log("Rank " + (Positioning + 1));
-                break;
+                obj.highlighting.gameObject.SetActive(true);
             }
             else
             {
-                entry.highlighting.gameObject.SetActive(false);
+                obj.highlighting.gameObject.SetActive(false);
             }
+
+            index++;
         }
     }
+
+    public static void SaveRecord(Record record)
+    {
+        string recordJson = JsonUtility.ToJson(record);
+        Debug.Log(recordJson);
+        if(File.Exists(Application.persistentDataPath + @"/TOP.json"))
+            File.WriteAllText(Application.persistentDataPath + @"/TOP.json", recordJson);
+        else
+        {
+            File.CreateText(Application.persistentDataPath + @"/TOP.json");
+            File.WriteAllText(Application.persistentDataPath + @"/TOP.json", recordJson);
+        }
+    }
+
+    public static Record LoadRecord() => JsonUtility.FromJson<Record>(File.ReadAllText(Application.persistentDataPath + @"/TOP.json"));
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellPriority: 15
   magicConsumtion: 45
-  stepSpeed: 0.05
+  stepSpeed: 0.01
   routineLayer: []
   routine:
   - pattern: {fileID: 11400000, guid: 3cd7bd65522a72b48a58ca8ddf084425, type: 2}

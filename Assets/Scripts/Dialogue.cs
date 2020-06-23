@@ -32,9 +32,20 @@ public class Dialogue : MonoBehaviour
     public IEnumerator displayText;
 
     public static bool IsRunning = false;
+    public bool isRunning = true;
     private void Awake()
     {
-        Instance = this;
+        #region Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        } 
+        #endregion
     }
     public void Run(int _index, float _speed = 0.05f)
     {
@@ -46,12 +57,14 @@ public class Dialogue : MonoBehaviour
         displayText = manager.DisplayText(dialogue[_index].speech, _speed, dialogue[_index].voice);
 
         IsRunning = true;
+        isRunning = IsRunning;
 
         StartCoroutine(displayText);
     }
 
     public static void OnDialogueEnd()
     {
+        Instance.isRunning = IsRunning;
         if (!IsRunning)
         {
             EventManager.TriggerEvent("DialogueEnd");

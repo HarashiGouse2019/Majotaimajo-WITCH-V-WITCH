@@ -4,12 +4,13 @@ using System.IO;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class LuuPawn : Pawn, IBossEntity
 {
     public int UniqueIdentifier { get; set; } = 1;
     public float BossCurrentHealth { get; set; } = 0f;
-    public float BossMaxHealth { get; set; } = 100f;
+    public float BossMaxHealth { get; set; } = 500f;
     public float CurrentPatience { get; set; } = 0f;
     public float MaxPatience { get; set; } = 2000f;
     public float PatienceDepletionRate { get; set; }
@@ -103,6 +104,8 @@ public class LuuPawn : Pawn, IBossEntity
     /// <param name="_name"></param>
     public override void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
+        if (sequencer == null) return;
+
         //Find a spell in the library by name
         Spell spell = library.FindSpell(_name);
 
@@ -123,6 +126,8 @@ public class LuuPawn : Pawn, IBossEntity
 
     void SetupSpell(Spell spell)
     {
+        if (sequencer == null) return;
+
         library.spellInUse = spell;
 
         //Increate pawn's priority!!!
