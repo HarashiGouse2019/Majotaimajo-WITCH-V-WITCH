@@ -17,6 +17,12 @@ public class ScoreEntryObj : MonoBehaviour
     //The text mesh pro
     public TextMeshProUGUI entryText;
 
+    //Top Entry
+    public ScoreEntryObj topEntry;
+
+    //Bottom Entry
+    public ScoreEntryObj bottomEntry;
+
     private void Awake()
     {
         Instance = this;

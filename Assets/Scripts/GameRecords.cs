@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
 
 public class Record
 {
@@ -41,8 +37,6 @@ public class GameRecords : MonoBehaviour
     public static List<ScoreEntryObj> EntryObjects = new List<ScoreEntryObj>();
     public List<ScoreEntryObj> entryObjects = new List<ScoreEntryObj>();
 
-    LinkedList<ScoreEntryObj> textObjects = new LinkedList<ScoreEntryObj>();
-
     //Positioning
     public static int Positioning { get; private set; } = 0;
 
@@ -71,7 +65,7 @@ public class GameRecords : MonoBehaviour
     void Start()
     {
         //I get all highscore entries (just the gameObjects)
-        GetAllScoreEntries();
+        GetAllScoreEntries(false);
 
         //New Event
         entryEvent = EventManager.AddNewEvent(50, "NewEntry",
@@ -105,7 +99,7 @@ public class GameRecords : MonoBehaviour
     public static void WriteAtRank(int position)
     {
         EntryObjects[position].UpdateEntry(position + 1, EntryInput.GetSubmittedName(), ScoreSystem.HighScore, DateTime.Now, 1, 0f);
-        
+
         Record newRecord = new Record(Entries);
         SaveRecord(newRecord);
 
@@ -115,7 +109,7 @@ public class GameRecords : MonoBehaviour
         Instance.ready = true;
     }
 
-    public static void GetAllScoreEntries()
+    public static void GetAllScoreEntries(bool considerPositioning)
     {
         ScoreEntryObj[] objs = Instance.GetComponentsInChildren<ScoreEntryObj>();
 
@@ -123,28 +117,28 @@ public class GameRecords : MonoBehaviour
         try
         {
             Record savedRecord = LoadRecord();
-            if (savedRecord != null)
+            int index = 0;
+            foreach (ScoreEntryObj obj in objs)
             {
-                int index = 0;
-                foreach (ScoreEntryObj obj in objs)
-                {
-                    //Get entry information saved from json
-                    Entry entry = savedRecord.scoreEntries[index];
+                //Get entry information saved from json
+                Entry entry = savedRecord.scoreEntries[index];
 
-                    //Update UI Text 
-                    obj.UpdateEntry(
-                        entry.EntryID,
-                        entry.PlayerName,
-                        entry.PlayerScore,
-                        entry.DateAchieved,
-                        entry.StageNumber,
-                        entry.GameCompletionPercentage);
+                if (considerPositioning && index == Positioning)
+                    continue;
 
-                    Entries.Add(obj.entry);
+                //Update UI Text 
+                obj.UpdateEntry (
+                    entry.EntryID,
+                    entry.PlayerName,
+                    entry.PlayerScore,
+                    entry.DateAchieved,
+                    entry.StageNumber,
+                    entry.GameCompletionPercentage
+                );
 
-                    index++;
-                }
+                Entries.Add(obj.entry);
 
+                index++;
             }
         }
         catch
@@ -161,14 +155,14 @@ public class GameRecords : MonoBehaviour
         //Compares the score of all other users
         foreach (ScoreEntryObj obj in EntryObjects)
         {
-            if (score >= obj.GetEntry().PlayerScore)
+            if (score > obj.GetEntry().PlayerScore)
             {
                 Positioning = index;
                 Debug.Log("Rank " + (Positioning + 1));
                 UpdateHighlighting();
-                
                 Entries.Add(EntryObjects[index].GetEntry());
-                return;
+                GetAllScoreEntries(true);
+                break;
             }
 
             index++;
@@ -177,7 +171,7 @@ public class GameRecords : MonoBehaviour
 
     public static void UpdateHighlighting()
     {
-        for(int index = 0; index < EntryObjects.Count; index++)
+        for (int index = 0; index < EntryObjects.Count; index++)
         {
             if (index == Positioning)
                 EntryObjects[index].highlighting.gameObject.SetActive(true);
@@ -193,13 +187,17 @@ public class GameRecords : MonoBehaviour
     {
         //I'll have to take the current highscore's ranking position,
         //And moving the other entries into 
+        for (int index = 0; index < EntryObjects.Count; index++)
+        {
+
+        }
     }
 
     public static void SaveRecord(Record record)
     {
         string recordJson = JsonUtility.ToJson(record);
 
-        if(File.Exists(Application.persistentDataPath + @"/TOP.json"))
+        if (File.Exists(Application.persistentDataPath + @"/TOP.json"))
             File.WriteAllText(Application.persistentDataPath + @"/TOP.json", recordJson);
         else
         {

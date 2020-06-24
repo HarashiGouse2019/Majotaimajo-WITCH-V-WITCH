@@ -14,7 +14,7 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     public static int Score { get; private set; } = 0;
     public static int HighScore { get; private set; } = 0;
 
-    Timer timer = new Timer(1);
+    static Timer ScoreTimer = new Timer(1);
 
     private void Awake()
     {
@@ -39,13 +39,13 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     public void Amplify()
     {
         Score += (hitpoint * timesHit) + stallpoint;
-        timer.StartTimer(0);
-        timer.currentTime[0] = 0;
+        ScoreTimer.StartTimer(0);
+        ScoreTimer.currentTime[0] = 0;
     }
 
     public void StreakDuration(int _value)
     {
-        if (timer.SetFor(_value, 0))
+        if (ScoreTimer.SetFor(_value, 0))
         {
             BreakStreak();
         }
@@ -54,7 +54,7 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     public void BreakStreak()
     {
         timesHit = 0;
-        timer.SetToZero(0);
+        ScoreTimer.SetToZero(0);
     }
 
     public int GetScore()
@@ -69,10 +69,12 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
 
     public static void ClearScore()
     {
+        ScoreTimer.SetToZero(0, true);
         Score = 0;
     }
     public static void ClearHighScore()
     {
+        ScoreTimer.SetToZero(0, true);
         HighScore = 0;
     }
 }
