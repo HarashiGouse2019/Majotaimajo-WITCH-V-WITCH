@@ -437,7 +437,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -940,7 +940,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -1860,7 +1860,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3
@@ -2654,7 +2654,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_textAlignment: 520
+  m_textAlignment: 514
   m_characterSpacing: 12
   m_wordSpacing: 52
   m_lineSpacing: 29.3

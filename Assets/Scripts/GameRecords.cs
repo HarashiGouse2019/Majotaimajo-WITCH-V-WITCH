@@ -101,7 +101,7 @@ public class GameRecords : MonoBehaviour
     public static void WriteAtRank(int position)
     {
         EntryObjects[position].UpdateEntry(position + 1, EntryInput.GetSubmittedName(), ScoreSystem.HighScore, DateTime.Now, 1, 0f);
-        Entries.Add(EntryObjects[position].GetEntry());
+        
         Record newRecord = new Record(Entries);
         SaveRecord(newRecord);
 
@@ -158,23 +158,45 @@ public class GameRecords : MonoBehaviour
         {
             if (score >= obj.GetEntry().PlayerScore)
             {
-                Positioning = 9 - index;
+                Positioning = index;
                 Debug.Log("Rank " + (Positioning + 1));
-                obj.highlighting.gameObject.SetActive(true);
-            }
-            else
-            {
-                obj.highlighting.gameObject.SetActive(false);
+                UpdateHighlighting();
+                
+                Entries.Add(EntryObjects[index].GetEntry());
+                ShiftList();
+                return;
             }
 
             index++;
         }
     }
 
+    public static void UpdateHighlighting()
+    {
+        for(int index = 0; index < EntryObjects.Count; index++)
+        {
+            if (index == Positioning)
+                EntryObjects[index].highlighting.gameObject.SetActive(true);
+            else
+                EntryObjects[index].highlighting.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Will shift a rank up or down depending on the current ranking
+    /// </summary>
+    public static void ShiftList()
+    {
+        //Take the list, and reorganize list with LINQ
+        //Using the score as a way to order them
+        IEnumerable<ScoreEntryObj> scoreQuery = EntryObjects.OrderBy(score => score.entry.PlayerScore);
+        EntryObjects = scoreQuery.ToList();
+    }
+
     public static void SaveRecord(Record record)
     {
         string recordJson = JsonUtility.ToJson(record);
-        Debug.Log(recordJson);
+
         if(File.Exists(Application.persistentDataPath + @"/TOP.json"))
             File.WriteAllText(Application.persistentDataPath + @"/TOP.json", recordJson);
         else
