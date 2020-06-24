@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class Record
@@ -40,6 +41,8 @@ public class GameRecords : MonoBehaviour
     public static List<ScoreEntryObj> EntryObjects = new List<ScoreEntryObj>();
     public List<ScoreEntryObj> entryObjects = new List<ScoreEntryObj>();
 
+    LinkedList<ScoreEntryObj> textObjects = new LinkedList<ScoreEntryObj>();
+
     //Positioning
     public static int Positioning { get; private set; } = 0;
 
@@ -67,6 +70,7 @@ public class GameRecords : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //I get all highscore entries (just the gameObjects)
         GetAllScoreEntries();
 
         //New Event
@@ -106,6 +110,7 @@ public class GameRecords : MonoBehaviour
         SaveRecord(newRecord);
 
         //Now we clear highscore in the system
+        ScoreSystem.ClearScore();
         ScoreSystem.ClearHighScore();
         Instance.ready = true;
     }
@@ -144,7 +149,7 @@ public class GameRecords : MonoBehaviour
         }
         catch
         {
-            Debug.LogError("No Records Found");
+            EntryObjects = objs.ToList();
         }
         EntryObjects = objs.ToList();
     }
@@ -163,7 +168,6 @@ public class GameRecords : MonoBehaviour
                 UpdateHighlighting();
                 
                 Entries.Add(EntryObjects[index].GetEntry());
-                ShiftList();
                 return;
             }
 
@@ -187,10 +191,8 @@ public class GameRecords : MonoBehaviour
     /// </summary>
     public static void ShiftList()
     {
-        //Take the list, and reorganize list with LINQ
-        //Using the score as a way to order them
-        IEnumerable<ScoreEntryObj> scoreQuery = EntryObjects.OrderBy(score => score.entry.PlayerScore);
-        EntryObjects = scoreQuery.ToList();
+        //I'll have to take the current highscore's ranking position,
+        //And moving the other entries into 
     }
 
     public static void SaveRecord(Record record)

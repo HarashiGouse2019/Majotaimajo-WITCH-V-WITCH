@@ -67,8 +67,12 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
         HighScore = score;
     }
 
+    public static void ClearScore()
+    {
+        Score = 0;
+    }
     public static void ClearHighScore()
     {
-        HighScore = default;
+        HighScore = 0;
     }
 }
