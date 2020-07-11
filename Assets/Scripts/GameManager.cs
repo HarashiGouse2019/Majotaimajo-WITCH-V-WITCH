@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+
         Application.targetFrameRate = 60;
         #region Singleton
         if (Instance == null)
@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
-        if(SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
+        if (HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
+        if (SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
 
         if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) AddToScore(1);
 
@@ -95,13 +95,16 @@ public class GameManager : MonoBehaviour
 
     public static void StartGame()
     {
-        switch (IsPractice) {
+
+        switch (IsPractice)
+        {
             case true:
-                Instance.SetPlayerLives(10);
+                Instance.SetPlayerLives(6);
+
                 break;
 
             case false:
-                Instance.SetPlayerLives(5);
+                Instance.SetPlayerLives(3);
                 break;
         }
     }
@@ -370,5 +373,10 @@ public class GameManager : MonoBehaviour
     private void OnLoadedScene(Scene _scene, LoadSceneMode mode)
     {
         AssignUIElements();
+
+        BallotItem newBallotItem = new BallotItem();
+
+        if (newBallotItem != null)
+            ItemInventory.AddNewItem(0, newBallotItem, 3);
     }
 }
