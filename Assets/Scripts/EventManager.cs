@@ -83,6 +83,15 @@ public static class EventManager
         }
 
         /// <summary>
+        /// Set HasTriggered to false, as if it hasn't been triggered
+        /// </summary>
+        public void Reset()
+        {
+            if (hasTriggered)
+                hasTriggered = false;
+        }
+
+        /// <summary>
         /// Returns if this even has been triggered
         /// </summary>
         public bool HasTriggered()

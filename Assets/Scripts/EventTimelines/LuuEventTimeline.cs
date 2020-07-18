@@ -1,9 +1,11 @@
-﻿using System.Diagnostics;
+﻿using UnityEngine;
 
 public class LuuEventTimeline : EventTimeline, IEventSetup
 {
     private LuuPawn Luu;
     string testString = "";
+
+    
 
     //Create some events
     EventManager.Event @ev_dialogueRun;
@@ -37,7 +39,7 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
                 //Check if all events with DialogueEnd eventCode has been triggered
                 if (ev_dialogueEnd.HasTriggered())
                 {
-                    ev_dialogueRun.hasTriggered = false;
+                    ev_dialogueRun.Reset();
                     Next();
                 }
 
@@ -51,9 +53,14 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
                 {
                     print("She has lost patience!!!");
                     ev_sakuraFan.Trigger();
-                    Next();
+                    
                 }
 
+                if (ev_sakuraFan.HasTriggered())
+                {
+                    ev_sakuraFan.Reset();
+                    Next();
+                }
                 break;
             #endregion
 
@@ -67,6 +74,11 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
                     Luu.SetPatienceValue(5000);
                     ev_sakuraDance.Trigger();
                     Luu.ResetValues();
+                }
+
+                if (ev_sakuraDance.HasTriggered())
+                {
+                    ev_sakuraDance.Reset();
                     Next();
                 }
                 break;
@@ -79,6 +91,12 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
                 {
                     print("She lost patience again!");
                     ev_sakuraHanabi.Trigger();
+                    Next();
+                }
+
+                if (ev_sakuraHanabi.HasTriggered())
+                {
+                    ev_sakuraHanabi.Reset();
                     Next();
                 }
                 break;
@@ -107,11 +125,13 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
 
         ev_sakuraBurst = EventManager.AddNewEvent(1, "Sakura Burst",
             () => print("Activate Sakura Burst"),
-            () => Luu.ActivateSpell("Sakura Burst")) ;
+            () => Luu.ActivateSpell("Sakura Burst"),
+            () => Luu.GetComponent<Animator>().Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[0]).name));
 
         ev_sakuraFan = EventManager.AddNewEvent(2, "Sakura Fan",
             () => print("Activate Sakura Fan"),
-            () => Luu.ActivateSpell("Sakura Fan", true));
+            () => Luu.ActivateSpell("Sakura Fan", true),
+            () => Luu.GetComponent<Animator>().Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[1]).name));
 
         ev_sakuraDance = EventManager.AddNewEvent(3, "Sakura Dance",
             () => print("Activate Sakura Dance"),

@@ -57,6 +57,11 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
         ScoreTimer.SetToZero(0);
     }
 
+    public static void AddToScore(int value)
+    {
+        Score += value;
+    }
+
     public int GetScore()
     {
         return Score;

@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
-using TreeEditor;
 using UnityEngine;
 
 public class DanmakuSequencer : MonoBehaviour

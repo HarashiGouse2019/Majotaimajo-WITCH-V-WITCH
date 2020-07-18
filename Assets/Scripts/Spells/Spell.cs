@@ -31,4 +31,25 @@ public class Spell : ScriptableObject
     public List<Routine> routine = new List<Routine>();
 
     public bool enableSequenceLooping;
+
+    AnimationClip movement;
+
+    Animator animator;
+
+    public AnimationClip SetMovementClip(AnimationClip clip)
+    {
+        movement = clip;
+        return movement;
+    }
+
+    public AnimationClip SetMovementClip(DanmakuMovement movement)
+    {
+        this.movement = movement.GetClip();
+        return this.movement;
+    }
+
+    public void AssignAnimator(Animator animator)
+    {
+        this.animator = animator;
+    }
 }

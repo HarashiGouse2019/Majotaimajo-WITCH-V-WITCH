@@ -243,10 +243,10 @@ public class GameManager : MonoBehaviour
                     case Dialogue.Script.Voices.None:
                         AudioManager.Play("Type000", _oneShot: true);
                         break;
-                    case Dialogue.Script.Voices.Amber:
+                    case Dialogue.Script.Voices.Amben:
                         AudioManager.Play("Type000", _oneShot: true);
                         break;
-                    case Dialogue.Script.Voices.August:
+                    case Dialogue.Script.Voices.Augusta:
                         AudioManager.Play("Type000", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Crystal:

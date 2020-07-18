@@ -1,10 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using Unity.Collections.LowLevel.Unsafe;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class LuuPawn : Pawn, IBossEntity
 {
@@ -24,6 +20,8 @@ public class LuuPawn : Pawn, IBossEntity
     public bool HasHealthLowered { get; set; } = false;
 
     public bool IsDefeated { get; set; } = false;
+
+    public DanmakuMovement[] movement  = new DanmakuMovement[5];
 
     //How many seconds it takes to deplete patience
     const float DEPLETEION_PER_SEC = 0.001f;

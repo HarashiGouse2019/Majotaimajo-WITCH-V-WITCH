@@ -7620,5 +7620,55 @@ PrefabInstance:
       propertyPath: m_Name
       value: Luu_BulletOrigin
       objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814303, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: movement.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814303, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: movement.Array.data[0].movementName
+      value: SakuraBurstMovement
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814303, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: movement.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 7e531a074a2eedb419f04a2060cb0d32, type: 2}
+    - target: {fileID: 9003943612334814303, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: movement.Array.data[1].movementName
+      value: SakuraFanMovement
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814303, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: movement.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 3692f0178803ed249ac4cf5f445ff923, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d0f104368240704c8b6d16302dfc859, type: 3}
+--- !u!1 &9003943611812110983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9003943612334814288, guid: 3d0f104368240704c8b6d16302dfc859,
+    type: 3}
+  m_PrefabInstance: {fileID: 9003943611812110982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9003943611812110984
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003943611812110983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7157fa4d63724f949b480f8a058b4d6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

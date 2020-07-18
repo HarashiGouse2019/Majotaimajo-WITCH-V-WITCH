@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -146976662642131311}
   - component: {fileID: -5323842912988242625}
   - component: {fileID: 7450509780403276446}
+  - component: {fileID: -1100537282617000983}
   m_Layer: 0
   m_Name: bullet2
   m_TagString: Untagged
@@ -147,3 +148,22 @@ MonoBehaviour:
   originatedSpawnPoint: {fileID: 0}
   pawn: {fileID: 0}
   priority: 0
+--- !u!114 &-1100537282617000983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258858909891300472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8587b1b31824bf54db896f62867930be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemChanceRates:
+  - itemPrefab: {fileID: 4485710545923369700, guid: 6268317e0bb08264983c359bd12f5524,
+      type: 3}
+    chanceRate: 0.25
+  - itemPrefab: {fileID: 4520199790600030241, guid: 607d8a4e8225436448f381d8e16b49a4,
+      type: 3}
+    chanceRate: 0.5
