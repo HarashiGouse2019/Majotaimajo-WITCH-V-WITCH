@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     #region Public Members
     public static GameManager Instance;
 
+    public bool NoDeaths = false;
+
     //Reference to canvas (we'll make it a list since we have so many)
     public List<Canvas> Canvas;
 

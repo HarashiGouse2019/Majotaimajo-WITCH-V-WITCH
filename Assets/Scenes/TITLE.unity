@@ -31051,8 +31051,8 @@ MonoBehaviour:
     type: 2}
   musicVolumeAdjust: {fileID: 0}
   getMusic:
-  - name: WVWOST
-    clip: {fileID: 0}
+  - name: The Decently Promising Sakura
+    clip: {fileID: 8300000, guid: 425f6be3037fe9f4397b264b095a54ee, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 1
@@ -41692,6 +41692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d26d7494fcf7e429be4659cacfa180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NoDeaths: 1
   Canvas: []
   tRenderer: {fileID: 0}
   HISCORETEXT: {fileID: 0}
