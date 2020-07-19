@@ -67,6 +67,9 @@ public class PlayerPawn : Pawn
         //Start Recovery Sequence
         StartCoroutine(PassiveRecoveryCycle());
 
+        //Start Hit Cycle Coroutine
+        StartCoroutine(BlinkCycle(0.05f));
+
         //Read your SpellLibrary, and override GameUi spell text
         for (int i = 0; i < library.spells.Length; i++)
         {
@@ -79,11 +82,8 @@ public class PlayerPawn : Pawn
         if (recoil == true) Wait(0.05f);
         if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
 
-        //For our blinking effect
         if (hit == true)
-        {
-            Blink(0.15f, 5f);
-        }
+            Blink(5f);
         else
         {
             isVisible = true;
@@ -211,43 +211,54 @@ public class PlayerPawn : Pawn
         if (returnVal == true) { recoil = false; timer.SetToZero(2, true); }
     }
 
-    public override void Blink(float _blinkRate, float _duration)
+    public override void Blink(float _duration)
     {
         if (hit == true)
         {
-            if (GameManager.Instance.GetPlayerLives() < 1 && !GameManager.Instance.NoDeaths)
-            {
-                GameSceneManager.Instance.LoadScene("RECORDSANDHIGHSCORE");
-            }
-
-            //Timer for blinking rate
-            timer.StartTimer(0);
-
+           
             //Timer for duration
             timer.StartTimer(1);
 
             //Since there's a timer in Pawn, and I've initialized 12, I'm going to use alarm 6
             //We'll pass the blink rate to our SetFor method.
             returnVal = timer.SetFor(_duration, 1, true);
-            if (timer.SetFor(_blinkRate, 0) && isVisible)
-            {
-                Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
-                srenderer.color = invisible;
-                isVisible = false;
-            }
-            else if (timer.SetFor(_blinkRate, 0) && isVisible == false)
-            {
-                Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
-                srenderer.color = visible;
-                isVisible = true;
-            }
 
             if (returnVal)
             {
                 hit = false;
                 timer.SetToZero(1, true);
-                timer.SetToZero(0, true);
             }
+        }
+    }
+
+    IEnumerator BlinkCycle(float _blinkRate)
+    {
+        while (true)
+        {
+            if (hit)
+            {
+                if (GameManager.Instance.GetPlayerLives() < 1 && !GameManager.Instance.NoDeaths)
+                {
+                    GameSceneManager.Instance.LoadScene("RECORDSANDHIGHSCORE");
+                }
+
+                if (isVisible)
+                {
+                    Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
+                    srenderer.color = invisible;
+                    isVisible = false;
+                }
+                else
+                {
+                    Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
+                    srenderer.color = visible;
+                    isVisible = true;
+                }
+
+                yield return new WaitForSecondsRealtime(_blinkRate);
+            }
+
+            yield return null;
         }
     }
 

@@ -109,7 +109,7 @@ public class Pawn : MonoBehaviour
     /// </summary>
     /// <param name="_blinkRate"></param>
     /// <param name="_duration"></param>
-    public virtual void Blink(float _blinkRate, float _duration)
+    public virtual void Blink(float _duration)
     {
 
     }
