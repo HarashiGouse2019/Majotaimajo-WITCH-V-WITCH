@@ -62,8 +62,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
-        Application.targetFrameRate = 60;
         #region Singleton
         if (Instance == null)
         {

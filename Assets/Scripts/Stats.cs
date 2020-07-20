@@ -53,13 +53,13 @@ public class Stats
     //Ravens Default Stats
     //Get 100 + number of plays points
     //And the bosses get much harder with the number of times you play
-    const int DEFAULT_SPEED = 80;
+    const int DEFAULT_SPEED = 100;
     const int DEFAULT_POWER = 5;
     const int DEFAULT_ANNOYANCE = 3;
     const int DEFAULT_PRIORITY = 13;
     const int DEFAULT_MAGIC = 25;
     const int DEFAULT_KNOWLEDGE = 10;
-    const int DEFAULT_EVASIVENESS = 120;
+    const int DEFAULT_EVASIVENESS = 90;
     const int ZERO = 0;
     const StatsAttribute DEFAULT_ATTRIBUTE = StatsAttribute.MAGIC;
 

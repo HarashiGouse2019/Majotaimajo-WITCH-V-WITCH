@@ -35,8 +35,12 @@ public class PlayerController : MonoBehaviour
         InitControls();
     }
 
-    //Remember, we are controlling pawn!!!
-    void InitControls()
+    private void FixedUpdate()
+    {
+        InitMovementControls();
+    }
+
+    void InitMovementControls()
     {
         //Movement
         if (Input.GetKey(left))
@@ -66,7 +70,10 @@ public class PlayerController : MonoBehaviour
             pawn.Back();
             pawn.isMoving = true;
         }
-
+    }
+    //Remember, we are controlling pawn!!!
+    void InitControls()
+    {
         if (Input.GetKey(shoot))
         {
             if (GameManager.Instance.textBoxUI.gameObject.activeSelf != true && GameManager.Instance.GetPlayerMagic() > 0)

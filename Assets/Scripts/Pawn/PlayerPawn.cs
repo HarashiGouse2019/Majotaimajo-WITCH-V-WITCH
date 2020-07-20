@@ -279,25 +279,25 @@ public class PlayerPawn : Pawn
 
     public override void Foward()
     {
-        move = new Vector2(rb.velocity.x, (movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10);
-        rb.AddForce(move * Time.fixedDeltaTime);
+        move = new Vector2(rb.velocity.x, (movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10) * Time.fixedDeltaTime;
+        rb.AddForce(move);
 
     }
     public override void Back()
     {
-        move = new Vector2(rb.velocity.x, -(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10);
-        rb.AddForce(move * Time.fixedDeltaTime);
+        move = new Vector2(rb.velocity.x, -(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10) * Time.fixedDeltaTime;
+        rb.AddForce(move);
     }
 
     public override void Left()
     {
-        move = new Vector2(-(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y);
-        rb.AddForce(move * Time.fixedDeltaTime);
+        move = new Vector2(-(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y) * Time.fixedDeltaTime;
+        rb.AddForce(move);
     }
 
     public override void Right()
     {
-        move = new Vector2((movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y);
-        rb.AddForce(move * Time.fixedDeltaTime);
+        move = new Vector2((movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y) * Time.fixedDeltaTime;
+        rb.AddForce(move);
     }
 }
