@@ -11,13 +11,13 @@ public class ItemDrops : MonoBehaviour
     public class ItemChances
     {
         [SerializeField]
-        GameObject itemPrefab;
+        string itemName;
 
         [SerializeField]
         float chanceRate;
 
         public float GetChanceRate() => chanceRate;
-        public GameObject GetItem() => itemPrefab;
+        public GameObject GetItem() => ObjectPooler.GetMember(itemName);
     }
 
     [SerializeField]
@@ -27,17 +27,30 @@ public class ItemDrops : MonoBehaviour
     /// Drop an item based on choice
     /// </summary>
     /// <returns></returns>
-    GameObject Drop()
+    public void Drop()
     {
         //Get the cumulative amount of the 
         foreach(ItemChances itemChanceRate in itemChanceRates)
         {
             float chance = itemChanceRate.GetChanceRate();
-            float randomVal = RNG.Range(0, 1);
+            float randomVal = RNG.Range(0f, 1f);
+            if (randomVal <= chance)
+            {
+                GameObject item = itemChanceRate.GetItem();
 
-            if (randomVal <= chance) return itemChanceRate.GetItem();
+                if (!item.activeInHierarchy)
+                {
+                    item.SetActive(true);
+                    item.transform.position = transform.position;
+                    item.transform.rotation = Quaternion.identity;
+
+                    
+                }
+
+                //Throw it up a bit.
+                Vector2 upforce = new Vector2(0, 10f);
+                item.GetComponent<Rigidbody2D>().AddForce(upforce);
+            }
         }
-
-        return null;
     }
 }

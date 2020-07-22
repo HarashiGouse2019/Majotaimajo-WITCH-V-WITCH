@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     [SerializeField]
-    int slotID = 0;
+    public int slotID = 0;
 
     //The items occupying the slot
     Stack<Item> itemStack = new Stack<Item>(99);

@@ -31,9 +31,10 @@ public class CollectibleItem : MonoBehaviour, IEventSetup
         SetupEvents();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Collect()
     {
+        onCollect.Invoke();
         
     }
 
@@ -41,17 +42,24 @@ public class CollectibleItem : MonoBehaviour, IEventSetup
     {
         ev_IncreasePoints = EventManager.AddNewEvent(250, "IncreasePoints",
             () => ScoreSystem.AddToScore(scoreIncrementValue));
+
+        ev_IncreaseMagic = EventManager.AddNewEvent(260, "IncreaseMagic",
+            () => GameManager.Instance.IncrementMagic(magicIncrementValue));
     }
 
     public void TriggerIncreasePoints()
     {
+        Debug.Log("Increased Points");
         ev_IncreasePoints.Trigger();
         ev_IncreasePoints.Reset();
+        gameObject.SetActive(false);
     }
 
     public void TriggerIncreaseMagic()
     {
-        ev_IncreasePoints.Trigger();
-        ev_IncreasePoints.Reset();
+        Debug.Log("Increased Magic");
+        ev_IncreaseMagic.Trigger();
+        ev_IncreaseMagic.Reset();
+        gameObject.SetActive(false);
     }
 }

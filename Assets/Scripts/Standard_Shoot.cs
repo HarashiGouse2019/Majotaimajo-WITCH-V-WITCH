@@ -41,7 +41,7 @@ public class Standard_Shoot : Shoot_Trig
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         Vector3 targetVector = (target.position - origin.transform.position).normalized;
-        GameObject tmpObj = pool.GetMember(bulletMember);
+        GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
         float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
         if (!tmpObj.activeInHierarchy)

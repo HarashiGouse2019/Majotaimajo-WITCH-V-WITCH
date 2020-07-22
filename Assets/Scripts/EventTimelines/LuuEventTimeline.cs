@@ -3,9 +3,6 @@
 public class LuuEventTimeline : EventTimeline, IEventSetup
 {
     private LuuPawn Luu;
-    string testString = "";
-
-    
 
     //Create some events
     EventManager.Event @ev_dialogueRun;

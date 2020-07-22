@@ -12,7 +12,7 @@ public class ObjectPooler : MonoBehaviour
     {
         public string name;
         public int size;
-        public GameObject projectile;
+        public GameObject prefab;
         public bool expandPool;
     }
 
@@ -39,42 +39,42 @@ public class ObjectPooler : MonoBehaviour
         {
             for (int i = 0; i < item.size; i++)
             {
-                GameObject newMember = Instantiate(item.projectile);
+                GameObject newMember = Instantiate(item.prefab);
 
                 newMember.SetActive(false);
-                item.projectile.name = item.name;
+                item.prefab.name = item.name;
                 pooledObjects.Add(newMember);
             }
 
         }
     }
 
-    public GameObject GetMember(string name)
+    public static GameObject GetMember(string name)
     {
 
         #region Iteration
-        for (int i = 0; i < pooledObjects.Count; i++)
+        for (int i = 0; i < Instance.pooledObjects.Count; i++)
         {
 
-            if (!pooledObjects[i].activeInHierarchy && (name + "(Clone)") == pooledObjects[i].name)
+            if (!Instance.pooledObjects[i].activeInHierarchy && (name + "(Clone)") == Instance.pooledObjects[i].name)
             {
-                return pooledObjects[i];
+                return Instance.pooledObjects[i];
             }
         }
         #endregion
 
-        foreach (ObjectPoolItem item in itemsToPool)
+        foreach (ObjectPoolItem item in Instance.itemsToPool)
         {
-            if (name == item.projectile.name && item.expandPool)
+            if (name == item.prefab.name && item.expandPool)
             {
 
-                GameObject newMember = Instantiate(item.projectile);
+                GameObject newMember = Instantiate(item.prefab);
                 newMember.SetActive(false);
-                pooledObjects.Add(newMember);
+                Instance.pooledObjects.Add(newMember);
                 return newMember;
             }
         }
-        Debug.LogWarning("We couldn't find a prefab of this name");
+        Debug.LogWarning("We couldn't find a prefab of this name " + name);
         return null;
     }
 }

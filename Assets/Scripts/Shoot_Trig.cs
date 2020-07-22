@@ -186,7 +186,7 @@ public class Shoot_Trig : MonoBehaviour
             Vector3 projectileMoveDir = (projectileVector - startPoint).normalized * speed;
 
             //GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
-            GameObject tmpObj = pool.GetMember(bulletMember);
+            GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
             if (!tmpObj.activeInHierarchy)
             {
                 tmpObj.SetActive(true);

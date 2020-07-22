@@ -2996,17 +2996,27 @@ MonoBehaviour:
   itemsToPool:
   - name: Sakura
     size: 250
-    projectile: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
+    prefab: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
       type: 3}
     expandPool: 1
   - name: Lavender
     size: 250
-    projectile: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
+    prefab: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
       type: 3}
     expandPool: 1
   - name: Crystal
     size: 250
-    projectile: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
+    prefab: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
+      type: 3}
+    expandPool: 1
+  - name: MagicDrop
+    size: 50
+    prefab: {fileID: 4485710545923369700, guid: 6268317e0bb08264983c359bd12f5524,
+      type: 3}
+    expandPool: 1
+  - name: ValueDrop
+    size: 50
+    prefab: {fileID: 4520199790600030241, guid: 607d8a4e8225436448f381d8e16b49a4,
       type: 3}
     expandPool: 1
   pooledObjects: []
@@ -7633,10 +7643,44 @@ PrefabInstance:
     - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: bulletMember.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaebce90341a97441a0c79a4df36d27c, type: 3}
+--- !u!1 &17790888908754680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8298107374004263343, guid: aaebce90341a97441a0c79a4df36d27c,
+    type: 3}
+  m_PrefabInstance: {fileID: 17790888908754679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &17790888908754681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17790888908754680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a61289c165a7ae43bc44eaba1d0152b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &17790888908754682
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17790888908754680}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.68
 --- !u!1001 &9003943611812110982
 PrefabInstance:
   m_ObjectHideFlags: 0

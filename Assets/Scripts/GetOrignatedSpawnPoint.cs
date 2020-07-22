@@ -14,6 +14,8 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     readonly uint demolishVal = 5;
 
+    private ItemDrops items;
+
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     private void Start()
     {
         pawn = originatedSpawnPoint.GetComponent<Pawn>();
+        if (priority != 999) items = GetComponent<ItemDrops>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -35,8 +38,10 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
         if (targetOriginPoint != null && targetOriginPoint != self)
         {
             if (targetOriginPoint.priority > priority + demolishVal && (targetOriginPoint.priority != 999))
+            {
+                items.Drop();
                 gameObject.SetActive(false);
-
+            }
         }
     }
 
@@ -45,4 +50,8 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
         if (col.gameObject.tag == "Border") gameObject.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+
+    }
 }
