@@ -2,20 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using static Keymapper;
+
 public class PlayerController : MonoBehaviour
 {
 
     #region Public Members
-    //Have our keys mapped;
-    public KeyCode left = KeyCode.LeftArrow;
-    public KeyCode right = KeyCode.RightArrow;
-    public KeyCode up = KeyCode.UpArrow;
-    public KeyCode down = KeyCode.DownArrow;
-    public KeyCode shoot = KeyCode.Z;
-    public KeyCode sneak = KeyCode.LeftShift;
-    public KeyCode special1 = KeyCode.A;
-    public KeyCode special2 = KeyCode.S;
-    public KeyCode special3 = KeyCode.D;
     #endregion
 
     #region Private Members
@@ -26,6 +18,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
+
         pawn = GetComponent<PlayerPawn>();
     }
 
@@ -43,38 +37,42 @@ public class PlayerController : MonoBehaviour
     void InitMovementControls()
     {
         //Movement
-        if (Input.GetKey(left))
+        if (OnKey("left"))
         {
             pawn.Left();
             pawn.isMoving = true;
         }
-        else if (Input.GetKeyUp(left))
+        else if (OnKeyRelease("left"))
             pawn.isMoving = false;
 
-        if (Input.GetKey(right))
+        if (OnKey("right"))
         {
             pawn.Right();
             pawn.isMoving = true;
         }
-        else if (Input.GetKeyUp(left))
+        else if (OnKeyRelease("right"))
             pawn.isMoving = false;
 
-        if (Input.GetKey(up))
+        if (OnKey("up"))
         {
             pawn.Foward();
             pawn.isMoving = true;
         }
+        else if (OnKeyRelease("up"))
+            pawn.isMoving = false;
 
-        if (Input.GetKey(down))
+        if (OnKey("down"))
         {
             pawn.Back();
             pawn.isMoving = true;
         }
+        else if (OnKeyRelease("down"))
+            pawn.isMoving = false;
     }
     //Remember, we are controlling pawn!!!
     void InitControls()
     {
-        if (Input.GetKey(shoot))
+        if (OnKey("shoot"))
         {
             if (GameManager.Instance.textBoxUI.gameObject.activeSelf != true && GameManager.Instance.GetPlayerMagic() > 0)
             {
@@ -87,7 +85,7 @@ public class PlayerController : MonoBehaviour
             pawn.isMagicActivelyUsed = false;
         }
 
-       pawn.isSneaking = Input.GetKey(sneak);
+       pawn.isSneaking = OnKey("sneak");
 
         RunSpecial();
 
@@ -103,26 +101,25 @@ public class PlayerController : MonoBehaviour
         GameManager manager = GameManager.Instance;
 
         //This looks a lot nicer!!!!
-        if (Input.GetKeyDown(special1))
+        if (OnKeyDown("special1"))
             pawn.ActivateSpell(SpellLibrary.library.spells[0].name);
 
-        if (Input.GetKeyDown(special2))
+        if (OnKeyDown("special2"))
             pawn.ActivateSpell(SpellLibrary.library.spells[1].name);
 
-        if (Input.GetKeyDown(special3))
+        if (OnKeyDown("special3"))
             pawn.ActivateSpell(SpellLibrary.library.spells[2].name);
 
         //We do this for Ui Purposes
-        if (Input.GetKeyUp(special1))
+        if (OnKeyRelease("special1"))
             manager.ActivateSlot(0, false);
 
-        if (Input.GetKeyUp(special2))
+        if (OnKeyRelease("special2"))
             manager.ActivateSlot(1, false);
 
-        if (Input.GetKeyUp(special3))
+        if (OnKeyRelease("special3"))
             manager.ActivateSlot(2, false);
     }
-       
 }
 
 
