@@ -32,10 +32,12 @@ public class CollectibleItem : MonoBehaviour, IEventSetup
     }
 
 
+    /// <summary>
+    /// Collect the item
+    /// </summary>
     public void Collect()
     {
         onCollect.Invoke();
-        
     }
 
     public void SetupEvents()
@@ -47,6 +49,9 @@ public class CollectibleItem : MonoBehaviour, IEventSetup
             () => GameManager.Instance.IncrementMagic(magicIncrementValue));
     }
 
+    /// <summary>
+    /// Trigger Event to Increase Points
+    /// </summary>
     public void TriggerIncreasePoints()
     {
         Debug.Log("Increased Points");
@@ -55,6 +60,9 @@ public class CollectibleItem : MonoBehaviour, IEventSetup
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Trigger  Event to Increase Magic
+    /// </summary>
     public void TriggerIncreaseMagic()
     {
         Debug.Log("Increased Magic");

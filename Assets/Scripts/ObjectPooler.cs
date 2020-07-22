@@ -17,7 +17,9 @@ public class ObjectPooler : MonoBehaviour
     }
 
     public List<ObjectPoolItem> itemsToPool;
-    public List<GameObject> pooledObjects;
+
+    public List<GameObject> pooledObjects { get; private set; }
+
     // Start is called before the first frame update
 
     public int poolIndex;
@@ -45,7 +47,6 @@ public class ObjectPooler : MonoBehaviour
                 item.prefab.name = item.name;
                 pooledObjects.Add(newMember);
             }
-
         }
     }
 
@@ -56,7 +57,9 @@ public class ObjectPooler : MonoBehaviour
         for (int i = 0; i < Instance.pooledObjects.Count; i++)
         {
 
-            if (!Instance.pooledObjects[i].activeInHierarchy && (name + "(Clone)") == Instance.pooledObjects[i].name)
+            if (Instance.pooledObjects[i] != null && 
+                !Instance.pooledObjects[i].activeInHierarchy && 
+                (name + "(Clone)") == Instance.pooledObjects[i].name)
             {
                 return Instance.pooledObjects[i];
             }

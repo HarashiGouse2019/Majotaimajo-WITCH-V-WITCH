@@ -29,12 +29,7 @@ public class CheckDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        origin = FindObjectOfType<Shoot_Trig>().origin; //Will find the gameObject that shoot the bullet out
+        origin = FindObjectOfType<RotationEmitter>().GetOriginObject(); //Will find the gameObject that shoot the bullet out
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Alarm;
 
-public class Disperse : Shoot_Trig
+public class Disperse : RotationEmitter
 {
     readonly Timer timer = new Timer(1);
     // Start is called before the first frame update

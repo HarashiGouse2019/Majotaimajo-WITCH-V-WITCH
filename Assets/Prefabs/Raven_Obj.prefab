@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 17790889872032903}
   - component: {fileID: 17790889872032901}
   - component: {fileID: 17790889872032902}
-  - component: {fileID: 17790889872032900}
   - component: {fileID: 17790889872032899}
   - component: {fileID: 17790889872032898}
   - component: {fileID: 17790889872032897}
@@ -126,39 +125,6 @@ MonoBehaviour:
   isMoving: 0
   isMagicActivelyUsed: 0
   isSneaking: 0
---- !u!114 &17790889872032900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17790889872032921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29fbf40e7d12a34eb5dc6f222e6ba03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfProjectiles: 1
-  speed: 650
-  incrementVal: 0
-  speedLimit: 0
-  g_angle: 0
-  rotation: 0
-  distribution: 0
-  rotationFocus: 0
-  rotationFocusIncrementVal: 0
-  rotationFocusLimit: 0
-  rotationIntensity: 0
-  rotationIntensityIncrementVal: 0
-  rotationIntensityLimit: 0
-  existingProjectiles: []
-  steps: 0
-  loop: 0
-  loopSpeed: 0.05
-  bullet:
-  - {fileID: 0}
-  bulletMember: 
-  origin: {fileID: 17790890476737771}
 --- !u!114 &17790889872032899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,27 +137,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a2a0f225067744d8936cfb1d9eb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfProjectiles: 1
-  speed: 650
-  incrementVal: 0
-  speedLimit: 0
-  g_angle: 0
-  rotation: 0
-  distribution: 0
-  rotationFocus: 0
-  rotationFocusIncrementVal: 0
-  rotationFocusLimit: 0
-  rotationIntensity: 0
-  rotationIntensityIncrementVal: 0
-  rotationIntensityLimit: 0
-  existingProjectiles: []
-  steps: 0
-  loop: 0
-  loopSpeed: 0.1
-  bullet:
-  - {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6, type: 3}
-  bulletMember: 
-  origin: {fileID: 17790889872032921}
+  id: 0
+  bulletPrefab: []
+  points: []
+  motionThreshold: 0
+  initialEmitterSpeed: 0
+  emitterMinimumSpeed: 0
+  emitterMaximumSpeed: 0
+  emitterSpeedDelta: 0
+  originObject: {fileID: 0}
   target: {fileID: 0}
 --- !u!58 &17790889872032898
 CircleCollider2D:
@@ -324,6 +278,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4545220349635730955}
+  - component: {fileID: 899585794590464514}
+  - component: {fileID: 3524001205315242468}
   m_Layer: 0
   m_Name: CollectionCollider
   m_TagString: Untagged
@@ -345,3 +301,31 @@ Transform:
   m_Father: {fileID: 17790889872032920}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899585794590464514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298107374004263343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a61289c165a7ae43bc44eaba1d0152b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &3524001205315242468
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298107374004263343}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.68

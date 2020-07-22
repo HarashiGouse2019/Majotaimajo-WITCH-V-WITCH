@@ -23,12 +23,12 @@ public class DanmakuSequencer : MonoBehaviour
 
     #region Private Members
     readonly uint reset = 0;
-    Shoot_Trig trig;
+    RotationEmitter trig;
     #endregion
 
     void Awake()
     {
-        trig = GetComponent<Shoot_Trig>();
+        trig = GetComponent<RotationEmitter>();
     }
     void OnEnable()
     {
@@ -81,9 +81,7 @@ public class DanmakuSequencer : MonoBehaviour
 
     public uint GetNextStep()
     {
-        Spell.Routine routineCheck = null;
-
-        routineCheck = routine[(int)runningRoutine + 1];
+        Spell.Routine routineCheck = routine[(int)runningRoutine + 1];
 
         RunPattern(routineCheck.pattern);
 
@@ -92,9 +90,7 @@ public class DanmakuSequencer : MonoBehaviour
 
     public uint GetPreviousStep()
     {
-        Spell.Routine routineCheck = null;
-
-        routineCheck = routine[(int)runningRoutine];
+        Spell.Routine routineCheck = routine[(int)runningRoutine];
 
         RunPattern(routineCheck.pattern);
 
@@ -115,31 +111,31 @@ public class DanmakuSequencer : MonoBehaviour
         #region Assing Values
         foreach (Pattern.Block block in _pattern.blocks)
         {
-            trig.numberOfProjectiles = block.amount;
+            trig.SetProjectileDensity(block.amount);
 
-            trig.loop = block.loop;
+            trig.SetLooping(block.loop);
 
-            trig.loopSpeed = block.loopRate;
+            trig.SetLoopSpeed(block.loopRate);
 
-            trig.bulletMember = block.bulletType;
+            trig.SetBulletMember(block.bulletType);
 
-            trig.speedLimit = block.speedLimit;
+            trig.SetBulletLimitSpeed(block.speedLimit);
 
             if (!block.carryOverSpeed && block.initialSpeed < block.speedLimit)
-                trig.speed = block.initialSpeed;
+                trig.SetBulletInitialSpeed(block.initialSpeed);
 
-            trig.incrementVal = block.incrementalSpeed;
+            trig.SetIncrementValue(block.incrementalSpeed);
 
             if (block.overrideRotation)
-                trig.g_angle = block.initialRotation;
+                trig.SetAngle(block.initialRotation);
 
-            trig.rotationFocus = block.rotationFocus;
+            trig.SetRotationFocus(block.rotationFocus);
 
-            trig.rotationFocusLimit = block.rotationFocusLimit;
+            trig.SetRotationFocusLimit(block.rotationFocusLimit);
 
-            trig.rotationIntensity = block.rotationIntensity;
+            trig.SetRotationIntensity(block.rotationIntensity);
 
-            trig.rotationIntensityLimit = block.rotationIntensityLimit;
+            trig.SetRotationIntensityLimit(block.rotationIntensityLimit);
 
 
             #region Rotation
@@ -147,31 +143,31 @@ public class DanmakuSequencer : MonoBehaviour
             switch ((int)block.rotation)
             {
                 case 0:
-                    trig.rotation = Shoot_Trig.RotationType.NoRotation;
+                    trig.SetRotationType(RotationType.NoRotation);
                     break;
 
                 case 1:
-                    trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
+                    trig.SetRotationType(RotationType.ClockwiseI);
                     break;
 
                 case 2:
-                    trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
+                    trig.SetRotationType(RotationType.ClockwiseII);
                     break;
 
                 case 3:
-                    trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
+                    trig.SetRotationType(RotationType.ClockwiseIII);
                     break;
 
                 case -1:
-                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
+                    trig.SetRotationType(RotationType.CounterClockwiseI);
                     break;
 
                 case -2:
-                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
+                    trig.SetRotationType(RotationType.CounterClockwiseII);
                     break;
 
                 case -3:
-                    trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
+                    trig.SetRotationType(RotationType.CounterClockwiseIII);
                     break;
 
                 default:
@@ -184,23 +180,23 @@ public class DanmakuSequencer : MonoBehaviour
             switch (block.distribution)
             {
                 case Pattern.Block.DistributionType.Uniformed:
-                    trig.distribution = Shoot_Trig.DistributionType.Uniformed;
+                    trig.SetDistributionType(DistributionType.Uniformed);
                     break;
 
                 case Pattern.Block.DistributionType.Biformed:
-                    trig.distribution = Shoot_Trig.DistributionType.Biformed;
+                    trig.SetDistributionType(DistributionType.Biformed);
                     break;
 
                 case Pattern.Block.DistributionType.UniformedIncrement:
-                    trig.distribution = Shoot_Trig.DistributionType.UniformedIncrement;
+                    trig.SetDistributionType(DistributionType.UniformedIncrement);
                     break;
 
                 case Pattern.Block.DistributionType.BiFormedIncrement:
-                    trig.distribution = Shoot_Trig.DistributionType.BiformedIncrement;
+                    trig.SetDistributionType(DistributionType.BiformedIncrement);
                     break;
 
                 case Pattern.Block.DistributionType.Scattered:
-                    trig.distribution = Shoot_Trig.DistributionType.Scattered;
+                    trig.SetDistributionType(DistributionType.Scattered);
                     break;
 
                 default:
@@ -215,7 +211,7 @@ public class DanmakuSequencer : MonoBehaviour
                     //Do Nothing
                     break;
                 case Pattern.Block.RotationFocusEffect.Increment:
-                    trig.rotationFocusIncrementVal = block.rotationFocusIncrementVal;
+                    trig.SetRotationFocusIncrement(block.rotationFocusIncrementVal);
                     break;
                 default:
                     break;
@@ -229,7 +225,7 @@ public class DanmakuSequencer : MonoBehaviour
                     //Do Nothing
                     break;
                 case Pattern.Block.RotationIntensityEffect.Increment:
-                    trig.rotationIntensityIncrementVal = block.rotationIntensityIncrementVal;
+                    trig.SetRotationIntensityIncrement(block.rotationIntensityIncrementVal);
                     break;
                 default:
                     break;
@@ -280,21 +276,7 @@ public class DanmakuSequencer : MonoBehaviour
 
         enabled = false;
 
-        trig.loop = false;
-        trig.distribution = default;
-        trig.rotation = default;
-        trig.speed = reset;
-        trig.speedLimit = (int)reset;
-        trig.loopSpeed = reset;
-        trig.numberOfProjectiles = 1;
-        trig.g_angle = reset;
-        trig.incrementVal = (int)reset;
-        trig.rotationFocus = reset;
-        trig.rotationIntensity = reset;
-        trig.rotationFocusIncrementVal = reset;
-        trig.rotationIntensityIncrementVal = reset;
-        trig.rotationIntensityLimit = reset;
-        trig.rotationFocusLimit = reset;
+        trig.ClearValues();
 
         //Reset pawn stat
         pawn.priority = pawn.basePriority;

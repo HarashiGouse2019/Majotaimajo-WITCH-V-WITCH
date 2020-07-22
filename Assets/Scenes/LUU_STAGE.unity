@@ -7389,6 +7389,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1834879816}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: numberOfProjectiles.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: incrementVal.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speedLimit.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: g_angle.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotation.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: distribution.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationFocus.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationFocusIncrementVal.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationFocusLimit.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationIntensity.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationIntensityIncrementVal.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationIntensityLimit.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: loop.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: loopSpeed.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bullet.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletMember.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 17790889872032921, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: m_Name
@@ -7536,9 +7604,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
+      propertyPath: bulletPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 560486103}
+    - target: {fileID: 17790889872032899, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: bulletPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
+        type: 3}
     - target: {fileID: 17790889872032911, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: spells.Array.size
@@ -7560,127 +7639,18 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+    - target: {fileID: 8298107374004263343, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
-      propertyPath: numberOfProjectiles.Array.size
-      value: 5
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
+    - target: {fileID: 8298107374004263343, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
-      propertyPath: speed.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: incrementVal.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: speedLimit.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: g_angle.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotation.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: distribution.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotationFocus.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotationFocusIncrementVal.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotationFocusLimit.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotationIntensity.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotationIntensityIncrementVal.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: rotationIntensityLimit.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: loop.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: loopSpeed.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: bullet.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 17790889872032900, guid: aaebce90341a97441a0c79a4df36d27c,
-        type: 3}
-      propertyPath: bulletMember.Array.size
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaebce90341a97441a0c79a4df36d27c, type: 3}
---- !u!1 &17790888908754680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8298107374004263343, guid: aaebce90341a97441a0c79a4df36d27c,
-    type: 3}
-  m_PrefabInstance: {fileID: 17790888908754679}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &17790888908754681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17790888908754680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a61289c165a7ae43bc44eaba1d0152b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!58 &17790888908754682
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17790888908754680}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.03, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.68
 --- !u!1001 &9003943611812110982
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,30 +7,23 @@ using UnityEngine;
 //
 //
 //
-public class Standard_Shoot : Shoot_Trig
+public class HoningLinearEmitter : Emitter
 {
-    public new static Standard_Shoot Instance;
-
     #region Public Members
     [Header("Origin and Target")]
     public Transform target;
     #endregion
 
-    #region Private Members
-    private const float radius = 1f;
-
-    #endregion
 
     void OnEnable()
     {
-        startPoint = gameObject.transform.position;
+        initialPosition = gameObject.transform.position;
     }
 
-    void Start()
+    protected override void Start()
     {
-        Instance = this;
+        originObject = gameObject;
         existingProjectiles = new List<GameObject>();
-        pool = FindObjectOfType<ObjectPooler>();
     }
 
     void FixedUpdate()
@@ -40,8 +33,10 @@ public class Standard_Shoot : Shoot_Trig
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
-        Vector3 targetVector = (target.position - origin.transform.position).normalized;
+        Vector3 targetVector = (target.position - originObject.transform.position).normalized;
+
         GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
+
         float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
         if (!tmpObj.activeInHierarchy)
@@ -56,14 +51,14 @@ public class Standard_Shoot : Shoot_Trig
             tmpObj.transform.position = transform.position;
             tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, angle + 270f);
 
-            spawnPoint.originatedSpawnPoint = origin;
+            spawnPoint.originatedSpawnPoint = originObject;
 
-            rigidbody.AddForce(targetVector * speed * Time.fixedDeltaTime);
+            rigidbody.AddForce(targetVector * bulletInitialSpeed * Time.fixedDeltaTime);
         }
     }
 
-    public override void UpdateStartPoint()
+    protected override void UpdateStartPoint()
     {
-        startPoint = origin.transform.position;
+        initialPosition = originObject.transform.position;
     }
 }

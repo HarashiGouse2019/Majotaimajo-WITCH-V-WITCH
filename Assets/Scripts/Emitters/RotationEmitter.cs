@@ -1,101 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Alarm;
-
-using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 //This is a set up for the near future
 //This will be important for creating this game
 //That has existing mechanics such as these
 //I mean a DAN-MA-KU! DAMMAKA
-//
-//
-//
-public class Shoot_Trig : MonoBehaviour
+
+public class RotationEmitter : Emitter
 {
-    public static Shoot_Trig Instance;
-
-    #region Public Members
-    [Header("Danmaku Config")]
-    [Range(1, 10)] public int numberOfProjectiles = 1;
-    public float speed;
-    public int incrementVal;
-    public int speedLimit;
-    public float g_angle;
-    public enum RotationType
-    {
-
-        NoRotation,
-        ClockwiseI,
-        ClockwiseII,
-        ClockwiseIII,
-        CounterClockwiseI = -1,
-        CounterClockwiseII = -2,
-        CounterClockwiseIII = -3
-    };
-    public enum DistributionType
-    {
-        Uniformed,
-        Biformed,
-        UniformedIncrement,
-        BiformedIncrement,
-        Scattered
-    }
-
-    public RotationType rotation;
-    public DistributionType distribution;
-
-    public float rotationFocus;
-    public float rotationFocusIncrementVal;
-    public float rotationFocusLimit;
-
-    public float rotationIntensity;
-    public float rotationIntensityIncrementVal;
-    public float rotationIntensityLimit;
-
-    //Statistics
-    [HideInInspector] public List<GameObject> existingProjectiles;
-    [HideInInspector] public int steps;
-
-    [Header("Looping")]
-    public bool loop;
-    [Range(0.05f, 1)] public float loopSpeed = 0.05f;
-
-    [Header("Prefabs")]
-    public List<GameObject> bullet = new List<GameObject>();
-    public string bulletMember;
-
-    [Header("Origin")]
-    public GameObject origin;
-    #endregion
-
-    #region Private Members
-    private const float radius = 1f;
-    private int distStep = 0;
-
-    protected Vector3 startPoint;
-    private Timer loopTimer;
-    private AudioClip sound;
-    protected ObjectPooler pool;
-    private Pawn pawnOrigin;
-    #endregion
-
     void OnEnable()
     {
-        startPoint = gameObject.transform.position;
+        initialPosition = gameObject.transform.position;
     }
 
-    void Start()
+    protected override void Start()
     {
-        Instance = this;
         loopTimer = new Timer(3); //Reintergrated timer!
         existingProjectiles = new List<GameObject>();
-        origin = gameObject;
-        pawnOrigin = GetComponent<Pawn>();
-        pool = FindObjectOfType<ObjectPooler>();
+        originObject = gameObject;
+        pawnOriginObject = GetComponent<Pawn>();
     }
 
     void FixedUpdate()
@@ -115,7 +39,7 @@ public class Shoot_Trig : MonoBehaviour
         }
     }
 
-    public virtual void SpawnBullets(int _numberOfProjectiles, string bulletMember)
+    public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         //Update rotation focus
         if(rotationFocus < rotationFocusLimit)
@@ -140,35 +64,35 @@ public class Shoot_Trig : MonoBehaviour
             case DistributionType.Biformed:
                 if (distStep == 0)
                 {
-                    speed *= 2;
+                    bulletInitialSpeed *= 2;
                     distStep++;
                 }
                 else if (distStep == 1)
                 {
-                    speed /= 2;
+                    bulletInitialSpeed /= 2;
                     distStep--;
                 }
                 break;
 
             case DistributionType.UniformedIncrement:
-                if(speed<speedLimit) speed += incrementVal;
+                if(bulletInitialSpeed<bulletSpeedLimit) bulletInitialSpeed += incrementVal;
                 break;
 
             case DistributionType.BiformedIncrement:
                 if (distStep == 0)
                 {
-                    speed *= 2 + (speed < speedLimit ? incrementVal : 0);
+                    bulletInitialSpeed *= 2 + (bulletInitialSpeed < bulletSpeedLimit ? incrementVal : 0);
                     distStep++;
                 }
                 else if (distStep == 1)
                 {
-                    speed /= 2 + (speed < speedLimit ? incrementVal : 0);
+                    bulletInitialSpeed /= 2 + (bulletInitialSpeed < bulletSpeedLimit ? incrementVal : 0);
                     distStep--;
                 }
                 break;
 
             case DistributionType.Scattered:
-                speed = Random.Range(speed, speedLimit + 500);
+                bulletInitialSpeed = Random.Range(bulletInitialSpeed, bulletSpeedLimit + 500);
                 break;
 
             default:
@@ -179,36 +103,33 @@ public class Shoot_Trig : MonoBehaviour
         for (int i = 0; i <= _numberOfProjectiles - 1; i++)
         {
 
-            float projectileAngleX = startPoint.x  + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
-            float projectileAngleY = startPoint.y + (Mathf.Cos((angle * Mathf.PI) / 180f)) * radius;
+            float projectileAngleX = initialPosition.x  + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
+            float projectileAngleY = initialPosition.y + (Mathf.Cos((angle * Mathf.PI) / 180f)) * radius;
 
             Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
-            Vector3 projectileMoveDir = (projectileVector - startPoint).normalized * speed;
+            Vector3 projectileMoveDir = (projectileVector - initialPosition).normalized * bulletInitialSpeed;
 
             //GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
             GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
             if (!tmpObj.activeInHierarchy)
             {
                 tmpObj.SetActive(true);
-                tmpObj.transform.position = startPoint;
+                tmpObj.transform.position = initialPosition;
                 tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
                 //Assign projectile priority from origin
-                tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = pawnOrigin.priority;
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = pawnOriginObject.priority;
 
                 //From here, we tell our temporary object where it came from
-                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = origin;
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
 
                 tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
-            } else
-            {
-                Debug.LogWarning("For some reason, this object is inactive.");
-            }
+            } 
             angle += angleStep;
         }
     }
 
-    void Loop()
+    protected override void Loop()
     {
 
         if (loopTimer.SetFor(loopSpeed, 0))
@@ -223,8 +144,8 @@ public class Shoot_Trig : MonoBehaviour
         existingProjectiles.Remove(obj);
     }
 
-    public virtual void UpdateStartPoint()
+   protected override void UpdateStartPoint()
     {
-        startPoint = origin.transform.position;
+        initialPosition = originObject.transform.position;
     }
 }

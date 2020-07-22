@@ -23,6 +23,8 @@ public class PlayerPawn : Pawn
 
     const int ZERO = 0;
 
+    HoningLinearEmitter playerEmitter;
+
     //Player Stats
     Stats PlayerStats;
 
@@ -53,11 +55,14 @@ public class PlayerPawn : Pawn
         GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
         GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
 
+        
+
         //Get Components
         srenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
+        playerEmitter = GetComponent<HoningLinearEmitter>();
 
         isVisible = srenderer.isVisible;
         xScale = transform.localScale;
@@ -140,8 +145,8 @@ public class PlayerPawn : Pawn
     {
         if (recoil == false)
         {
-            Standard_Shoot.Instance = GetComponent<Standard_Shoot>();
-            Standard_Shoot.Instance.SpawnBullets(1, bulletName);
+            playerEmitter.SetBulletInitialSpeed(650);
+            playerEmitter.SpawnBullets(1, bulletName);
             AudioManager.Play("Shoot000", _oneShot: true);
             recoil = true;
         }
