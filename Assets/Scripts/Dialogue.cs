@@ -12,7 +12,7 @@ public class Dialogue : MonoBehaviour
         public enum Voices
         {
             None,
-            Amben,
+            Mythril,
             Augusta,
             Crystal,
             Luu,

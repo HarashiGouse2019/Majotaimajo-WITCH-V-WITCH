@@ -4,7 +4,7 @@ using UnityEngine;
 using Alarm;
 using System;
 
-public class Pawn : MonoBehaviour
+public abstract class Pawn : MonoBehaviour
 {
     public static Pawn Instance;
 

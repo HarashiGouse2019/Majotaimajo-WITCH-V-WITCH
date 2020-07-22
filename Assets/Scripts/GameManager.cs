@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviour
                     case Dialogue.Script.Voices.None:
                         AudioManager.Play("Type000", _oneShot: true);
                         break;
-                    case Dialogue.Script.Voices.Amben:
+                    case Dialogue.Script.Voices.Mythril:
                         AudioManager.Play("Type000", _oneShot: true);
                         break;
                     case Dialogue.Script.Voices.Augusta:
