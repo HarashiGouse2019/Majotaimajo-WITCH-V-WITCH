@@ -43,11 +43,16 @@ public class ItemSlot : MonoBehaviour
     /// </summary>
     public void Use()
     {
-        if (occupied)
+        try
         {
-            Item usedItem = itemStack.Pop();
-            usedItem.EV_OnUse.Trigger();
+            if (CheckOccupancy())
+            {
+                Item usedItem = itemStack.Pop();
+                usedItem.EV_OnUse.Trigger();
+                UpdateStackValue();
+            }
         }
+        catch { }
     }
 
     /// <summary>

@@ -7,6 +7,8 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
+using static Keymapper;
+
 public class GameManager : MonoBehaviour
 {
     #region Public Members
@@ -78,6 +80,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnLoadedScene;
+
+        Configure(
+           new Key("left", KeyCode.LeftArrow),
+           new Key("right", KeyCode.RightArrow),
+           new Key("up", KeyCode.UpArrow),
+           new Key("down", KeyCode.DownArrow),
+           new Key("shoot", KeyCode.Z),
+           new Key("sneak", KeyCode.LeftShift),
+           new Key("special1", KeyCode.A),
+           new Key("special2", KeyCode.S),
+           new Key("special3", KeyCode.D),
+           new Key("itemSelection", KeyCode.Space),
+           new Key("start", KeyCode.Return)
+       );
     }
 
 

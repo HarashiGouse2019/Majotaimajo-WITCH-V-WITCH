@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine;
 
+using static Keymapper;
+
 [SerializeField]
 public abstract class Item
 {
@@ -32,9 +34,6 @@ public class ItemInventory : MonoBehaviour
     //Our array of items
     [SerializeField]
     private ItemSlot[] itemSlots = new ItemSlot[4];
-
-    //Item Switching Button
-    KeyCode navigationKey = KeyCode.Space;
 
     //Item Position
     int itemSlotPosition = 0;
@@ -112,34 +111,44 @@ public class ItemInventory : MonoBehaviour
         Instance.itemSlots[slotNumber].Clear();
     }
 
+    void ManageSlotPosition()
+    {
+        if (itemSlotPosition == itemSlots.Length)
+            itemSlotPosition = 0;
+        else if (itemSlotPosition < 0)
+            itemSlotPosition = itemSlots.Length - 1;
+    }
+
+    public static int GetItemPosition() => Instance.itemSlotPosition;
+
     IEnumerator InventorySystemCycle()
     {
         while (true)
         {
             //If holding down space, keep track of time.
-            if (Input.GetKey(navigationKey) && inventoryTimer < USE_DURATION)
+            if (OnKey("itemSelection") && inventoryTimer < USE_DURATION)
             {
                 inventoryTimer += Time.deltaTime;
 
                 //If inventoryTimer is creater than the USE_DURATION
-                if (inventoryTimer >= USE_DURATION)
+                if (inventoryTimer >= USE_DURATION && itemSlots[itemSlotPosition] != null)
                 {
                     itemSlots[itemSlotPosition].Use();
                     inventoryTimer = RESET_TIMER;
-                    Debug.Log("USED ITEM");
                 }
             }
 
             //If the player releases the key in under 0.20 secs, this means they want to switch
-            if (Input.GetKeyUp(navigationKey))
+            if (OnKeyRelease("itemSelection"))
             {
                 float pressDuration = inventoryTimer;
                 inventoryTimer = RESET_TIMER;
 
                 if (pressDuration <= SWITCH_DURATION)
                 {
-                    Debug.Log("SWITCH!");
                     itemSlotPosition++;
+                    ManageSlotPosition();
+                    ItemSelectorCursor.UpdatePosition();
                 }
             }
 
