@@ -16,6 +16,20 @@ MonoBehaviour:
   routine:
   - pattern: {fileID: 11400000, guid: 711f6960b54ec2c4dbdcbbe0032933a5, type: 2}
     stepPos: 0
+  - pattern: {fileID: 11400000, guid: 1755261adfce72f4c9655813e6d983fa, type: 2}
+    stepPos: 5
+  - pattern: {fileID: 11400000, guid: 152b8df003be75d409222ec71b926828, type: 2}
+    stepPos: 10
+  - pattern: {fileID: 11400000, guid: 9b49ebf97eb4d024ebe548265705c31d, type: 2}
+    stepPos: 15
+  - pattern: {fileID: 11400000, guid: 286edd0d5da1aa54ab8b7237ad25096d, type: 2}
+    stepPos: 50
+  - pattern: {fileID: 11400000, guid: f6f5978d6bd5bf54cae5c27945a2fd23, type: 2}
+    stepPos: 55
+  - pattern: {fileID: 11400000, guid: d34c6fb7b913ade4887bb690f866de67, type: 2}
+    stepPos: 60
+  - pattern: {fileID: 11400000, guid: c0f82f256feb1c1499aa694140c8b25b, type: 2}
+    stepPos: 65
   - pattern: {fileID: 11400000, guid: 711f6960b54ec2c4dbdcbbe0032933a5, type: 2}
     stepPos: 100
   enableSequenceLooping: 1

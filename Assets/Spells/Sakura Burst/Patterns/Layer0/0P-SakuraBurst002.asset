@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: 0P-SakuraBurst000
+  m_Name: 0P-SakuraBurst002
   m_EditorClassIdentifier: 
-  amount: 2
+  amount: 6
   isHoming: 0
   initialSpeed: 1
   incrementalSpeed: 840
   speedLimit: 50000
   carryOverSpeed: 0
   overrideRotation: 0
-  initialRotation: 1
+  initialRotation: 0
   rotationSpeed: 0
   bulletType: Sakura
   loop: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   rotationFocusLimit: 0
   rotationIntensityEffect: 0
   rotationIntensity: 2
-  rotationIntensityIncrementVal: 5
-  rotationIntensityLimit: 0
+  rotationIntensityIncrementVal: 0
+  rotationIntensityLimit: 5
   transitionDuration: 0
   layerID: 0
