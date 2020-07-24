@@ -20,12 +20,12 @@ public class Spell : ScriptableObject
 
     public uint spellPriority;
     public uint magicConsumtion;
-    public bool enableSpellLooping = false;
     [SerializeField]
     private List<EmitterSpawner> emitterSpawners = new List<EmitterSpawner>();
 
     public bool Activated { get; private set; } = false;
 
+    public bool enableSpellLooping = false;
     AnimationClip movement;
 
     Animator animator;

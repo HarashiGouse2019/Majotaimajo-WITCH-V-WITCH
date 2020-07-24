@@ -35,7 +35,7 @@ public class DanmakuSequencer : MonoBehaviour
     /// <summary>
     /// Initialize DanmakuSequencer
     /// </summary>
-    public void Init(int size)
+    public void Init()
     {
         Debug.Log("Beginning Initialization...");
 
