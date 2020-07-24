@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GetOrignatedSpawnPoint : MonoBehaviour
 {
@@ -23,10 +21,12 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if(originatedSpawnPoint.layer == LayerMask.GetMask("Boss") ||
-            originatedSpawnPoint.layer == LayerMask.GetMask("Player"))
+        
+        if(originatedSpawnPoint != null &&
+            (originatedSpawnPoint.layer == LayerMask.GetMask("Boss") ||
+            originatedSpawnPoint.layer == LayerMask.GetMask("Player")))
             pawn = originatedSpawnPoint.GetComponent<Pawn>();
         if (priority != 999) items = GetComponent<ItemDrops>();
     }
@@ -49,7 +49,7 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Border") gameObject.SetActive(false);
+        if (col.gameObject.tag.Equals("Border")) gameObject.SetActive(false);
     }
 
     private void OnDisable()

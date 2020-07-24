@@ -194,7 +194,7 @@ public class PlayerPawn : Pawn
             //Increate pawn's priority!!!
             priority += spell.spellPriority;
 
-            spell.Activate();
+            spell.Activate(this);
         }
     }
 

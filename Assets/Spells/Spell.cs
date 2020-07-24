@@ -30,6 +30,10 @@ public class Spell : ScriptableObject
 
     Animator animator;
 
+
+    //This will help use know who cast what spell
+    Pawn parentPawn;
+
     /// <summary>
     /// Initialize the spell casting
     /// </summary>
@@ -37,13 +41,15 @@ public class Spell : ScriptableObject
     {
         foreach(EmitterSpawner spawner in emitterSpawners)
         {
-            
             spawner.Create();
+            spawner.GetEmitter().SetPawnParent(parentPawn);
             spawner.SpawnEmitter(spawner.worldSpace);
             Setup(spawner);
             Activated = true;
         }
     }
+
+    public void SetPawnParent(Pawn pawn) => parentPawn = pawn;
 
     /// <summary>
     /// Set up the spawner's sequencer
@@ -54,6 +60,8 @@ public class Spell : ScriptableObject
         DanmakuSequencer sequencer = spawner.GetEmitter().Sequencer;
 
         if (sequencer == null) { Debug.Log("At setup, sequencer is null...");  return; }
+
+        sequencer.spellOrigin = this;
 
         Enchantment enchanment = spawner.enchantment;
 
@@ -71,10 +79,12 @@ public class Spell : ScriptableObject
     }
 
     /// <summary>
-    /// Activate a Spell, in which turn on the sequencers of all emitters
+    /// Activate a Spell, in which turn on the sequencers of all emitters.
+    /// Parent pawn is who casted the spell.
     /// </summary>
-    public void Activate()
+    public void Activate(Pawn parentPawn)
     {
+        SetPawnParent(parentPawn);
         Initalize();
     }
 

@@ -117,7 +117,7 @@ public class LuuPawn : Pawn, IBossEntity
         if (library.spellInUse == null)
         {
             library.spellInUse = spell;
-            spell.Activate();
+            spell.Activate(this);
         }
     }
 

@@ -19,7 +19,6 @@ public class RotationEmitter : Emitter
         loopTimer = new Timer(3); //Reintergrated timer!
         existingProjectiles = new List<GameObject>();
         originObject = gameObject;
-        pawnOriginObject = GetComponent<Pawn>();
     }
 
     void FixedUpdate()
@@ -42,17 +41,17 @@ public class RotationEmitter : Emitter
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         //Update rotation focus
-        if(rotationFocus < rotationFocusLimit)
+        if (rotationFocus < rotationFocusLimit)
             rotationFocus += rotationFocusIncrementVal;
 
         //Update rotation intensity
-        if(rotationIntensity < rotationIntensityLimit)
+        if (rotationIntensity < rotationIntensityLimit)
             rotationIntensity += rotationIntensityIncrementVal;
 
         //Assing those values to our basic algorithm
 
         float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
-                                                             //You want to concentrate only on one side, but spread them, n is the one.
+                                                                         //You want to concentrate only on one side, but spread them, n is the one.
         float angle = g_angle * rotationIntensity;
 
         switch (distribution)
@@ -75,7 +74,7 @@ public class RotationEmitter : Emitter
                 break;
 
             case DistributionType.UniformedIncrement:
-                if(bulletInitialSpeed<bulletSpeedLimit) bulletInitialSpeed += incrementVal;
+                if (bulletInitialSpeed < bulletSpeedLimit) bulletInitialSpeed += incrementVal;
                 break;
 
             case DistributionType.BiformedIncrement:
@@ -103,13 +102,12 @@ public class RotationEmitter : Emitter
         for (int i = 0; i <= _numberOfProjectiles - 1; i++)
         {
 
-            float projectileAngleX = initialPosition.x  + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
+            float projectileAngleX = initialPosition.x + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
             float projectileAngleY = initialPosition.y + (Mathf.Cos((angle * Mathf.PI) / 180f)) * radius;
 
             Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
             Vector3 projectileMoveDir = (projectileVector - initialPosition).normalized * bulletInitialSpeed;
 
-            //GameObject tmpObj = Instantiate(bullet[_index], startPoint, Quaternion.Euler(0f, 0f, -angle));
             GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
             if (!tmpObj.activeInHierarchy)
             {
@@ -117,17 +115,14 @@ public class RotationEmitter : Emitter
                 tmpObj.transform.position = initialPosition;
                 tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
-                try
-                {
-                    //Assign projectile priority from origin
-                    tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = pawnOriginObject.priority;
+                //Assign projectile priority from origin
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
 
-                    //From here, we tell our temporary object where it came from
-                    tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
+                //From here, we tell our temporary object where it came from
+                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
 
-                } catch { /*No origin exception */}
                 tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
-            } 
+            }
             angle += angleStep;
         }
     }
@@ -147,7 +142,7 @@ public class RotationEmitter : Emitter
         existingProjectiles.Remove(obj);
     }
 
-   protected override void UpdateStartPoint()
+    protected override void UpdateStartPoint()
     {
         initialPosition = originObject.transform.position;
     }

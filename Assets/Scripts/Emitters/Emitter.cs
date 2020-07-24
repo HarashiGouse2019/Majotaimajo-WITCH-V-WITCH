@@ -67,6 +67,8 @@ public abstract class Emitter : MonoBehaviour
 
     public DanmakuSequencer Sequencer;
 
+    public Pawn ParentPawn { get; private set; }
+
     [SerializeField]
     protected int id = 0;
 
@@ -93,7 +95,7 @@ public abstract class Emitter : MonoBehaviour
 
     protected string bulletMember;
 
-    
+
 
     [Range(1, 10)] protected int numberOfProjectiles = 1;
 
@@ -252,23 +254,15 @@ public abstract class Emitter : MonoBehaviour
 
     public virtual void SetPosition(Vector2 position)
     {
-        transform.position = position;
-    }
-
-    public virtual void SetPosition(float x, float y)
-    {
-        transform.position = new Vector2(x, y);
+        transform.localPosition = position;
     }
 
     public virtual void SetRelativePosition(Vector2 position)
     {
-        transform.position += (Vector3)position;
+        transform.localPosition = ParentPawn.transform.position + (Vector3)position;
     }
 
-    public virtual void SetRelativePosition(float x, float y)
-    {
-        transform.position += new Vector3(x, y);
-    }
+    public virtual void SetPawnParent(Pawn pawn) => ParentPawn = pawn;
 
     public virtual void Activate()
     {

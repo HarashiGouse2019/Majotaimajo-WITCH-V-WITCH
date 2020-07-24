@@ -13,6 +13,8 @@ public class DanmakuSequencer : MonoBehaviour
 
     public List<Routine> routines;
 
+    public Spell spellOrigin;
+
     public bool enableSequenceLooping;
     #endregion
 
@@ -23,7 +25,6 @@ public class DanmakuSequencer : MonoBehaviour
 
     #region Properties
     public bool HasInitialized { get; private set; } = false;
-    public int ArraySize { get; private set; } = 32;
     #endregion
 
     void Awake()
@@ -37,8 +38,6 @@ public class DanmakuSequencer : MonoBehaviour
     public void Init(int size)
     {
         Debug.Log("Beginning Initialization...");
-
-        ArraySize = size;
 
         statistics = new SequencerStatistics();
     }
@@ -58,14 +57,14 @@ public class DanmakuSequencer : MonoBehaviour
         GetRoutineCompletionInPercentage();
     }
 
-    public void IterateSequence()
+    void IterateSequence()
     {
         if (statistics.currentStep != 0) statistics.startStep = GetPreviousStep();
         statistics.nextStep = GetNextStep();
         InvokeRepeating("Sequence", 0f, statistics.stepSpeed);
     }
 
-    public void PauseSequenceIteration()
+    void PauseSequenceIteration()
     {
         CancelInvoke("Sequence");
     }
@@ -285,8 +284,8 @@ public class DanmakuSequencer : MonoBehaviour
     void ResetAllValues()
     {
         //Get the pawn
-        Pawn pawn = GetComponent<Pawn>();
-
+        Pawn pawn = emitter.ParentPawn;
+        Debug.Log(pawn);
 
         completion.progress = (float)reset;
         statistics.currentStep = reset;

@@ -7680,7 +7680,7 @@ PrefabInstance:
     - target: {fileID: 9003943612334814288, guid: 3d0f104368240704c8b6d16302dfc859,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9003943612334814289, guid: 3d0f104368240704c8b6d16302dfc859,
         type: 3}
@@ -7741,6 +7741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Luu_BulletOrigin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879043379482748543, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9003943612334814303, guid: 3d0f104368240704c8b6d16302dfc859,
         type: 3}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8711262154779925839}
   - component: {fileID: 8711262154779925832}
   - component: {fileID: 2748331612151806922}
+  - component: {fileID: 3635266091851804288}
   m_Layer: 0
   m_Name: RotationEmitter
   m_TagString: Untagged
@@ -93,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29fbf40e7d12a34eb5dc6f222e6ba03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sequencer: {fileID: 0}
   id: 0
   bulletPrefab: []
   points: []
@@ -116,4 +118,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowOverride: 0
   routines: []
+  spellOrigin: {fileID: 0}
   enableSequenceLooping: 0
+--- !u!114 &3635266091851804288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711262154779925833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbc61cd1bee92a409f8aa69e7017209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originatedSpawnPoint: {fileID: 0}
+  pawn: {fileID: 0}
+  priority: 0
