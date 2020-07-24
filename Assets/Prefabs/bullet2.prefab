@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -146976662642131311}
   - component: {fileID: -5323842912988242625}
   - component: {fileID: 7450509780403276446}
+  - component: {fileID: -1100537282617000983}
   m_Layer: 0
   m_Name: bullet2
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2258858909891300472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.0353127, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -117,9 +118,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: 0.003961762}
+  m_Offset: {x: 0.01, y: 0.004}
   serializedVersion: 2
-  m_Radius: 0.08158982
+  m_Radius: 0.06
 --- !u!114 &-5323842912988242625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,3 +146,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originatedSpawnPoint: {fileID: 0}
+  pawn: {fileID: 0}
+  priority: 0
+--- !u!114 &-1100537282617000983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258858909891300472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8587b1b31824bf54db896f62867930be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemChanceRates:
+  - itemName: MagicDrop
+    chanceRate: 0.025
+  - itemName: ValueDrop
+    chanceRate: 0.25

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SnapRoutine : MonoBehaviour
 {
+    [SerializeField]
+    private string snapShootDirectory;
+
     int i = 0;
     float time = 10f;
     float resetTime;
@@ -18,7 +21,7 @@ public class SnapRoutine : MonoBehaviour
         time -= Time.deltaTime;
         if (time < 1)
         {
-            ScreenCapture.CaptureScreenshot(@"C:\Users\Tokusunei\Documents\Repository Folder\GitHub\Unity\Majoutaimajou-Witch-V-Witch\Majotaimajo-WITCH-V-WITCH\魔女対魔女（WITCH V WITCH)\SnapShoots" + i.ToString("D3") + ".png", 4);
+            ScreenCapture.CaptureScreenshot(snapShootDirectory + i.ToString("D3") + ".png", 4);
             ++i;
             time = resetTime;
         }

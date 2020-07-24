@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
+using static Keymapper;
 
 public class GameManager : MonoBehaviour
 {
     #region Public Members
     public static GameManager Instance;
+
+    public bool NoDeaths = false;
 
     //Reference to canvas (we'll make it a list since we have so many)
     public List<Canvas> Canvas;
@@ -19,9 +26,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI HISCORETEXT;
     public TextMeshProUGUI SCORETEXT;
     public Image SPIRITS;
-    public Image MAGIC;
+    public Slider MAGIC;
     public Image[] SLOTS = new Image[3];
-    public Image BOSSHEALTH;
 
     [Header("Text Box")]
     public Image textBoxUI;
@@ -31,7 +37,7 @@ public class GameManager : MonoBehaviour
     //Score System
     public int timesHit;
 
-
+    public static bool IsPractice = false;
     #endregion
 
     #region Private Members
@@ -39,7 +45,9 @@ public class GameManager : MonoBehaviour
     int hiScore;
     int score;
     int tSpirits;
+
     float magic;
+    float maxMagic = 100f;
 
 
     readonly KeyCode skipKey = KeyCode.Return;
@@ -49,14 +57,13 @@ public class GameManager : MonoBehaviour
     readonly float flashVal = 255f;
     float rVal, gVal, bVal;
 
-
+    List<ExposeAs> exposedObj = new List<ExposeAs>();
     #endregion
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        SetLives(5);
         #region Singleton
         if (Instance == null)
         {
@@ -72,28 +79,65 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Dialogue.Instance.Run(0);
-        tRenderer.check = true;
-        magic = 100;
+        SceneManager.sceneLoaded += OnLoadedScene;
+
+        Configure(
+           new Key("left", KeyCode.LeftArrow),
+           new Key("right", KeyCode.RightArrow),
+           new Key("up", KeyCode.UpArrow),
+           new Key("down", KeyCode.DownArrow),
+           new Key("shoot", KeyCode.Z),
+           new Key("sneak", KeyCode.LeftShift),
+           new Key("special1", KeyCode.A),
+           new Key("special2", KeyCode.S),
+           new Key("special3", KeyCode.D),
+           new Key("itemSelection", KeyCode.Space),
+           new Key("start", KeyCode.Return)
+       );
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        HISCORETEXT.text = hiScore.ToString("D10");
-        SCORETEXT.text = score.ToString("D10");
+        if (HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
+        if (SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
 
-        if (!textBoxUI.gameObject.activeSelf) AddToScore(1);
+        if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) AddToScore(1);
 
         if (isDone == true) ToNextDialogue();
     }
 
+    public static void StartGame()
+    {
+
+        switch (IsPractice)
+        {
+            case true:
+                Instance.SetPlayerLives(6);
+
+                break;
+
+            case false:
+                Instance.SetPlayerLives(3);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Add any value to current score.
+    /// </summary>
+    /// <param name="_total"></param>
     public void AddToScore(int _total)
     {
         score += _total;
-        if (score > hiScore) PostHighScore();
+        if (score > hiScore) UpdateHighScore();
     }
 
+    /// <summary>
+    /// Decrement the player's lives
+    /// </summary>
     public void DecrementLives()
     {
         tSpirits--;
@@ -102,58 +146,99 @@ public class GameManager : MonoBehaviour
         ResetScore();
     }
 
-    public void DecrementProgress(float _value)
+    public void SetMaxMagic(int _value)
     {
-        BOSSHEALTH.fillAmount -= _value / 100f;
+        maxMagic = _value;
+        MAGIC.maxValue = maxMagic;
     }
 
+    /// <summary>
+    /// Decrement player magic
+    /// </summary>
+    /// <param name="_value"></param>
+    public void IncrementMagic(float _value)
+    {
+        magic += _value;
+        MAGIC.value = magic;
+    }
+
+    /// <summary>
+    /// Decrement player magic
+    /// </summary>
+    /// <param name="_value"></param>
     public void DecrementMagic(float _value)
     {
-        magic -= _value / 100;
-        MAGIC.fillAmount = magic;
+        magic -= _value;
+        MAGIC.value = magic;
     }
 
-    public void ActivateSlot(Image _slot, bool _on)
+    /// <summary>
+    /// Activate a slot based on the key pressed (A, S, or D)
+    /// </summary>
+    /// <param name="_slotIndex"></param>
+    /// <param name="_on"></param>
+    public void ActivateSlot(int _slotIndex, bool _on)
     {
 
         switch (_on)
         {
             case true:
-                rVal = _slot.color.r;
-                gVal = _slot.color.g;
-                bVal = _slot.color.b;
+                rVal = SLOTS[_slotIndex].color.r;
+                gVal = SLOTS[_slotIndex].color.g;
+                bVal = SLOTS[_slotIndex].color.b;
 
-                _slot.color = new Color(_slot.color.r, flashVal, _slot.color.r);
+                SLOTS[_slotIndex].color = new Color(rVal, flashVal, bVal);
 
                 break;
             case false:
-                _slot.color = new Color(rVal, gVal, bVal);
+                SLOTS[_slotIndex].color = new Color(rVal, gVal, bVal);
 
                 break;
         }
     }
 
-    public void PostHighScore()
+    /// <summary>
+    /// Update the High Score value
+    /// </summary>
+    public void UpdateHighScore()
     {
         hiScore = score;
+        ScoreSystem.SetHighScore(hiScore);
     }
 
+    /// <summary>
+    /// Reset the Score Completely
+    /// </summary>
     public void ResetScore()
     {
         score = 0;
     }
 
-    public int GetLives()
+    /// <summary>
+    /// Decrease the score by a certain amount.
+    /// </summary>
+    /// <param name="_value"></param>
+    public void DecrementScore(int _value)
+    {
+        score -= _value;
+    }
+
+    public int GetPlayerLives()
     {
         return tSpirits;
     }
 
-    void SetLives(int _value)
+    public float GetPlayerMagic()
+    {
+        return magic;
+    }
+
+    void SetPlayerLives(int _value)
     {
         tSpirits = _value;
     }
 
-    public IEnumerator DisplayText(string text, float textspeed)
+    public IEnumerator DisplayText(string text, float textspeed, Dialogue.Script.Voices voice)
     {
         if (isDone == false)
         {
@@ -164,17 +249,45 @@ public class GameManager : MonoBehaviour
             //This give a typewritter effect. With a ton of trial and error, this one works the best!!!
             for (int i = 0; i < text.Length + 1; i++)
             {
-                if (Input.GetKeyDown(skipKey) && i > 0)
+
+                dialogue.text = text.Substring(0, i);
+
+                #region Voices
+
+                switch (voice)
+                {
+                    case Dialogue.Script.Voices.None:
+                        AudioManager.Play("Type000", _oneShot: true);
+                        break;
+                    case Dialogue.Script.Voices.Mythril:
+                        AudioManager.Play("Type000", _oneShot: true);
+                        break;
+                    case Dialogue.Script.Voices.Augusta:
+                        AudioManager.Play("Type000", _oneShot: true);
+                        break;
+                    case Dialogue.Script.Voices.Crystal:
+                        AudioManager.Play("Type000", _oneShot: true);
+                        break;
+                    case Dialogue.Script.Voices.Luu:
+                        AudioManager.Play("LuuVoice", _oneShot: true);
+                        break;
+                    case Dialogue.Script.Voices.Maple:
+                        AudioManager.Play("MapleVoice", _oneShot: true);
+                        break;
+                    case Dialogue.Script.Voices.Raven:
+                        AudioManager.Play("RavenVoice", _oneShot: true);
+                        break;
+                    default:
+                        break;
+                }
+                #endregion
+
+                yield return new WaitForSeconds(textspeed);
+
+                if (Input.GetKeyDown(skipKey))
                 {
                     i = text.Length + 1;
                     dialogue.text = text;
-                }
-                else
-                {
-                    dialogue.text = text.Substring(0, i);
-                    //AudioManager.audio.Play("Type000");
-
-                    yield return new WaitForSeconds(textspeed);
                 }
             }
             isDone = true;
@@ -186,12 +299,12 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
         textBoxUI.gameObject.SetActive(false);
-        StopCoroutine(DisableDelay(_delay));
+        StopAllCoroutines();
     }
 
     public void ToNextDialogue()
     {
-        if (Input.GetKeyDown(skipKey))
+        if (Input.GetKeyDown(skipKey) && textBoxUI != null)
         {
             if (dialoguePos < Dialogue.Instance.dialogue.Length - 1)
             {
@@ -204,11 +317,82 @@ public class GameManager : MonoBehaviour
             {
                 dialogue.text = "";
                 textBoxUI.gameObject.SetActive(false);
-                PlayerPawn.Instance.originOfRotation.GetComponent<LuuPawn>().ActivateSpell("Sakura Burst");
+
                 //This is where we start our Danmaku routines
                 //In another script of course!!
-
+                Dialogue.IsRunning = false;
+                Dialogue.Instance.isRunning = Dialogue.IsRunning;
+                Dialogue.OnDialogueEnd();
             }
         }
+    }
+
+    void FindAllExposedValues()
+    {
+        exposedObj = FindObjectsOfType<ExposeAs>().ToList();
+    }
+
+    void AssignUIElements()
+    {
+        //Wait til 100
+        int ping = 0;
+        while (ping < 1000)
+        {
+            FindAllExposedValues();
+
+            if (exposedObj == null)
+                return;
+
+            foreach (ExposeAs obj in exposedObj)
+            {
+                switch (obj.GetExposedAs())
+                {
+                    case "DialogueBox":
+                        textBoxUI = obj.GetComponent<Image>();
+                        break;
+                    case "DialogueText":
+                        dialogue = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    case "ExpressionImage":
+                        expression = obj.GetComponent<Image>();
+                        break;
+                    case "HighScore":
+                        HISCORETEXT = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    case "Score":
+                        SCORETEXT = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    case "TextureRenderer":
+                        tRenderer = obj.GetComponent<TextureRenderer>();
+                        break;
+                    case "Magic":
+                        MAGIC = obj.GetComponent<Slider>();
+                        break;
+                    case "Slot1":
+                        SLOTS[0] = obj.GetComponent<Image>();
+                        break;
+                    case "Slot2":
+                        SLOTS[1] = obj.GetComponent<Image>();
+                        break;
+                    case "Slot3":
+                        SLOTS[2] = obj.GetComponent<Image>();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            ping++;
+        }
+    }
+
+    private void OnLoadedScene(Scene _scene, LoadSceneMode mode)
+    {
+        AssignUIElements();
+
+        BallotItem newBallotItem = new BallotItem();
+
+        if (newBallotItem != null)
+            ItemInventory.AddNewItem(0, newBallotItem, 3);
     }
 }

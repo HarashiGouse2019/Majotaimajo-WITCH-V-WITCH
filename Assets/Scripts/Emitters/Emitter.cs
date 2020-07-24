@@ -1,0 +1,272 @@
+﻿using Alarm;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum RotationType
+{
+
+    NoRotation,
+    ClockwiseI,
+    ClockwiseII,
+    ClockwiseIII,
+    CounterClockwiseI = -1,
+    CounterClockwiseII = -2,
+    CounterClockwiseIII = -3
+};
+public enum DistributionType
+{
+    Uniformed,
+    Biformed,
+    UniformedIncrement,
+    BiformedIncrement,
+    Scattered
+}
+
+public enum Transition
+{
+    DESTROY_AT_END,
+    LOOP,
+    PINGPONG
+}
+
+/// <summary>
+/// Motion type while emitter is moving
+/// 
+/// Linear - Nothing special. Got to each point.
+/// Curve - A curve will be generated as it goes to each point
+/// EaseIn - Going to each point starting fast, speeding down
+/// EaseOut - Going to each point starting slow, speeding up;
+/// </summary>
+public enum Motion
+{
+    Linear,
+    Curve,
+    EaseIn,
+    EaseOut
+}
+
+
+[DisallowMultipleComponent]
+public abstract class Emitter : MonoBehaviour
+{
+    private static Emitter Instance;
+
+    [SerializeField]
+    protected int id = 0;
+
+    [SerializeField]
+    protected List<GameObject> bulletPrefab = new List<GameObject>();
+
+    [SerializeField]
+    protected Vector3[] points;
+
+    [SerializeField]
+    protected float motionThreshold;
+
+    [SerializeField]
+    protected float initialEmitterSpeed;
+
+    [SerializeField]
+    protected float emitterMinimumSpeed, emitterMaximumSpeed;
+
+    [SerializeField]
+    protected float emitterSpeedDelta;
+
+    [SerializeField]
+    protected GameObject originObject;
+
+    protected string bulletMember;
+
+    [Range(1, 10)] protected int numberOfProjectiles = 1;
+
+    protected List<GameObject> existingProjectiles;
+
+    protected Vector3 initialPosition, targetPosition;
+
+    protected float bulletInitialSpeed;
+
+    protected int incrementVal;
+
+    protected float bulletSpeedLimit;
+
+    protected float g_angle;
+
+    protected bool loop;
+
+    protected float loopSpeed = 0.05f;
+
+    protected RotationType rotation;
+
+    protected DistributionType distribution;
+
+    protected Transition emitterTransition;
+
+    protected Motion emitterMotion;
+
+    protected float rotationFocus;
+
+    protected float rotationFocusIncrementVal;
+
+    protected float rotationFocusLimit;
+
+    protected float rotationIntensity;
+
+    protected float rotationIntensityIncrementVal;
+
+    protected float rotationIntensityLimit;
+
+    protected const float radius = 1f;
+
+    protected int distStep = 0;
+
+    protected Timer loopTimer;
+
+    protected AudioClip sound;
+
+    protected Pawn pawnOriginObject;
+
+    protected int steps;
+
+    protected float emitterSpeed;
+
+    protected float emitterRotation;
+
+    protected int currentPoint;
+
+    protected const int RESET = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    protected virtual void Start()
+    {
+        originObject = gameObject;
+    }
+
+    public virtual void SetBulletMember(string name)
+    {
+        bulletMember = name;
+    }
+
+    public virtual void SetProjectileDensity(int value)
+    {
+        numberOfProjectiles = value;
+    }
+
+    public virtual void SetLoopSpeed(float value)
+    {
+        loopSpeed = value;
+    }
+
+    public virtual void SetLooping(bool value)
+    {
+        loop = value;
+    }
+    public virtual void ToggleLooping()
+    {
+        loop = !loop;
+    }
+
+    public virtual void SetBulletInitialSpeed(float value)
+    {
+        bulletInitialSpeed = value;
+    }
+
+    public virtual void SetBulletLimitSpeed(float value)
+    {
+        bulletSpeedLimit = value;
+    }
+
+    public virtual void SetIncrementValue(int value)
+    {
+        incrementVal = value;
+    }
+
+    public virtual void SetAngle(float value)
+    {
+        g_angle = value;
+    }
+
+    public virtual void SetRotationFocus(float value)
+    {
+        rotationFocus = value;
+    }
+
+    public virtual void SetRotationFocusIncrement(float value)
+    {
+        rotationFocusIncrementVal = value;
+    }
+
+    public virtual void SetRotationFocusLimit(float value)
+    {
+        rotationFocusLimit = value;
+    }
+
+    public virtual void SetRotationIntensity(float value)
+    {
+        rotationIntensity = value;
+    }
+
+    public virtual void SetRotationIntensityIncrement(float value)
+    {
+        rotationIntensityIncrementVal = value;
+    }
+
+    public virtual void SetRotationIntensityLimit(float value)
+    {
+        rotationIntensityLimit = value;
+    }
+
+    public virtual void SetRotationType(RotationType type)
+    {
+        rotation = type;
+    }
+
+    public virtual void SetDistributionType(DistributionType type)
+    {
+        distribution = type;
+    }
+
+    public virtual GameObject GetOriginObject() => originObject;
+
+    public virtual void ClearValues()
+    {
+        loop = false;
+        distribution = default;
+        rotation = default;
+        bulletInitialSpeed = RESET;
+        bulletSpeedLimit = RESET;
+        loopSpeed = RESET;
+        numberOfProjectiles = 1;
+        g_angle = RESET;
+        incrementVal = RESET;
+        rotationFocus = RESET;
+        rotationIntensity = RESET;
+        rotationFocusIncrementVal = RESET;
+        rotationIntensityIncrementVal = RESET;
+        rotationIntensityLimit = RESET;
+        rotationFocusLimit = RESET;
+    }
+
+    public virtual void SpawnBullets(int _numberOfProjectiles, string bulletMember)
+    {
+
+    }
+
+    protected virtual void Transit()
+    {
+
+    }
+
+    protected virtual void UpdateStartPoint()
+    {
+
+    }
+
+    protected virtual void Loop()
+    {
+
+    }
+}

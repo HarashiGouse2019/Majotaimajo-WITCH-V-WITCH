@@ -1,19 +1,153 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Alarm;
+﻿using UnityEngine;
+using TMPro;
+using System.Collections;
 
 public class PlayerPawn : Pawn
 {
+    public static new PlayerPawn Instance;
+
+    public PlayerController controller;
+
+    public float movementSpeed;
+    public float speedReduction;
+    public float rotationSpeed;
+
+    public Transform originOfRotation;
+
+    public float radius = 6f;
+    readonly public float radiusSpeed = 5f;
+    public bool isMoving;
+
+    public bool isMagicActivelyUsed = false;
+    public bool isSneaking = false;
+
+    const int ZERO = 0;
+
+    HoningLinearEmitter playerEmitter;
+
+    //Player Stats
+    Stats PlayerStats;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     //We'll get 2 functions, MoveInCircle, and MoveOnDiameter
     //Either circle around Luu, or go towards her.
-    public override void Shoot(int _index)
+    private void Start()
+    {
+        PlayerStats = Stats.New();
+
+        AssignValuesFromStats();
+
+        priority = basePriority;
+
+        GameManager.Instance.tRenderer.check = true;
+        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
+        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
+
+        
+
+        //Get Components
+        srenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        sequencer = GetComponent<DanmakuSequencer>();
+        library = GetComponent<SpellLibrary>();
+        playerEmitter = GetComponent<HoningLinearEmitter>();
+
+        isVisible = srenderer.isVisible;
+        xScale = transform.localScale;
+        xScaleVal = xScale.x;
+        srendererColor = srenderer.color;
+
+        //Start Recovery Sequence
+        StartCoroutine(PassiveRecoveryCycle());
+
+        //Start Hit Cycle Coroutine
+        StartCoroutine(BlinkCycle(0.05f));
+
+        //Read your SpellLibrary, and override GameUi spell text
+        for (int i = 0; i < library.spells.Length; i++)
+        {
+            GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
+        }
+    }
+
+    private void Update()
+    {
+        if (recoil == true) Wait(0.05f);
+        if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
+
+        if (hit == true)
+            Blink(5f);
+        else
+        {
+            isVisible = true;
+            srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
+        }
+    }
+
+    #region Unique
+
+    /// <summary>
+    /// Assign Game Values to PlayerPawn
+    /// </summary>
+    void AssignValuesFromStats()
+    {
+        basePriority = (uint)PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.BASEPRIORITY);
+        movementSpeed = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.SPEED);
+        speedReduction = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.EVASIVENESS);
+    }
+
+    /// <summary>
+    /// Get stats from player spawn
+    /// </summary>
+    /// <returns></returns>
+    public Stats GetStats() => PlayerStats;
+
+    /// <summary>
+    /// Recover certain amount of value
+    /// </summary>
+    /// <param name="value"></param>
+    void RecoverMagic(float value)
+    {
+        GameManager.Instance.IncrementMagic(value);
+    }
+
+    /// <summary>
+    /// Recover Raven's magic slowly when not actively using spells or shooting
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator PassiveRecoveryCycle()
+    {
+        while (true)
+        {
+            if (!isMagicActivelyUsed && GameManager.Instance.GetPlayerMagic() < 100f)
+            {
+                RecoverMagic(0.05f);
+            }
+
+            yield return new WaitForSeconds(0.025f);
+        }
+    }
+    #endregion
+
+    public override void Shoot(string bulletName)
     {
         if (recoil == false)
         {
-            Standard_Shoot.Instance = GetComponent<Standard_Shoot>();
-            Standard_Shoot.Instance.SpawnBullets(1, _index);
-            AudioManager.audio.Play("Shoot000", 100f);
+            playerEmitter.SetBulletInitialSpeed(650);
+            playerEmitter.SpawnBullets(1, bulletName);
+            AudioManager.Play("Shoot000", _oneShot: true);
             recoil = true;
         }
     }
@@ -25,7 +159,6 @@ public class PlayerPawn : Pawn
 
     public override void Flip(int _direction)
     {
-
 
         switch (_direction)
         {
@@ -41,8 +174,38 @@ public class PlayerPawn : Pawn
         transform.localScale = xScale;
     }
 
-    public override void ActivateSpell(string _name)
+    public override void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
+        Spell spell = library.FindSpell(_name);
+
+        GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true);
+
+        if (GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && SpellLibrary.library.spellInUse == null)
+        {
+            library.spellInUse = spell;
+
+            GameManager.Instance.DecrementMagic(spell.magicConsumtion);
+
+            isMagicActivelyUsed = true;
+
+            //Increate pawn's priority!!!
+            priority += spell.spellPriority;
+
+            //We give all values to our Sequencer
+            sequencer.stepSpeed = spell.stepSpeed;
+
+            //We have to loop each routine, and add them the list
+            for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
+            {
+                sequencer.routine.Add(spell.routine[routinePos]);
+
+                //And then we check if we enable looping
+                if (sequencer.allowOverride) sequencer.enableSequenceLooping = spell.enableSequenceLooping;
+            }
+
+            //Now that all value have passed in, we enable
+            sequencer.enabled = true;
+        }
         base.ActivateSpell(_name);
     }
 
@@ -50,55 +213,66 @@ public class PlayerPawn : Pawn
     {
         timer.StartTimer(2);
         returnVal = timer.SetFor(_duration, 2);
-        if (returnVal == true) recoil = false;
+        if (returnVal == true) { recoil = false; timer.SetToZero(2, true); }
     }
 
-    public override void GetHurt(float _blinkRate, float _duration)
+    public override void Blink(float _duration)
     {
         if (hit == true)
         {
-            if (GameManager.Instance.GetLives() < 1)
-            {
-                Application.Quit();
-            }
-
-            timer.StartTimer(0);
+           
+            //Timer for duration
             timer.StartTimer(1);
-            //I want it so that the player is blinking on and off for a certain duration of time.
-            //That would mean getting to the Sprite Renderer, and enabling it and disabling it after
-            //certain intervals.
 
             //Since there's a timer in Pawn, and I've initialized 12, I'm going to use alarm 6
             //We'll pass the blink rate to our SetFor method.
             returnVal = timer.SetFor(_duration, 1, true);
-            if (timer.SetFor(_blinkRate, 0))
+
+            if (returnVal)
             {
+                hit = false;
+                timer.SetToZero(1, true);
+            }
+        }
+    }
+
+    IEnumerator BlinkCycle(float _blinkRate)
+    {
+        while (true)
+        {
+            if (hit)
+            {
+                if (GameManager.Instance.GetPlayerLives() < 1 && !GameManager.Instance.NoDeaths)
+                {
+                    GameSceneManager.Instance.LoadScene("RECORDSANDHIGHSCORE");
+                }
+
                 if (isVisible)
                 {
                     Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
                     srenderer.color = invisible;
                     isVisible = false;
                 }
-                else if (isVisible == false)
+                else
                 {
                     Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
                     srenderer.color = visible;
                     isVisible = true;
                 }
+
+                yield return new WaitForSecondsRealtime(_blinkRate);
             }
 
-            if (returnVal)
-            {
-                hit = false;
-                timer.SetToZero(0, true);
-            }
+            yield return null;
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint.name == "Luu_Obj")
+        GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
+
+        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Raven_Obj")
         {
             if (hit == false)
             {
@@ -110,34 +284,25 @@ public class PlayerPawn : Pawn
 
     public override void Foward()
     {
-        move = new Vector2(rb.velocity.x, movementSpeed);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(rb.velocity.x, (movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10) * Time.fixedDeltaTime;
+        rb.AddForce(move);
 
     }
     public override void Back()
     {
-        move = new Vector2(rb.velocity.x, -movementSpeed);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(rb.velocity.x, -(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10) * Time.fixedDeltaTime;
+        rb.AddForce(move);
     }
 
     public override void Left()
     {
-        move = new Vector2(-movementSpeed, rb.velocity.y);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
+        move = new Vector2(-(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y) * Time.fixedDeltaTime;
+        rb.AddForce(move);
     }
 
     public override void Right()
     {
-        move = new Vector2(movementSpeed, rb.velocity.y);
-        if (rb.velocity.magnitude < maxSpeed)
-            rb.velocity += move * Time.fixedDeltaTime;
-    }
-
-    public void FindRadius()
-    {
-        radius = Vector2.Distance(originOfRotation.position, transform.position);
+        move = new Vector2((movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y) * Time.fixedDeltaTime;
+        rb.AddForce(move);
     }
 }

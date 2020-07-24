@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Alarm;
 public class ScoreSystem : UnityEngine.MonoBehaviour
@@ -10,9 +11,10 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     readonly int hitpoint = 30;
     readonly int stallpoint = 1;
 
-    int score = 0;
+    public static int Score { get; private set; } = 0;
+    public static int HighScore { get; private set; } = 0;
 
-    Timer timer = new Timer(1);
+    static Timer ScoreTimer = new Timer(1);
 
     private void Awake()
     {
@@ -31,19 +33,19 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
 
     private void Update()
     {
-        score += stallpoint;
+        Score += stallpoint;
     }
 
     public void Amplify()
     {
-        score += (hitpoint * timesHit) + stallpoint;
-        timer.StartTimer(0);
-        timer.currentTime[0] = 0;
+        Score += (hitpoint * timesHit) + stallpoint;
+        ScoreTimer.StartTimer(0);
+        ScoreTimer.currentTime[0] = 0;
     }
 
     public void StreakDuration(int _value)
     {
-        if (timer.SetFor(_value, 0))
+        if (ScoreTimer.SetFor(_value, 0))
         {
             BreakStreak();
         }
@@ -52,11 +54,32 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
     public void BreakStreak()
     {
         timesHit = 0;
-        timer.SetToZero(0);
+        ScoreTimer.SetToZero(0);
+    }
+
+    public static void AddToScore(int value)
+    {
+        Score += value;
     }
 
     public int GetScore()
     {
-        return score;
+        return Score;
+    }
+
+    public static void SetHighScore(int score)
+    {
+        HighScore = score;
+    }
+
+    public static void ClearScore()
+    {
+        ScoreTimer.SetToZero(0, true);
+        Score = 0;
+    }
+    public static void ClearHighScore()
+    {
+        ScoreTimer.SetToZero(0, true);
+        HighScore = 0;
     }
 }

@@ -5,35 +5,30 @@ using UnityEngine;
 public class DanmakuSequencer : MonoBehaviour
 {
     #region Public Members
+    public bool allowOverride = false;
+
     public float startStep, currentStep, nextStep;
     public float stepSpeed;
 
     public float progress;
 
-    [System.Serializable]
-    public class Routine
-    {
-        public Pattern pattern;
-        public uint stepPos;
-    }
+    public List<Spell.Routine> routine = new List<Spell.Routine>();
 
     public uint runningRoutine = 0;
     public int completedRoutines = 0;
     public int completedLoops = 0;
-
-    public List<Spell.Routine> routine = new List<Spell.Routine>();
 
     public bool enableSequenceLooping;
     #endregion
 
     #region Private Members
     readonly uint reset = 0;
-    Shoot_Trig trig;
+    RotationEmitter trig;
     #endregion
 
     void Awake()
     {
-        trig = GetComponent<Shoot_Trig>();
+        trig = GetComponent<RotationEmitter>();
     }
     void OnEnable()
     {
@@ -64,7 +59,6 @@ public class DanmakuSequencer : MonoBehaviour
 
     void Sequence()
     {
-
         currentStep++;
 
         if (currentStep == nextStep)
@@ -80,17 +74,27 @@ public class DanmakuSequencer : MonoBehaviour
         }
 
         if (GetRoutineCompletionInPercentage() < 0.1f)
+        {
             RunPattern(routine[(int)runningRoutine].pattern);
+        }
     }
 
     public uint GetNextStep()
     {
-        return routine[(int)runningRoutine + 1].stepPos;
+        Spell.Routine routineCheck = routine[(int)runningRoutine + 1];
+
+        RunPattern(routineCheck.pattern);
+
+        return routineCheck.stepPos;
     }
 
     public uint GetPreviousStep()
     {
-        return routine[(int)runningRoutine].stepPos;
+        Spell.Routine routineCheck = routine[(int)runningRoutine];
+
+        RunPattern(routineCheck.pattern);
+
+        return routineCheck.stepPos;
     }
 
     public float GetRoutineCompletionInPercentage()
@@ -103,84 +107,132 @@ public class DanmakuSequencer : MonoBehaviour
     //Patterns
     void RunPattern(Pattern _pattern)
     {
-        trig.numberOfProjectiles = _pattern.block.amount;
-
-        trig.loop = _pattern.block.loop;
-
-        trig.loopSpeed = _pattern.block.loopRate;
-
-        trig.bullet[0] = _pattern.block.bullet;
-
-        trig.speed = _pattern.block.speed;
-
-        trig.incrementVal = _pattern.block.incrementVal;
-
-        if (_pattern.block.overrideRotation)
-            trig.g_angle = _pattern.block.initialRotation;
-
-        trig.rotationFocus = _pattern.block.rotationFocus;
-
-        trig.rotationIntensity = _pattern.block.rotationIntensity;
-
-        #region Rotation
-        //No idea, but Imma do it!!
-        switch ((int)_pattern.block.rotation)
+        int index = 0;
+        #region Assing Values
+        foreach (Pattern.Block block in _pattern.blocks)
         {
-            case 0:
-                trig.rotation = Shoot_Trig.RotationType.NoRotation;
-                break;
+            trig.SetProjectileDensity(block.amount);
 
-            case 1:
-                trig.rotation = Shoot_Trig.RotationType.ClockwiseI;
-                break;
+            trig.SetLooping(block.loop);
 
-            case 2:
-                trig.rotation = Shoot_Trig.RotationType.ClockwiseII;
-                break;
+            trig.SetLoopSpeed(block.loopRate);
 
-            case 3:
-                trig.rotation = Shoot_Trig.RotationType.ClockwiseIII;
-                break;
+            trig.SetBulletMember(block.bulletType);
 
-            case -1:
-                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseI;
-                break;
+            trig.SetBulletLimitSpeed(block.speedLimit);
 
-            case -2:
-                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseII;
-                break;
+            if (!block.carryOverSpeed && block.initialSpeed < block.speedLimit)
+                trig.SetBulletInitialSpeed(block.initialSpeed);
 
-            case -3:
-                trig.rotation = Shoot_Trig.RotationType.CounterClockwiseIII;
-                break;
+            trig.SetIncrementValue(block.incrementalSpeed);
 
-            default:
-                break;
-        }
-        #endregion
+            if (block.overrideRotation)
+                trig.SetAngle(block.initialRotation);
 
-        #region Distribution
-        //And then again...
-        switch (_pattern.block.distribution)
-        {
-            case Pattern.Block.DistributionType.Uniformed:
-                trig.distribution = Shoot_Trig.DistributionType.Uniformed;
-                break;
+            trig.SetRotationFocus(block.rotationFocus);
 
-            case Pattern.Block.DistributionType.Biformed:
-                trig.distribution = Shoot_Trig.DistributionType.Biformed;
-                break;
+            trig.SetRotationFocusLimit(block.rotationFocusLimit);
 
-            case Pattern.Block.DistributionType.Increment:
-                trig.distribution = Shoot_Trig.DistributionType.Increment;
-                break;
+            trig.SetRotationIntensity(block.rotationIntensity);
 
-            case Pattern.Block.DistributionType.Scattered:
-                trig.distribution = Shoot_Trig.DistributionType.Scattered;
-                break;
+            trig.SetRotationIntensityLimit(block.rotationIntensityLimit);
 
-            default:
-                break;
+
+            #region Rotation
+            //No idea, but Imma do it!!
+            switch ((int)block.rotation)
+            {
+                case 0:
+                    trig.SetRotationType(RotationType.NoRotation);
+                    break;
+
+                case 1:
+                    trig.SetRotationType(RotationType.ClockwiseI);
+                    break;
+
+                case 2:
+                    trig.SetRotationType(RotationType.ClockwiseII);
+                    break;
+
+                case 3:
+                    trig.SetRotationType(RotationType.ClockwiseIII);
+                    break;
+
+                case -1:
+                    trig.SetRotationType(RotationType.CounterClockwiseI);
+                    break;
+
+                case -2:
+                    trig.SetRotationType(RotationType.CounterClockwiseII);
+                    break;
+
+                case -3:
+                    trig.SetRotationType(RotationType.CounterClockwiseIII);
+                    break;
+
+                default:
+                    break;
+            }
+            #endregion
+
+            #region Distribution
+            //And then again...
+            switch (block.distribution)
+            {
+                case Pattern.Block.DistributionType.Uniformed:
+                    trig.SetDistributionType(DistributionType.Uniformed);
+                    break;
+
+                case Pattern.Block.DistributionType.Biformed:
+                    trig.SetDistributionType(DistributionType.Biformed);
+                    break;
+
+                case Pattern.Block.DistributionType.UniformedIncrement:
+                    trig.SetDistributionType(DistributionType.UniformedIncrement);
+                    break;
+
+                case Pattern.Block.DistributionType.BiFormedIncrement:
+                    trig.SetDistributionType(DistributionType.BiformedIncrement);
+                    break;
+
+                case Pattern.Block.DistributionType.Scattered:
+                    trig.SetDistributionType(DistributionType.Scattered);
+                    break;
+
+                default:
+                    break;
+            }
+            #endregion
+
+            #region Rotation Focus Effect
+            switch (block.rotationFocusEffect)
+            {
+                case Pattern.Block.RotationFocusEffect.Static:
+                    //Do Nothing
+                    break;
+                case Pattern.Block.RotationFocusEffect.Increment:
+                    trig.SetRotationFocusIncrement(block.rotationFocusIncrementVal);
+                    break;
+                default:
+                    break;
+            }
+            #endregion
+
+            #region Rotation Intensity Effect
+            switch (block.rotationIntensityEffect)
+            {
+                case Pattern.Block.RotationIntensityEffect.Static:
+                    //Do Nothing
+                    break;
+                case Pattern.Block.RotationIntensityEffect.Increment:
+                    trig.SetRotationIntensityIncrement(block.rotationIntensityIncrementVal);
+                    break;
+                default:
+                    break;
+            }
+            #endregion
+
+            index++;
         }
         #endregion
     }
@@ -205,6 +257,7 @@ public class DanmakuSequencer : MonoBehaviour
             completedRoutines++;
             return true;
         }
+
         return false;
     }
 
@@ -213,15 +266,33 @@ public class DanmakuSequencer : MonoBehaviour
         //Get the pawn
         Pawn pawn = GetComponent<Pawn>();
 
-        progress = reset;
+        progress = (float)reset;
         currentStep = reset;
         nextStep = reset;
         startStep = reset;
         completedLoops = (int)reset;
         completedRoutines = (int)reset;
         runningRoutine = reset;
+
         enabled = false;
-        trig.loop = false;
+
+        trig.ClearValues();
+
+        //Reset pawn stat
         pawn.priority = pawn.basePriority;
+        pawn.library.spellInUse = null;
+
+        Clear();
+
+    }
+
+    void Clear()
+    {
+        routine.Clear();
+    }
+
+    public void CallReset()
+    {
+        ResetAllValues();
     }
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
+  m_Name: Sakura Fan
+  m_EditorClassIdentifier: 
+  spellPriority: 8
+  magicConsumtion: 45
+  stepSpeed: 0.1
+  routineLayer: []
+  routine:
+  - pattern: {fileID: 11400000, guid: cb665fb6bd9d2ec4ea52dbfc9f08c21f, type: 2}
+    stepPos: 0
+  - pattern: {fileID: 11400000, guid: dc00f2e8b30e68d42b0437d1256de71e, type: 2}
+    stepPos: 50
+  - pattern: {fileID: 11400000, guid: 866835eb845880944a44eb27ba418f65, type: 2}
+    stepPos: 100
+  - pattern: {fileID: 11400000, guid: cb665fb6bd9d2ec4ea52dbfc9f08c21f, type: 2}
+    stepPos: 200
+  enableSequenceLooping: 1

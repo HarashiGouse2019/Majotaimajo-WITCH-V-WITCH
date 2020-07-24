@@ -11,6 +11,16 @@ public class CheckDestroy : MonoBehaviour
     private GameObject origin;
     #endregion
 
+    private void OnEnable()
+    {
+        destroyTimer.StartTimer(0);
+        if (destroyTimer.currentTime[0] > 10)
+        {
+            gameObject.SetActive(false);
+            destroyTimer.SetToZero(0, true);
+        }
+    }
+
     void Awake()
     {
         destroyTimer = new Timer(1);
@@ -19,17 +29,7 @@ public class CheckDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        origin = FindObjectOfType<Shoot_Trig>().origin; //Will find the gameObject that shoot the bullet out
+        origin = FindObjectOfType<RotationEmitter>().GetOriginObject(); //Will find the gameObject that shoot the bullet out
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        destroyTimer.StartTimer(0);
-        if (destroyTimer.currentTime[0] > 10)
-        {
-            origin.GetComponent<Shoot_Trig>().Remove(gameObject);
-            Destroy(gameObject);
-        }
-    }
 }

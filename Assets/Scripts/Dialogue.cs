@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class Dialogue : MonoBehaviour
@@ -11,7 +9,19 @@ public class Dialogue : MonoBehaviour
     [System.Serializable]
     public class Script
     {
+        public enum Voices
+        {
+            None,
+            Mythril,
+            Augusta,
+            Crystal,
+            Luu,
+            Maple,
+            Raven
+        }
+
         public Expression expression;
+        public Voices voice;
         public string speech;
     }
 
@@ -20,19 +30,44 @@ public class Dialogue : MonoBehaviour
     GameManager manager;
 
     public IEnumerator displayText;
+
+    public static bool IsRunning = false;
+    public bool isRunning = true;
     private void Awake()
     {
-        Instance = this;
+        #region Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        } 
+        #endregion
     }
     public void Run(int _index, float _speed = 0.05f)
     {
 
-        manager= GameManager.Instance;
+        manager = GameManager.Instance;
 
         GameManager.Instance.expression.sprite = dialogue[_index].expression.image;
 
-        displayText = manager.DisplayText(dialogue[_index].speech, _speed);
+        displayText = manager.DisplayText(dialogue[_index].speech, _speed, dialogue[_index].voice);
+
+        IsRunning = true;
+        isRunning = IsRunning;
 
         StartCoroutine(displayText);
+    }
+
+    public static void OnDialogueEnd()
+    {
+        Instance.isRunning = IsRunning;
+        if (!IsRunning)
+        {
+            EventManager.TriggerEvent("DialogueEnd");
+        }
     }
 }

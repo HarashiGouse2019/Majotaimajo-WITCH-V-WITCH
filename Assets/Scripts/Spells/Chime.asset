@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
   m_Name: Chime
   m_EditorClassIdentifier: 
+  spellPriority: 2
+  magicConsumtion: 5
   stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: 4bb46331e6ef97b42b13b17b879d2acb, type: 2}
     stepPos: 0
-  - pattern: {fileID: 11400000, guid: ab8a7ee204c598a4eb6d5a55d9e50652, type: 2}
-    stepPos: 5
-  - pattern: {fileID: 11400000, guid: 815b109b1dc1c0345b1e637a92793677, type: 2}
-    stepPos: 10
   - pattern: {fileID: 11400000, guid: 4bb46331e6ef97b42b13b17b879d2acb, type: 2}
-    stepPos: 19
-  enableSequenceLooping: 1
+    stepPos: 50
+  enableSequenceLooping: 0

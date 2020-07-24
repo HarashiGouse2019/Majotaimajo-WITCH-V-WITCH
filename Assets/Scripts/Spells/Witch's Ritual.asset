@@ -12,13 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
   m_Name: Witch's Ritual
   m_EditorClassIdentifier: 
-  spellPriority: 8
+  spellPriority: 14
+  magicConsumtion: 45
   stepSpeed: 0.1
+  routineLayer:
+  - routine:
+    - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}
+      stepPos: 0
+    - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
+      stepPos: 15
+    - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
+      stepPos: 30
+    enableSequenceLooping: 0
   routine:
   - pattern: {fileID: 11400000, guid: c022c570fa3b3544f8e6603fadc3182d, type: 2}
     stepPos: 0
   - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
     stepPos: 15
-  - pattern: {fileID: 11400000, guid: 7718765afe5d7fc468b15c5125f5b442, type: 2}
-    stepPos: 35
+  - pattern: {fileID: 11400000, guid: 4b018d9658808f040b370d073f0439f8, type: 2}
+    stepPos: 60
+  - pattern: {fileID: 11400000, guid: 4b018d9658808f040b370d073f0439f8, type: 2}
+    stepPos: 125
   enableSequenceLooping: 0

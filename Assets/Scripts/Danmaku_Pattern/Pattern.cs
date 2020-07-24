@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Alarm;
 
 [CreateAssetMenu(fileName = "New Pattern", menuName = "Pattern")]
 public class Pattern : ScriptableObject
@@ -11,15 +8,33 @@ public class Pattern : ScriptableObject
     [Serializable]
     public class Block
     {
+        [Tooltip("How many bullets will you spawn?")]
         public int amount;
-        public float speed;
-        public int incrementVal;
+
+        [Tooltip("Will the pattern be tracking the target. Make sure overrideRotation is enabled")]
+        public bool isHoming;
+
+        [Tooltip("The starting speed of the bullets")]
+        public float initialSpeed;
+
+        [Tooltip("The change in speed over time")]
+        public int incrementalSpeed;
+
+        [Tooltip("The speed limit")]
+        public int speedLimit;
+
+        [Tooltip("Carry over the speed from the previous pattern")]
+        public bool carryOverSpeed;
+
+        [Tooltip("Override the rotation")]
         public bool overrideRotation;
-        [Range(1, 360)]
+
+        [Tooltip("The starting rotation of the bullets"), Range(0, 360)]
         public float initialRotation;
+
         public float rotationSpeed;
 
-        public GameObject bullet;
+        public string bulletType;
 
         public bool loop;
         public float loopRate;
@@ -39,20 +54,41 @@ public class Pattern : ScriptableObject
         {
             Uniformed,
             Biformed,
-            Increment,
+            UniformedIncrement,
+            BiFormedIncrement,
             Scattered
         }
 
         public RotationType rotation;
         public DistributionType distribution;
 
+        public enum RotationFocusEffect
+        {
+            Static,
+            Increment
+        }
+
+        public enum RotationIntensityEffect
+        {
+            Static,
+            Increment
+        }
+
+        public RotationFocusEffect rotationFocusEffect;
         public float rotationFocus;
+        public float rotationFocusIncrementVal;
+        public float rotationFocusLimit;
+
+        public RotationIntensityEffect rotationIntensityEffect;
         public float rotationIntensity;
+        public float rotationIntensityIncrementVal;
+        public float rotationIntensityLimit;
 
         public float transitionDuration;
     }
 
-    public Block block;
+    [Header("Block Layer")]
+    public Block[] blocks;
 }
 
 //And I think that's it... I think...

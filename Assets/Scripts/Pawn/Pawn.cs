@@ -2,28 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Alarm;
+using System;
 
-public class Pawn : MonoBehaviour
+public abstract class Pawn : MonoBehaviour
 {
     public static Pawn Instance;
 
-
     #region Public Members
     //Our movment speeds
-    public PlayerController controller;
-
-    public float movementSpeed;
-    public float rotationSpeed;
-    public float maxSpeed;
-
-    public Transform originOfRotation;
-
-    public float radius = 6f;
-    readonly public float radiusSpeed = 5f;
-    public bool isMoving;
-
     public uint priority = 1;
     public uint basePriority;
+
+    public SpellLibrary library;
     #endregion
 
     #region Protected Members
@@ -36,16 +26,17 @@ public class Pawn : MonoBehaviour
     protected bool returnVal;
     protected bool hit;
 
-    protected readonly Timer timer = new Timer(3, true);
+    protected readonly Timer timer = new Timer(3);
     protected Vector3 xScale;
     protected float xScaleVal;
     protected SpriteRenderer srenderer;
     protected Rigidbody2D rb;
     protected DanmakuSequencer sequencer;
-    protected SpellLibrary library;
+    
     protected Vector2 move;
     protected bool isVisible;
     protected Color srendererColor;
+    protected GetOrignatedSpawnPoint objectOrigin;
 
     #endregion
     private void Awake()
@@ -53,108 +44,103 @@ public class Pawn : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //Get Components
-        srenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        sequencer = GetComponent<DanmakuSequencer>();
-        library = GetComponent<SpellLibrary>();
-
-        isVisible = srenderer.isVisible;
-        xScale = transform.localScale;
-        xScaleVal = xScale.x;
-        srendererColor = srenderer.color;
-
-        //Set base priority at start
-        basePriority = priority;
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        if (recoil == true) Wait(0.05f);
-        if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
-
-        //For our blinking effect
-        if (hit == true)
-        {
-            GetHurt(0.15f, 5f);
-        }
-        else
-        {
-
-            isVisible = true;
-            srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
-        }
-    }
-
-    public virtual void Shoot(int _index)
+    /// <summary>
+    /// Shoot a projectile based on its name.
+    /// </summary>
+    /// <param name="bulletName"></param>
+    public virtual void Shoot(string bulletName)
     {
 
     }
 
+    /// <summary>
+    /// Check if the pawn is moving
+    /// </summary>
+    /// <returns></returns>
     public virtual bool CheckIfMoving()
     {
         return false;
     }
 
+    /// <summary>
+    /// Flip the pawn to either -1 (left) or 1 (right)
+    /// </summary>
+    /// <param name="_direction"></param>
     public virtual void Flip(int _direction)
     {
 
     }
 
-    public virtual void ActivateSpell(string _name)
+    /// <summary>
+    /// Activate a spell from the pawn's Spell Library
+    /// </summary>
+    /// <param name="_name"></param>
+    public virtual void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
-        Spell spell = library.FindSpell(_name);
 
-        //Increate pawn's priority!!!
-        priority = spell.spellPriority;
-
-        //We give all values to our Sequencer
-        sequencer.stepSpeed = spell.stepSpeed;
-
-        //We have to loop each routine, and add them the list
-        for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
-        {
-            sequencer.routine.Add(spell.routine[routinePos]);
-        }
-
-        //And then we check if we enable looping
-        sequencer.enableSequenceLooping = spell.enableSequenceLooping;
-
-        //Now that all value have passed in, we enable
-        sequencer.enabled = true;
     }
 
+    /// <summary>
+    /// Wait for a duration amount of time
+    /// </summary>
+    /// <param name="_duration"></param>
     public virtual void Wait(float _duration)
     {
 
     }
 
-    public virtual void GetHurt(float _blinkRate, float _duration)
+    /// <summary>
+    /// Wait for a duration amount of time before executing a method
+    /// </summary>
+    /// <param name="_duration"></param>
+    /// <param name="method"></param>
+    public virtual void Wait(float _duration, Action method)
+    {
+        
+    }
+
+    /// <summary>
+    /// Blink the sprite at a rate for a set duration of time
+    /// </summary>
+    /// <param name="_blinkRate"></param>
+    /// <param name="_duration"></param>
+    public virtual void Blink(float _duration)
     {
 
     }
 
+    /// <summary>
+    /// Move foward.
+    /// </summary>
     public virtual void Foward()
     {
 
     }
 
+    /// <summary>
+    /// Move backwards
+    /// </summary>
     public virtual void Back()
     {
 
     }
 
+    /// <summary>
+    /// Move left
+    /// </summary>
     public virtual void Left()
     {
 
     }
 
+    /// <summary>
+    /// Move right
+    /// </summary>
     public virtual void Right()
     {
 
