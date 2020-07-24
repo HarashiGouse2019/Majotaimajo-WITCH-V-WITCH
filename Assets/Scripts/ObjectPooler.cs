@@ -50,18 +50,58 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+    public static GameObject GetMember<T>(string name, out T result) where T : Component
+    {
+
+        #region Iteration
+        for (int i = 0; i < Instance.pooledObjects.Count; i++)
+        {
+            GameObject pooledObject = Instance.pooledObjects[i];
+
+            if (pooledObject != null &&
+                !pooledObject.activeInHierarchy &&
+                (name + "(Clone)") == pooledObject.name &&
+                pooledObject.GetComponent(typeof(T)) != null)
+            {
+                result = (T)pooledObject.GetComponent(typeof(T));
+                return pooledObject;
+            }
+        }
+        #endregion
+
+        foreach (ObjectPoolItem item in Instance.itemsToPool)
+        {
+            if (name == item.prefab.name && item.expandPool)
+            {
+
+                GameObject newMember = Instantiate(item.prefab);
+                newMember.SetActive(false);
+                Instance.pooledObjects.Add(newMember);
+                if (newMember.GetComponent(typeof(T)) != null)
+                {
+                    result = (T)newMember.GetComponent(typeof(T));
+                    return newMember;
+                }
+            }
+        }
+        Debug.LogWarning("We couldn't find a prefab of this name " + name);
+        result = null;
+        return null;
+    }
+
     public static GameObject GetMember(string name)
     {
 
         #region Iteration
         for (int i = 0; i < Instance.pooledObjects.Count; i++)
         {
+            GameObject pooledObject = Instance.pooledObjects[i];
 
-            if (Instance.pooledObjects[i] != null && 
-                !Instance.pooledObjects[i].activeInHierarchy && 
-                (name + "(Clone)") == Instance.pooledObjects[i].name)
+            if (pooledObject != null &&
+                !pooledObject.activeInHierarchy &&
+                (name + "(Clone)") == pooledObject.name)
             {
-                return Instance.pooledObjects[i];
+                return pooledObject;
             }
         }
         #endregion

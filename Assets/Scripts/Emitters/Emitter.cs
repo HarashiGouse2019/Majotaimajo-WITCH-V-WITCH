@@ -22,6 +22,18 @@ public enum DistributionType
     Scattered
 }
 
+public enum RotationFocusEffect
+{
+    Static,
+    Increment
+}
+
+public enum RotationIntensityEffect
+{
+    Static,
+    Increment
+}
+
 public enum Transition
 {
     DESTROY_AT_END,
@@ -47,9 +59,13 @@ public enum Motion
 
 
 [DisallowMultipleComponent]
+[RequireComponent(typeof(DanmakuSequencer))]
 public abstract class Emitter : MonoBehaviour
 {
     private static Emitter Instance;
+
+
+    public DanmakuSequencer Sequencer { get; private set; }
 
     [SerializeField]
     protected int id = 0;
@@ -76,6 +92,8 @@ public abstract class Emitter : MonoBehaviour
     protected GameObject originObject;
 
     protected string bulletMember;
+
+    
 
     [Range(1, 10)] protected int numberOfProjectiles = 1;
 
@@ -230,6 +248,22 @@ public abstract class Emitter : MonoBehaviour
     }
 
     public virtual GameObject GetOriginObject() => originObject;
+
+    public virtual void SetPosition(Vector2 position)
+    {
+
+    }
+
+    public virtual void SetPosition(float x, float y)
+    {
+
+    }
+
+    public virtual void Activate()
+    {
+        gameObject.SetActive(true);
+        Sequencer = GetComponent<DanmakuSequencer>();
+    }
 
     public virtual void ClearValues()
     {

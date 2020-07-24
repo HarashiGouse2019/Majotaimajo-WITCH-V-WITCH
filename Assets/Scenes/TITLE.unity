@@ -31057,6 +31057,12 @@ MonoBehaviour:
     pitch: 1
     enableLoop: 1
     source: {fileID: 0}
+  - name: Mystical Runaway Hijacker
+    clip: {fileID: 8300000, guid: b9d677d23dd9d8544a99ce7f301067da, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 1
+    source: {fileID: 0}
   timeSamples: 0
   positionSeconds: []
 --- !u!4 &1406206350

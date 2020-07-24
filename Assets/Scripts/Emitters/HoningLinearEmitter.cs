@@ -5,8 +5,6 @@ using UnityEngine;
 //That has existing mechanics such as these
 //I mean a DAN-MA-KU! DAMMAKA
 //
-//
-//
 public class HoningLinearEmitter : Emitter
 {
     #region Public Members
@@ -35,16 +33,13 @@ public class HoningLinearEmitter : Emitter
     {
         Vector3 targetVector = (target.position - originObject.transform.position).normalized;
 
-        GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
+        GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out GetOrignatedSpawnPoint spawnPoint);
 
         float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
         if (!tmpObj.activeInHierarchy)
         {
             tmpObj.SetActive(true);
-
-            
-            GetOrignatedSpawnPoint spawnPoint = tmpObj.GetComponent<GetOrignatedSpawnPoint>();
 
             Rigidbody2D rigidbody = tmpObj.GetComponent<Rigidbody2D>();
 

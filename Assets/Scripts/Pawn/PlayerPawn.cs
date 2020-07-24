@@ -55,7 +55,7 @@ public class PlayerPawn : Pawn
         GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
         GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
 
-        
+
 
         //Get Components
         srenderer = GetComponent<SpriteRenderer>();
@@ -180,7 +180,7 @@ public class PlayerPawn : Pawn
 
         GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true);
 
-        if (GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && SpellLibrary.library.spellInUse == null)
+        if (GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && library.spellInUse == null)
         {
             library.spellInUse = spell;
 
@@ -191,22 +191,8 @@ public class PlayerPawn : Pawn
             //Increate pawn's priority!!!
             priority += spell.spellPriority;
 
-            //We give all values to our Sequencer
-            sequencer.stepSpeed = spell.stepSpeed;
-
-            //We have to loop each routine, and add them the list
-            for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
-            {
-                sequencer.routine.Add(spell.routine[routinePos]);
-
-                //And then we check if we enable looping
-                if (sequencer.allowOverride) sequencer.enableSequenceLooping = spell.enableSequenceLooping;
-            }
-
-            //Now that all value have passed in, we enable
-            sequencer.enabled = true;
+            spell.Activate();
         }
-        base.ActivateSpell(_name);
     }
 
     public override void Wait(float _duration)
@@ -220,7 +206,7 @@ public class PlayerPawn : Pawn
     {
         if (hit == true)
         {
-           
+
             //Timer for duration
             timer.StartTimer(1);
 

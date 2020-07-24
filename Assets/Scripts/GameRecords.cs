@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,11 +32,11 @@ public class GameRecords : MonoBehaviour
     //Input Obj
 
     //All Entries
-    public static List<Entry> Entries = new List<Entry>();
-    public List<Entry> entries = new List<Entry>();
+    public static List<Entry> Entries;
+    public List<Entry> entries;
 
-    public static List<ScoreEntryObj> EntryObjects = new List<ScoreEntryObj>();
-    public List<ScoreEntryObj> entryObjects = new List<ScoreEntryObj>();
+    public static List<ScoreEntryObj> EntryObjects;
+    public List<ScoreEntryObj> entryObjects;
 
     //Positioning
     public static int Positioning { get; private set; } = 0;
@@ -64,6 +65,12 @@ public class GameRecords : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Entries = new List<Entry>();
+        entries = Entries;
+
+        EntryObjects = new List<ScoreEntryObj>();
+        entryObjects = EntryObjects;
+
         //I get all highscore entries (just the gameObjects)
         GetAllScoreEntries(false);
 

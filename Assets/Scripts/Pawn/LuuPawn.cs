@@ -21,7 +21,7 @@ public class LuuPawn : Pawn, IBossEntity
 
     public bool IsDefeated { get; set; } = false;
 
-    public DanmakuMovement[] movement  = new DanmakuMovement[5];
+    public DanmakuMovement[] movement = new DanmakuMovement[5];
 
     //How many seconds it takes to deplete patience
     const float DEPLETEION_PER_SEC = 0.001f;
@@ -30,7 +30,8 @@ public class LuuPawn : Pawn, IBossEntity
 
     LuuEventTimeline LuuEventTimeline;
 
-    void Awake() {
+    void Awake()
+    {
         LuuEventTimeline = gameObject.AddComponent<LuuEventTimeline>();
         LuuEventTimeline.SetupEvents();
     }
@@ -110,41 +111,16 @@ public class LuuPawn : Pawn, IBossEntity
         if (cancelRunningSpell)
         {
             sequencer.CallReset();
-            SetupSpell(spell);
-            return;
+            library.spellInUse = spell;
+            spell.Activate();
         }
 
         //If a spell is not in used, use it
-        if (SpellLibrary.library.spellInUse == null)
+        if (library.spellInUse == null)
         {
-            SetupSpell(spell);
-            return;
+            library.spellInUse = spell;
+            spell.Activate();
         }
-    }
-
-    void SetupSpell(Spell spell)
-    {
-        if (sequencer == null) return;
-
-        library.spellInUse = spell;
-
-        //Increate pawn's priority!!!
-        priority += spell.spellPriority;
-
-        //We give all values to our Sequencer
-        sequencer.stepSpeed = spell.stepSpeed;
-
-        //We have to loop each routine, and add them the list
-        for (int routinePos = 0; routinePos < spell.routine.Count; routinePos++)
-        {
-            sequencer.routine.Add(spell.routine[routinePos]);
-
-            //And then we check if we enable looping
-            if (sequencer.allowOverride) sequencer.enableSequenceLooping = spell.enableSequenceLooping;
-        }
-
-        //Now that all value have passed in, we enable
-        sequencer.enabled = true;
     }
 
     /// <summary>
@@ -284,9 +260,9 @@ public class LuuPawn : Pawn, IBossEntity
             try
             {
                 //We'll decrement with the depletion rate
-                if(IsActive) SetPatienceValue(-PatienceDepletionRate, true);
+                if (IsActive) SetPatienceValue(-PatienceDepletionRate, true);
             }
-            catch(IOException e)
+            catch (IOException e)
             {
                 Debug.LogException(e);
             }

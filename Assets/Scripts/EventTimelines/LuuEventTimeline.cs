@@ -12,6 +12,9 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
     EventManager.Event @ev_sakuraDance;
     EventManager.Event @ev_sakuraHanabi;
 
+    //Witch Ritual - Birth of A One Man Sakura Regiment
+    EventManager.Event ev_sakuraRitual;
+
     //This will be a test...
     protected override void MainTimeline()
     {
@@ -123,12 +126,12 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
         ev_sakuraBurst = EventManager.AddNewEvent(1, "Sakura Burst",
             () => print("Activate Sakura Burst"),
             () => Luu.ActivateSpell("Sakura Burst"),
-            () => Luu.GetComponent<Animator>().Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[0]).name));
+            () => Luu.Animator.Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[0]).name));
 
         ev_sakuraFan = EventManager.AddNewEvent(2, "Sakura Fan",
             () => print("Activate Sakura Fan"),
             () => Luu.ActivateSpell("Sakura Fan", true),
-            () => Luu.GetComponent<Animator>().Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[1]).name));
+            () => Luu.Animator.Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[1]).name));
 
         ev_sakuraDance = EventManager.AddNewEvent(3, "Sakura Dance",
             () => print("Activate Sakura Dance"),
@@ -137,6 +140,8 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
         ev_sakuraHanabi = EventManager.AddNewEvent(4, "Sakura Hanabi",
             () => print("Activate Sakura Hanabi"),
             () => Luu.ActivateSpell("Sakura Hanabi", true));
+
+        ev_sakuraRitual = EventManager.AddNewEvent(6, "Sakura Ritual - One Man Regiment");
 
         ev_dialogueRun = EventManager.AddNewEvent(5, "DialogueRun",
             () => Dialogue.Instance.Run(0));

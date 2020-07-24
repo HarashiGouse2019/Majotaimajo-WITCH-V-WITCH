@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8237125612342746601}
   - component: {fileID: 7364415568931512408}
   - component: {fileID: 1431897927992830582}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PointDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

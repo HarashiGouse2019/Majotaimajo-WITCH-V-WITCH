@@ -2995,17 +2995,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - name: Sakura
-    size: 250
+    size: 150
     prefab: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
       type: 3}
     expandPool: 1
   - name: Lavender
-    size: 250
+    size: 150
     prefab: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
       type: 3}
     expandPool: 1
   - name: Crystal
-    size: 250
+    size: 150
     prefab: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
       type: 3}
     expandPool: 1
@@ -3019,7 +3019,6 @@ MonoBehaviour:
     prefab: {fileID: 4520199790600030241, guid: 607d8a4e8225436448f381d8e16b49a4,
       type: 3}
     expandPool: 1
-  pooledObjects: []
   poolIndex: 0
 --- !u!4 &871187277
 Transform:

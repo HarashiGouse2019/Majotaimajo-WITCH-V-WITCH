@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6702224905588573068}
   - component: {fileID: 7381905478043976028}
   - component: {fileID: 7885362865390292538}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MagicReplenishDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

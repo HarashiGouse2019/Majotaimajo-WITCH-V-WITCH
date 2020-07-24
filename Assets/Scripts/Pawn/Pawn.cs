@@ -37,6 +37,7 @@ public abstract class Pawn : MonoBehaviour
     protected bool isVisible;
     protected Color srendererColor;
     protected GetOrignatedSpawnPoint objectOrigin;
+    public Animator Animator { get; private set; }
 
     #endregion
     private void Awake()
@@ -46,7 +47,7 @@ public abstract class Pawn : MonoBehaviour
 
     private void Start()
     {
-        
+        Animator = GetComponent<Animator>();
     }
 
     /// <summary>
