@@ -6,7 +6,7 @@ using UnityEngine;
 public class Routine
 {
     public Pattern pattern;
-    public uint stepPos;
+    public int stepPos;
 }
 
 [CreateAssetMenu(fileName = "New Enchantment", menuName = "Enchantment")]

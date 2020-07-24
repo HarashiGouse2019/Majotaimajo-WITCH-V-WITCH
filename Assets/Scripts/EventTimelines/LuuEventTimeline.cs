@@ -125,13 +125,11 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
 
         ev_sakuraBurst = EventManager.AddNewEvent(1, "Sakura Burst",
             () => print("Activate Sakura Burst"),
-            () => Luu.ActivateSpell("Sakura Burst"),
-            () => Luu.Animator.Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[0]).name));
+            () => Luu.ActivateSpell("Sakura Burst"));
 
         ev_sakuraFan = EventManager.AddNewEvent(2, "Sakura Fan",
             () => print("Activate Sakura Fan"),
-            () => Luu.ActivateSpell("Sakura Fan", true),
-            () => Luu.Animator.Play(Luu.library.spellInUse.SetMovementClip(Luu.movement[1]).name));
+            () => Luu.ActivateSpell("Sakura Fan", true));
 
         ev_sakuraDance = EventManager.AddNewEvent(3, "Sakura Dance",
             () => print("Activate Sakura Dance"),

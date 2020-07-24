@@ -55,8 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9003943612334814289}
   - component: {fileID: 9003943612334814302}
-  - component: {fileID: 9003943612334814300}
-  - component: {fileID: 9003943612334814301}
   - component: {fileID: 9003943612334814303}
   - component: {fileID: 9003943612334814298}
   - component: {fileID: 9003943612334814299}
@@ -130,62 +128,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9003943612334814300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9003943612334814288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29fbf40e7d12a34eb5dc6f222e6ba03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfProjectiles: 3
-  speed: 100
-  incrementVal: 0
-  speedLimit: 0
-  g_angle: 0
-  rotation: -3
-  distribution: 0
-  rotationFocus: 1
-  rotationFocusIncrementVal: 0
-  rotationFocusLimit: 0
-  rotationIntensity: 1
-  rotationIntensityIncrementVal: 0
-  rotationIntensityLimit: 0
-  existingProjectiles: []
-  steps: 0
-  loop: 0
-  loopSpeed: 0.659
-  bullet:
-  - {fileID: 0}
-  bulletMember: 
-  origin: {fileID: 0}
---- !u!114 &9003943612334814301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9003943612334814288}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowOverride: 1
-  startStep: 0
-  currentStep: 0
-  nextStep: 0
-  stepSpeed: 0.1
-  progress: 0
-  routine: []
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
-  enableSequenceLooping: 1
 --- !u!114 &9003943612334814303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +144,17 @@ MonoBehaviour:
   basePriority: 1
   library: {fileID: 0}
   g_angle: 0
+  movement:
+  - movementName: 
+    clip: {fileID: 0}
+  - movementName: 
+    clip: {fileID: 0}
+  - movementName: 
+    clip: {fileID: 0}
+  - movementName: 
+    clip: {fileID: 0}
+  - movementName: 
+    clip: {fileID: 0}
 --- !u!70 &9003943612334814298
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,8 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellInUse: {fileID: 0}
   spells:
-  - {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
-  - {fileID: 11400000, guid: e5a5533b3edf0bb4db1f9eafdf83e081, type: 2}
-  - {fileID: 11400000, guid: 91ee2477a4db0314c8990948d0e4a504, type: 2}
-  - {fileID: 11400000, guid: 9a9fb47c99f429748a31985d45d820b6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spellIndex: 0

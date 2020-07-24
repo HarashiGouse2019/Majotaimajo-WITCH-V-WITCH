@@ -76,10 +76,13 @@ public class PlayerPawn : Pawn
         StartCoroutine(BlinkCycle(0.05f));
 
         //Read your SpellLibrary, and override GameUi spell text
-        for (int i = 0; i < library.spells.Length; i++)
+        try
         {
-            GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
-        }
+            for (int i = 0; i < library.spells.Length; i++)
+            {
+                GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
+            }
+        } catch { /*These hands!*/}
     }
 
     private void Update()

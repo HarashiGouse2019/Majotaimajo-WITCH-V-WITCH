@@ -1703,6 +1703,91 @@ RectTransform:
   m_AnchoredPosition: {x: -1081.2001, y: 10.0099945}
   m_SizeDelta: {x: 60, y: 29.48}
   m_Pivot: {x: 1, y: 0.50000024}
+--- !u!1 &306583052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306583054}
+  - component: {fileID: 306583053}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &306583053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306583052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0efd79292324e44b767f7f88cdbb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToPool:
+  - name: Sakura
+    size: 100
+    prefab: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
+      type: 3}
+    expandPool: 1
+  - name: Lavender
+    size: 100
+    prefab: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
+      type: 3}
+    expandPool: 1
+  - name: Crystal
+    size: 100
+    prefab: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
+      type: 3}
+    expandPool: 1
+  - name: MagicDrop
+    size: 50
+    prefab: {fileID: 4485710545923369700, guid: 6268317e0bb08264983c359bd12f5524,
+      type: 3}
+    expandPool: 1
+  - name: ValueDrop
+    size: 50
+    prefab: {fileID: 4520199790600030241, guid: 607d8a4e8225436448f381d8e16b49a4,
+      type: 3}
+    expandPool: 1
+  - name: LinearEmitter
+    size: 100
+    prefab: {fileID: 895543173388999139, guid: 0578e01c9ca962e469fd56853d61d5fe, type: 3}
+    expandPool: 1
+  - name: RotationEmitter
+    size: 100
+    prefab: {fileID: 8711262154779925833, guid: f0fd97b6224b3264183d35cb2443d681,
+      type: 3}
+    expandPool: 1
+  - name: HoningLinearEmitter
+    size: 100
+    prefab: {fileID: 1288120327225234461, guid: 86d2bc7b97e198e4b9f38deb070ed1e0,
+      type: 3}
+    expandPool: 1
+  pooledObjects: []
+  poolIndex: 0
+--- !u!4 &306583054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306583052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.649197, y: -4.3929453, z: -45.286415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &325875509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,76 +3049,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -19}
   m_SizeDelta: {x: 7193.2, y: 1675.8}
   m_Pivot: {x: 0.5, y: 1}
---- !u!1 &871187275
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 871187277}
-  - component: {fileID: 871187276}
-  m_Layer: 0
-  m_Name: ObjectPooler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &871187276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871187275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb0efd79292324e44b767f7f88cdbb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsToPool:
-  - name: Sakura
-    size: 150
-    prefab: {fileID: 3432912900447273048, guid: 6ed54aa6a445f3d408fcb498d18f4f82,
-      type: 3}
-    expandPool: 1
-  - name: Lavender
-    size: 150
-    prefab: {fileID: 2258858909891300472, guid: 10cb3588e4d488541aee254481f59264,
-      type: 3}
-    expandPool: 1
-  - name: Crystal
-    size: 150
-    prefab: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
-      type: 3}
-    expandPool: 1
-  - name: MagicDrop
-    size: 50
-    prefab: {fileID: 4485710545923369700, guid: 6268317e0bb08264983c359bd12f5524,
-      type: 3}
-    expandPool: 1
-  - name: ValueDrop
-    size: 50
-    prefab: {fileID: 4520199790600030241, guid: 607d8a4e8225436448f381d8e16b49a4,
-      type: 3}
-    expandPool: 1
-  poolIndex: 0
---- !u!4 &871187277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871187275}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.649197, y: -4.3929453, z: -45.286415}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &906940559
 GameObject:
   m_ObjectHideFlags: 0
@@ -7752,6 +7767,17 @@ PrefabInstance:
       propertyPath: movement.Array.data[1].clip
       value: 
       objectReference: {fileID: 7400000, guid: 3692f0178803ed249ac4cf5f445ff923, type: 2}
+    - target: {fileID: 9003943612334814299, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: spells.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814299, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: spells.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c400dc056dab513468e2dbc8e609319d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d0f104368240704c8b6d16302dfc859, type: 3}
 --- !u!1 &9003943611812110983 stripped

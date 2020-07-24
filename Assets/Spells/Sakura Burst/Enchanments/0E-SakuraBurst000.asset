@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7fe87e7aa3d9174a9ead83e5c7827b7, type: 3}
   m_Name: 0E-SakuraBurst000
   m_EditorClassIdentifier: 
-  stepSpeed: 0.3
+  stepSpeed: 0.1
   routine:
   - pattern: {fileID: 11400000, guid: 711f6960b54ec2c4dbdcbbe0032933a5, type: 2}
     stepPos: 0

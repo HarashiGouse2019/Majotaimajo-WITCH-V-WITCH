@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e47b07e4684fbe4f9fd5286d9807d6d, type: 3}
-  m_Name: SakuraBurst
+  m_Name: Sakura Burst
   m_EditorClassIdentifier: 
-  spellPriority: 0
-  magicConsumtion: 0
-  emitterSpawners: []
+  spellPriority: 6
+  magicConsumtion: 30
+  emitterSpawners:
+  - emitterType: 1
+    spawnPosition: {x: 0, y: 0}
+    enchantment: {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}

@@ -109,19 +109,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895543173388999139}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44bbf30f10fbbc24fb42e521449e4a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   allowOverride: 0
-  startStep: 0
-  currentStep: 0
-  nextStep: 0
-  stepSpeed: 0
-  progress: 0
-  routine: []
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
+  routines: []
   enableSequenceLooping: 0

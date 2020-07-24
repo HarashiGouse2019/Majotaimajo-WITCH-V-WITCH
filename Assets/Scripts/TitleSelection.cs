@@ -192,7 +192,6 @@ public class TitleSelection : MonoBehaviour, IEventSetup
             () => GameSceneManager.Instance.LoadScene("LUU_STAGE"),
             () => GameManager.IsPractice = true,
             () => GameManager.StartGame(),
-            () => GameManager.StartGame(),
             () => ClearEvents());
 
         //Set up Exit Selected Event

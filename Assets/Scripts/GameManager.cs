@@ -116,7 +116,6 @@ public class GameManager : MonoBehaviour
         {
             case true:
                 Instance.SetPlayerLives(6);
-
                 break;
 
             case false:

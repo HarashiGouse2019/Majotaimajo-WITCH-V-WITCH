@@ -7,9 +7,9 @@ public class DanmakuSequencer : MonoBehaviour
     #region Public Members
     public bool allowOverride = false;
 
-    public SequencerStatistics statistics;
+    public SequencerStatistics statistics = new SequencerStatistics();
 
-    public SequenceCompletionTracker completion;
+    public SequenceCompletionTracker completion = new SequenceCompletionTracker();
 
     public List<Routine> routines;
 
@@ -93,17 +93,16 @@ public class DanmakuSequencer : MonoBehaviour
         }
     }
 
-    public uint GetNextStep()
+    public int GetNextStep()
     {
-
-        Routine routineCheck = routines[(int)statistics.runningRoutine + 1];
+        Routine routineCheck = routines[statistics.runningRoutine + 1];
 
         RunPattern(routineCheck.pattern);
 
         return routineCheck.stepPos;
     }
 
-    public uint GetPreviousStep()
+    public int GetPreviousStep()
     {
 
         Routine routineCheck = routines[(int)statistics.runningRoutine];

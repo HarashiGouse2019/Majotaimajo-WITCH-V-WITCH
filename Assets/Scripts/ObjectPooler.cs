@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
 
-    public static ObjectPooler Instance;
+    private static ObjectPooler Instance;
 
     [System.Serializable]
     public class ObjectPoolItem
@@ -18,14 +18,21 @@ public class ObjectPooler : MonoBehaviour
 
     public List<ObjectPoolItem> itemsToPool;
 
-    public List<GameObject> pooledObjects { get; private set; }
+    public List<GameObject> pooledObjects;
 
     // Start is called before the first frame update
 
     public int poolIndex;
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -52,7 +59,6 @@ public class ObjectPooler : MonoBehaviour
 
     public static GameObject GetMember<T>(string name, out T result) where T : Component
     {
-
         #region Iteration
         for (int i = 0; i < Instance.pooledObjects.Count; i++)
         {
