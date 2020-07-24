@@ -25,16 +25,28 @@ public class SpawningTrailEmitter : Emitter
         initialPosition = gameObject.transform.position;
     }
 
-    // Start is called before the first frame update
     protected override void Start()
     {
-        
+        loopTimer = new Timer(3); //Reintergrated timer!
+        existingProjectiles = new List<GameObject>();
+        originObject = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        UpdateStartPoint();
+
+        if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
+
+        if (loop)
+        {
+            loopTimer.StartTimer(0);
+            Loop();
+        }
+        else
+        {
+            loopTimer.SetToZero(0, true);
+        }
     }
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
