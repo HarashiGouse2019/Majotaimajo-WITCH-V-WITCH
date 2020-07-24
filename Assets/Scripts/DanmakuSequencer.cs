@@ -263,29 +263,32 @@ public class DanmakuSequencer : MonoBehaviour
     bool CheckEnabledLooping()
     {
 
-        if (enableSequenceLooping == true)
+        if (statistics.currentStep == routines[routines.Count - 1].stepPos)
         {
-            statistics.currentStep = reset;
-            statistics.runningRoutine = reset;
+            if (enableSequenceLooping == true)
+            {
+                statistics.currentStep = reset;
+                statistics.runningRoutine = reset;
 
-            statistics.nextStep = routines[(int)statistics.runningRoutine + 1].stepPos;
-            statistics.startStep = routines[(int)statistics.runningRoutine].stepPos;
+                statistics.nextStep = routines[(int)statistics.runningRoutine + 1].stepPos;
+                statistics.startStep = routines[(int)statistics.runningRoutine].stepPos;
 
-            completion.completedLoops++;
-            completion.progress = reset + (completion.completedRoutines - completion.completedLoops);
+                completion.completedLoops++;
+                completion.progress = reset + (completion.completedRoutines - completion.completedLoops);
+            }
+            else
+                ResetAllValues();
+            completion.completedRoutines++;
+
+            return true;
         }
-        else
-            ResetAllValues();
-        completion.completedRoutines++;
-
-        return true;
+        return false;
     }
 
     void ResetAllValues()
     {
         //Get the pawn
         Pawn pawn = emitter.ParentPawn;
-        Debug.Log(pawn);
 
         completion.progress = (float)reset;
         statistics.currentStep = reset;

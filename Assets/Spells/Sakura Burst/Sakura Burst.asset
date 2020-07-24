@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellPriority: 6
   magicConsumtion: 30
+  enableSpellLooping: 0
   emitterSpawners:
   - emitterType: 1
     spawnPosition: {x: 0, y: 0}

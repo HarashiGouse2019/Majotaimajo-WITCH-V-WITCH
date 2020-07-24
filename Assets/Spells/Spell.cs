@@ -20,7 +20,7 @@ public class Spell : ScriptableObject
 
     public uint spellPriority;
     public uint magicConsumtion;
-
+    public bool enableSpellLooping = false;
     [SerializeField]
     private List<EmitterSpawner> emitterSpawners = new List<EmitterSpawner>();
 
@@ -62,6 +62,7 @@ public class Spell : ScriptableObject
         if (sequencer == null) { Debug.Log("At setup, sequencer is null...");  return; }
 
         sequencer.spellOrigin = this;
+        sequencer.enableSequenceLooping = enableSpellLooping;
 
         Enchantment enchanment = spawner.enchantment;
 
