@@ -7,6 +7,7 @@ public class EmitterSpawner
     private static EmitterSpawner Instance;
     public EmitterType emitterType;
     public Vector2 spawnPosition;
+    public bool worldSpace;
     public Enchantment enchantment;
 
     //This is when the type is determined
@@ -43,12 +44,15 @@ public class EmitterSpawner
 
     public Emitter GetEmitter() => emitter;
 
-    public Emitter SpawnEmitter()
+    public Emitter SpawnEmitter(bool worldPosition)
     {
         if (!emitterGameObject.activeInHierarchy)
         {
             emitter.Activate();
-            emitter.SetPosition(spawnPosition);
+
+            if (worldPosition) emitter.SetPosition(spawnPosition);
+
+            else emitter.SetRelativePosition(spawnPosition);
 
             return emitter;
         }

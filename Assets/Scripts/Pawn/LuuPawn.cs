@@ -103,17 +103,15 @@ public class LuuPawn : Pawn, IBossEntity
     /// <param name="_name"></param>
     public override void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
-        if (sequencer == null) return;
-
         //Find a spell in the library by name
         Spell spell = library.FindSpell(_name);
 
-        if (cancelRunningSpell)
-        {
-            sequencer.CallReset();
-            library.spellInUse = spell;
-            spell.Activate();
-        }
+        //if (cancelRunningSpell)
+        //{
+        //    sequencer.CallReset();
+        //    library.spellInUse = spell;
+        //    spell.Activate();
+        //}
 
         //If a spell is not in used, use it
         if (library.spellInUse == null)

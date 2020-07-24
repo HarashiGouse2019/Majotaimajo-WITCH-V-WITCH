@@ -65,7 +65,7 @@ public abstract class Emitter : MonoBehaviour
     private static Emitter Instance;
 
 
-    public DanmakuSequencer Sequencer { get; private set; }
+    public DanmakuSequencer Sequencer;
 
     [SerializeField]
     protected int id = 0;
@@ -161,6 +161,7 @@ public abstract class Emitter : MonoBehaviour
     protected virtual void Start()
     {
         originObject = gameObject;
+        
     }
 
     public virtual void SetBulletMember(string name)
@@ -251,18 +252,29 @@ public abstract class Emitter : MonoBehaviour
 
     public virtual void SetPosition(Vector2 position)
     {
-
+        transform.position = position;
     }
 
     public virtual void SetPosition(float x, float y)
     {
+        transform.position = new Vector2(x, y);
+    }
 
+    public virtual void SetRelativePosition(Vector2 position)
+    {
+        transform.position += (Vector3)position;
+    }
+
+    public virtual void SetRelativePosition(float x, float y)
+    {
+        transform.position += new Vector3(x, y);
     }
 
     public virtual void Activate()
     {
         gameObject.SetActive(true);
         Sequencer = GetComponent<DanmakuSequencer>();
+        if (Sequencer == null) Debug.Log("Failed to reference Sequencer...");
     }
 
     public virtual void ClearValues()

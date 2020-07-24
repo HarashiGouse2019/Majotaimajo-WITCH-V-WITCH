@@ -37,8 +37,9 @@ public class Spell : ScriptableObject
     {
         foreach(EmitterSpawner spawner in emitterSpawners)
         {
+            
             spawner.Create();
-            spawner.SpawnEmitter();
+            spawner.SpawnEmitter(spawner.worldSpace);
             Setup(spawner);
             Activated = true;
         }
@@ -52,7 +53,7 @@ public class Spell : ScriptableObject
     {
         DanmakuSequencer sequencer = spawner.GetEmitter().Sequencer;
 
-        if (sequencer == null) return;
+        if (sequencer == null) { Debug.Log("At setup, sequencer is null...");  return; }
 
         Enchantment enchanment = spawner.enchantment;
 

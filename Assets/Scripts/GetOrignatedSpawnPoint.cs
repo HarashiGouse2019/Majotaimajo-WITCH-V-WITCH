@@ -25,7 +25,9 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     private void Start()
     {
-        pawn = originatedSpawnPoint.GetComponent<Pawn>();
+        if(originatedSpawnPoint.layer == LayerMask.GetMask("Boss") ||
+            originatedSpawnPoint.layer == LayerMask.GetMask("Player"))
+            pawn = originatedSpawnPoint.GetComponent<Pawn>();
         if (priority != 999) items = GetComponent<ItemDrops>();
     }
 

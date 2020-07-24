@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 17790889872032897}
   - component: {fileID: 17790889872032911}
   - component: {fileID: 17790889872032896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Raven_Obj
   m_TagString: player
   m_Icon: {fileID: 0}
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a2a0f225067744d8936cfb1d9eb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sequencer: {fileID: 0}
   id: 0
   bulletPrefab: []
   points: []
@@ -198,8 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellInUse: {fileID: 0}
   spells:
-  - {fileID: 11400000, guid: f1e68018efa8a4f48a632373b17a950c, type: 2}
-  - {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   spellIndex: 0
 --- !u!114 &17790889872032896
 MonoBehaviour:
@@ -214,15 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowOverride: 0
-  startStep: 0
-  currentStep: 0
-  nextStep: 0
-  stepSpeed: 0
-  progress: 0
-  routine: []
-  runningRoutine: 0
-  completedRoutines: 0
-  completedLoops: 0
+  routines: []
   enableSequenceLooping: 0
 --- !u!1 &17790890476737771
 GameObject:
@@ -234,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17790890476737770}
   - component: {fileID: 17790890476737769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Raven_BulletOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +273,7 @@ GameObject:
   - component: {fileID: 4545220349635730955}
   - component: {fileID: 899585794590464514}
   - component: {fileID: 3524001205315242468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CollectionCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
