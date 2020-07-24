@@ -11,6 +11,11 @@ public class SpellLibrary : MonoBehaviour
     public Spell[] spells = new Spell[3];
 
     public uint spellIndex = 0;
+
+    [Tooltip("If you have a bullet that can spawn other bullets, " +
+        "you can attach a single spell to the library, and toggle this" +
+        "feature on.")]
+    public bool initializeOnStart;
     
     readonly bool isActivated;
     readonly uint reset = 0;

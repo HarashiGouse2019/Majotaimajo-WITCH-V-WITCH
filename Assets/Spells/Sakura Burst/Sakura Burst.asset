@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellPriority: 6
   magicConsumtion: 30
-  enableSpellLooping: 0
   emitterSpawners:
   - emitterType: 1
     spawnPosition: {x: 0, y: 0}
     worldSpace: 0
     enchantment: {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
+  enableSpellLooping: 1
