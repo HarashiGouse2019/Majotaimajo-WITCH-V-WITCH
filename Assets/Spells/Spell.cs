@@ -10,7 +10,8 @@ public enum EmitterType
     HoningLinear,
     HoningRotation,
     Transitional,
-    Orbital
+    Orbital,
+    SpawningTrail
 }
 
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]

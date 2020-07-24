@@ -22,7 +22,8 @@ public class EmitterSpawner
         "HoningLinearEmitter",
         "HoningRotationEmitter",
         "TransitionalEmitter",
-        "OrbitalEmitter"
+        "OrbitalEmitter",
+        "SpawningTrailEmitter"
     };
 
     /// <summary>

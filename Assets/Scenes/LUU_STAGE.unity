@@ -1772,6 +1772,11 @@ MonoBehaviour:
     prefab: {fileID: 1288120327225234461, guid: 86d2bc7b97e198e4b9f38deb070ed1e0,
       type: 3}
     expandPool: 1
+  - name: SakuraFlower1
+    size: 100
+    prefab: {fileID: 2478247462764804913, guid: b9ce067ab7d7e9742a264235e76edb22,
+      type: 3}
+    expandPool: 1
   pooledObjects: []
   poolIndex: 0
 --- !u!4 &306583054

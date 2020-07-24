@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 4
   isHoming: 0
-  initialSpeed: 400
+  initialSpeed: 840
   incrementalSpeed: 840
   speedLimit: 10000
   carryOverSpeed: 0
-  overrideRotation: 1
+  overrideRotation: 0
   initialRotation: 0
   rotationSpeed: 10
-  bulletType: Lavender
+  bulletType: SakuraFlower1
   loop: 1
   loopRate: 0.075
-  rotation: -3
-  distribution: 2
+  rotation: 1
+  distribution: 0
   rotationFocusEffect: 0
   rotationFocus: 1
   rotationFocusIncrementVal: 0
