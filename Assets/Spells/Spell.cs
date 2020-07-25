@@ -1,18 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-
-public enum EmitterType
-{
-    Linear,
-    Rotation,
-    HoningLinear,
-    HoningRotation,
-    Transitional,
-    Orbital,
-    SpawningTrail
-}
 
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]
 public class Spell : ScriptableObject
@@ -68,8 +56,6 @@ public class Spell : ScriptableObject
         Enchantment enchanment = spawner.enchantment;
 
         sequencer.statistics.stepSpeed = enchanment.stepSpeed;
-
-        Debug.Log(sequencer.statistics.stepSpeed);
 
         for(int routinePos = 0; routinePos < enchanment.routine.Count; routinePos++)
         {

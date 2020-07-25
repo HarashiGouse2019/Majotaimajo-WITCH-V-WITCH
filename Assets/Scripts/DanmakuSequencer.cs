@@ -236,9 +236,12 @@ public class DanmakuSequencer : MonoBehaviour
         }
         #endregion
 
-        #region Spawning Spacing
+        #region Spawning Spacing and Count, etc
         emitter.SetSpawnXInterval(_pattern.spawningXInterval);
         emitter.SetSpawnYInterval(_pattern.spawningYInterval);
+        emitter.SetIntervalCountLimit(_pattern.spawningCountLimit);
+        emitter.SetProjectileLifeTime(_pattern.projectileLifeTime);
+        emitter.SetAnimateProjectileOnDestroy(_pattern.animateOnDestroy);
         #endregion
 
         #endregion

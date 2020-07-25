@@ -202,6 +202,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   spellIndex: 0
+  initializeOnStart: 0
 --- !u!114 &17790889872032896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +216,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowOverride: 0
+  statistics:
+    startStep: 0
+    currentStep: 0
+    nextStep: 0
+    stepSpeed: 1
+    runningRoutine: 0
+  completion:
+    progress: 0
+    completedRoutines: 0
+    completedLoops: 0
   routines: []
+  spellOrigin: {fileID: 0}
   enableSequenceLooping: 0
 --- !u!1 &17790890476737771
 GameObject:

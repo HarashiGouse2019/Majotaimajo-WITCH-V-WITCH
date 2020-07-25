@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Alarm;
 
 public class CheckDestroy : MonoBehaviour
@@ -9,27 +7,41 @@ public class CheckDestroy : MonoBehaviour
     #region Private Members
     private Timer destroyTimer;
     private GameObject origin;
+    private GraphicAnimation graphicAnimation;
+    private bool noAnimation;
+    private float duration = 10f;
     #endregion
-
-    private void OnEnable()
-    {
-        destroyTimer.StartTimer(0);
-        if (destroyTimer.currentTime[0] > 10)
-        {
-            gameObject.SetActive(false);
-            destroyTimer.SetToZero(0, true);
-        }
-    }
 
     void Awake()
     {
         destroyTimer = new Timer(1);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        graphicAnimation = GetComponent<GraphicAnimation>();
         origin = FindObjectOfType<RotationEmitter>().GetOriginObject(); //Will find the gameObject that shoot the bullet out
     }
 
+    private void OnEnable()
+    {
+        destroyTimer.StartTimer(0);
+        if (destroyTimer.currentTime[0] > duration)
+        {
+            if (noAnimation)
+                gameObject.SetActive(false);
+            else
+                graphicAnimation.Animate(false);
+
+            destroyTimer.SetToZero(0, true);
+        }
+    }
+
+    public void AnimateOnDestroy() => noAnimation = false;
+    public void NoAnimationOnDestroy() => noAnimation = true;
+
+    public void SetDuration(float value)
+    {
+        duration = value;
+    }
 }

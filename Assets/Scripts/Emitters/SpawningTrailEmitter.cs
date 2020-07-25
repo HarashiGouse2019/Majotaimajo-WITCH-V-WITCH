@@ -2,7 +2,7 @@
 using UnityEngine;
 using Alarm;
 using Random = UnityEngine.Random;
-using UnityEngine.UI;
+using System;
 
 public class SpawningTrailEmitter : Emitter
 {
@@ -13,8 +13,6 @@ public class SpawningTrailEmitter : Emitter
     trail that's been set, or a trail aiming at the player.
     Has Rotation Capablilities.
     Homing capabilities*/
-
-    
 
     private void OnEnable()
     {
@@ -126,7 +124,19 @@ public class SpawningTrailEmitter : Emitter
                     {
                         GraphicAnimation graphicAnimation = tmpObj.GetComponent<GraphicAnimation>();
                         graphicAnimation.Animate(true);
-                    }    
+                    }
+
+                    try
+                    {
+                        Projectile projectile = tmpObj.GetComponent<Projectile>();
+
+                        projectile.SetLifeTime(projectileLifeTime);
+                        if (animateOnDestroy) 
+                            projectile.SetAnimation();
+                        else
+                            projectile.SetNoAnimation();
+                    }
+                    catch { }
 
                     //Assign projectile priority from origin
                     tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
@@ -136,7 +146,7 @@ public class SpawningTrailEmitter : Emitter
 
                     //tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
                     //Instead of adding force, we want to just move by increasing currentInterval every time
-                    tmpObj.transform.Translate( new Vector3(currentInteval * xInterval, currentInteval+1 * yInterval));
+                    tmpObj.transform.Translate( new Vector3(currentInteval * xInterval, currentInteval * yInterval));
                 }
                 angle += angleStep;
             }

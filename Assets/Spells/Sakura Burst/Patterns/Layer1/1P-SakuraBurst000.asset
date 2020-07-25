@@ -35,7 +35,8 @@ MonoBehaviour:
   rotationIntensityIncrementVal: 1
   rotationIntensityLimit: 0
   transitionDuration: 0
-  spawningXInterval: 0.001
+  spawningXInterval: 1
   spawningYInterval: 0
   spawningCountLimit: 3
-  layerID: 0
+  projectileLifeTime: 1000
+  animateOnDestroy: 1

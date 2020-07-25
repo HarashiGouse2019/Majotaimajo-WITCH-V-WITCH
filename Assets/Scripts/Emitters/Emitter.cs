@@ -159,6 +159,10 @@ public abstract class Emitter : MonoBehaviour
     //How many times to spawn
     protected int intervalCountLimit = 3;
 
+    protected float projectileLifeTime = 10;
+
+    protected bool animateOnDestroy = false;
+
     protected int currentInteval = 1;
 
     protected const int RESET = 0;
@@ -182,6 +186,16 @@ public abstract class Emitter : MonoBehaviour
     public virtual void SetSpawnYInterval(float value)
     {
         yInterval = value;
+    }
+
+    public virtual void SetProjectileLifeTime(float value)
+    {
+        projectileLifeTime = value;
+    }
+
+    public virtual void SetAnimateProjectileOnDestroy(bool value)
+    {
+        animateOnDestroy = value;
     }
 
     public virtual void ResetIntervalCount()

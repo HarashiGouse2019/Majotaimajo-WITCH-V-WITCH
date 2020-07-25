@@ -66,8 +66,9 @@ public class Pattern : ScriptableObject
     public float spawningYInterval;
     public int spawningCountLimit = 3;
 
+    [Header("Projectile Lifetime")]
+    public float projectileLifeTime = 10f;
 
-    public int layerID = 0;
+    [Header("Animate on Destroy")]
+    public bool animateOnDestroy = false;
 }
-
-//And I think that's it... I think...

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3718083422508406885}
   - component: {fileID: 4665102170085824200}
   - component: {fileID: 2463320411399767156}
+  - component: {fileID: 3715992371608729716}
   m_Layer: 0
   m_Name: SakuraFlower2
   m_TagString: Untagged
@@ -156,3 +157,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4665102170085824200}
+--- !u!114 &3715992371608729716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478247462764804913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d3d31e8327527499fbfc60c8d049c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

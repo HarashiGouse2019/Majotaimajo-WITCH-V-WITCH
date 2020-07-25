@@ -9,4 +9,6 @@ public class GraphicAnimation : MonoBehaviour
     {
         animator.SetBool("active", active);
     }
+
+    public void SetInactive() => gameObject.SetActive(false);
 }

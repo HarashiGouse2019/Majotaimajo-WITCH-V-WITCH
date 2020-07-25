@@ -13,7 +13,7 @@ public class AutoRotate : MonoBehaviour
 
     private const float RESET = 0f;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(Rotation());
     }
@@ -37,7 +37,7 @@ public class AutoRotate : MonoBehaviour
 
     void CheckRotation()
     {
-        if (currentAngle >= 360)
+        if (currentAngle >= MAX_ANGLE)
             ResetAngle();
     }
 

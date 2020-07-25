@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
+using static EmitterLog;
+
 [Serializable]
 public class EmitterSpawner
 {
-    private static EmitterSpawner Instance;
     public EmitterType emitterType;
     public Vector2 spawnPosition;
     public bool worldSpace;
@@ -14,31 +15,19 @@ public class EmitterSpawner
     Emitter emitter;
     GameObject emitterGameObject;
 
-    //Emitter Names
-    readonly private string[] emitterNames =
-    {
-        "LinearEmitter",
-        "RotationEmitter",
-        "HoningLinearEmitter",
-        "HoningRotationEmitter",
-        "TransitionalEmitter",
-        "OrbitalEmitter",
-        "SpawningTrailEmitter"
-    };
 
     /// <summary>
     /// Initializaation of Emitter. This doesn't spawn it, but it allocates memory for this object.
     /// </summary>
     public void Create()
     {
-        Instance = this;
         DetermineEmitterType();
     }
 
     void DetermineEmitterType()
     {
         int typeValue = (int)emitterType;
-        emitterGameObject = ObjectPooler.GetMember(emitterNames[typeValue], out emitter);
+        emitterGameObject = ObjectPooler.GetMember(EmitterNames[typeValue], out emitter);
     }
 
     public GameObject GetObject() => emitterGameObject;
