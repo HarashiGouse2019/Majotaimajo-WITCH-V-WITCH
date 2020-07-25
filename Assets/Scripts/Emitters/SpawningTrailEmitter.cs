@@ -13,8 +13,8 @@ public class SpawningTrailEmitter : Emitter
     Has Rotation Capablilities.
     Homing capabilities*/
 
-    float xInterval;
-    float yInterval;
+    float xInterval = 0.5f;
+    float yInterval = 0.5f;
 
     //How many times to spawn
     int intervalCountLimit = 3;
@@ -125,7 +125,7 @@ public class SpawningTrailEmitter : Emitter
                 if (!tmpObj.activeInHierarchy)
                 {
                     tmpObj.SetActive(true);
-                    tmpObj.transform.position = initialPosition + new Vector3((float)currentInteval * xInterval, (float)currentInteval * yInterval, 1f);
+                    tmpObj.transform.position = initialPosition; ;
                     tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
                     //Assign projectile priority from origin
@@ -136,11 +136,15 @@ public class SpawningTrailEmitter : Emitter
 
                     //tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
                     //Instead of adding force, we want to just move by increasing currentInterval every time
-                    currentInteval++;
+                    tmpObj.transform.Translate(new Vector3(currentInteval * xInterval, currentInteval * yInterval));
                 }
                 angle += angleStep;
-            } 
+            }
+
+            currentInteval++;
         }
+        else
+            currentInteval = 0;
     }
 
     protected override void Loop()

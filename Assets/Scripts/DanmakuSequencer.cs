@@ -32,16 +32,6 @@ public class DanmakuSequencer : MonoBehaviour
         emitter = GetComponent<Emitter>();
     }
 
-    /// <summary>
-    /// Initialize DanmakuSequencer
-    /// </summary>
-    public void Init()
-    {
-        Debug.Log("Beginning Initialization...");
-
-        statistics = new SequencerStatistics();
-    }
-
     void OnEnable()
     {
         IterateSequence();

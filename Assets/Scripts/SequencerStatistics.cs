@@ -1,5 +1,4 @@
-﻿
-public class SequencerStatistics
+﻿public class SequencerStatistics
 {
     public float startStep = 0;
 
