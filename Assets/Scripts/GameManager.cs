@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 using static Keymapper;
+using System.Runtime.CompilerServices;
+using System.Resources;
 
 public class GameManager : MonoBehaviour
 {

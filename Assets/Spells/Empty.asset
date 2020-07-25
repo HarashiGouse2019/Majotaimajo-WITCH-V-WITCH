@@ -35,4 +35,7 @@ MonoBehaviour:
   rotationIntensityIncrementVal: 0
   rotationIntensityLimit: 0
   transitionDuration: 0
+  spawningXInterval: 0
+  spawningYInterval: 0
+  spawningCountLimit: 3
   layerID: 0

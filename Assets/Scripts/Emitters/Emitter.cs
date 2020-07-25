@@ -153,6 +153,14 @@ public abstract class Emitter : MonoBehaviour
 
     protected int currentPoint;
 
+    protected float xInterval = 1f;
+    protected float yInterval = 1f;
+
+    //How many times to spawn
+    protected int intervalCountLimit = 3;
+
+    protected int currentInteval = 1;
+
     protected const int RESET = 0;
 
     private void Awake()
@@ -164,6 +172,26 @@ public abstract class Emitter : MonoBehaviour
     {
         originObject = gameObject;
         
+    }
+
+    public virtual void SetSpawnXInterval(float value)
+    {
+        xInterval = value;
+    }
+
+    public virtual void SetSpawnYInterval(float value)
+    {
+        yInterval = value;
+    }
+
+    public virtual void ResetIntervalCount()
+    {
+        currentInteval = RESET + 1;
+    }
+
+    public virtual void SetIntervalCountLimit(int value)
+    {
+        intervalCountLimit = value;
     }
 
     public virtual void SetBulletMember(string name)

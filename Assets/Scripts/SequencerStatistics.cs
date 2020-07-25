@@ -1,4 +1,7 @@
-﻿public class SequencerStatistics
+﻿using System;
+
+[Serializable]
+public class SequencerStatistics
 {
     public float startStep = 0;
 
@@ -20,6 +23,7 @@
     }
 }
 
+[Serializable]
 public class SequenceCompletionTracker
 {
     public float progress;

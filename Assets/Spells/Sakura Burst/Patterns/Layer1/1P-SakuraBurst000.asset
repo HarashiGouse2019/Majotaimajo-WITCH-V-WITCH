@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: 1P-SakuraBurst000
   m_EditorClassIdentifier: 
-  amount: 4
+  amount: 5
   isHoming: 0
   initialSpeed: 840
   incrementalSpeed: 840
@@ -23,8 +23,8 @@ MonoBehaviour:
   rotationSpeed: 10
   bulletType: SakuraFlower1
   loop: 1
-  loopRate: 0.075
-  rotation: 1
+  loopRate: 0.25
+  rotation: 3
   distribution: 0
   rotationFocusEffect: 0
   rotationFocus: 1
@@ -32,7 +32,10 @@ MonoBehaviour:
   rotationFocusLimit: 0
   rotationIntensityEffect: 0
   rotationIntensity: 1
-  rotationIntensityIncrementVal: 0.25
+  rotationIntensityIncrementVal: 1
   rotationIntensityLimit: 0
   transitionDuration: 0
+  spawningXInterval: 0.001
+  spawningYInterval: 0
+  spawningCountLimit: 3
   layerID: 0

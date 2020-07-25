@@ -236,6 +236,11 @@ public class DanmakuSequencer : MonoBehaviour
         }
         #endregion
 
+        #region Spawning Spacing
+        emitter.SetSpawnXInterval(_pattern.spawningXInterval);
+        emitter.SetSpawnYInterval(_pattern.spawningYInterval);
+        #endregion
+
         #endregion
     }
 
@@ -265,6 +270,8 @@ public class DanmakuSequencer : MonoBehaviour
 
                 completion.completedLoops++;
                 completion.progress = reset + (completion.completedRoutines - completion.completedLoops);
+
+                emitter.ResetIntervalCount();
             }
             else
                 ResetAllValues();

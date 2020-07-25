@@ -7486,6 +7486,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raven_Obj
       objectReference: {fileID: 0}
+    - target: {fileID: 17790889872032921, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 17790889872032920, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7672,6 +7677,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17790890476737771, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaebce90341a97441a0c79a4df36d27c, type: 3}

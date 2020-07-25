@@ -18,7 +18,7 @@ MonoBehaviour:
     stepPos: 0
   - pattern: {fileID: 11400000, guid: 2ec900927f78c344f9855eba6b812ac7, type: 2}
     stepPos: 20
-  - pattern: {fileID: 0}
+  - pattern: {fileID: 11400000, guid: 62e96051e1ce478479aea885f5581c46, type: 2}
     stepPos: 40
   - pattern: {fileID: 11400000, guid: 3a60575bc3b29364bb29a93098fe1852, type: 2}
     stepPos: 60

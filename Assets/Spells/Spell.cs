@@ -69,6 +69,8 @@ public class Spell : ScriptableObject
 
         sequencer.statistics.stepSpeed = enchanment.stepSpeed;
 
+        Debug.Log(sequencer.statistics.stepSpeed);
+
         for(int routinePos = 0; routinePos < enchanment.routine.Count; routinePos++)
         {
             sequencer.routines.Add(enchanment.routine[routinePos]);

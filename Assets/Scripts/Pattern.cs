@@ -6,6 +6,7 @@ public class Pattern : ScriptableObject
 {
     public static Pattern pattern;
 
+    [Header("Basic Pattern Setup")]
     [Tooltip("How many bullets will you spawn?")]
     public int amount;
 
@@ -32,11 +33,15 @@ public class Pattern : ScriptableObject
 
     public float rotationSpeed;
 
+    [Header("Bullet Type")]
     public string bulletType;
 
+    [Header("Loop Rate")]
     public bool loop;
     public float loopRate;
 
+
+    [Header("Rotation Configuration")]
     public RotationType rotation;
 
     public DistributionType distribution;
@@ -54,6 +59,13 @@ public class Pattern : ScriptableObject
     public float rotationIntensityLimit;
 
     public float transitionDuration;
+
+    [Header("Spawning Rate Duration")]
+
+    public float spawningXInterval;
+    public float spawningYInterval;
+    public int spawningCountLimit = 3;
+
 
     public int layerID = 0;
 }

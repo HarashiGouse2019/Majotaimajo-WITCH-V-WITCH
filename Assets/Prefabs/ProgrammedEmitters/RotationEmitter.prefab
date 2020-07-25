@@ -117,6 +117,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowOverride: 0
+  statistics:
+    startStep: 0
+    currentStep: 0
+    nextStep: 0
+    stepSpeed: 1
+    runningRoutine: 0
+  completion:
+    progress: 0
+    completedRoutines: 0
+    completedLoops: 0
   routines: []
   spellOrigin: {fileID: 0}
   enableSequenceLooping: 0

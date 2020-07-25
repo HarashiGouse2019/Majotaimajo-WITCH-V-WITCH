@@ -2,6 +2,7 @@
 using UnityEngine;
 using Alarm;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class SpawningTrailEmitter : Emitter
 {
@@ -13,12 +14,7 @@ public class SpawningTrailEmitter : Emitter
     Has Rotation Capablilities.
     Homing capabilities*/
 
-    float xInterval = 0.5f;
-    float yInterval = 0.5f;
-
-    //How many times to spawn
-    int intervalCountLimit = 3;
-    int currentInteval = 1;
+    
 
     private void OnEnable()
     {
@@ -118,15 +114,19 @@ public class SpawningTrailEmitter : Emitter
                 float projectileAngleX = initialPosition.x + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
                 float projectileAngleY = initialPosition.y + (Mathf.Cos((angle * Mathf.PI) / 180f)) * radius;
 
-                Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
-                //Vector3 projectileMoveDir = (projectileVector - initialPosition).normalized * bulletInitialSpeed;
-
                 GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
                 if (!tmpObj.activeInHierarchy)
                 {
                     tmpObj.SetActive(true);
-                    tmpObj.transform.position = initialPosition; ;
+                    tmpObj.transform.position = initialPosition;
                     tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+
+
+                    if (tmpObj.GetComponent<GraphicAnimation>() != null)
+                    {
+                        GraphicAnimation graphicAnimation = tmpObj.GetComponent<GraphicAnimation>();
+                        graphicAnimation.Animate(true);
+                    }    
 
                     //Assign projectile priority from origin
                     tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
@@ -136,15 +136,16 @@ public class SpawningTrailEmitter : Emitter
 
                     //tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
                     //Instead of adding force, we want to just move by increasing currentInterval every time
-                    tmpObj.transform.Translate(new Vector3(currentInteval * xInterval, currentInteval * yInterval));
+                    tmpObj.transform.Translate( new Vector3(currentInteval * xInterval, currentInteval+1 * yInterval));
                 }
                 angle += angleStep;
             }
 
             currentInteval++;
+        } else
+        {
+
         }
-        else
-            currentInteval = 0;
     }
 
     protected override void Loop()
