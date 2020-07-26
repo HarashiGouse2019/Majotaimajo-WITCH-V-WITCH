@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 
     //This will be crea
     Emitter emitter;
+    SpellLibrary library;
 
     float lifeTime = 10f;
 
@@ -37,6 +38,7 @@ public class Projectile : MonoBehaviour
         emitter = GetComponent<Emitter>();
         graphicAnimation = GetComponent<GraphicAnimation>();
         origin = FindObjectOfType<RotationEmitter>().GetOriginObject(); //Will find the gameObject that shoot the bullet out
+        library= GetComponent<SpellLibrary>();
     }
 
     void ApplyConfiguration()
