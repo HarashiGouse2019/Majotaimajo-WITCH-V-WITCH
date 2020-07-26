@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sequencer: {fileID: 0}
+  ParentPawn: {fileID: 0}
   id: 0
   bulletPrefab: []
   points: []
@@ -143,5 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originatedSpawnPoint: {fileID: 0}
+  emitter: {fileID: 0}
   pawn: {fileID: 0}
   priority: 0

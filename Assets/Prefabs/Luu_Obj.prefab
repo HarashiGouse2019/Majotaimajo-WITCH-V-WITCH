@@ -185,8 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellInUse: {fileID: 0}
   spells:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c400dc056dab513468e2dbc8e609319d, type: 2}
+  - {fileID: 11400000, guid: a4bd409d161fda74081acc7337635710, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   spellIndex: 0

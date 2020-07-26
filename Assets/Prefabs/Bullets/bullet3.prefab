@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originatedSpawnPoint: {fileID: 0}
+  emitter: {fileID: 0}
   pawn: {fileID: 0}
   priority: 0
 --- !u!114 &4667204870368820081
@@ -163,6 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   configuration: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  emitter: {fileID: 0}
+  origin: {fileID: 0}
 --- !u!60 &1872670169892704226
 PolygonCollider2D:
   m_ObjectHideFlags: 0

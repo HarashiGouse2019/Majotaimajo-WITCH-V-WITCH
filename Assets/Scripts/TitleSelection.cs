@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TitleSelection : MonoBehaviour, IEventSetup
 {
     [SerializeField]
-    Color selectedColor, unselectedColor;
+    Color selectedColor, unselectedColor, unavaliableColor;
 
     [SerializeField]
     int selectedFontSize, unselectedFontSize;
@@ -98,9 +98,11 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 AudioManager.Play("CursorMovement");
                 SelectionIndex += NEXT_SELECTION;
 
+
                 //Check if bigger than size
                 if (SelectionIndex > selectableObjects.Count - 1)
                     SelectionIndex = 0;
+
 
                 //Update Text UI
                 UpdateTextUI();
@@ -146,19 +148,25 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     {
         for (int index = 0; index < selectableObjects.Count; index++)
         {
-            if (index == SelectionIndex)
+            TextMeshProUGUI selectableText = selectableObjects[index];
+            SelectionEvent selectionEvent = selectableText.GetComponent<SelectionEvent>();
+            if (index == SelectionIndex && selectionEvent.HasEvent())
             {
                 //This is the current object that is selected, so highlight it
-                selectableObjects[index].color = selectedColor;
-                selectableObjects[index].text = TAB + selectableObjects[index].text;
-                selectableObjects[index].fontSize = selectedFontSize;
+                selectableText.color = selectedColor;
+                selectableText.text = TAB + selectableObjects[index].text;
+                selectableText.fontSize = selectedFontSize;
                 images[index].gameObject.SetActive(true);
             }
             else
             {
-                selectableObjects[index].color = unselectedColor;
-                selectableObjects[index].text = selectableObjects[index].text.Replace(TAB, STRING_NULL);
-                selectableObjects[index].fontSize = unselectedFontSize;
+                if (!selectionEvent.HasEvent() || selectionEvent.IsUnAvaliable)
+                    selectableText.color = unavaliableColor;
+                else
+                    selectableText.color = unselectedColor;
+
+                selectableText.text = selectableObjects[index].text.Replace(TAB, STRING_NULL);
+                selectableText.fontSize = unselectedFontSize;
                 images[index].gameObject.SetActive(false);
             }
         }

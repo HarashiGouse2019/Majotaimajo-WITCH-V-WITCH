@@ -15,7 +15,7 @@ MonoBehaviour:
   amount: 2
   isHoming: 0
   initialSpeed: 650
-  incrementalSpeed: 0
+  incrementalSpeed: 650
   speedLimit: 5000
   carryOverSpeed: 0
   overrideRotation: 0

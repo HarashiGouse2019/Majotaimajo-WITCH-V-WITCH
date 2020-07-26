@@ -14,5 +14,5 @@ public class ProjectileConfig : ScriptableObject
     public Emitter emitter;
     public GraphicAnimation animation;
     public ProjectileMotion motion;
- 
+    public Spell attachedSpell;
 }

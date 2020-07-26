@@ -17,7 +17,7 @@ public class RotationEmitter : Emitter
     protected override void Start()
     {
         loopTimer = new Timer(3); //Reintergrated timer!
-        existingProjectiles = new List<GameObject>();
+        existingProjectiles = new List<Projectile>();
         originObject = gameObject;
     }
 
@@ -118,7 +118,10 @@ public class RotationEmitter : Emitter
             Vector3 projectileVector = new Vector3(projectileAngleX, projectileAngleY, 0);
             Vector3 projectileMoveDir = (projectileVector - initialPosition).normalized * bulletInitialSpeed;
 
-            GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
+            GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
+
+            projectile.AssignEmitter(this);
+
             if (!tmpObj.activeInHierarchy)
             {
                 tmpObj.SetActive(true);
@@ -147,7 +150,7 @@ public class RotationEmitter : Emitter
         }
     }
 
-    public virtual void Remove(GameObject obj)
+    public virtual void Remove(Projectile obj)
     {
         existingProjectiles.Remove(obj);
     }

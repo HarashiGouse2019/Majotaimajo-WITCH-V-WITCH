@@ -18,6 +18,7 @@ public class SpawningTrailEmitter : Emitter
 
     bool changeAngles = true;
 
+
     private void OnEnable()
     {
         initialPosition = gameObject.transform.position;
@@ -26,7 +27,7 @@ public class SpawningTrailEmitter : Emitter
     protected override void Start()
     {
         loopTimer = new Timer(3); //Reintergrated timer!
-        existingProjectiles = new List<GameObject>();
+        existingProjectiles = new List<Projectile>();
         originObject = gameObject;
     }
 
@@ -118,7 +119,7 @@ public class SpawningTrailEmitter : Emitter
             {
 
                 GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
-
+                projectile.AssignEmitter(this);
                 if (!tmpObj.activeInHierarchy)
                 {
                     tmpObj.SetActive(true);
@@ -152,6 +153,9 @@ public class SpawningTrailEmitter : Emitter
                     //tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
                     //Instead of adding force, we want to just move by increasing currentInterval every time
                     tmpObj.transform.Translate(new Vector3(currentInteval * xInterval, currentInteval * yInterval));
+
+                    //Add to existing projectiles
+                    existingProjectiles.Add(projectile);
                 }
                 angle += angleStep;
             }

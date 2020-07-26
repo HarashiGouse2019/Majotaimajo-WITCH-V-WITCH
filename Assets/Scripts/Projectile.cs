@@ -9,18 +9,24 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private ProjectileConfig configuration;
 
+    [SerializeField]
     SpriteRenderer spriteRenderer;
 
     //This will be crea
+    [SerializeField]
     Emitter emitter;
+
     SpellLibrary library;
 
     float lifeTime = 10f;
 
     #region Private Members
     private Timer destroyTimer;
+    [SerializeField]
     private GameObject origin;
+    private Pawn ParentPawn;
     private GraphicAnimation graphicAnimation;
+    private GetOrignatedSpawnPoint pawnOrigin;
     private bool noAnimation;
     private float duration = 10f;
     bool done = false;
@@ -34,18 +40,25 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        emitter = GetComponent<Emitter>();
-        graphicAnimation = GetComponent<GraphicAnimation>();
-        origin = FindObjectOfType<RotationEmitter>().GetOriginObject(); //Will find the gameObject that shoot the bullet out
-        library= GetComponent<SpellLibrary>();
+        
+    }
+
+    public void AssignEmitter(Emitter emitter)
+    {
+        this.emitter = emitter;
+        Debug.Log(this.emitter.name);
     }
 
     void ApplyConfiguration()
     {
-        spriteRenderer.sprite = configuration.projectileGraphic;
-        emitter = configuration.emitter;
-        graphicAnimation = configuration.animation;
+        if (spriteRenderer != null && configuration.projectileGraphic != null)
+            spriteRenderer.sprite = configuration.projectileGraphic;
+
+        if (configuration.attachedSpell != null)
+        {
+            library.AddNewSpell(configuration.attachedSpell);
+            ActivateAttachedSpell();
+        }
     }
 
     // Update is called once per frame
@@ -53,7 +66,7 @@ public class Projectile : MonoBehaviour
     {
         destroyTimer.StartTimer(0);
         done = destroyTimer.SetFor(duration, 0);
-        
+
         if (done && noAnimation == false && graphicAnimation != null)
         {
             graphicAnimation.Animate(false);
@@ -61,10 +74,16 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public Emitter GetEmitter() => emitter;
+
     public void ActivateAttachedSpell()
     {
+        Spell spell = library.FindSpell(configuration.attachedSpell.name);
 
+        if (emitter != null && spell != null)
+            spell.Activate(emitter.ParentPawn);
     }
+
     public void AnimateOnDestroy() => noAnimation = false;
     public void NoAnimationOnDestroy() => noAnimation = true;
 
@@ -76,13 +95,29 @@ public class Projectile : MonoBehaviour
     public void SetLifeTime(float duration)
     {
         lifeTime = duration;
-       SetDuration(lifeTime);
+        SetDuration(lifeTime);
     }
 
     private void OnEnable()
     {
         
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        graphicAnimation = GetComponent<GraphicAnimation>();
+        pawnOrigin = GetComponent<GetOrignatedSpawnPoint>();
+
+        if (emitter != null)
+        {
+            ParentPawn = emitter.ParentPawn;
+            pawnOrigin.SetPawnOrigin(ParentPawn);
+            pawnOrigin.SetEmitterOrigin(emitter);
+            origin = emitter.GetOriginObject(); //Will find the gameObject that shoot the bullet out
+        }
+        library = GetComponent<SpellLibrary>();
+
+        if (configuration != null)
+            //Apply Configuration
+            ApplyConfiguration();
     }
 
-    
+
 }

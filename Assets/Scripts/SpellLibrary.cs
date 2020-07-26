@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnhancedExtensions;
 
 public class SpellLibrary : MonoBehaviour
 {
     public static SpellLibrary library;
 
     public Spell spellInUse;
-
-    public Spell[] spells = new Spell[3];
+    private int spellSize = 3;
+    public List<Spell> spells;
 
     public uint spellIndex = 0;
 
@@ -25,13 +27,19 @@ public class SpellLibrary : MonoBehaviour
     {
         library = this;
     }
+
+    public void AddNewSpell(Spell spell)
+    {
+        spells.Add(spell);
+    }
+
     public Spell FindSpell(string _name)
     {
         #region ForLoop
         //Make sure the spellIndex is reset before you loop again
         spellIndex = reset;
 
-        for (int i = 0; i < spells.Length; i++)
+        for (int i = 0; i < spells.Count; i++)
         {
             if (_name == spells[i].name) 
                 return spells[i];

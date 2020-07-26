@@ -63,12 +63,12 @@ public enum Motion
 [RequireComponent(typeof(DanmakuSequencer))]
 public abstract class Emitter : MonoBehaviour
 {
-    private static Emitter Instance;
+    protected static Emitter Instance;
 
 
     public DanmakuSequencer Sequencer;
 
-    public Pawn ParentPawn { get; private set; }
+    public Pawn ParentPawn;
 
     [SerializeField]
     protected int id = 0;
@@ -100,7 +100,7 @@ public abstract class Emitter : MonoBehaviour
 
     [Range(1, 10)] protected int numberOfProjectiles = 1;
 
-    protected List<GameObject> existingProjectiles;
+    protected List<Projectile> existingProjectiles;
 
     protected Vector3 initialPosition, targetPosition;
 

@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e10e068699a355c408914edc7da31f5a, type: 3}
-  m_Name: SakuraBulletConfig
+  m_Name: SakukraFlowerConfig000
   m_EditorClassIdentifier: 
-  projectileGraphic: {fileID: 0}
+  projectileGraphic: {fileID: 21300000, guid: 9ade0aebbfcf2ed48a841b907089bd18, type: 3}
   emitter: {fileID: 0}
   animation: {fileID: 0}
+  motion: 0
+  attachedSpell: {fileID: 11400000, guid: 802a22329d1018f4c9e1cf043176d03e, type: 2}

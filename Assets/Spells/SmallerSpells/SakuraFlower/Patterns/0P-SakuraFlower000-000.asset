@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: 1P-SakuraBurst000
+  m_Name: 0P-SakuraFlower000-000
   m_EditorClassIdentifier: 
   amount: 5
   isHoming: 0
-  initialSpeed: 840
-  incrementalSpeed: 840
-  speedLimit: 10000
+  initialSpeed: 650
+  incrementalSpeed: 0
+  speedLimit: 5000
   carryOverSpeed: 0
   overrideRotation: 0
   initialRotation: 0
-  rotationSpeed: 10
-  bulletType: SakuraFlower1
+  rotationSpeed: 0
+  bulletType: SakuraPetal
   loop: 1
-  loopRate: 0.25
-  rotation: 3
-  distribution: 0
+  loopRate: 0.05
+  rotation: 999
+  distribution: 4
   rotationFocusEffect: 0
   rotationFocus: 1
   rotationFocusIncrementVal: 0
   rotationFocusLimit: 0
-  rotationIntensityEffect: 0
+  rotationIntensityEffect: 1
   rotationIntensity: 2
-  rotationIntensityIncrementVal: 1
+  rotationIntensityIncrementVal: 5
   rotationIntensityLimit: 0
   transitionDuration: 0
-  spawningXInterval: 1
+  spawningXInterval: 0
   spawningYInterval: 0
-  spawningCountLimit: 5
-  projectileLifeTime: 3
-  animateOnDestroy: 1
+  spawningCountLimit: 3
+  projectileLifeTime: 10
+  animateOnDestroy: 0

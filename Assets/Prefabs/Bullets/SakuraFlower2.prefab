@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2463320411399767156}
   - component: {fileID: 3715992371608729716}
   - component: {fileID: 1510303626144846761}
+  - component: {fileID: 3236565622905524183}
   m_Layer: 0
   m_Name: SakuraFlower2
   m_TagString: Untagged
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originatedSpawnPoint: {fileID: 0}
+  emitter: {fileID: 0}
   pawn: {fileID: 0}
   priority: 0
 --- !u!95 &4665102170085824200
@@ -157,7 +159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d3d31e8327527499fbfc60c8d049c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configuration: {fileID: 0}
+  configuration: {fileID: 11400000, guid: 2ab632af543fa764db3bd9abf93d2e75, type: 2}
+  spriteRenderer: {fileID: 0}
+  emitter: {fileID: 0}
+  origin: {fileID: 0}
 --- !u!114 &1510303626144846761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +176,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemChanceRates: []
+--- !u!114 &3236565622905524183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478247462764804913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27b0260bd211fc4c9b083399bbfde27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellInUse: {fileID: 0}
+  spells: []
+  spellIndex: 0
+  initializeOnStart: 0

@@ -78,7 +78,7 @@ public class PlayerPawn : Pawn
         //Read your SpellLibrary, and override GameUi spell text
         try
         {
-            for (int i = 0; i < library.spells.Length; i++)
+            for (int i = 0; i < library.spells.Count; i++)
             {
                 GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
             }

@@ -21,7 +21,7 @@ public class HoningLinearEmitter : Emitter
     protected override void Start()
     {
         originObject = gameObject;
-        existingProjectiles = new List<GameObject>();
+        existingProjectiles = new List<Projectile>();
     }
 
     void FixedUpdate()

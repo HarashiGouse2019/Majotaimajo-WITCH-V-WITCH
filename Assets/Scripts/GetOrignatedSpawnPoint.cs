@@ -6,6 +6,8 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     public GameObject originatedSpawnPoint;
 
+    public Emitter emitter;
+
     public Pawn pawn;
 
     public uint priority;
@@ -14,6 +16,8 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     private ItemDrops items;
 
+    private Projectile projectile;
+
 
     private void Awake()
     {
@@ -21,9 +25,25 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        projectile = GetComponent<Projectile>();
+
+    }
+
     private void OnEnable()
     {
-        if (priority != 999) items = GetComponent<ItemDrops>();
+        try
+        {
+            if (projectile != null)
+                emitter = projectile.GetEmitter();
+
+            if (emitter.ParentPawn != null)
+                pawn = emitter.ParentPawn;
+
+            if (priority != 999) items = GetComponent<ItemDrops>();
+        }
+        catch { }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -45,6 +65,16 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag.Equals("Border")) gameObject.SetActive(false);
+    }
+
+    public void SetPawnOrigin(Pawn pawn)
+    {
+        this.pawn = pawn;
+    }
+
+    public void SetEmitterOrigin(Emitter emitter)
+    {
+        this.emitter = emitter;
     }
 
     private void OnDisable()
