@@ -117,7 +117,7 @@ public class SpawningTrailEmitter : Emitter
             for (int i = 0; i <= _numberOfProjectiles - 1; i++)
             {
 
-                GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
+                GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
 
                 if (!tmpObj.activeInHierarchy)
                 {
@@ -131,22 +131,17 @@ public class SpawningTrailEmitter : Emitter
                         graphicAnimation.Animate(true);
                     }
 
+                    projectile.SetLifeTime(projectileLifeTime);
 
-                    if (tmpObj.GetComponent<Projectile>() != null)
+                    if (animateOnDestroy)
                     {
-                        Projectile projectile = tmpObj.GetComponent<Projectile>();
-                        projectile.SetLifeTime(projectileLifeTime);
-                        if (animateOnDestroy)
-                        {
-                            Debug.Log("Animation Set");
-                            projectile.AnimateOnDestroy();
-                        }
-                        else
-                        {
-                            Debug.Log("No animation");
-                            projectile.AnimateOnDestroy();
-                        }
+                        projectile.AnimateOnDestroy();
                     }
+                    else
+                    {
+                        projectile.AnimateOnDestroy();
+                    }
+
 
                     //Assign projectile priority from origin
                     tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
@@ -184,7 +179,7 @@ public class SpawningTrailEmitter : Emitter
     {
         if (loopTimer.SetFor(loopSpeed, 0))
         {
-            g_angle += (int)rotation;
+            if (changeAngles) g_angle += (int)rotation;
             SpawnBullets(numberOfProjectiles, bulletMember);
         }
     }

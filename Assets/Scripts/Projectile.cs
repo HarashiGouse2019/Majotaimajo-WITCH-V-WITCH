@@ -49,7 +49,15 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(destroyTimer.currentTime[0]);
+        destroyTimer.StartTimer(0);
+        done = destroyTimer.SetFor(duration, 0);
+        
+        if (done && noAnimation == false && graphicAnimation != null)
+        {
+            Debug.Log("What?");
+            graphicAnimation.Animate(false);
+            destroyTimer.SetToZero(0, true);
+        }
     }
 
     public void ActivateAttachedSpell()
@@ -72,17 +80,7 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        done = destroyTimer.SetFor(duration, 0);
-
-        if (done && noAnimation == false)
-        {
-            graphicAnimation.Animate(false);
-        }
-    }
-
-    private void OnDisable()
-    {
-        destroyTimer.SetToZero(0, true);
+        
     }
 
     
