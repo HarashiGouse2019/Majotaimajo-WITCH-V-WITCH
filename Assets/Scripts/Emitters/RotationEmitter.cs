@@ -52,7 +52,17 @@ public class RotationEmitter : Emitter
 
         float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
                                                                          //You want to concentrate only on one side, but spread them, n is the one.
+
+        //If Rotation is set to random, g_angle will be randomized between 0 and 360
+        if (rotation == RotationType.Random)
+        {
+            g_angle += Random.Range(0f, 360f);
+
+        }
+
         float angle = g_angle * rotationIntensity;
+
+        
 
         switch (distribution)
         {
@@ -90,7 +100,7 @@ public class RotationEmitter : Emitter
                 }
                 break;
 
-            case DistributionType.Scattered:
+            case DistributionType.Variant:
                 bulletInitialSpeed = Random.Range(bulletInitialSpeed, bulletSpeedLimit + 500);
                 break;
 
@@ -132,7 +142,7 @@ public class RotationEmitter : Emitter
 
         if (loopTimer.SetFor(loopSpeed, 0))
         {
-            g_angle += (int)rotation;
+            if (rotation != RotationType.Random) g_angle += (int)rotation;
             SpawnBullets(numberOfProjectiles, bulletMember);
         }
     }

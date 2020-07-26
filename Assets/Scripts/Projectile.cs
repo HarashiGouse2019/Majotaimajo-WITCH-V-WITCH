@@ -54,7 +54,6 @@ public class Projectile : MonoBehaviour
         
         if (done && noAnimation == false && graphicAnimation != null)
         {
-            Debug.Log("What?");
             graphicAnimation.Animate(false);
             destroyTimer.SetToZero(0, true);
         }

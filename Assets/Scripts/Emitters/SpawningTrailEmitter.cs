@@ -101,7 +101,7 @@ public class SpawningTrailEmitter : Emitter
                 }
                 break;
 
-            case DistributionType.Scattered:
+            case DistributionType.Variant:
                 bulletInitialSpeed = Random.Range(bulletInitialSpeed, bulletSpeedLimit + 500);
                 break;
 

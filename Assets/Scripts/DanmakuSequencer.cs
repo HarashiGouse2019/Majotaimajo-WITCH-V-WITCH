@@ -143,69 +143,12 @@ public class DanmakuSequencer : MonoBehaviour
 
 
         #region Rotation
-        //No idea, but Imma do it!!
-        switch ((int)_pattern.rotation)
-        {
-            case 0:
-                emitter.SetRotationType(RotationType.NoRotation);
-                break;
-
-            case 1:
-                emitter.SetRotationType(RotationType.ClockwiseI);
-                break;
-
-            case 2:
-                emitter.SetRotationType(RotationType.ClockwiseII);
-                break;
-
-            case 3:
-                emitter.SetRotationType(RotationType.ClockwiseIII);
-                break;
-
-            case -1:
-                emitter.SetRotationType(RotationType.CounterClockwiseI);
-                break;
-
-            case -2:
-                emitter.SetRotationType(RotationType.CounterClockwiseII);
-                break;
-
-            case -3:
-                emitter.SetRotationType(RotationType.CounterClockwiseIII);
-                break;
-
-            default:
-                break;
-        }
+        emitter.SetRotationType(_pattern.rotation);
         #endregion
 
         #region Distribution
-        //And then again...
-        switch (_pattern.distribution)
-        {
-            case DistributionType.Uniformed:
-                emitter.SetDistributionType(DistributionType.Uniformed);
-                break;
 
-            case DistributionType.Biformed:
-                emitter.SetDistributionType(DistributionType.Biformed);
-                break;
-
-            case DistributionType.UniformedIncrement:
-                emitter.SetDistributionType(DistributionType.UniformedIncrement);
-                break;
-
-            case DistributionType.BiformedIncrement:
-                emitter.SetDistributionType(DistributionType.BiformedIncrement);
-                break;
-
-            case DistributionType.Scattered:
-                emitter.SetDistributionType(DistributionType.Scattered);
-                break;
-
-            default:
-                break;
-        }
+        emitter.SetDistributionType(_pattern.distribution);
         #endregion
 
         #region Rotation Focus Effect

@@ -38,5 +38,5 @@ MonoBehaviour:
   spawningXInterval: 1
   spawningYInterval: 0
   spawningCountLimit: 3
-  projectileLifeTime: 5
+  projectileLifeTime: 3
   animateOnDestroy: 1

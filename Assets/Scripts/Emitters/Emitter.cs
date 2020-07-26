@@ -11,7 +11,8 @@ public enum RotationType
     ClockwiseIII,
     CounterClockwiseI = -1,
     CounterClockwiseII = -2,
-    CounterClockwiseIII = -3
+    CounterClockwiseIII = -3,
+    Random  = 999
 };
 public enum DistributionType
 {
@@ -19,7 +20,7 @@ public enum DistributionType
     Biformed,
     UniformedIncrement,
     BiformedIncrement,
-    Scattered
+    Variant
 }
 
 public enum RotationFocusEffect
