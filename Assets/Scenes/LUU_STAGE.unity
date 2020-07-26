@@ -1777,6 +1777,11 @@ MonoBehaviour:
     prefab: {fileID: 2478247462764804913, guid: b9ce067ab7d7e9742a264235e76edb22,
       type: 3}
     expandPool: 1
+  - name: SakuraPetal
+    size: 100
+    prefab: {fileID: 8374613928682315491, guid: 66ad0383a91279442a0c1c9fdee2750c,
+      type: 3}
+    expandPool: 1
   - name: SpawningTrailEmitter
     size: 100
     prefab: {fileID: 7917890828568517416, guid: 7aa1363c06585fc4fb6d544cc5a3f098,

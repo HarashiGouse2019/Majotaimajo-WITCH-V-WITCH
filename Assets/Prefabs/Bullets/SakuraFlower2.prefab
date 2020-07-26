@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2571004495929552832}
   - component: {fileID: 7440227377010495261}
   - component: {fileID: 5616700685539221458}
-  - component: {fileID: 3718083422508406885}
   - component: {fileID: 4665102170085824200}
   - component: {fileID: 2463320411399767156}
   - component: {fileID: 3715992371608729716}
+  - component: {fileID: 1510303626144846761}
   m_Layer: 0
   m_Name: SakuraFlower2
   m_TagString: Untagged
@@ -113,18 +113,6 @@ MonoBehaviour:
   originatedSpawnPoint: {fileID: 0}
   pawn: {fileID: 0}
   priority: 0
---- !u!114 &3718083422508406885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2478247462764804913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6f95d11a8788f744a5b2ef59693435d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &4665102170085824200
 Animator:
   serializedVersion: 3
@@ -169,3 +157,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d3d31e8327527499fbfc60c8d049c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1510303626144846761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478247462764804913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8587b1b31824bf54db896f62867930be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemChanceRates: []

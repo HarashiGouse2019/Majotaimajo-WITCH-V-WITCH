@@ -14,6 +14,10 @@ public class SpawningTrailEmitter : Emitter
     Has Rotation Capablilities.
     Homing capabilities*/
 
+    float angle = 0f;
+
+    bool changeAngles = true;
+
     private void OnEnable()
     {
         initialPosition = gameObject.transform.position;
@@ -45,80 +49,81 @@ public class SpawningTrailEmitter : Emitter
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
+
+        //Update rotation focus
+        if (rotationFocus < rotationFocusLimit)
+            rotationFocus += rotationFocusIncrementVal;
+
+        //Update rotation intensity
+        if (rotationIntensity < rotationIntensityLimit)
+            rotationIntensity += rotationIntensityIncrementVal;
+
+        //Assing those values to our basic algorithm
+
+        float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
+                                                                         //You want to concentrate only on one side, but spread them, n is the one
+        if (changeAngles)
+            angle = g_angle * rotationIntensity;
+
+        switch (distribution)
+        {
+            case DistributionType.Uniformed:
+                //Do Nothing
+                break;
+
+            case DistributionType.Biformed:
+                if (distStep == 0)
+                {
+                    bulletInitialSpeed *= 2;
+                    distStep++;
+                }
+                else if (distStep == 1)
+                {
+                    bulletInitialSpeed /= 2;
+                    distStep--;
+                }
+                break;
+
+            case DistributionType.UniformedIncrement:
+                if (bulletInitialSpeed < bulletSpeedLimit) bulletInitialSpeed += incrementVal;
+                break;
+
+            case DistributionType.BiformedIncrement:
+                if (distStep == 0)
+                {
+                    bulletInitialSpeed *= 2 + (bulletInitialSpeed < bulletSpeedLimit ? incrementVal : 0);
+                    distStep++;
+                }
+                else if (distStep == 1)
+                {
+                    bulletInitialSpeed /= 2 + (bulletInitialSpeed < bulletSpeedLimit ? incrementVal : 0);
+                    distStep--;
+                }
+                break;
+
+            case DistributionType.Scattered:
+                bulletInitialSpeed = Random.Range(bulletInitialSpeed, bulletSpeedLimit + 500);
+                break;
+
+            default:
+                break;
+        }
+
         if (currentInteval <= intervalCountLimit)
         {
-            //Update rotation focus
-            if (rotationFocus < rotationFocusLimit)
-                rotationFocus += rotationFocusIncrementVal;
-
-            //Update rotation intensity
-            if (rotationIntensity < rotationIntensityLimit)
-                rotationIntensity += rotationIntensityIncrementVal;
-
-            //Assing those values to our basic algorithm
-
-            float angleStep = 360f / (_numberOfProjectiles * rotationFocus); //n scales the area in which bullets are spawn
-                                                                             //You want to concentrate only on one side, but spread them, n is the one.
-            float angle = g_angle * rotationIntensity;
-
-            switch (distribution)
-            {
-                case DistributionType.Uniformed:
-                    //Do Nothing
-                    break;
-
-                case DistributionType.Biformed:
-                    if (distStep == 0)
-                    {
-                        bulletInitialSpeed *= 2;
-                        distStep++;
-                    }
-                    else if (distStep == 1)
-                    {
-                        bulletInitialSpeed /= 2;
-                        distStep--;
-                    }
-                    break;
-
-                case DistributionType.UniformedIncrement:
-                    if (bulletInitialSpeed < bulletSpeedLimit) bulletInitialSpeed += incrementVal;
-                    break;
-
-                case DistributionType.BiformedIncrement:
-                    if (distStep == 0)
-                    {
-                        bulletInitialSpeed *= 2 + (bulletInitialSpeed < bulletSpeedLimit ? incrementVal : 0);
-                        distStep++;
-                    }
-                    else if (distStep == 1)
-                    {
-                        bulletInitialSpeed /= 2 + (bulletInitialSpeed < bulletSpeedLimit ? incrementVal : 0);
-                        distStep--;
-                    }
-                    break;
-
-                case DistributionType.Scattered:
-                    bulletInitialSpeed = Random.Range(bulletInitialSpeed, bulletSpeedLimit + 500);
-                    break;
-
-                default:
-                    break;
-            }
-
+            //It will not change angles during the spawning of the trail
+            AngleLock();
 
             for (int i = 0; i <= _numberOfProjectiles - 1; i++)
             {
 
-                float projectileAngleX = initialPosition.x + (Mathf.Sin((angle * Mathf.PI) / 180f)) * radius;
-                float projectileAngleY = initialPosition.y + (Mathf.Cos((angle * Mathf.PI) / 180f)) * radius;
-
                 GameObject tmpObj = ObjectPooler.GetMember(bulletMember);
+
                 if (!tmpObj.activeInHierarchy)
                 {
                     tmpObj.SetActive(true);
                     tmpObj.transform.position = initialPosition;
                     tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
-
 
                     if (tmpObj.GetComponent<GraphicAnimation>() != null)
                     {
@@ -126,17 +131,22 @@ public class SpawningTrailEmitter : Emitter
                         graphicAnimation.Animate(true);
                     }
 
-                    try
+
+                    if (tmpObj.GetComponent<Projectile>() != null)
                     {
                         Projectile projectile = tmpObj.GetComponent<Projectile>();
-
                         projectile.SetLifeTime(projectileLifeTime);
-                        if (animateOnDestroy) 
-                            projectile.SetAnimation();
+                        if (animateOnDestroy)
+                        {
+                            Debug.Log("Animation Set");
+                            projectile.AnimateOnDestroy();
+                        }
                         else
-                            projectile.SetNoAnimation();
+                        {
+                            Debug.Log("No animation");
+                            projectile.AnimateOnDestroy();
+                        }
                     }
-                    catch { }
 
                     //Assign projectile priority from origin
                     tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
@@ -146,16 +156,28 @@ public class SpawningTrailEmitter : Emitter
 
                     //tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
                     //Instead of adding force, we want to just move by increasing currentInterval every time
-                    tmpObj.transform.Translate( new Vector3(currentInteval * xInterval, currentInteval * yInterval));
+                    tmpObj.transform.Translate(new Vector3(currentInteval * xInterval, currentInteval * yInterval));
                 }
                 angle += angleStep;
             }
 
             currentInteval++;
-        } else
-        {
-
         }
+        else
+        {
+            //We are now allow to change the angle
+            AllowAngleChange();
+        }
+    }
+
+    void AngleLock()
+    {
+        changeAngles = false;
+    }
+
+    void AllowAngleChange()
+    {
+        changeAngles = true;
     }
 
     protected override void Loop()

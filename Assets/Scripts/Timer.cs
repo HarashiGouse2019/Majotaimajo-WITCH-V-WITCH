@@ -81,13 +81,13 @@ namespace Alarm
             {
                 if (timeStarted[i] == true)
                 {
-                    currentTime[i] += UnityEngine.Time.deltaTime;
+                    currentTime[i] += Time.deltaTime;
                     if (debugEnabled)
                     {
                         if (showFloatingPoint == false)
-                            UnityEngine.Debug.Log("Timer[" + i + "]; Current time: " + UnityEngine.Mathf.FloorToInt(currentTime[i]));
+                            Debug.Log("Timer[" + i + "]; Current time: " + currentTime[i]);
                         else
-                            UnityEngine.Debug.Log("Timer[" + i + "]; Current time: " + currentTime[i]);
+                            Debug.Log("Timer[" + i + "]; Current time: " + currentTime[i]);
                     }
                 }
                 else
@@ -101,7 +101,7 @@ namespace Alarm
         ///</summary>
         public void StartTimer(int index)
         {
-            if (debugEnabled) UnityEngine.Debug.Log("Timer[" + index + "]; Start!");
+            if (debugEnabled) Debug.Log("Timer[" + index + "]; Start!");
             //Starts the timer
             timeStarted[index] = true;
             RunTimers();
@@ -116,7 +116,7 @@ namespace Alarm
             if (stop == true)
             {
                 timeStarted[index] = false;
-                if (debugEnabled) UnityEngine.Debug.Log("Timer [" + index + "]; stopped");
+                if (debugEnabled) Debug.Log("Timer [" + index + "]; stopped");
                 
             }
         }
@@ -126,9 +126,12 @@ namespace Alarm
         /// </summary>
         public bool SetFor(float duration, int index)
         {
+            if (timeStarted[index] == false)
+                StartTimer(index);
+
             if (currentTime[index] > duration)
             {
-                if (debugEnabled) UnityEngine.Debug.Log("Timer[" + index + "] returned a value of 1!");
+                if (debugEnabled) Debug.Log("Timer[" + index + "] returned a value of 1!");
                 SetToZero(index);
                 return true;
             }
@@ -137,9 +140,12 @@ namespace Alarm
 
         public bool SetFor(float duration, int index, bool stop)
         {
+            if (timeStarted[index] == false)
+                StartTimer(index);
+
             if (currentTime[index] > duration)
             {
-                if (debugEnabled) UnityEngine.Debug.Log("Timer[" + index + "] returned a value of 1!");
+                if (debugEnabled) Debug.Log("Timer[" + index + "] returned a value of 1!");
                 SetToZero(index, stop);
                 return true;
             }
