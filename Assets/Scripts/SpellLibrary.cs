@@ -19,7 +19,6 @@ public class SpellLibrary : MonoBehaviour
         "feature on.")]
     public bool initializeOnStart;
     
-    readonly bool isActivated;
     readonly uint reset = 0;
     
 

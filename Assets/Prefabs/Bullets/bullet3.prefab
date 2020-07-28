@@ -164,9 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   configuration: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  emitter: {fileID: 0}
-  origin: {fileID: 0}
 --- !u!60 &1872670169892704226
 PolygonCollider2D:
   m_ObjectHideFlags: 0

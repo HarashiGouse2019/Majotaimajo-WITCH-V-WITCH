@@ -78,7 +78,7 @@ public class DanmakuSequencer : MonoBehaviour
 
         if (GetRoutineCompletionInPercentage() < 0.1f)
         {
-            RunPattern(routines[(int)statistics.runningRoutine].pattern);
+            RunPattern(routines[statistics.runningRoutine].pattern);
         }
     }
 
@@ -94,7 +94,7 @@ public class DanmakuSequencer : MonoBehaviour
     public int GetPreviousStep()
     {
 
-        Routine routineCheck = routines[(int)statistics.runningRoutine];
+        Routine routineCheck = routines[statistics.runningRoutine];
 
         RunPattern(routineCheck.pattern);
 
@@ -211,8 +211,8 @@ public class DanmakuSequencer : MonoBehaviour
                 statistics.currentStep = reset;
                 statistics.runningRoutine = reset;
 
-                statistics.nextStep = routines[(int)statistics.runningRoutine + 1].stepPos;
-                statistics.startStep = routines[(int)statistics.runningRoutine].stepPos;
+                statistics.nextStep = routines[statistics.runningRoutine + 1].stepPos;
+                statistics.startStep = routines[statistics.runningRoutine].stepPos;
 
                 completion.completedLoops++;
                 completion.progress = reset + (completion.completedRoutines - completion.completedLoops);
@@ -233,12 +233,12 @@ public class DanmakuSequencer : MonoBehaviour
         //Get the pawn
         Pawn pawn = emitter.ParentPawn;
 
-        completion.progress = (float)reset;
+        completion.progress = reset;
         statistics.currentStep = reset;
         statistics.nextStep = reset;
         statistics.startStep = reset;
-        completion.completedLoops = (int)reset;
-        completion.completedRoutines = (int)reset;
+        completion.completedLoops = reset;
+        completion.completedRoutines = reset;
         statistics.runningRoutine = reset;
 
         HasInitialized = false;

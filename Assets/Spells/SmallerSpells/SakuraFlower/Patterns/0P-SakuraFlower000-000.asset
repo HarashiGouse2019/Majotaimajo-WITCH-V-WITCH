@@ -23,7 +23,7 @@ MonoBehaviour:
   rotationSpeed: 0
   bulletType: SakuraPetal
   loop: 1
-  loopRate: 0.05
+  loopRate: 0.1
   rotation: 999
   distribution: 4
   rotationFocusEffect: 0

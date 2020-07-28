@@ -9,11 +9,9 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private ProjectileConfig configuration;
 
-    [SerializeField]
     SpriteRenderer spriteRenderer;
 
     //This will be crea
-    [SerializeField]
     Emitter emitter;
 
     SpellLibrary library;
@@ -22,7 +20,6 @@ public class Projectile : MonoBehaviour
 
     #region Private Members
     private Timer destroyTimer;
-    [SerializeField]
     private GameObject origin;
     private Pawn ParentPawn;
     private GraphicAnimation graphicAnimation;
@@ -40,13 +37,12 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void AssignEmitter(Emitter emitter)
     {
         this.emitter = emitter;
-        Debug.Log(this.emitter.name);
     }
 
     void ApplyConfiguration()

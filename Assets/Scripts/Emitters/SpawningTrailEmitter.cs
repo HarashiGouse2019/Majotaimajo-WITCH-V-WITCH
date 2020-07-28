@@ -117,9 +117,10 @@ public class SpawningTrailEmitter : Emitter
 
             for (int i = 0; i <= _numberOfProjectiles - 1; i++)
             {
-
                 GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
+
                 projectile.AssignEmitter(this);
+
                 if (!tmpObj.activeInHierarchy)
                 {
                     tmpObj.SetActive(true);

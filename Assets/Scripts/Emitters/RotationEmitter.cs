@@ -125,16 +125,16 @@ public class RotationEmitter : Emitter
             if (!tmpObj.activeInHierarchy)
             {
                 tmpObj.SetActive(true);
-                tmpObj.transform.position = initialPosition;
-                tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+                projectile.transform.position = initialPosition;
+                projectile.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
                 //Assign projectile priority from origin
-                tmpObj.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
+                projectile.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
 
                 //From here, we tell our temporary object where it came from
-                tmpObj.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
+                projectile.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
 
-                tmpObj.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
+                projectile.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
             }
             angle += angleStep;
         }
