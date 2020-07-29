@@ -1744,7 +1744,7 @@ MonoBehaviour:
       type: 3}
     expandPool: 1
   - name: Crystal
-    size: 100
+    size: 30
     prefab: {fileID: 5037752168760579411, guid: 6fa567687eb03264f9144db4a61362f6,
       type: 3}
     expandPool: 1
@@ -1759,21 +1759,21 @@ MonoBehaviour:
       type: 3}
     expandPool: 1
   - name: LinearEmitter
-    size: 100
+    size: 50
     prefab: {fileID: 895543173388999139, guid: 0578e01c9ca962e469fd56853d61d5fe, type: 3}
     expandPool: 1
   - name: RotationEmitter
-    size: 100
+    size: 50
     prefab: {fileID: 8711262154779925833, guid: f0fd97b6224b3264183d35cb2443d681,
       type: 3}
     expandPool: 1
   - name: HoningLinearEmitter
-    size: 100
+    size: 50
     prefab: {fileID: 1288120327225234461, guid: 86d2bc7b97e198e4b9f38deb070ed1e0,
       type: 3}
     expandPool: 1
   - name: SakuraFlower1
-    size: 100
+    size: 50
     prefab: {fileID: 2478247462764804913, guid: b9ce067ab7d7e9742a264235e76edb22,
       type: 3}
     expandPool: 1
