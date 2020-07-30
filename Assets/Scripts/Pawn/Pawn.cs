@@ -4,7 +4,7 @@ using UnityEngine;
 using Alarm;
 using System;
 
-public abstract class Pawn : MonoBehaviour
+public abstract class Pawn : MonoBehaviour, ICaster
 {
     public static Pawn Instance;
 
@@ -13,7 +13,7 @@ public abstract class Pawn : MonoBehaviour
     public uint priority = 1;
     public uint basePriority;
 
-    public SpellLibrary library;
+    public SpellLibrary library { get; set; }
     #endregion
 
     #region Protected Members

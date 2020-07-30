@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Alarm;
+﻿using Alarm;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -27,6 +25,8 @@ public class Projectile : MonoBehaviour
     private bool noAnimation;
     private float duration = 10f;
     bool done = false;
+
+    ICaster caster;
     #endregion
 
     private void Awake()
@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     public void AssignEmitter(Emitter emitter)
@@ -104,7 +104,6 @@ public class Projectile : MonoBehaviour
         if (emitter != null)
         {
             ParentPawn = emitter.ParentPawn;
-            pawnOrigin.SetPawnOrigin(ParentPawn);
             pawnOrigin.SetEmitterOrigin(emitter);
             origin = emitter.GetOriginObject(); //Will find the gameObject that shoot the bullet out
         }
@@ -115,5 +114,14 @@ public class Projectile : MonoBehaviour
             ApplyConfiguration();
     }
 
+    /// <summary>
+    /// Set caster origin
+    /// </summary>
+    /// <param name="caster"></param>
+    public void SetCaster(ICaster caster)
+    {
+        this.caster = caster;
+    }
 
+    public ICaster GetCaster() => caster;
 }

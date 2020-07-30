@@ -19,6 +19,8 @@ public class Spell : ScriptableObject
 
     Animator animator;
 
+    ICaster caster;
+
 
     //This will help use know who cast what spell
     Pawn parentPawn;
@@ -64,7 +66,7 @@ public class Spell : ScriptableObject
             //And then we check if we enable looping
             if (sequencer.allowOverride) sequencer.enableSequenceLooping = enchanment.enableSequenceLooping;
         }
-
+        sequencer.SetCaster(caster);
         sequencer.enabled = true;
     }
 
@@ -113,5 +115,14 @@ public class Spell : ScriptableObject
     public void AssignAnimator(Animator animator)
     {
         this.animator = animator;
+    }
+
+    /// <summary>
+    /// Set the caster of this spell
+    /// </summary>
+    /// <param name="caster"></param>
+    public void SetCaster(ICaster caster)
+    {
+        this.caster = caster;
     }
 }

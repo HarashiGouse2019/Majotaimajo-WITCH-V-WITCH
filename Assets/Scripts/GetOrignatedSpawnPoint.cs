@@ -28,22 +28,19 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     private void Start()
     {
         projectile = GetComponent<Projectile>();
-
     }
 
     private void OnEnable()
     {
-        try
-        {
-            if (projectile != null)
-                emitter = projectile.GetEmitter();
 
-            if (emitter.ParentPawn != null)
-                pawn = emitter.ParentPawn;
+        if (projectile != null)
+            CasterToPawn(projectile.GetCaster());
 
-            if (priority != 999) items = GetComponent<ItemDrops>();
-        }
-        catch { }
+        if (emitter != null && emitter.ParentPawn != null)
+            pawn = emitter.ParentPawn;
+
+        if (priority != 999) items = GetComponent<ItemDrops>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -67,11 +64,6 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
         if (col.gameObject.tag.Equals("Border")) gameObject.SetActive(false);
     }
 
-    public void SetPawnOrigin(Pawn pawn)
-    {
-        this.pawn = pawn;
-    }
-
     public void SetEmitterOrigin(Emitter emitter)
     {
         this.emitter = emitter;
@@ -80,5 +72,11 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
     private void OnDisable()
     {
 
+    }
+
+    public void CasterToPawn(ICaster caster)
+    {
+        Pawn casterPawn = caster as Pawn;
+        pawn = casterPawn;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Alarm;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -145,6 +146,8 @@ public abstract class Emitter : MonoBehaviour
     protected AudioClip sound;
 
     protected Pawn pawnOriginObject;
+
+    protected ICaster caster;
 
     protected int steps;
 
@@ -294,6 +297,8 @@ public abstract class Emitter : MonoBehaviour
     }
 
     public virtual GameObject GetOriginObject() => originObject;
+
+    public virtual void SetCaster(ICaster caster) => this.caster = caster;
 
     public virtual void SetPosition(Vector2 position)
     {

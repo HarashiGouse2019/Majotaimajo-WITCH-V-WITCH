@@ -4,6 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnhancedExtensions;
 
+/// <summary>
+/// Interface for a caster
+/// </summary>
+public interface ICaster
+{
+    SpellLibrary library { get; set; }
+    void ActivateSpell(string _name, bool cancelRunningSpell = false);
+}
+
 public class SpellLibrary : MonoBehaviour
 {
     public static SpellLibrary library;
@@ -11,6 +20,9 @@ public class SpellLibrary : MonoBehaviour
     public Spell spellInUse;
     private int spellSize = 3;
     public List<Spell> spells;
+
+    //We need the spell caster.
+    private ICaster caster;
 
     public uint spellIndex = 0;
 
@@ -25,6 +37,13 @@ public class SpellLibrary : MonoBehaviour
     private void Awake()
     {
         library = this;
+        
+    }
+
+    private void OnEnable()
+    {
+        caster = GetComponent<Pawn>();
+        Initialize();
     }
 
     public void AddNewSpell(Spell spell)
@@ -53,5 +72,22 @@ public class SpellLibrary : MonoBehaviour
     {
         FindSpell(_name);
         return spellIndex;
+    }
+
+    private void Initialize()
+    {
+        foreach(Spell spell in spells)
+        {
+            spell.SetCaster(caster);
+        }
+    }
+
+    /// <summary>
+    /// Set who the caster of this spell library is
+    /// </summary>
+    /// <param name="caster"></param>
+    public void SetCaster(ICaster caster)
+    {
+        this.caster = caster;
     }
 }

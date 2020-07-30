@@ -15,6 +15,8 @@ public class DanmakuSequencer : MonoBehaviour
 
     public Spell spellOrigin;
 
+    ICaster caster;
+
     public bool enableSequenceLooping;
     #endregion
 
@@ -115,6 +117,8 @@ public class DanmakuSequencer : MonoBehaviour
     void RunPattern(Pattern _pattern)
     {
         #region Assing Values
+        emitter.SetCaster(caster);
+
         emitter.SetProjectileDensity(_pattern.amount);
 
         emitter.SetLooping(_pattern.loop);
@@ -260,6 +264,14 @@ public class DanmakuSequencer : MonoBehaviour
         routines.Clear();
     }
 
+    /// <summary>
+    /// Set the caster origin
+    /// </summary>
+    /// <param name="caster"></param>
+    public void SetCaster(ICaster caster)
+    {
+        this.caster = caster;
+    }
     public void CallReset()
     {
         ResetAllValues();

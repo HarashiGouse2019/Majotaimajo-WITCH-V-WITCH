@@ -121,6 +121,8 @@ public class SpawningTrailEmitter : Emitter
 
                 projectile.AssignEmitter(this);
 
+                projectile.SetCaster(caster);
+
                 if (!tmpObj.activeInHierarchy)
                 {
                     tmpObj.SetActive(true);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: 1P-SakuraBurst000
   m_EditorClassIdentifier: 
-  amount: 5
+  amount: 2
   isHoming: 0
   initialSpeed: 840
   incrementalSpeed: 840

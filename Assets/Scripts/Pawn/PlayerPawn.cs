@@ -55,8 +55,6 @@ public class PlayerPawn : Pawn
         GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
         GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
 
-
-
         //Get Components
         srenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -68,6 +66,8 @@ public class PlayerPawn : Pawn
         xScale = transform.localScale;
         xScaleVal = xScale.x;
         srendererColor = srenderer.color;
+
+        library.SetCaster(this);
 
         //Start Recovery Sequence
         StartCoroutine(PassiveRecoveryCycle());
