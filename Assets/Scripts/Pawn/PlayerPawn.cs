@@ -28,6 +28,7 @@ public class PlayerPawn : Pawn
 
     const int ZERO = 0;
 
+    [SerializeField]
     HoningLinearEmitter playerEmitter;
 
     //Player Stats
@@ -65,7 +66,6 @@ public class PlayerPawn : Pawn
         rb = GetComponent<Rigidbody2D>();
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
-        playerEmitter = GetComponent<HoningLinearEmitter>();
 
         isVisible = srenderer.isVisible;
         xScale = transform.localScale;
