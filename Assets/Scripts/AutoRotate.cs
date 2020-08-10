@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoRotate : MonoBehaviour
 {
-    [SerializeField, Range(0.1f, 1f)]
+    [SerializeField, Range(-1f, 1f)]
     private float rotationSpeed;
 
     private float currentAngle = 0f;

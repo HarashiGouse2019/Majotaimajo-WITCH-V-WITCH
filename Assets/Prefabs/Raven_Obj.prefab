@@ -114,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 0
   basePriority: 3
-  library: {fileID: 0}
   g_angle: 0
   controller: {fileID: 0}
   movementSpeed: 25
@@ -138,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sequencer: {fileID: 0}
+  ParentPawn: {fileID: 0}
   id: 0
   bulletPrefab: []
   points: []

@@ -8,6 +8,11 @@ public class PlayerPawn : Pawn
 
     public PlayerController controller;
 
+    //Since you are the player, you'll have an object that handles the shooting for you.
+    //For example, Maple's Star or Raven's Crystal Circle.
+    //It will be a prefab
+    public GameObject pawnEmitterPrefab;
+
     public float movementSpeed;
     public float speedReduction;
     public float rotationSpeed;
