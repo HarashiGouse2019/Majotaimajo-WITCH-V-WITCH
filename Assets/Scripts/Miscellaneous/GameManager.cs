@@ -83,6 +83,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnLoadedScene;
 
+        //60 Frames a second
+        Application.targetFrameRate = 60;
+
         Configure(
            new Key("left", KeyCode.LeftArrow),
            new Key("right", KeyCode.RightArrow),
