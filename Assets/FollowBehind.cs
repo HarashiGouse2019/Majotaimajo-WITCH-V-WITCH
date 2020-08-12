@@ -64,7 +64,7 @@ public class FollowBehind : MonoBehaviour
             float distance = Vector3.Distance(targetTranform.localPosition, additionalTarget.localPosition);
 
             //Change camera size on ration
-            m_camera.orthographicSize = Mathf.Abs(distance) > distanceTreshold ? distance / divisorValue : m_camera.orthographicSize;
+            m_camera.orthographicSize = Mathf.Clamp(distance / divisorValue, distanceTreshold, 10f);
         } 
     }
 }

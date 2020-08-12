@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1288120327225234462}
   - component: {fileID: 2488417046087840634}
   - component: {fileID: 6403195579669455118}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HomingLinearEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

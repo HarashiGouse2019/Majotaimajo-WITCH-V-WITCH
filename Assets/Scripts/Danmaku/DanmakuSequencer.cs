@@ -145,6 +145,7 @@ public class DanmakuSequencer : MonoBehaviour
 
         emitter.SetRotationIntensityLimit(_pattern.rotationIntensityLimit);
 
+        emitter.SetSound(_pattern.soundName);
 
         #region Rotation
         emitter.SetRotationType(_pattern.rotation);

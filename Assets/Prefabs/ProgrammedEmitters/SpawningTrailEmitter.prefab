@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4228106186178230234}
   - component: {fileID: 4001337366847955051}
   - component: {fileID: 5261540584089642901}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpawningTrailEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

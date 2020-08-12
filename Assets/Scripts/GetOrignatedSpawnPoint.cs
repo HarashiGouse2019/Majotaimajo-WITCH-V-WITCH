@@ -69,11 +69,6 @@ public class GetOrignatedSpawnPoint : MonoBehaviour
         this.emitter = emitter;
     }
 
-    private void OnDisable()
-    {
-
-    }
-
     public void CasterToPawn(ICaster caster)
     {
         Pawn casterPawn = caster as Pawn;

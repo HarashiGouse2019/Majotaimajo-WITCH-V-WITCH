@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: 2P-SakuraBurst000
   m_EditorClassIdentifier: 
-  amount: 2
+  soundName: 
+  amount: 10
   isHoming: 0
-  initialSpeed: 650
+  initialSpeed: 5000
   incrementalSpeed: 650
-  speedLimit: 5000
+  speedLimit: 10000
   carryOverSpeed: 0
   overrideRotation: 0
   initialRotation: 0

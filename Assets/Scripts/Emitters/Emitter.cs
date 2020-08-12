@@ -97,8 +97,6 @@ public abstract class Emitter : MonoBehaviour
 
     protected string bulletMember;
 
-
-
     [Range(1, 10)] protected int numberOfProjectiles = 1;
 
     protected List<Projectile> existingProjectiles;
@@ -143,7 +141,7 @@ public abstract class Emitter : MonoBehaviour
 
     protected Timer loopTimer;
 
-    protected AudioClip sound;
+    protected string sound;
 
     protected Pawn pawnOriginObject;
 
@@ -317,6 +315,16 @@ public abstract class Emitter : MonoBehaviour
         gameObject.SetActive(true);
         Sequencer = GetComponent<DanmakuSequencer>();
         if (Sequencer == null) Debug.Log("Failed to reference Sequencer...");
+    }
+
+    public virtual void SetSound(string name)
+    {
+        sound = name;
+    }
+
+    public virtual void PlaySound(string name)
+    {
+        AudioManager.Play(name);
     }
 
     public virtual void ClearValues()

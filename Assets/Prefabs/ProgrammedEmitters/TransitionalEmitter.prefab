@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 481151420046426984}
   - component: {fileID: 3992331602563907005}
   - component: {fileID: 7657453595406973716}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TransitionalEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sequencer: {fileID: 0}
+  ParentPawn: {fileID: 0}
   id: 0
   bulletPrefab: []
   points: []
@@ -117,6 +118,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowOverride: 0
+  statistics:
+    startStep: 0
+    currentStep: 0
+    nextStep: 0
+    stepSpeed: 1
+    runningRoutine: 0
+  completion:
+    progress: 0
+    completedRoutines: 0
+    completedLoops: 0
   routines: []
   spellOrigin: {fileID: 0}
   enableSequenceLooping: 0
@@ -133,5 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originatedSpawnPoint: {fileID: 0}
+  emitter: {fileID: 0}
   pawn: {fileID: 0}
   priority: 0

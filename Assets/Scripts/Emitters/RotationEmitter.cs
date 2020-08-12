@@ -137,6 +137,9 @@ public class RotationEmitter : Emitter
                 projectile.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
 
                 projectile.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
+
+                //Play sound if it exists.
+                if (!string.IsNullOrEmpty(sound)) AudioManager.Play(sound, _oneShot: true);
             }
             angle += angleStep;
         }

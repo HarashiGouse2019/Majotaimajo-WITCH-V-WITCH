@@ -5615,7 +5615,13 @@ MonoBehaviour:
     enableLoop: 0
     source: {fileID: 0}
   - name: Shoot000
-    clip: {fileID: 8300000, guid: 179da9a684a628b43a4904f8e8855f3e, type: 3}
+    clip: {fileID: 8300000, guid: add684b83a82e8643a4a3823a5aead57, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 0
+    source: {fileID: 0}
+  - name: Shoot001
+    clip: {fileID: 8300000, guid: 2880c90b008fc634a8473d5b26182df8, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 0

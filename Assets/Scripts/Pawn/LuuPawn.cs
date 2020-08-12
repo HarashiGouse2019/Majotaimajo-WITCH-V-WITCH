@@ -68,9 +68,12 @@ public class LuuPawn : Pawn, IBossEntity
         //Get the information that tells  where the bullet came from
         GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
 
+        Debug.Log(objectOrigin.originatedSpawnPoint.name);
+
         //If this bullet did not come from Luu herself, she'll take damage
         if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name == "Raven_Obj" && !IsDefeated)
         {
+            Debug.Log("If you got this, this is going to be an easy fix");
             try
             {
                 PlayerPawn player = objectOrigin.pawn as PlayerPawn;

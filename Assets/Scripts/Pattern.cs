@@ -7,6 +7,10 @@ public class Pattern : ScriptableObject
     public static Pattern pattern;
 
     [Header("Basic Pattern Setup")]
+
+    [Tooltip("Spawning Sound")]
+    public string soundName;
+
     [Tooltip("How many bullets will you spawn?")]
     public int amount;
 

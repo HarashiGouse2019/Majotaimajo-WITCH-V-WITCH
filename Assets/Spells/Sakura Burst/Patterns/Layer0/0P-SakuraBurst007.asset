@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
   m_Name: 0P-SakuraBurst007
   m_EditorClassIdentifier: 
+  soundName: Shoot001
   amount: 5
   isHoming: 0
   initialSpeed: 130
@@ -35,4 +36,8 @@ MonoBehaviour:
   rotationIntensityIncrementVal: 0.25
   rotationIntensityLimit: 0
   transitionDuration: 0
-  layerID: 0
+  spawningXInterval: 0
+  spawningYInterval: 0
+  spawningCountLimit: 3
+  projectileLifeTime: 10
+  animateOnDestroy: 0
