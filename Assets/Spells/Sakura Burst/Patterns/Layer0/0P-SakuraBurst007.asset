@@ -15,7 +15,7 @@ MonoBehaviour:
   soundName: Shoot001
   amount: 5
   isHoming: 0
-  initialSpeed: 130
+  initialSpeed: 200
   incrementalSpeed: 200
   speedLimit: 50000
   carryOverSpeed: 0

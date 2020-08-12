@@ -1793,7 +1793,7 @@ MonoBehaviour:
     prefab: {fileID: 7917890828568517416, guid: 7aa1363c06585fc4fb6d544cc5a3f098,
       type: 3}
     expandPool: 1
-  - name: Star
+  - name: Plasma
     size: 30
     prefab: {fileID: 989113112735831038, guid: 34baa657ea8b92d4ca57f94a9124187e, type: 3}
     expandPool: 1
@@ -6355,16 +6355,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RavenEmitter 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4027217715127140092, guid: 4537b75fd3d9f96448ac92e433921826,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 560486103}
-    - target: {fileID: 4027217715127140092, guid: 4537b75fd3d9f96448ac92e433921826,
-        type: 3}
-      propertyPath: originObject
-      value: 
-      objectReference: {fileID: 373421386}
     - target: {fileID: 7207989463233066547, guid: 4537b75fd3d9f96448ac92e433921826,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6420,6 +6410,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4027217715127140092, guid: 4537b75fd3d9f96448ac92e433921826,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 560486103}
+    - target: {fileID: 4027217715127140092, guid: 4537b75fd3d9f96448ac92e433921826,
+        type: 3}
+      propertyPath: originObject
+      value: 
+      objectReference: {fileID: 373421386}
     - target: {fileID: 9209735553152173632, guid: 4537b75fd3d9f96448ac92e433921826,
         type: 3}
       propertyPath: additionalTarget
@@ -6562,9 +6562,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.01
-    y: 0.03
-    width: 1
-    height: 1
+    y: 0.042
+    width: 0.66
+    height: 0.92
   near clip plane: 2
   far clip plane: 1000
   field of view: 60
@@ -6580,7 +6580,7 @@ Camera:
   m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -6624,8 +6624,9 @@ MonoBehaviour:
   zDepth: 10
   isCamera: 1
   additionalTarget: {fileID: 560486103}
-  divisorValue: 1.39
-  distanceTreshold: 3
+  divisorValue: 3.8
+  distanceTreshold: 2
+  focusMidpoint: 1
 --- !u!1 &1885054661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7742,6 +7743,17 @@ PrefabInstance:
     - target: {fileID: 9003943612334814289, guid: 3d0f104368240704c8b6d16302dfc859,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814299, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: spells.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab554628f8727734a8f8f6c8a17355b1,
+        type: 2}
+    - target: {fileID: 9003943611812110984, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

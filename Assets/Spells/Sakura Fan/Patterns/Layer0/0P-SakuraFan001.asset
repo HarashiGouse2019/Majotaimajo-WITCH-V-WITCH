@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741bd54549e7c3447affa533e4c3f649, type: 3}
-  m_Name: 0P-SakuraBurst000
+  m_Name: 0P-SakuraFan001
   m_EditorClassIdentifier: 
   soundName: Shoot001
-  amount: 2
+  amount: 8
   isHoming: 0
-  initialSpeed: 200
-  incrementalSpeed: 840
-  speedLimit: 50000
+  initialSpeed: 3000
+  incrementalSpeed: 0
+  speedLimit: 5501
   carryOverSpeed: 0
-  overrideRotation: 0
-  initialRotation: 1
-  rotationSpeed: 0
-  bulletType: Sakura
+  overrideRotation: 1
+  initialRotation: 195
+  rotationSpeed: 5
+  bulletType: Plasma
   loop: 1
   loopRate: 0.05
-  rotation: 3
-  distribution: 2
+  rotation: -3
+  distribution: 1
   rotationFocusEffect: 0
-  rotationFocus: 1
+  rotationFocus: 5
   rotationFocusIncrementVal: 0
-  rotationFocusLimit: 0
+  rotationFocusLimit: 10
   rotationIntensityEffect: 0
-  rotationIntensity: 2
-  rotationIntensityIncrementVal: 5
-  rotationIntensityLimit: 0
+  rotationIntensity: 3
+  rotationIntensityIncrementVal: 0.5
+  rotationIntensityLimit: 3
   transitionDuration: 0
   spawningXInterval: 0
   spawningYInterval: 0

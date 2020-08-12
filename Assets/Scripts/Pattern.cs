@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Pattern", menuName = "Pattern")]
 public class Pattern : ScriptableObject

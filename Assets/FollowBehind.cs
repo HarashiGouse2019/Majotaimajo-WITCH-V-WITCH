@@ -29,6 +29,9 @@ public class FollowBehind : MonoBehaviour
     [SerializeField, Range(0.1f, 10f)]
     float distanceTreshold = 1f;
 
+    [SerializeField]
+    bool focusMidpoint = false;
+
     Vector2 initialPosition;
 
     Vector3 velocity = Vector2.zero;
@@ -54,14 +57,25 @@ public class FollowBehind : MonoBehaviour
             Vector3 delta = targetTranform.localPosition - new Vector3(point.x, point.y, zDepth);
             Vector3 destination = transform.localPosition + delta;
 
+            if (focusMidpoint)
+            {
+                Vector3 vector = (targetTranform.localPosition - additionalTarget.localPosition).normalized;
+                Vector3 midpoint = new Vector3(vector.x, vector.y);
+                destination = midpoint + delta;
+            }
+
             //Z will be changed
             transform.localPosition = Vector3.SmoothDamp(transform.localPosition, destination, ref velocity, dampTime);
         }
 
         if (isCamera)
         {
+            
+
             //Get the distance between the two objects
             float distance = Vector3.Distance(targetTranform.localPosition, additionalTarget.localPosition);
+
+            
 
             //Change camera size on ration
             m_camera.orthographicSize = Mathf.Clamp(distance / divisorValue, distanceTreshold, 10f);

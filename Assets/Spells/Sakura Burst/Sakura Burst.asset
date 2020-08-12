@@ -19,12 +19,8 @@ MonoBehaviour:
     spawnPosition: {x: 0, y: 0}
     worldSpace: 0
     enchantment: {fileID: 11400000, guid: 1863e0fde1bb9f146b17e1e7e0d5b3e4, type: 2}
-  - emitterType: 6
-    spawnPosition: {x: 0, y: 0}
-    worldSpace: 0
-    enchantment: {fileID: 11400000, guid: 881fb6638ad9a864b93d4413c7eed999, type: 2}
   - emitterType: 1
     spawnPosition: {x: 0, y: 0}
     worldSpace: 0
-    enchantment: {fileID: 11400000, guid: 994646f588041204eaf5957765bbbf7d, type: 2}
+    enchantment: {fileID: 11400000, guid: b8ef71d21a4777c4a9b011369a307689, type: 2}
   enableSpellLooping: 1
