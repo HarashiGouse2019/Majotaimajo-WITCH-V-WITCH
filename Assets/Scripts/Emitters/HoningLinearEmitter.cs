@@ -15,6 +15,9 @@ public class HoningLinearEmitter : Emitter
 
     void OnEnable()
     {
+        if (GetComponent<PawnOwner>() != null)
+            ParentPawn = GetComponent<PawnOwner>().GetOwner();
+
         initialPosition = gameObject.transform.position;
     }
 

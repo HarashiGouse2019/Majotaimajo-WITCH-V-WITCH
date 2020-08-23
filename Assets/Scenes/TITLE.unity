@@ -31063,8 +31063,26 @@ MonoBehaviour:
     pitch: 1
     enableLoop: 1
     source: {fileID: 0}
+  - name: Manafestival
+    clip: {fileID: 8300000, guid: ba9071c86d612434194eadf2380a7c6a, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 1
+    source: {fileID: 0}
+  - name: Song of Burdened Kings
+    clip: {fileID: 8300000, guid: 60deec4ffa6786b4b981b96a6c25f3a7, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 1
+    source: {fileID: 0}
+  - name: Pray Only For Moonlight
+    clip: {fileID: 8300000, guid: 227d058def26a9c45900b7bf1d0688ff, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 1
+    source: {fileID: 0}
   - name: Mystical Runaway Hijacker
-    clip: {fileID: 8300000, guid: b9d677d23dd9d8544a99ce7f301067da, type: 3}
+    clip: {fileID: 8300000, guid: 116c2de19c83e524f9fd1359f873fbdb, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 1

@@ -34,12 +34,6 @@ public class Projectile : MonoBehaviour
         destroyTimer = new Timer(1);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
     public void AssignEmitter(Emitter emitter)
     {
         this.emitter = emitter;
@@ -112,6 +106,8 @@ public class Projectile : MonoBehaviour
         if (configuration != null)
             //Apply Configuration
             ApplyConfiguration();
+
+        Debug.Log(pawnOrigin != null ? "Pawn origin is: " + pawnOrigin.pawn : " Pawn origin is unknown");
     }
 
     /// <summary>

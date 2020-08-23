@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2P-SakuraBurst000
   m_EditorClassIdentifier: 
   soundName: 
-  amount: 10
+  amount: 2
   isHoming: 0
   initialSpeed: 5000
   incrementalSpeed: 650

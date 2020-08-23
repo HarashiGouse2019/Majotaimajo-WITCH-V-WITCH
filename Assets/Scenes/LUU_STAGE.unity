@@ -2421,7 +2421,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.11320752, g: 0, b: 0.053436283, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.08659667, b: 0.10855196, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6500,7 +6500,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834879815}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4447fe24014ed5840a6c9265c6efb151, type: 3}
   m_Name: 
@@ -6552,7 +6552,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.14117648, g: 0.03529412, b: 0.13326748, a: 0}
+  m_BackGroundColor: {r: 0.20026591, g: 0.15957637, b: 0.20754719, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6561,9 +6561,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.01
+    x: 0.02
     y: 0.042
-    width: 0.66
+    width: 0.64
     height: 0.92
   near clip plane: 2
   far clip plane: 1000
@@ -6624,8 +6624,8 @@ MonoBehaviour:
   zDepth: 10
   isCamera: 1
   additionalTarget: {fileID: 560486103}
-  divisorValue: 3.8
-  distanceTreshold: 2
+  divisorValue: 3.06
+  distanceTreshold: 2.5
   focusMidpoint: 1
 --- !u!1 &1885054661
 GameObject:
@@ -7661,6 +7661,11 @@ PrefabInstance:
       propertyPath: playerEmitter
       value: 
       objectReference: {fileID: 1790254272}
+    - target: {fileID: 17790889872032902, guid: aaebce90341a97441a0c79a4df36d27c,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 17790889872032898, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: m_Offset.x
@@ -7745,6 +7750,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9003943612334814302, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8df46458e3bd82d49a64f2bc055793d9,
+        type: 3}
     - target: {fileID: 9003943612334814299, guid: 3d0f104368240704c8b6d16302dfc859,
         type: 3}
       propertyPath: spells.Array.data[1]
@@ -7755,6 +7766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003943611812110985, guid: 3d0f104368240704c8b6d16302dfc859,
+        type: 3}
+      propertyPath: characterThemeSong
+      value: The Decently Promising Sakura
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d0f104368240704c8b6d16302dfc859, type: 3}

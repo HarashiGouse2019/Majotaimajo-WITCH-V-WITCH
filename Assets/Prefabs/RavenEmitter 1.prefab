@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9209735553152173632}
   - component: {fileID: 2213589260621890678}
   - component: {fileID: 4027217715127140092}
+  - component: {fileID: 165334136562510215}
   m_Layer: 0
   m_Name: RavenEmitter 1
   m_TagString: Untagged
@@ -56,6 +57,7 @@ MonoBehaviour:
   additionalTarget: {fileID: 0}
   divisorValue: 1
   distanceTreshold: 1
+  focusMidpoint: 0
 --- !u!114 &2213589260621890678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +109,19 @@ MonoBehaviour:
   emitterSpeedDelta: 0
   originObject: {fileID: 0}
   target: {fileID: 0}
+--- !u!114 &165334136562510215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817336910489232671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2396ee46fa51af4b8b6633852cdb0e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pawnOwner: {fileID: 17790889872032902, guid: aaebce90341a97441a0c79a4df36d27c, type: 3}
 --- !u!1 &4126149263114144870
 GameObject:
   m_ObjectHideFlags: 0
