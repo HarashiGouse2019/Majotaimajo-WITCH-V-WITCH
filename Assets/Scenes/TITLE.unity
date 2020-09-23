@@ -31087,6 +31087,12 @@ MonoBehaviour:
     pitch: 1
     enableLoop: 1
     source: {fileID: 0}
+  - name: Mother's Prelude Of Curses
+    clip: {fileID: 8300000, guid: 116c2de19c83e524f9fd1359f873fbdb, type: 3}
+    volume: 1
+    pitch: 1
+    enableLoop: 1
+    source: {fileID: 0}
   timeSamples: 0
   positionSeconds: []
 --- !u!4 &1406206350
