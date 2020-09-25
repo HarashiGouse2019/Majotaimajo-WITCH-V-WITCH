@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5660242}
   - component: {fileID: 5660241}
   - component: {fileID: 5660240}
+  - component: {fileID: 5660243}
   m_Layer: 0
   m_Name: TITLESCREEN_CAMERA
   m_TagString: MainCamera
@@ -205,6 +206,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5660243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5660239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b35b50cb7f07f4ca7362d25133bd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeSong: Mother's Prelude of Curses
 --- !u!1 &27868325
 GameObject:
   m_ObjectHideFlags: 0
@@ -31057,38 +31071,20 @@ MonoBehaviour:
     type: 2}
   musicVolumeAdjust: {fileID: 0}
   getMusic:
-  - name: The Decently Promising Sakura
-    clip: {fileID: 8300000, guid: 3ffb88d6bc84bd0468434f325897a2bb, type: 3}
+  - name: Mother's Prelude of Curses
+    clip: {fileID: 8300000, guid: 4eabcb7263b712547addf984148065d6, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 1
     source: {fileID: 0}
-  - name: Manafestival
-    clip: {fileID: 8300000, guid: ba9071c86d612434194eadf2380a7c6a, type: 3}
+  - name: Searching For Lost Ones
+    clip: {fileID: 8300000, guid: bbd06d4ef880ada4eb5c445a3b6ad311, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 1
     source: {fileID: 0}
-  - name: Song of Burdened Kings
-    clip: {fileID: 8300000, guid: 60deec4ffa6786b4b981b96a6c25f3a7, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 1
-    source: {fileID: 0}
-  - name: Pray Only For Moonlight
-    clip: {fileID: 8300000, guid: 227d058def26a9c45900b7bf1d0688ff, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 1
-    source: {fileID: 0}
-  - name: Mystical Runaway Hijacker
-    clip: {fileID: 8300000, guid: 116c2de19c83e524f9fd1359f873fbdb, type: 3}
-    volume: 1
-    pitch: 1
-    enableLoop: 1
-    source: {fileID: 0}
-  - name: Mother's Prelude Of Curses
-    clip: {fileID: 8300000, guid: 116c2de19c83e524f9fd1359f873fbdb, type: 3}
+  - name: Decently Promising Sakura
+    clip: {fileID: 8300000, guid: 9c47c220677640b43bc1609b3b6dc5e1, type: 3}
     volume: 1
     pitch: 1
     enableLoop: 1

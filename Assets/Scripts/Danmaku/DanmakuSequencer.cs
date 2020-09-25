@@ -63,34 +63,47 @@ public class DanmakuSequencer : MonoBehaviour
 
     void Sequence()
     {
-
-        statistics.currentStep++;
-
-        if (statistics.currentStep == statistics.nextStep)
+        try
         {
-            if (!CheckIfAtLastRoutine())
+            statistics.currentStep++;
+
+            if (statistics.currentStep == statistics.nextStep)
             {
-                statistics.runningRoutine++;
-                completion.completedRoutines++;
-                statistics.nextStep = GetNextStep();
-                statistics.startStep = GetPreviousStep();
-                completion.progress = 0;
+                if (!CheckIfAtLastRoutine())
+                {
+                    statistics.runningRoutine++;
+                    completion.completedRoutines++;
+                    statistics.nextStep = GetNextStep();
+                    statistics.startStep = GetPreviousStep();
+                    completion.progress = 0;
+                }
+            }
+
+            if (GetRoutineCompletionInPercentage() < 0.1f)
+            {
+                RunPattern(routines[statistics.runningRoutine].pattern);
             }
         }
-
-        if (GetRoutineCompletionInPercentage() < 0.1f)
+        catch
         {
-            RunPattern(routines[statistics.runningRoutine].pattern);
+            return;
         }
     }
 
     public int GetNextStep()
     {
-        Routine routineCheck = routines[statistics.runningRoutine + 1];
+        try
+        {
+            Routine routineCheck = routines[statistics.runningRoutine + 1];
 
-        RunPattern(routineCheck.pattern);
+            RunPattern(routineCheck.pattern);
 
-        return routineCheck.stepPos;
+            return routineCheck.stepPos;
+        }
+        catch
+        {
+            return -1;
+        }
     }
 
     public int GetPreviousStep()

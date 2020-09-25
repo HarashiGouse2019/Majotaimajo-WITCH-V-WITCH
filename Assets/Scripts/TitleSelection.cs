@@ -190,14 +190,14 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     {
         //Set up Start Selected Event
         StartSelected = EventManager.AddNewEvent(100, "StartSelected",
-            () => GameSceneManager.Instance.LoadScene("LUU_STAGE"),
+            () => GameSceneManager.Instance.LoadScene("STAGE1_GRASSLANDS"),
             () => GameManager.StartGame(),
             () => StopTitleBGM(),
             () => ClearEvents());
 
         //Set up Practice Selected Event
         PracticeSelected = EventManager.AddNewEvent(101, "PracticeSelected", 
-            () => GameSceneManager.Instance.LoadScene("LUU_STAGE"),
+            () => GameSceneManager.Instance.LoadScene("STAGE1_GRASSLANDS"),
             () => GameManager.IsPractice = true,
             () => GameManager.StartGame(),
             () => ClearEvents());

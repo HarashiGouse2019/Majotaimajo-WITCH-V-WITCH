@@ -13,16 +13,19 @@ public class FaceTowards : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        target = GameObject.FindGameObjectWithTag("target").GetComponent<Transform>();
-        pawn = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerPawn>();
+        try
+        {
+            target = GameObject.FindGameObjectWithTag("target").GetComponent<Transform>();
+            pawn = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerPawn>();
+        } catch
+        {
+            //Do nothing
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pawn.CheckIfMoving())
-        {
-           
-        }
+
     }
 }

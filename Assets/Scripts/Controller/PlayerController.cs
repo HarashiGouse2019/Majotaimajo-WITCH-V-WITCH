@@ -88,12 +88,6 @@ public class PlayerController : MonoBehaviour
        pawn.isSneaking = OnKey("sneak");
 
         RunSpecial();
-
-        //Check pawn positioning
-        if (pawn.transform.position.x > pawn.originOfRotation.gameObject.transform.position.x)
-            pawn.Flip(-1);
-        else if (pawn.transform.position.x < pawn.originOfRotation.gameObject.transform.position.x)
-            pawn.Flip(1);
     }
 
     void RunSpecial()

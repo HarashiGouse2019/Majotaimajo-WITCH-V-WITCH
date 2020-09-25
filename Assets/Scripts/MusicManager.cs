@@ -95,6 +95,12 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
+            //Turn off previously playing music
+            if (NowPlaying != string.Empty)
+                StopNowPlaying();
+
+            NowPlaying = a.name;
+
             switch (_oneShot)
             {
                 case true:
@@ -119,6 +125,7 @@ public class MusicManager : MonoBehaviour
         else
         {
             a.source.Stop();
+            NowPlaying = string.Empty;
         }
     }
 
@@ -136,5 +143,14 @@ public class MusicManager : MonoBehaviour
             a.source.volume = _volume / 100;
             return a.source.clip;
         }
+    }
+
+    public static void StopNowPlaying()
+    {
+        Audio a = Array.Find(Instance.getMusic, sound => sound.name == NowPlaying);
+
+        if (a == null) return;
+        
+        Stop(a.name);
     }
 }

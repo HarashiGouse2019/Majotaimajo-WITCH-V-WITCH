@@ -76,9 +76,15 @@ public class SpellLibrary : MonoBehaviour
 
     private void Initialize()
     {
-        foreach(Spell spell in spells)
+        try
         {
-            spell.SetCaster(caster);
+            foreach (Spell spell in spells)
+            {
+                spell.SetCaster(caster);
+            }
+        }catch
+        {
+            //Do nothing
         }
     }
 
