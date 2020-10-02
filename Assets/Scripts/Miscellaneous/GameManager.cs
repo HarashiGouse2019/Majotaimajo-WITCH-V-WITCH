@@ -5,11 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
-
 using static Keymapper;
-using System.Runtime.CompilerServices;
-using System.Resources;
 
 public class GameManager : MonoBehaviour
 {
@@ -83,9 +79,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnLoadedScene;
-
-        //60 Frames a second
-        Application.targetFrameRate = 60;
 
         Configure(
            new Key("left", KeyCode.LeftArrow),

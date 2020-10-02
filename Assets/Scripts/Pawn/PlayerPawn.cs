@@ -29,7 +29,7 @@ public class PlayerPawn : Pawn
     const int ZERO = 0;
 
     [SerializeField]
-    HoningLinearEmitter playerEmitter;
+    LinearEmitter playerEmitter;
 
     //Player Stats
     Stats PlayerStats;

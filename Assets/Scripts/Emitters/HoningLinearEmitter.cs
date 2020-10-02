@@ -34,11 +34,18 @@ public class HoningLinearEmitter : Emitter
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
-        Vector3 targetVector = (target.position - originObject.transform.position).normalized;
+        Vector3 targetVector;
+
+        if (target != null)
+            targetVector = (target.position - originObject.transform.position).normalized;
+        else
+            targetVector = transform.up;
 
         GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out GetOrignatedSpawnPoint spawnPoint);
 
-        float angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
+        float angle = 0f;
+        if(target != null)
+            angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
         if (!tmpObj.activeInHierarchy)
         {

@@ -131,6 +131,7 @@ MonoBehaviour:
   emitterMaximumSpeed: 0
   emitterSpeedDelta: 0
   originObject: {fileID: 0}
+  attachedEmitters: []
 --- !u!114 &5261540584089642901
 MonoBehaviour:
   m_ObjectHideFlags: 0

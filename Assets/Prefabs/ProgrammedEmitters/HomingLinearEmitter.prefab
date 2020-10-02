@@ -105,6 +105,7 @@ MonoBehaviour:
   emitterMaximumSpeed: 0
   emitterSpeedDelta: 0
   originObject: {fileID: 0}
+  attachedEmitters: []
   target: {fileID: 0}
 --- !u!114 &2488417046087840634
 MonoBehaviour:

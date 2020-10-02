@@ -95,9 +95,13 @@ public abstract class Emitter : MonoBehaviour
     [SerializeField]
     protected GameObject originObject;
 
+    [SerializeField]
+    protected List<Emitter> attachedEmitters = new List<Emitter>();
+
     protected string bulletMember;
 
     [Range(1, 10)] protected int numberOfProjectiles = 1;
+
 
     protected List<Projectile> existingProjectiles;
 

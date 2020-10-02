@@ -5652,7 +5652,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &463715761
 GameObject:
@@ -5872,7 +5872,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552563177
 GameObject:
@@ -15663,6 +15663,98 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &706047699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706047703}
+  - component: {fileID: 706047702}
+  - component: {fileID: 706047701}
+  - component: {fileID: 706047700}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &706047700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706047699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2df74990670e64f9310bdcd9912684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comments: 'Snap Routine is to be used only to take pictures of your game during
+    gameplay!
+
+    If on, you will get frequent frame drops.
+
+    If you''re not taking pictures, keep this off.'
+--- !u!114 &706047701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706047699}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212342b6e31b76548bba468d70f32434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapShootDirectory: C:\Users\tclte\Desktop\WitchVWitchSnapShoots
+--- !u!114 &706047702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706047699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d26d7494fcf7e429be4659cacfa180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NoDeaths: 1
+  Canvas: []
+  tRenderer: {fileID: 0}
+  HISCORETEXT: {fileID: 0}
+  SCORETEXT: {fileID: 0}
+  SPIRITS: {fileID: 0}
+  MAGIC: {fileID: 0}
+  SLOTS:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textBoxUI: {fileID: 0}
+  dialogue: {fileID: 0}
+  expression: {fileID: 0}
+  timesHit: 0
+--- !u!4 &706047703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706047699}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.649197, y: -4.3929453, z: -45.286415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1017755227}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &765871694
 GameObject:
   m_ObjectHideFlags: 0
@@ -30398,6 +30490,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988438954}
   m_CullTransparentMesh: 0
+--- !u!1 &1017755226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017755227}
+  - component: {fileID: 1017755228}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1017755227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017755226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 706047703}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1017755228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017755226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f29149e9e944345a8a65203131379c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
+    voice: 6
+    speech: Here we go I guess...
+  isRunning: 0
 --- !u!1 &1054711916
 GameObject:
   m_ObjectHideFlags: 0
@@ -31103,7 +31243,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459444555
 GameObject:
@@ -41877,143 +42017,3 @@ RectTransform:
   m_AnchoredPosition: {x: -480, y: -499.7}
   m_SizeDelta: {x: 960, y: 80.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4961460816258815227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460816258815231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2df74990670e64f9310bdcd9912684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comments: 'Snap Routine is to be used only to take pictures of your game during
-    gameplay!
-
-    If on, you will get frequent frame drops.
-
-    If you''re not taking pictures, keep this off.'
---- !u!114 &4961460816258815228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460816258815231}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212342b6e31b76548bba468d70f32434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snapShootDirectory: C:\Users\tclte\Desktop\WitchVWitchSnapShoots
---- !u!114 &4961460816258815229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460816258815231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d26d7494fcf7e429be4659cacfa180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NoDeaths: 1
-  Canvas: []
-  tRenderer: {fileID: 0}
-  HISCORETEXT: {fileID: 0}
-  SCORETEXT: {fileID: 0}
-  SPIRITS: {fileID: 0}
-  MAGIC: {fileID: 0}
-  SLOTS:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  textBoxUI: {fileID: 0}
-  dialogue: {fileID: 0}
-  expression: {fileID: 0}
-  timesHit: 0
---- !u!4 &4961460816258815230
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460816258815231}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.649197, y: -4.3929453, z: -45.286415}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4961460816368090415}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4961460816258815231
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4961460816258815230}
-  - component: {fileID: 4961460816258815229}
-  - component: {fileID: 4961460816258815228}
-  - component: {fileID: 4961460816258815227}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &4961460816368090400
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4961460816368090415}
-  - component: {fileID: 4961460816368090401}
-  m_Layer: 0
-  m_Name: DialogueManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &4961460816368090401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460816368090400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f29149e9e944345a8a65203131379c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-  - expression: {fileID: 11400000, guid: f53714b5fd7981a48a7f110c0ac1c1ea, type: 2}
-    voice: 6
-    speech: Here we go I guess...
-  isRunning: 0
---- !u!4 &4961460816368090415
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961460816368090400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4961460816258815230}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
