@@ -1,30 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using Extensions;
 
 public class AutoOrbit : MonoBehaviour
 {
-
     [SerializeField]
-    Transform centerOfOrbit;
+    GameObject objTarget;
 
-    [SerializeField]
-    private float rotationSpeed = 5;
+    public Transform center;
+    public Vector3 axis = Vector3.up;
+    public Vector3 desiredPosition;
+    public float radius = 4.0f;
+    public float radiusSpeed = 0.5f;
+    public float rotationSpeed = 80.0f;
 
-    [SerializeField]
-    private float radius = 0.5f;
-
-    private float angleValue = 0;
-    private void Start()
+    void Start()
     {
-        angleValue = Vector2.Angle(centerOfOrbit.position, transform.position);
+        center = objTarget.transform;
+        transform.position = (transform.position - center.position).normalized * radius + center.position;
+        radius = 4.0f;
+
+        OrbitCycle().Start();
     }
-    // Update is called once per frame
-    void Update()
+
+    IEnumerator OrbitCycle()
     {
-        
-        angleValue += rotationSpeed * Time.deltaTime;
-        var offset = new Vector2(Mathf.Sin(angleValue), Mathf.Cos(angleValue)) * radius;
-        transform.position = (Vector2)centerOfOrbit.position + offset;
+        while (true)
+        {
+            transform.RotateAround(center.position, axis, rotationSpeed * Time.deltaTime);
+            desiredPosition = (transform.position - center.position).normalized * radius + center.position;
+            transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
+
+            yield return new  WaitForEndOfFrame();
+        }
     }
 }
