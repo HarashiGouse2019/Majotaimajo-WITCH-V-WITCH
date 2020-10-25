@@ -6,7 +6,7 @@ using TMPro;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using static Keymapper;
-
+using Extensions;
 public class GameManager : MonoBehaviour
 {
     #region Public Members
@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            Application.targetFrameRate = 120;
         }
         else
         {
@@ -93,21 +92,25 @@ public class GameManager : MonoBehaviour
            new Key("itemSelection", KeyCode.Space),
            new Key("start", KeyCode.Return)
        );
+
+        UIUpdateCycle(0.0001f).Start();
     }
 
 
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator UIUpdateCycle(float delta)
     {
-        if (HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
-        if (SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
+        while (true)
+        {
+            if (HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
+            if (SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
 
-        if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) AddToScore(1);
+            if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) AddToScore(1);
 
-        if (isDone == true) ToNextDialogue();
+            if (isDone == true) ToNextDialogue();
+
+            yield return new WaitForSeconds(delta);
+        }
     }
-
     public static void StartGame()
     {
 

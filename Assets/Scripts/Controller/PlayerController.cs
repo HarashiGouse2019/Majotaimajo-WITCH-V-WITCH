@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using static Keymapper;
+using Extensions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,77 +13,100 @@ public class PlayerController : MonoBehaviour
     #region Private Members
     //Reference Pawn
     PlayerPawn pawn;
+    GameManager manager;
     #endregion
 
     // Start is called before the first frame update
     void Awake()
     {
-        
-
         pawn = GetComponent<PlayerPawn>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        InitControls();
+        InitControlsCycle().Start();
+        InitMovementCycle().Start();
     }
 
-    private void FixedUpdate()
+    IEnumerator InitControlsCycle()
     {
-        InitMovementControls();
+        while (true)
+        {
+            InitControls();
+            yield return null;
+        }
     }
+
+    IEnumerator InitMovementCycle(float delta = 0)
+    {
+        while (true)
+        {
+            InitMovementControls();
+            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
+        }
+    }
+
 
     void InitMovementControls()
     {
-        //Movement
-        if (OnKey("left"))
+        //Movement Action Left
+        ControlAction("left", () =>
         {
             pawn.Left();
             pawn.isMoving = true;
-        }
-        else if (OnKeyRelease("left"))
+            return;
+        }, () =>
+        {
             pawn.isMoving = false;
+            return;
+        });
 
-        if (OnKey("right"))
+        //Movement Action Right
+        ControlAction("right", () =>
         {
             pawn.Right();
             pawn.isMoving = true;
-        }
-        else if (OnKeyRelease("right"))
+            return;
+        }, () =>
+        {
             pawn.isMoving = false;
+            return;
+        });
 
-        if (OnKey("up"))
+        //Movement Action Up
+        ControlAction("up", () =>
         {
             pawn.Foward();
             pawn.isMoving = true;
-        }
-        else if (OnKeyRelease("up"))
+            return;
+        }, () =>
+        {
             pawn.isMoving = false;
+            return;
+        });
 
-        if (OnKey("down"))
+        //Movement Action Down
+        ControlAction("down", () =>
         {
             pawn.Back();
             pawn.isMoving = true;
-        }
-        else if (OnKeyRelease("down"))
+            return;
+        }, () =>
+        {
             pawn.isMoving = false;
+            return;
+        });
     }
     //Remember, we are controlling pawn!!!
     void InitControls()
     {
-        if (OnKey("shoot"))
+        if (OnKey("shoot") && GameManager.Instance.GetPlayerMagic() > 0)
         {
-            if (GameManager.Instance.GetPlayerMagic() > 0)
-            {
                 pawn.Shoot("Crystal");
                 GameManager.Instance.DecrementMagic(0.01f);
                 pawn.isMagicActivelyUsed = true;
-            }
         } else
-        {
             pawn.isMagicActivelyUsed = false;
-        }
 
        pawn.isSneaking = OnKey("sneak");
 
@@ -92,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     void RunSpecial()
     {
-        GameManager manager = GameManager.Instance;
+        manager = GameManager.Instance;
 
         //This looks a lot nicer!!!!
         if (OnKeyDown("special1"))

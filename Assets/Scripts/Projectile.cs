@@ -1,4 +1,5 @@
 ﻿using Alarm;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -24,6 +25,7 @@ public class Projectile : MonoBehaviour
     private GetOrignatedSpawnPoint pawnOrigin;
     private bool noAnimation;
     private float duration = 10f;
+    private Rigidbody2D rgb2d;
     bool done = false;
 
     ICaster caster;
@@ -34,13 +36,18 @@ public class Projectile : MonoBehaviour
         destroyTimer = new Timer(1);
     }
 
-    public void AssignEmitter(Emitter emitter)
+    public GetOrignatedSpawnPoint GetOriginPoint() => pawnOrigin;
+    public Rigidbody2D GetRigidbody2D() => rgb2d;
+    public void AssignEmitter<T>(T emitter) where T : Emitter
     {
         this.emitter = emitter;
+        pawnOrigin.SetEmitterOrigin(this.emitter);
     }
 
     void ApplyConfiguration()
     {
+        if (configuration == null) return;
+
         if (spriteRenderer != null && configuration.projectileGraphic != null)
             spriteRenderer.sprite = configuration.projectileGraphic;
 
@@ -90,18 +97,22 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        
         spriteRenderer = GetComponent<SpriteRenderer>();
         graphicAnimation = GetComponent<GraphicAnimation>();
         pawnOrigin = GetComponent<GetOrignatedSpawnPoint>();
+        rgb2d = GetComponent<Rigidbody2D>();
 
-        if (emitter != null)
+        if(emitter == null)
         {
-            ParentPawn = emitter.ParentPawn;
-            pawnOrigin.SetEmitterOrigin(emitter);
-            origin = emitter.GetOriginObject(); //Will find the gameObject that shoot the bullet out
+            Debug.Log("No emitters");
+            return;
         }
-        library = GetComponent<SpellLibrary>();
+
+        ParentPawn = emitter.ParentPawn;
+        pawnOrigin.SetEmitterOrigin(emitter);
+        origin = emitter.GetOriginObject(); //Will find the gameObject that shoot the bullet out
+
+        library = caster != null ? caster.library : null;
 
         if (configuration != null)
             //Apply Configuration

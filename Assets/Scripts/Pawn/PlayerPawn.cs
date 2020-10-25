@@ -153,6 +153,7 @@ public class PlayerPawn : Pawn
     {
         if (recoil == false)
         {
+            playerEmitter.SetPawnParent(this);
             playerEmitter.SetBulletInitialSpeed(650);
             playerEmitter.SpawnBullets(1, bulletName);
             AudioManager.Play("Shoot000", _oneShot: true);
@@ -266,7 +267,7 @@ public class PlayerPawn : Pawn
 
         GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
 
-        if (objectOrigin != null && objectOrigin.originatedSpawnPoint.name != "Raven_Obj")
+        if (objectOrigin != null && objectOrigin.pawn != this)
         {
             if (hit == false)
             {

@@ -122,7 +122,7 @@ public class RotationEmitter : Emitter
 
             projectile.AssignEmitter(this);
 
-            projectile.SetCaster(caster);
+            projectile.SetCaster(ParentPawn);
 
             if (!tmpObj.activeInHierarchy)
             {
@@ -131,12 +131,12 @@ public class RotationEmitter : Emitter
                 projectile.transform.rotation = Quaternion.Euler(0f, 0f, -angle);
 
                 //Assign projectile priority from origin
-                projectile.GetComponent<GetOrignatedSpawnPoint>().priority = ParentPawn.priority;
+                projectile.GetOriginPoint().priority = ParentPawn.priority;
 
                 //From here, we tell our temporary object where it came from
-                projectile.GetComponent<GetOrignatedSpawnPoint>().originatedSpawnPoint = originObject;
+                projectile.GetOriginPoint().originatedSpawnPoint = originObject;
 
-                projectile.GetComponent<Rigidbody2D>().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
+                projectile.GetRigidbody2D().AddForce(new Vector3(projectileMoveDir.x, projectileMoveDir.y, 0) * Time.fixedDeltaTime);
 
                 //Play sound if it exists.
                 if (!string.IsNullOrEmpty(sound)) AudioManager.Play(sound, _oneShot: true);

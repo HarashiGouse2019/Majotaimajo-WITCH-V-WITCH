@@ -24,12 +24,16 @@ public class LinearEmitter : Emitter
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         Vector3 targetVector = transform.up;
-        GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out GetOrignatedSpawnPoint spawnPoint);
+        GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
+
+        projectile.AssignEmitter(this);
+        projectile.SetCaster(ParentPawn);
+
         if (!tmpObj.activeInHierarchy)
         {
             tmpObj.SetActive(true);
 
-            Rigidbody2D rigidbody = tmpObj.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidbody = projectile.GetRigidbody2D();
 
             tmpObj.transform.position = transform.position;
             tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, projectileAngle);
@@ -38,12 +42,11 @@ public class LinearEmitter : Emitter
             if (attachedEmitters != null)
                 foreach (Emitter emitter in attachedEmitters)
                 {
-                    emitter.SetPawnParent(pawnOriginObject);
+                    emitter.SetPawnParent(ParentPawn);
                     emitter.SetBulletInitialSpeed(bulletInitialSpeed);
                     emitter.SpawnBullets(_numberOfProjectiles, bulletMember);
                 }
 
-            spawnPoint.originatedSpawnPoint = originObject;
             rigidbody.AddForce(targetVector * bulletInitialSpeed * Time.fixedDeltaTime);
         }
     }

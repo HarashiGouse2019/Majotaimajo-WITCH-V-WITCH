@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Extensions;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,17 +16,17 @@ public class AutoRotate : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(Rotation());
+        Rotation().Start();
     }
 
-    IEnumerator Rotation()
+    IEnumerator Rotation(float delta = 0)
     {
         while (true)
         {
             currentAngle += rotationSpeed;
             UpdateRotation();
             
-            yield return null;
+            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
         }
     }
 

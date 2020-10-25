@@ -62,6 +62,28 @@ public static class Keymapper
         }
     }
 
+    public static void ControlAction(string keyName, Action onKeyPressed)
+    {
+        try
+        {
+            ControlAction(keyName, onKeyPressed, null);
+        }
+        catch { }
+    }
+
+    public static void ControlAction(string keyName, Action onKeyPressed, Action onKeyReleased)
+    {
+        try
+        {
+            if (OnKey(keyName))
+                onKeyPressed.Invoke();
+
+            else if (OnKeyRelease(keyName))
+                onKeyReleased.Invoke();
+        }
+        catch { }
+    }
+
     public static bool OnKeyDown(string name, bool triggerEvent = false)
     {
         try

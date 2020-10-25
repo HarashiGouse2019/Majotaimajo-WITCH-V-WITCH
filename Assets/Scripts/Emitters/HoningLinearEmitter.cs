@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-//This is a set up for the near future
-//This will be important for creating this game
-//That has existing mechanics such as these
-//I mean a DAN-MA-KU! DAMMAKA
-//
+using Extensions;
+
 public class HoningLinearEmitter : Emitter
 {
     #region Public Members
@@ -25,11 +23,17 @@ public class HoningLinearEmitter : Emitter
     {
         originObject = gameObject;
         existingProjectiles = new List<Projectile>();
+
+        StartPointUpdateCycle().Start();
     }
 
-    void FixedUpdate()
+    IEnumerator StartPointUpdateCycle(float delta = 0)
     {
-        UpdateStartPoint();
+        while (true)
+        {
+            UpdateStartPoint();
+            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
+        }
     }
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
@@ -41,7 +45,11 @@ public class HoningLinearEmitter : Emitter
         else
             targetVector = transform.up;
 
-        GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out GetOrignatedSpawnPoint spawnPoint);
+        GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
+
+        projectile.AssignEmitter(this);
+
+        projectile.SetCaster(ParentPawn);
 
         float angle = 0f;
         if(target != null)
@@ -54,9 +62,7 @@ public class HoningLinearEmitter : Emitter
             Rigidbody2D rigidbody = tmpObj.GetComponent<Rigidbody2D>();
 
             tmpObj.transform.position = transform.position;
-            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, angle + 270f);
-
-            spawnPoint.originatedSpawnPoint = originObject;
+            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, angle + 270f);;
 
             rigidbody.AddForce(targetVector * bulletInitialSpeed * Time.fixedDeltaTime);
         }
