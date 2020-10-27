@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Net;
 using System.Text;
 using UnityEngine;
 
 namespace Extensions
-{ 
+{
     public static class Convenience
     {
         public static int ZeroBased(this int value)
@@ -26,7 +27,7 @@ namespace Extensions
         }
     }
 
-    public static class Coroutine 
+    public static class Coroutine
     {
         public static void Start(this IEnumerator enumerator)
         {
@@ -62,9 +63,9 @@ namespace Extensions
 
     public static class Dictionary
     {
-        public static K GetKey<K, V>(this Dictionary<K,V> keyValuePairs, V value)
+        public static K GetKey<K, V>(this Dictionary<K, V> keyValuePairs, V value)
         {
-            foreach(KeyValuePair<K, V> keyValuePair in keyValuePairs)
+            foreach (KeyValuePair<K, V> keyValuePair in keyValuePairs)
             {
                 if (value.ToString() == keyValuePair.Value.ToString())
                     return keyValuePair.Key;
@@ -72,9 +73,9 @@ namespace Extensions
             return default;
         }
 
-        public static V GetValue<K, V>(this Dictionary<K,V> keyValuePairs, K key)
+        public static V GetValue<K, V>(this Dictionary<K, V> keyValuePairs, K key)
         {
-            foreach(KeyValuePair<K, V> keyValuePair in keyValuePairs)
+            foreach (KeyValuePair<K, V> keyValuePair in keyValuePairs)
             {
                 if (key.ToString() == keyValuePair.Key.ToString())
                     return keyValuePair.Value;

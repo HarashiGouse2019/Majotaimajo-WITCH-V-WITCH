@@ -107,6 +107,7 @@ MonoBehaviour:
   emitterSpeedDelta: 0
   originObject: {fileID: 0}
   attachedEmitters: []
+  targetableObj: {fileID: 0}
   detectionRange: 1
 --- !u!114 &2488417046087840634
 MonoBehaviour:

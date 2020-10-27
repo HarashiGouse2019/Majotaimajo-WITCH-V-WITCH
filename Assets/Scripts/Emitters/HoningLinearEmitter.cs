@@ -7,10 +7,12 @@ public class HoningLinearEmitter : Emitter
 {
     #region Public Members
     [Header("Origin and Target")]
-    public ITargetable targetableObj;
+    public EnemyTest targetableObj;
 
     //Homing Detection Range (how far you can detect a target)
     public float detectionRange = 1f;
+
+    private float distance;
     #endregion
 
 
@@ -24,10 +26,14 @@ public class HoningLinearEmitter : Emitter
 
     protected override void Start()
     {
+        PlayerPawn ppawn = (ParentPawn as PlayerPawn);
+        targetableObj = ppawn.target;
+
         originObject = gameObject;
         existingProjectiles = new List<Projectile>();
 
         StartPointUpdateCycle().Start();
+        SearchForTargetCycle().Start();
     }
 
     IEnumerator StartPointUpdateCycle(float delta = 0)
@@ -39,11 +45,26 @@ public class HoningLinearEmitter : Emitter
         }
     }
 
+    IEnumerator SearchForTargetCycle()
+    {
+        while (true)
+        {
+            Debug.Log("Hi!!!");
+            DetectDistanceFromTarget();
+            yield return null;
+        }
+    }
+
+    void DetectDistanceFromTarget()
+    {
+        distance = (targetableObj.targetTransform.position - transform.position).magnitude;
+    }
+
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         Vector3 targetVector;
 
-        if (targetableObj != null)
+        if (targetableObj != null && distance <= detectionRange)
             targetVector = (targetableObj.targetTransform.position - originObject.transform.position).normalized;
         else
             targetVector = Vector2.up;
