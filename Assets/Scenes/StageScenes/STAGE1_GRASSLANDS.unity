@@ -6731,6 +6731,11 @@ PrefabInstance:
       propertyPath: targetTranform
       value: 
       objectReference: {fileID: 1252690543}
+    - target: {fileID: 9209735553152173632, guid: 4537b75fd3d9f96448ac92e433921826,
+        type: 3}
+      propertyPath: dampTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2213589260621890678, guid: 4537b75fd3d9f96448ac92e433921826,
         type: 3}
       propertyPath: m_Enabled
