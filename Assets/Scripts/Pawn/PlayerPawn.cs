@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using Extensions;
 
 public class PlayerPawn : Pawn
 {
     public static new PlayerPawn Instance;
+
+    [SerializeField]
+    private AutoOrbit[] autoOrbitObjs;
 
     public PlayerController controller;
 
@@ -29,7 +33,7 @@ public class PlayerPawn : Pawn
     const int ZERO = 0;
 
     [SerializeField]
-    LinearEmitter playerEmitter;
+    LinearEmitter emitter;
 
     //Player Stats
     Stats PlayerStats;
@@ -75,10 +79,13 @@ public class PlayerPawn : Pawn
         library.SetCaster(this);
 
         //Start Recovery Sequence
-        StartCoroutine(PassiveRecoveryCycle());
+        PassiveRecoveryCycle().Start();
 
         //Start Hit Cycle Coroutine
-        StartCoroutine(BlinkCycle(0.05f));
+        BlinkCycle(0.05f).Start();
+
+        //Start Focus Cycle Coroutine
+        FocusCycle().Start();
 
         //Read your SpellLibrary, and override GameUi spell text
         try
@@ -87,13 +94,15 @@ public class PlayerPawn : Pawn
             {
                 GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
             }
-        } catch { /*These hands!*/}
+        }
+        catch { /*These hands!*/}
     }
+
+    public T GetEmitter<T>() where T : Emitter => (T)System.Convert.ChangeType(emitter, typeof(T));
 
     private void Update()
     {
         if (recoil == true) Wait(0.05f);
-        if (Mathf.Abs(g_angle) > 359) g_angle = 0; //We do this to eliminate the risk of overflowing
 
         if (hit == true)
             Blink(5f);
@@ -105,6 +114,20 @@ public class PlayerPawn : Pawn
     }
 
     #region Unique
+
+    IEnumerator FocusCycle()
+    {
+        while (true)
+        { 
+            for (int index = 0; index < autoOrbitObjs.Length; index++)
+            {
+                AutoOrbit orbitObj = autoOrbitObjs[index];
+                orbitObj.ChangeRadius(isSneaking);
+            }
+
+            yield return null;
+        }
+    }
 
     /// <summary>
     /// Assign Game Values to PlayerPawn
@@ -153,9 +176,9 @@ public class PlayerPawn : Pawn
     {
         if (recoil == false)
         {
-            playerEmitter.SetPawnParent(this);
-            playerEmitter.SetBulletInitialSpeed(650);
-            playerEmitter.SpawnBullets(1, bulletName);
+            emitter.SetPawnParent(this);
+            emitter.SetBulletInitialSpeed(650);
+            emitter.SpawnBullets(1, bulletName);
             AudioManager.Play("Shoot000", _oneShot: true);
             recoil = true;
         }

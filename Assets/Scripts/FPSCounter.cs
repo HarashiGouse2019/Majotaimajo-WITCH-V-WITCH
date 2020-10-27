@@ -57,7 +57,7 @@ public class FPSCounter : Singleton<FPSCounter>
                 fpsText.text = string.Format(display, currentFPS);
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 

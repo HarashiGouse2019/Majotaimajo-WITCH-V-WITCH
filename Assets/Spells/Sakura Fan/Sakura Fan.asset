@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e47b07e4684fbe4f9fd5286d9807d6d, type: 3}
   m_Name: Sakura Fan
   m_EditorClassIdentifier: 
-  spellPriority: 0
-  magicConsumtion: 0
+  spellPriority: 5
+  magicConsumtion: 10
   emitterSpawners:
   - emitterType: 1
     spawnPosition: {x: 0, y: 0}
     worldSpace: 0
     enchantment: {fileID: 11400000, guid: b8ef71d21a4777c4a9b011369a307689, type: 2}
-  enableSpellLooping: 1
+  enableSpellLooping: 0

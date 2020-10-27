@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class LinearEmitter : Emitter
 {
-    [SerializeField]
-    float projectileAngle = 0;
     void OnEnable()
     {
         if (GetComponent<PawnOwner>() != null)
@@ -36,7 +34,7 @@ public class LinearEmitter : Emitter
             Rigidbody2D rigidbody = projectile.GetRigidbody2D();
 
             tmpObj.transform.position = transform.position;
-            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, projectileAngle);
+            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, projectileBaseAngle);
 
             //Check for attached emitters
             if (attachedEmitters != null)

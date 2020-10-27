@@ -6,9 +6,7 @@ using Extensions;
 
 public class PlayerController : MonoBehaviour
 {
-
-    #region Public Members
-    #endregion
+  
 
     #region Private Members
     //Reference Pawn
@@ -26,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         InitControlsCycle().Start();
         InitMovementCycle().Start();
+        MagicUseCycle(0.01f).Start();
     }
 
     IEnumerator InitControlsCycle()
@@ -46,11 +45,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator MagicUseCycle(float delta = 0)
+    {
+        while (true)
+        {
+            if (OnKey("shoot"))
+            {
+                if (GameManager.Instance.GetPlayerMagic() > 0)
+                {
+                    pawn.Shoot("Crystal");
+                    GameManager.Instance.DecrementMagic(0.01f);
+                    pawn.isMagicActivelyUsed = true;
+                }
+            }
+            else
+                pawn.isMagicActivelyUsed = false;
+            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
+        }
+    }
 
     void InitMovementControls()
     {
         //Movement Action Left
-        ControlAction("left", () =>
+        ControlAction("left", true, () =>
         {
             pawn.Left();
             pawn.isMoving = true;
@@ -62,7 +79,7 @@ public class PlayerController : MonoBehaviour
         });
 
         //Movement Action Right
-        ControlAction("right", () =>
+        ControlAction("right", true, () =>
         {
             pawn.Right();
             pawn.isMoving = true;
@@ -74,7 +91,7 @@ public class PlayerController : MonoBehaviour
         });
 
         //Movement Action Up
-        ControlAction("up", () =>
+        ControlAction("up", true, () =>
         {
             pawn.Foward();
             pawn.isMoving = true;
@@ -86,7 +103,7 @@ public class PlayerController : MonoBehaviour
         });
 
         //Movement Action Down
-        ControlAction("down", () =>
+        ControlAction("down", true, () =>
         {
             pawn.Back();
             pawn.isMoving = true;
@@ -100,14 +117,6 @@ public class PlayerController : MonoBehaviour
     //Remember, we are controlling pawn!!!
     void InitControls()
     {
-        if (OnKey("shoot") && GameManager.Instance.GetPlayerMagic() > 0)
-        {
-                pawn.Shoot("Crystal");
-                GameManager.Instance.DecrementMagic(0.01f);
-                pawn.isMagicActivelyUsed = true;
-        } else
-            pawn.isMagicActivelyUsed = false;
-
        pawn.isSneaking = OnKey("sneak");
 
         RunSpecial();
@@ -118,25 +127,28 @@ public class PlayerController : MonoBehaviour
         manager = GameManager.Instance;
 
         //This looks a lot nicer!!!!
-        if (OnKeyDown("special1"))
-            pawn.ActivateSpell(SpellLibrary.library.spells[0].name);
-
-        if (OnKeyDown("special2"))
-            pawn.ActivateSpell(SpellLibrary.library.spells[1].name);
-
-        if (OnKeyDown("special3"))
-            pawn.ActivateSpell(SpellLibrary.library.spells[2].name);
-
-        //We do this for Ui Purposes
-        if (OnKeyRelease("special1"))
+        ControlAction("special1", false, () =>
+        {
+            pawn.ActivateSpell(pawn.library.spells[0].name);
+        }, () =>
+        {
             manager.ActivateSlot(0, false);
+        });
 
-        if (OnKeyRelease("special2"))
+        ControlAction("special2", false, () =>
+        {
+            pawn.ActivateSpell(pawn.library.spells[1].name);
+        }, () =>
+        {
             manager.ActivateSlot(1, false);
+        });
 
-        if (OnKeyRelease("special3"))
+        ControlAction("special3", false, () =>
+        {
+            pawn.ActivateSpell(pawn.library.spells[2].name);
+        }, () =>
+        {
             manager.ActivateSlot(2, false);
+        });  
     }
 }
-
-

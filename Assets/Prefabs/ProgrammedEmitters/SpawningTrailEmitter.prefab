@@ -123,6 +123,7 @@ MonoBehaviour:
   Sequencer: {fileID: 0}
   ParentPawn: {fileID: 0}
   id: 0
+  projectileBaseAngle: 0
   bulletPrefab: []
   points: []
   motionThreshold: 0

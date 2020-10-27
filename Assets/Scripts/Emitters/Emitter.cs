@@ -75,6 +75,9 @@ public abstract class Emitter : MonoBehaviour
     protected int id = 0;
 
     [SerializeField]
+    protected float projectileBaseAngle = 0;
+
+    [SerializeField]
     protected List<GameObject> bulletPrefab = new List<GameObject>();
 
     [SerializeField]
@@ -317,6 +320,7 @@ public abstract class Emitter : MonoBehaviour
     public virtual void Activate()
     {
         gameObject.SetActive(true);
+        
         Sequencer = GetComponent<DanmakuSequencer>();
         if (Sequencer == null) Debug.Log("Failed to reference Sequencer...");
     }

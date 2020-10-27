@@ -27,4 +27,4 @@ MonoBehaviour:
     spawnPosition: {x: 0, y: 0}
     worldSpace: 0
     enchantment: {fileID: 11400000, guid: 994646f588041204eaf5957765bbbf7d, type: 2}
-  enableSpellLooping: 1
+  enableSpellLooping: 0

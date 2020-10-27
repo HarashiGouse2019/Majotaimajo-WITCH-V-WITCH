@@ -16,7 +16,7 @@ public class AutoRotate : MonoBehaviour
 
     private void OnEnable()
     {
-        Rotation().Start();
+        Rotation(0.01f).Start();
     }
 
     IEnumerator Rotation(float delta = 0)

@@ -7,7 +7,10 @@ public class HoningLinearEmitter : Emitter
 {
     #region Public Members
     [Header("Origin and Target")]
-    public Transform target;
+    public ITargetable targetableObj;
+
+    //Homing Detection Range (how far you can detect a target)
+    public float detectionRange = 1f;
     #endregion
 
 
@@ -40,10 +43,10 @@ public class HoningLinearEmitter : Emitter
     {
         Vector3 targetVector;
 
-        if (target != null)
-            targetVector = (target.position - originObject.transform.position).normalized;
+        if (targetableObj != null)
+            targetVector = (targetableObj.targetTransform.position - originObject.transform.position).normalized;
         else
-            targetVector = transform.up;
+            targetVector = Vector2.up;
 
         GameObject tmpObj = ObjectPooler.GetMember(bulletMember, out Projectile projectile);
 
@@ -52,17 +55,19 @@ public class HoningLinearEmitter : Emitter
         projectile.SetCaster(ParentPawn);
 
         float angle = 0f;
-        if(target != null)
+        if(targetableObj != null)
             angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
         if (!tmpObj.activeInHierarchy)
         {
             tmpObj.SetActive(true);
 
-            Rigidbody2D rigidbody = tmpObj.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidbody = projectile.GetRigidbody2D();
 
-            tmpObj.transform.position = transform.position;
-            tmpObj.transform.rotation = Quaternion.Euler(0f, 0f, angle + 270f);;
+            projectile.transform.position = transform.position;
+            projectile.transform.rotation = (targetableObj != null) ? 
+                Quaternion.Euler(0f, 0f, angle + 270f) :
+                Quaternion.Euler(0f, 0f, projectileBaseAngle);
 
             rigidbody.AddForce(targetVector * bulletInitialSpeed * Time.fixedDeltaTime);
         }

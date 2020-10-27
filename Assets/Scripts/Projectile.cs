@@ -1,5 +1,4 @@
 ﻿using Alarm;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -102,11 +101,7 @@ public class Projectile : MonoBehaviour
         pawnOrigin = GetComponent<GetOrignatedSpawnPoint>();
         rgb2d = GetComponent<Rigidbody2D>();
 
-        if(emitter == null)
-        {
-            Debug.Log("No emitters");
-            return;
-        }
+        if (emitter == null) return;
 
         ParentPawn = emitter.ParentPawn;
         pawnOrigin.SetEmitterOrigin(emitter);
@@ -117,8 +112,6 @@ public class Projectile : MonoBehaviour
         if (configuration != null)
             //Apply Configuration
             ApplyConfiguration();
-
-        Debug.Log(pawnOrigin != null ? "Pawn origin is: " + pawnOrigin.pawn : " Pawn origin is unknown");
     }
 
     /// <summary>

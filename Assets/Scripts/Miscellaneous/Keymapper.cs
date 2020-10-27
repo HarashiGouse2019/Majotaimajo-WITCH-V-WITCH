@@ -62,20 +62,21 @@ public static class Keymapper
         }
     }
 
-    public static void ControlAction(string keyName, Action onKeyPressed)
+    public static void ControlAction(string keyName, bool allowHold, Action onKeyPressed)
     {
         try
         {
-            ControlAction(keyName, onKeyPressed, null);
+            ControlAction(keyName, allowHold, onKeyPressed, null);
         }
         catch { }
     }
 
-    public static void ControlAction(string keyName, Action onKeyPressed, Action onKeyReleased)
+    public static void ControlAction(string keyName, bool allowHold, Action onKeyPressed, Action onKeyReleased)
     {
         try
         {
-            if (OnKey(keyName))
+            //Use OnKey function if AllowHold is true
+            if (allowHold ? OnKey(keyName) : OnKeyDown(keyName))
                 onKeyPressed.Invoke();
 
             else if (OnKeyRelease(keyName))

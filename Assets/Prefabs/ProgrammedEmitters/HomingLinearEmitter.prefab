@@ -97,6 +97,7 @@ MonoBehaviour:
   Sequencer: {fileID: 0}
   ParentPawn: {fileID: 0}
   id: 0
+  projectileBaseAngle: 0
   bulletPrefab: []
   points: []
   motionThreshold: 0
@@ -106,7 +107,7 @@ MonoBehaviour:
   emitterSpeedDelta: 0
   originObject: {fileID: 0}
   attachedEmitters: []
-  target: {fileID: 0}
+  detectionRange: 1
 --- !u!114 &2488417046087840634
 MonoBehaviour:
   m_ObjectHideFlags: 0

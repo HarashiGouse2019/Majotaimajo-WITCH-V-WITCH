@@ -44,6 +44,8 @@ public class EmitterSpawner
 
             else emitter.SetRelativePosition(spawnPosition);
 
+            emitter.transform.SetParent(emitter.ParentPawn.transform, true);
+
             return emitter;
         }
         return null;
