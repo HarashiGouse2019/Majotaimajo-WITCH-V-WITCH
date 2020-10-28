@@ -3829,7 +3829,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858977140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1.61334, z: 1}
   m_Children:
   - {fileID: 1252690543}
@@ -7722,7 +7722,7 @@ PrefabInstance:
     - target: {fileID: 7207989463233066547, guid: 4537b75fd3d9f96448ac92e433921826,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7207989463233066547, guid: 4537b75fd3d9f96448ac92e433921826,
         type: 3}
@@ -7773,6 +7773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dampTime
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209735553152173632, guid: 4537b75fd3d9f96448ac92e433921826,
+        type: 3}
+      propertyPath: zDepth
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2213589260621890678, guid: 4537b75fd3d9f96448ac92e433921826,
         type: 3}
@@ -8242,7 +8247,7 @@ Camera:
   near clip plane: 20.49
   far clip plane: 1000
   field of view: 10
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -8254,7 +8259,7 @@ Camera:
   m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -9362,7 +9367,7 @@ PrefabInstance:
     - target: {fileID: 17790889872032920, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 17790889872032920, guid: aaebce90341a97441a0c79a4df36d27c,
         type: 3}

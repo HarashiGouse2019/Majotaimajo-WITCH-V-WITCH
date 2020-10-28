@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             InitMovementControls();
-            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
+            yield return new WaitForSecondsRealtime(delta == 0 ? Time.fixedDeltaTime : delta);
         }
     }
 

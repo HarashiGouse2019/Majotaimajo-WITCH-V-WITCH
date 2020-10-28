@@ -49,7 +49,6 @@ public class HoningLinearEmitter : Emitter
     {
         while (true)
         {
-            Debug.Log("Hi!!!");
             DetectDistanceFromTarget();
             yield return null;
         }
