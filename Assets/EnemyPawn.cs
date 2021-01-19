@@ -2,8 +2,14 @@
 using UnityEngine;
 using Extensions;
 
-public class EnemyTest : MonoBehaviour, ITargetable
+public class EnemyPawn : Pawn, ITargetable
 {
+    [SerializeField]
+    private SpriteRenderer graphics;
+
+    [SerializeField]
+    private Animator animator;
+
     public GameObject targetObj { get; set; }
     public Transform targetTransform { get; set; }
     public Vector3 targetPosition { get; set; }

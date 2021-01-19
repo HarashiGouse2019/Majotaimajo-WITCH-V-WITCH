@@ -2,12 +2,13 @@
 using System.Collections;
 using UnityEngine;
 using Extensions;
+using System.Threading.Tasks;
 
 public class HoningLinearEmitter : Emitter
 {
     #region Public Members
     [Header("Origin and Target")]
-    public EnemyTest targetableObj;
+    public EnemyPawn mainTargetObj;
 
     //Homing Detection Range (how far you can detect a target)
     public float detectionRange = 1f;
@@ -26,9 +27,6 @@ public class HoningLinearEmitter : Emitter
 
     protected override void Start()
     {
-        PlayerPawn ppawn = (ParentPawn as PlayerPawn);
-        targetableObj = ppawn.target;
-
         originObject = gameObject;
         existingProjectiles = new List<Projectile>();
 
@@ -45,26 +43,35 @@ public class HoningLinearEmitter : Emitter
         }
     }
 
-    IEnumerator SearchForTargetCycle()
+    private IEnumerator SearchForTargetCycle()
     {
         while (true)
         {
             DetectDistanceFromTarget();
+
             yield return null;
         }
     }
 
-    void DetectDistanceFromTarget()
+    private void DetectDistanceFromTarget()
     {
-        distance = (targetableObj.targetTransform.position - transform.position).magnitude;
+        foreach (EnemyPawn target in ESSequenceScript.Enemies)
+        {
+            distance = (target.targetTransform.position - transform.position).magnitude;
+            if (distance <= detectionRange)
+            {
+                mainTargetObj = target;
+                return;
+            }
+        }
     }
 
     public override void SpawnBullets(int _numberOfProjectiles, string bulletMember)
     {
         Vector3 targetVector;
 
-        if (targetableObj != null && distance <= detectionRange)
-            targetVector = (targetableObj.targetTransform.position - originObject.transform.position).normalized;
+        if (mainTargetObj != null && distance <= detectionRange)
+            targetVector = (mainTargetObj.targetTransform.position - originObject.transform.position).normalized;
         else
             targetVector = Vector2.up;
 
@@ -75,7 +82,7 @@ public class HoningLinearEmitter : Emitter
         projectile.SetCaster(ParentPawn);
 
         float angle = 0f;
-        if(targetableObj != null)
+        if (mainTargetObj != null)
             angle = Mathf.Atan2(targetVector.y, targetVector.x) * Mathf.Rad2Deg;
 
         if (!tmpObj.activeInHierarchy)
@@ -85,7 +92,7 @@ public class HoningLinearEmitter : Emitter
             Rigidbody2D rigidbody = projectile.GetRigidbody2D();
 
             projectile.transform.position = transform.position;
-            projectile.transform.rotation = (targetableObj != null) ? 
+            projectile.transform.rotation = (mainTargetObj != null) ?
                 Quaternion.Euler(0f, 0f, angle + 270f) :
                 Quaternion.Euler(0f, 0f, projectileBaseAngle);
 

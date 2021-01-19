@@ -7,7 +7,7 @@ public class PlayerPawn : Pawn
 {
     public static new PlayerPawn Instance;
 
-    public EnemyTest target;
+    public EnemyPawn target;
 
     [SerializeField]
     private AutoOrbit[] autoOrbitObjs;

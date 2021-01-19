@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq;
 using UnityEngine.SceneManagement;
+
 using static Keymapper;
 using Extensions;
+
 public class GameManager : MonoBehaviour
 {
     #region Public Members
@@ -300,7 +301,6 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
         textBoxUI.gameObject.SetActive(false);
-        StopAllCoroutines();
     }
 
     public void ToNextDialogue()
@@ -328,69 +328,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FindAllExposedValues()
-    {
-        exposedObj = FindObjectsOfType<ExposeAs>().ToList();
-    }
-
-    void AssignUIElements()
-    {
-        //Wait til 100
-        int ping = 0;
-        while (ping < 1000)
-        {
-            FindAllExposedValues();
-
-            if (exposedObj == null)
-                return;
-
-            foreach (ExposeAs obj in exposedObj)
-            {
-                switch (obj.GetExposedAs())
-                {
-                    case "DialogueBox":
-                        textBoxUI = obj.GetComponent<Image>();
-                        break;
-                    case "DialogueText":
-                        dialogue = obj.GetComponent<TextMeshProUGUI>();
-                        break;
-                    case "ExpressionImage":
-                        expression = obj.GetComponent<Image>();
-                        break;
-                    case "HighScore":
-                        HISCORETEXT = obj.GetComponent<TextMeshProUGUI>();
-                        break;
-                    case "Score":
-                        SCORETEXT = obj.GetComponent<TextMeshProUGUI>();
-                        break;
-                    case "TextureRenderer":
-                        tRenderer = obj.GetComponent<TextureRenderer>();
-                        break;
-                    case "Magic":
-                        MAGIC = obj.GetComponent<Slider>();
-                        break;
-                    case "Slot1":
-                        SLOTS[0] = obj.GetComponent<Image>();
-                        break;
-                    case "Slot2":
-                        SLOTS[1] = obj.GetComponent<Image>();
-                        break;
-                    case "Slot3":
-                        SLOTS[2] = obj.GetComponent<Image>();
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            ping++;
-        }
-    }
-
     private void OnLoadedScene(Scene _scene, LoadSceneMode mode)
     {
-        AssignUIElements();
-
         BallotItem newBallotItem = new BallotItem();
 
         if (newBallotItem != null)

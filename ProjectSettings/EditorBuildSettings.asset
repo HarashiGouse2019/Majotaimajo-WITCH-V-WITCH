@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuScenes/TITLE.unity
+    path: Assets/Scenes/MenuScenes/MAIN.unity
     guid: 2911e26e9291ced4f9f732212554d8a1
   - enabled: 1
     path: Assets/Scenes/StageScenes/STAGE1_GRASSLANDS.unity
