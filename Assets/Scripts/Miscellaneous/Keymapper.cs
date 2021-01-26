@@ -52,7 +52,7 @@ public static class Keymapper
 
     static void AddNewKey(Key newKey)
     {
-        for (int index = 0; index < loggedKeys.Length - 1; index++)
+        for (int index = 0; index < loggedKeys.Length; index++)
         {
             if (loggedKeys[index] == null)
             {
@@ -84,6 +84,30 @@ public static class Keymapper
         }
         catch { }
     }
+
+    public static void ControlAction(string keyName, bool allowHold, EventManager.Event onKeyPressed)
+    {
+        try
+        {
+            ControlAction(keyName, allowHold, onKeyPressed, null);
+        }
+        catch { }
+    }
+
+    public static void ControlAction(string keyName, bool allowHold, EventManager.Event onKeyPressed, EventManager.Event onKeyReleased)
+    {
+        try
+        {
+            //Use OnKey function if AllowHold is true
+            if (allowHold ? OnKey(keyName) : OnKeyDown(keyName) && onKeyPressed.HasListerners())
+                onKeyPressed.Trigger();
+
+            else if (OnKeyRelease(keyName) && onKeyPressed.HasListerners())
+                onKeyReleased.Trigger();
+        }
+        catch { }
+    }
+
 
     public static bool OnKeyDown(string name, bool triggerEvent = false)
     {
@@ -143,7 +167,7 @@ public static class Keymapper
 
     static Key GetKeyByName(string name)
     {
-        for (int index = 0; index < loggedKeys.Length - 1; index++)
+        for (int index = 0; index < loggedKeys.Length; index++)
         {
             if (loggedKeys[index].Name.Equals(name))
                 return loggedKeys[index];
@@ -153,7 +177,7 @@ public static class Keymapper
 
     static void RemoveKey(string name)
     {
-        for(int index = 0; index < loggedKeys.Length - 1; index++)
+        for(int index = 0; index < loggedKeys.Length; index++)
         {
             if (loggedKeys[index].Name.Equals(name))
             {

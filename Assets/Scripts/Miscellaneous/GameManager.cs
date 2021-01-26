@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
     readonly float flashVal = 255f;
     float rVal, gVal, bVal;
 
+    static int _DifficultyIndex = 0;
+
     List<ExposeAs> exposedObj = new List<ExposeAs>();
     #endregion
 
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DisableMouseControls();
             DontDestroyOnLoad(this);
         }
         else
@@ -334,5 +337,16 @@ public class GameManager : MonoBehaviour
 
         if (newBallotItem != null)
             ItemInventory.AddNewItem(0, newBallotItem, 3);
+    }
+
+    public static void UpdateGameDifficulty(int difficultyLevel)
+    {
+        _DifficultyIndex = difficultyLevel;
+    }
+
+    void DisableMouseControls()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
