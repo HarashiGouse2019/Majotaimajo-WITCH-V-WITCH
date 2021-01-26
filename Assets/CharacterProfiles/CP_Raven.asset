@@ -15,16 +15,13 @@ MonoBehaviour:
   characterName: Raven Lilac
   characterDescription: Amethyst Witch
   characterPortrait: {fileID: 21300000, guid: 7d685682269c32643b12f1c5349b639b, type: 3}
-  characterBackstory: "Raven Lilac is an aspiring Witch who is a Crystal Magic User
-    (a very rare Magic Attribute). She is dubbed \u201CThe Amethyst Witch\u201D because
-    of the color of crystal she shoots, which closely derives from Dark Magic. She\u2019s
-    a fairly powerful Witch and has a high magic yield (how much magic she has). The
-    Witch Cult that she\u2019s affiliated is \u201CSoulmere\u201D, which is a cult
-    very lenient when it comes to their members. There are also known for having the
-    strongest witches aside from the Witch Cult Serrulata. She\u2019s one of the members
-    who are closest to the stage of Equilibrium, a state in which the mind and soul
-    of the magic user is perfectly balance between positive and negative thoughts
-    and emotion, thus unlocking the user\u2019s full magic potential."
+  characterBackstory: Raven Lilac is an aspiring Witch who is a Crystal Magic User
+    (a very rare Magic Attribute). She is dubbed "The Amethyst Witch" because of the
+    color of crystal she shoots, which closely derives from Dark Magic. She's a fairly
+    powerful Witch and has a high magic yield (how much magic she has). The Witch
+    Cult that she's affiliated is "Soulmere", which is a cult very lenient when it
+    comes to their members. There are also known for having the strongest witches
+    aside from the Witch Cult Serrulata.
   characterAttribute: 4
   speedStat: 3
   powerStat: 3

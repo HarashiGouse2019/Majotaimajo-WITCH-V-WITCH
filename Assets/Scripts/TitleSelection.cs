@@ -38,6 +38,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     EventManager.Event @StartSelected;
     EventManager.Event @PracticeSelected;
     EventManager.Event @ExitSelected;
+    private int sign;
 
     // Start is called before the first frame update
     void Awake()
@@ -97,7 +98,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
             {
                 AudioManager.Play("CursorMovement");
                 SelectionIndex += NEXT_SELECTION;
-
+                sign = NEXT_SELECTION;
 
                 //Check if bigger than size
                 if (SelectionIndex > selectableObjects.Count - 1)
@@ -113,6 +114,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
             {
                 AudioManager.Play("CursorMovement");
                 SelectionIndex += PREVIOUS_SELECTION;
+                sign = PREVIOUS_SELECTION;
 
                 //Check if smaller than 0
                 if (SelectionIndex < 0)
@@ -168,6 +170,8 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 selectableText.text = selectableObjects[index].text.Replace(TAB, STRING_NULL);
                 selectableText.fontSize = unselectedFontSize;
                 images[index].gameObject.SetActive(false);
+                SelectionIndex += sign;
+                UpdateTextUI();
             }
         }
     }

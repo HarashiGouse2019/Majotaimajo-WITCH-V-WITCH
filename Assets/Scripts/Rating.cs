@@ -14,6 +14,8 @@ public class Rating : MonoBehaviour
     [SerializeField]
     private Image[] childImages = new Image[maxRating];
 
+    private Sprite nullImage;
+
     private const int maxRating = 5;
     private const int minRating = 1;
     private bool initialized = false;
@@ -27,14 +29,15 @@ public class Rating : MonoBehaviour
     {
         if (initialized == false)
         {
+            nullImage = Resources.Load<Sprite>("NullImage");
+
             childImages = GetComponentsInChildren<Image>();
 
             for (int index = 0; index < maxRating; index++)
             {
                 if (childImages != null)
                 {
-                    childImages[index].sprite = ratingGraphics;
-                    childImages[index].gameObject.SetActive(false);
+                    childImages[index].sprite = nullImage;
                 }
             }
 
@@ -54,7 +57,7 @@ public class Rating : MonoBehaviour
         Flush();
         for(int index = 0; index < ratingValue; index++)
         {
-            childImages[index].gameObject.SetActive(true);
+            childImages[index].sprite = ratingGraphics;
         }
     }
 
@@ -65,8 +68,7 @@ public class Rating : MonoBehaviour
         {
             if (childImages != null)
             {
-                childImages[index].sprite = ratingGraphics;
-                childImages[index].gameObject.SetActive(false);
+                childImages[index].sprite = nullImage;
             }
         }
     }

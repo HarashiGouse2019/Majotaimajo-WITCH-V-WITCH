@@ -15,17 +15,15 @@ MonoBehaviour:
   characterName: Mirrah Mirip Maplestar (Maple)
   characterDescription: Indigenous Extraterrestial Maiden
   characterPortrait: {fileID: 21300000, guid: a7118b0e1ab1afb41812e6289e9e990c, type: 3}
-  characterBackstory: "Mirrah Mirip Maplestar (or Maple) is a lover of spells. She\u2019s
-    known for creating her own spells, both for her magic and for others. She is dubbed
-    \u201CThe Starlight Witch\u201D. She is Star Magic User, and it\u2019s a form
-    she created from her Light Magic, hence her being \u201CThe Starlight Witch\u201D.
-    She\u2019s very fast when flying. However, she has a slight phobia towards flying
-    without grabbing hold of something. Because of this she mainly prefers flying
-    on her  Pegasus, a giant Rune that she had created speficially for transportation.
-    \ Maple is also affiliated with the Witch Cult Soulmere and is also considered
-    a very powerful witch. Ever since she dropped from the sky, Maple always been
-    with one person; Raven Lilac. Maple spends her time teaching Raven new spells.
-    They are technically sisters."
+  characterBackstory: "Mirrah Mirip Maplestar (or Maple) is a lover of spells. She's
+    known for creating her own spells for others. People of an high order has dubbed
+    her \"The Starlight Witch\". Her intellect is like no others in the Far Land of
+    Magic. The concept of magic is alien to her. Instead, she makes use of her Illuminous
+    Nova, which is the closest thing to magic. She has a slight phobia towards flying
+    without grabbing hold onto something. She mainly prefers flying on her Pegasus,
+    a giant star-shaped manifestation that she can materialize on command. Ever since
+    she dropped from the sky, Maple always been with one person; Raven Lilac. Maple
+    spends her time teaching Raven new spells. They are technically sisters.\r\n"
   characterAttribute: 5
   speedStat: 4
   powerStat: 4

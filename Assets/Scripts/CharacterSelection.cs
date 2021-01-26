@@ -61,7 +61,10 @@ public class CharacterSelection : SelectionObject
 
     void UpdateCurrentProfile()
     {
-        _characterIndex = (_characterIndex > profiles.Length - 1) ? _characterIndex - profiles.Length : (_characterIndex < 0) ? _characterIndex + profiles.Length : _characterIndex; 
+        _characterIndex = (_characterIndex > profiles.Length - 1) ?
+            _characterIndex - profiles.Length : (_characterIndex < 0) ?
+            _characterIndex + profiles.Length : _characterIndex; 
+
         currentProfile = profiles[_characterIndex];
     }
 
