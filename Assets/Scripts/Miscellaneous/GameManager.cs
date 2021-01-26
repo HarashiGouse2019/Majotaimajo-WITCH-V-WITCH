@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     static int _DifficultyIndex = 0;
 
     List<ExposeAs> exposedObj = new List<ExposeAs>();
+
+    static int _CharacterIndex;
     #endregion
 
 
@@ -342,6 +344,11 @@ public class GameManager : MonoBehaviour
     public static void UpdateGameDifficulty(int difficultyLevel)
     {
         _DifficultyIndex = difficultyLevel;
+    }
+
+    public static void UpdateGamePlayer(int characterIndex)
+    {
+        _CharacterIndex = characterIndex;
     }
 
     void DisableMouseControls()

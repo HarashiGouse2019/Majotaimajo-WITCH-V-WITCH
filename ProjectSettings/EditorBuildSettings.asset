@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MenuScenes/CHARACTER_SELECTION.unity
+    guid: 2b412ebfad69ede4b89df2ba3cd4e047
+  - enabled: 1
+    path: Assets/Scenes/MenuScenes/DIFFICULTY_SELECTION.unity
+    guid: c9ef5b4ffcb8d554eabb2eed5fa40ea7
+  - enabled: 1
     path: Assets/Scenes/MenuScenes/MAIN.unity
     guid: 2911e26e9291ced4f9f732212554d8a1
   - enabled: 1
@@ -14,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScenes/RECORDSANDHIGHSCORE.unity
     guid: 081932f2847025a46995e7c435fe5859
+  - enabled: 1
+    path: Assets/Scenes/MenuScenes/TITLE.unity
+    guid: 21fbe5ba2a86d154099373cd520dad5a
   m_configObjects: {}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4672d41320b194391dcb121b4c33ef, type: 3}
+  m_Name: CP_Hanabi
+  m_EditorClassIdentifier: 
+  characterName: Hanabi Inoue
+  characterDescription: From Another World
+  characterPortrait: {fileID: 21300000, guid: dd0ab596c8451a742afbb737ddc23c22, type: 3}
+  characterBackstory: "Hanabi Inoue is a very powerful human who was mainly taught
+    Hero Magic, a form of Light Magic. Hanabi isn\u2019t from the Far Land of Magic.
+    Along with her sister, Saki Inoue, they were both founded near a lake. A Sorceress
+    who stumbles upon the 2 abandoned children, took them under their wing. It is
+    believed that Hanabi and her sister Saki were individuals who were brought from
+    another world. Hanabi was taught very well by the person caring for her and her
+    sister. So much so that she dedicated herself to be a powerful sorceress just
+    like her new caretaker. Years go by, and a tragedy happens between the newly establish
+    family. Both Hanabi and Saki were both being targeted for being outsiders. Saki
+    gets kidnapped by a group of magicians in white cloth. In an attempt to retrieve
+    Saki, their new caretaker goes out to search for her, leaving another sorceress
+    as the new caretaker. Years go by, and the previous caretaker never returned.
+    An older Hanabi decided to embark this adventure herself to search for her sister,
+    and her previous caretaker. Highly trained in the way of Magic and Self Defense,
+    she\u2019s capable of taking down any adversary. Before her departure, her new
+    caretaker blesses her with divine protection, and hands her a pocket watch in
+    order to remember her by. "
+  characterAttribute: 6
+  speedStat: 4
+  powerStat: 4
+  annoyanceStat: 3
+  priorityStat: 3
+  magicStat: 3
+  knowledgeStat: 2
+  evasivenessStat: 5
