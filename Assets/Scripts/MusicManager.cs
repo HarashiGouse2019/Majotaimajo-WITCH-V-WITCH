@@ -88,7 +88,15 @@ public class MusicManager : MonoBehaviour
 
     public static void Play(string _name, float _volume = 100, bool _oneShot = false)
     {
+
+        if (_name == NowPlaying)
+        {
+            Debug.Log($"The track {_name} is already playing.");
+            return;
+        }
+
         Music a = Array.Find(Instance.getMusic, sound => sound.name == _name);
+
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
@@ -151,7 +159,7 @@ public class MusicManager : MonoBehaviour
         Music a = Array.Find(Instance.getMusic, sound => sound.name == NowPlaying);
 
         if (a == null) return;
-        
+
         Stop(a.name);
     }
 }

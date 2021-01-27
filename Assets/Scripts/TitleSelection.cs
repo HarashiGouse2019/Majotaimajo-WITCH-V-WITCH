@@ -45,8 +45,6 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     // Start is called before the first frame update
     void Awake()
     {
-
-
         SetupEvents();
     }
 
@@ -92,7 +90,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
         UpdateTextUI();
 
         //Begin Selection Cycle
-        SelectionCycle().Start();
+        StartCoroutine(SelectionCycle());
     }
 
     /// <summary>
@@ -212,18 +210,13 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     {
         //Set up Start Selected Event
         StartSelected = EventManager.AddEvent(100, "StartSelected",
-            () => GameSceneManager.LoadScene("DIFFICULTY_SELECTION", true),
-            () => GameSceneManager.UnloadScene("TITLE"),
-            () => GameManager.StartGame(),
-            () => StopTitleBGM(),
+            () => GameSceneManager.LoadScene("DIFFICULTY_SELECTION"),
             () => ClearEvents());
 
         //Set up Practice Selected Event
         PracticeSelected = EventManager.AddEvent(101, "PracticeSelected",
-            () => GameSceneManager.LoadScene("DIFFICULTY_SELECTION", true),
-            () => GameSceneManager.UnloadScene("TITLE"),
+            () => GameSceneManager.LoadScene("DIFFICULTY_SELECTION"),
             () => GameManager.IsPractice = true,
-            () => GameManager.StartGame(),
             () => ClearEvents());
 
         //Set up Exit Selected Event

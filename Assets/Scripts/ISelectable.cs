@@ -3,22 +3,28 @@ using System.Collections;
 using UnityEngine;
 using static Keymapper;
 
-internal partial interface ISelectable
+internal interface ISelectable
 {
     EventManager.Event _onSelectNext { get; set; }
     EventManager.Event _onSelectPrevious { get; set; }
     EventManager.Event _onConfirm { get; set; }
     EventManager.Event _onCancel { get; set; }
+    Audio cursorSound { get; set; }
+    Audio confirmSound { get; set; }
+    Audio cancelSound { get; set; }
     int selectionIndex { get; set; }
     void SelectionCycle();
 }
 
-public partial class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
+public abstract class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
 {
     public EventManager.Event _onSelectNext { get; set; }
     public EventManager.Event _onSelectPrevious { get; set; }
     public EventManager.Event _onConfirm { get; set; }
     public EventManager.Event _onCancel { get; set; }
+    public Audio cursorSound { get; set; }
+    public Audio confirmSound { get; set; }
+    public Audio cancelSound { get; set; }
     public int selectionIndex { get; set; }
 
     void Awake()
@@ -28,10 +34,13 @@ public partial class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
 
     void Start()
     {
-        Routine.Start();
+        cursorSound = AudioManager.Find("selection");
+        confirmSound = AudioManager.Find("confirmSelection");
+        cancelSound = AudioManager.Find("cancelSelection");
+        StartCoroutine(Routine);
     }
 
-    IEnumerator Routine
+    private IEnumerator Routine
     {
         get
         {
@@ -45,7 +54,7 @@ public partial class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
 
     public virtual void SetupEvents()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void SelectionCycle()

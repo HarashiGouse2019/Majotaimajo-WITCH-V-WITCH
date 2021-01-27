@@ -1,36 +1,10 @@
-﻿using Extensions;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameSceneManager : MonoBehaviour
+public class GameSceneManager : Singleton<GameSceneManager>
 {
-    public static GameSceneManager Instance;
-
-    private void Awake()
-    {
-        #region Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        #endregion
-
-        LoadScene("TITLE", true);
-    }
-
-    public static void UnloadScene(string name)
-    {
-        SceneManager.UnloadSceneAsync(name);
-    }
-
-
-    public static void LoadScene(string name, bool additive)
+    public static void LoadScene(string name, bool additive = false)
     {
         Instance.StartCoroutine(LoadSceneAsync(name, additive));
     }

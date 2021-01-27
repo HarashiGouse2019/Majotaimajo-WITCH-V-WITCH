@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Extensions;
 
 public class CharacterSelection : SelectionObject
 {
@@ -58,14 +59,13 @@ public class CharacterSelection : SelectionObject
     {
         GameManager.UpdateGamePlayer(_characterIndex);
         Debug.Log($"You've selected to play as {profiles[_characterIndex].GetName()}");
-        GameSceneManager.LoadScene("STAGE1_GRASSLANDS", false);
+        GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
     }
 
     void OnCancel()
     {
         Debug.Log("Cancelled Character");
-        GameSceneManager.UnloadScene("CHARACTER_SELECTION");
-        GameSceneManager.LoadScene("DIFFICULTY_SELECTION", true);
+        GameSceneManager.LoadScene("DIFFICULTY_SELECTION");
         
     }
 
@@ -101,9 +101,9 @@ public class CharacterSelection : SelectionObject
 
     public override void SetupEvents()
     {
-        _onSelectPrevious = EventManager.AddEvent(190, "onCharacterSelectPrevious", PreviousCharacter);
-        _onSelectNext = EventManager.AddEvent(191, "onCharacterSelectNext", NextCharacter);
-        _onConfirm = EventManager.AddEvent(192, "onCharacterConfirm", OnConfirm);
-        _onCancel = EventManager.AddEvent(193, "onCharacterCancel", OnCancel);
+        _onSelectPrevious = EventManager.AddEvent(190, "onCharacterSelectPrevious", PreviousCharacter, () => cursorSound.Play());
+        _onSelectNext = EventManager.AddEvent(191, "onCharacterSelectNext", NextCharacter, () => cursorSound.Play());
+        _onConfirm = EventManager.AddEvent(192, "onCharacterConfirm", OnConfirm, () => confirmSound.Play());
+        _onCancel = EventManager.AddEvent(193, "onCharacterCancel", OnCancel, () => cancelSound.Play());
     }
 }

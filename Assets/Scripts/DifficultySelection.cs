@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Extensions;
 
 public class DifficultySelection : SelectionObject
 {
@@ -26,8 +27,7 @@ public class DifficultySelection : SelectionObject
             _difficultyIndex = difficultyMenu.index;
             Debug.Log($"You have selected {_difficultyIndex}");
             GameManager.UpdateGameDifficulty(_difficultyIndex);
-            GameSceneManager.UnloadScene("DIFFICULTY_SELECTION");
-            GameSceneManager.LoadScene("CHARACTER_SELECTION", true);
+            GameSceneManager.LoadScene("CHARACTER_SELECTION");
         }
     }
 
@@ -36,16 +36,15 @@ public class DifficultySelection : SelectionObject
         if (readyToSelect)
         {
             Debug.Log("Cancelled Difficulty");
-            GameSceneManager.UnloadScene("DIFFICULTY_SELECTION");
-            GameSceneManager.LoadScene("TITLE", true);
+            GameSceneManager.LoadScene("TITLE");
         }
     }
 
     public override void SetupEvents()
     {
-        _onSelectPrevious = EventManager.AddEvent(090, "onDifficultySelectPrevious", difficultyMenu.OnClickHorizontalPrev);
-        _onSelectNext = EventManager.AddEvent(091, "onDifficultySelectNext", difficultyMenu.OnClickHorizontalNext);
-        _onConfirm = EventManager.AddEvent(092, "onDifficultyConfirm", OnConfirm);
-        _onCancel = EventManager.AddEvent(093, "onDifficultyCancel", OnCancel);
+        _onSelectPrevious = EventManager.AddEvent(090, "onDifficultySelectPrevious", difficultyMenu.OnClickHorizontalPrev, () => cursorSound.Play());
+        _onSelectNext = EventManager.AddEvent(091, "onDifficultySelectNext", difficultyMenu.OnClickHorizontalNext, () => cursorSound.Play());
+        _onConfirm = EventManager.AddEvent(092, "onDifficultyConfirm", OnConfirm, () => confirmSound.Play());
+        _onCancel = EventManager.AddEvent(093, "onDifficultyCancel", OnCancel, () => cancelSound.Play());
     }
 }

@@ -3,7 +3,7 @@
 public class Singleton<T>: MonoBehaviour
 {
     protected static T Instance;
-    void OnEnable()
+    void Awake()
     {
         if(Instance == null)
         {
@@ -15,5 +15,5 @@ public class Singleton<T>: MonoBehaviour
         }
     }
 
-    public static bool IsNull() => Instance == null;
+    public static bool IsNull => Instance == null;
 }

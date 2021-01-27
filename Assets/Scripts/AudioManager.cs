@@ -7,23 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     private static AudioManager Instance;
 
-    [System.Serializable]
-    public class Audio
-    {
-        public string name; // Name of the audio
 
-        public AudioClip clip; //The Audio Clip Reference
-
-        [Range(0f, 1f)]
-        public float volume; //Adjust Volume
-
-        [Range(.1f, 3f)]
-        public float pitch; //Adject pitch
-
-        public bool enableLoop; //If the audio can repeat
-
-        [HideInInspector] public AudioSource source;
-    }
 
     public AudioMixerGroup audioMixer;
 
@@ -72,7 +56,7 @@ public class AudioManager : MonoBehaviour
 
     public static void Play(string _name, float _volume = 100, bool _oneShot = false)
     {
-        Audio a = Array.Find(Instance.getAudio, sound => sound.name == _name);
+        Audio a = Find(_name);
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
@@ -93,9 +77,10 @@ public class AudioManager : MonoBehaviour
 
         }
     }
+
     public static void Stop(string _name)
     {
-        Audio a = Array.Find(Instance.getAudio, sound => sound.name == _name);
+        Audio a = Find(_name);
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
@@ -107,9 +92,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public AudioClip GetAudio(string _name, float _volume = 100)
+    public static Audio Find(string _name)
     {
-        Audio a = Array.Find(getAudio, sound => sound.name == _name);
+        Audio a = Array.Find(Instance.getAudio, sound => sound.name == _name);
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
@@ -117,10 +102,28 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            a.source.Play();
-            a.source.volume = _volume / 100;
-            return a.source.clip;
+            return a;
+        }
+    }
+
+}
+
+namespace Extensions
+{
+    public static class AudioManagerExtension
+    {
+        public static void Play(this Audio audio, float _volume = 100, bool _oneShot = false)
+        {
+            switch (_oneShot)
+            {
+                case true:
+                    audio.source.PlayOneShot(audio.clip, _volume / 100);
+                    break;
+                default:
+                    audio.source.Play();
+                    audio.source.volume = _volume / 100;
+                    break;
+            }
         }
     }
 }
-
