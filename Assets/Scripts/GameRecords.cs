@@ -75,7 +75,7 @@ public class GameRecords : MonoBehaviour
         GetAllScoreEntries(false);
 
         //New Event
-        entryEvent = EventManager.AddNewEvent(50, "NewEntry",
+        entryEvent = EventManager.AddEvent(50, "NewEntry",
             () => SwitchTo(State.RECORD));
 
         entryEvent.Trigger();
@@ -86,7 +86,7 @@ public class GameRecords : MonoBehaviour
     void Update()
     {
         if (ready == true && Input.GetKeyDown(KeyCode.Return))
-            GameSceneManager.Instance.LoadScene("TITLE");
+            GameSceneManager.LoadScene("TITLE", false);
     }
 
     /// <summary>

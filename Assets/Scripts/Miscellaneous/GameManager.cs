@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DisableMouseControls();
+            
             DontDestroyOnLoad(this);
         }
         else
@@ -96,12 +97,15 @@ public class GameManager : MonoBehaviour
            new Key("special2", KeyCode.S),
            new Key("special3", KeyCode.D),
            new Key("itemSelection", KeyCode.Space),
-           new Key("start", KeyCode.Return)
+           new Key("start", KeyCode.Return),
+           new Key("cancel", KeyCode.Backspace),
+           new Key("pause", KeyCode.Escape)
        );
 
         UIUpdateCycle(0.0001f).Start();
-    }
 
+        
+    }
 
     IEnumerator UIUpdateCycle(float delta)
     {
@@ -337,7 +341,7 @@ public class GameManager : MonoBehaviour
     {
         BallotItem newBallotItem = new BallotItem();
 
-        if (newBallotItem != null)
+        if (newBallotItem != null && _scene.name == "STAGE1_GRASSLANDS")
             ItemInventory.AddNewItem(0, newBallotItem, 3);
     }
 

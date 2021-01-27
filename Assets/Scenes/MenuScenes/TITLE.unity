@@ -36161,7 +36161,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -36301,6 +36301,8 @@ MonoBehaviour:
   unavaliableColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   selectedFontSize: 56
   unselectedFontSize: 56
+  selectableObjects: []
+  unavailableObjects: []
 --- !u!1 &1796776135
 GameObject:
   m_ObjectHideFlags: 0
@@ -36486,28 +36488,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: LUU_STAGE
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1788452209}
-        m_MethodName: StopTitleBGM
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

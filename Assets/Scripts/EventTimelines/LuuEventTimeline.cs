@@ -120,28 +120,28 @@ public class LuuEventTimeline : EventTimeline, IEventSetup
 
     public override void SetupEvents()
     {
-        ev_dialogueEnd = EventManager.AddNewEvent(0, "DialogueEnd",
+        ev_dialogueEnd = EventManager.AddEvent(0, "DialogueEnd",
             () => Luu.OnInitialized(ev_sakuraBurst));
 
-        ev_sakuraBurst = EventManager.AddNewEvent(1, "Sakura Burst",
+        ev_sakuraBurst = EventManager.AddEvent(1, "Sakura Burst",
             () => print("Activate Sakura Burst"),
             () => Luu.ActivateSpell("Sakura Burst"));
 
-        ev_sakuraFan = EventManager.AddNewEvent(2, "Sakura Fan",
+        ev_sakuraFan = EventManager.AddEvent(2, "Sakura Fan",
             () => print("Activate Sakura Fan"),
             () => Luu.ActivateSpell("Sakura Fan", true));
 
-        ev_sakuraDance = EventManager.AddNewEvent(3, "Sakura Dance",
+        ev_sakuraDance = EventManager.AddEvent(3, "Sakura Dance",
             () => print("Activate Sakura Dance"),
             () => Luu.ActivateSpell("Sakura Dance", true));
 
-        ev_sakuraHanabi = EventManager.AddNewEvent(4, "Sakura Hanabi",
+        ev_sakuraHanabi = EventManager.AddEvent(4, "Sakura Hanabi",
             () => print("Activate Sakura Hanabi"),
             () => Luu.ActivateSpell("Sakura Hanabi", true));
 
-        ev_sakuraRitual = EventManager.AddNewEvent(6, "Sakura Ritual - One Man Regiment");
+        ev_sakuraRitual = EventManager.AddEvent(6, "Sakura Ritual - One Man Regiment");
 
-        ev_dialogueRun = EventManager.AddNewEvent(5, "DialogueRun",
+        ev_dialogueRun = EventManager.AddEvent(5, "DialogueRun",
             () => Dialogue.Instance.Run(0));
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ public static class EventManager
         /// <returns></returns>
         public string GetEventCode() => eventCode;
 
-        public void AddNewListener(CallBackMethod listener)
+        public void AddNewListener(CallBackMethod listener, bool multicast = false)
         {
             if (listener == null)
             {
@@ -55,7 +56,10 @@ public static class EventManager
                 Debug.Log(listeners.Method.Name);
             }
 
-            listeners += listener;
+            if (multicast)
+                listeners += listener;
+            else
+                listeners = listener;
 
             HasListerners();
         }
@@ -116,16 +120,25 @@ public static class EventManager
     /// <param name="uniqueID"></param>
     /// <param name="name"></param>
     /// <param name="listeners"></param>
-    public static Event AddNewEvent(int uniqueID, string name, params CallBackMethod[] listeners)
+    public static Event AddEvent(int uniqueID, string name, params CallBackMethod[] listeners)
     {
         Event newEvent = new Event(uniqueID, name, null);
-        foreach (CallBackMethod listener in listeners)
-        {
-            newEvent.AddNewListener(listener);
-            Events.Add(newEvent);
-        }
 
-        return newEvent;
+        if (listeners.Length <= 1)
+        {
+            newEvent.AddNewListener(listeners[0]);
+            return newEvent;
+        }
+        else
+        {
+
+            foreach (CallBackMethod listener in listeners)
+            {
+                newEvent.AddNewListener(listener, true);
+            }
+
+            return newEvent;
+        }
     }
 
     /// <summary>
@@ -256,4 +269,12 @@ public static class EventManager
     /// </summary>
     /// <returns></returns>
     public static Event[] GetAllEvents() => Events.ToArray();
+
+    public static void DebugEventList()
+    {
+        foreach (Event @event in GetAllEvents())
+        {
+            Debug.Log($"Event{@event.uniqueID}: \"{@event.eventCode}\"; Listeners: {@event.listeners.GetInvocationList().Length}");
+        }
+    }
 }

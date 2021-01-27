@@ -42,10 +42,10 @@ public class CollectibleItem : MonoBehaviour, IEventSetup
 
     public void SetupEvents()
     {
-        ev_IncreasePoints = EventManager.AddNewEvent(250, "IncreasePoints",
+        ev_IncreasePoints = EventManager.AddEvent(250, "IncreasePoints",
             () => ScoreSystem.AddToScore(scoreIncrementValue));
 
-        ev_IncreaseMagic = EventManager.AddNewEvent(260, "IncreaseMagic",
+        ev_IncreaseMagic = EventManager.AddEvent(260, "IncreaseMagic",
             () => GameManager.Instance.IncrementMagic(magicIncrementValue));
     }
 

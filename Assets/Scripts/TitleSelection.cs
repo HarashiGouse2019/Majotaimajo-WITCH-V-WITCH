@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
+using Extensions;
+
 public class TitleSelection : MonoBehaviour, IEventSetup
 {
     [SerializeField]
@@ -13,7 +14,8 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     int selectedFontSize, unselectedFontSize;
 
     /*TitleSelection will take all objects with the Selectable tag and is on the TitleLayer*/
-    List<TextMeshProUGUI> selectableObjects;
+    [SerializeField]
+    List<TextMeshProUGUI> selectableObjects, unavailableObjects;
 
     //The images for each selectableObject
     List<Image> images;
@@ -43,12 +45,14 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     // Start is called before the first frame update
     void Awake()
     {
-        GetSelections();
+
 
         SetupEvents();
+    }
 
-        //Play Title Music
-        MusicManager.Play("WVWOST");
+    void Start()
+    {
+        GetSelections();
     }
 
     void GetSelections()
@@ -64,8 +68,17 @@ public class TitleSelection : MonoBehaviour, IEventSetup
         {
             if (obj.gameObject.tag == SELECTABLE_TAG && obj.gameObject.layer == LayerMask.NameToLayer(TITLE_LAYER))
             {
-                selectableObjects.Add(obj);
-                images.Add(obj.GetComponentInChildren<Image>());
+                SelectionEvent selectionEvent = obj.GetComponent<SelectionEvent>();
+                if (selectionEvent.HasEvent())
+                {
+                    selectableObjects.Add(obj);
+                    images.Add(obj.GetComponentInChildren<Image>());
+                }
+                else
+                {
+                    unavailableObjects.Add(obj);
+                    obj.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("NullImage");
+                }
             }
         }
 
@@ -79,7 +92,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
         UpdateTextUI();
 
         //Begin Selection Cycle
-        StartCoroutine(SelectionCycle());
+        SelectionCycle().Start();
     }
 
     /// <summary>
@@ -96,7 +109,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
             //Check if input is being received
             if (horizontalDir == NEXT_SELECTION || verticalDir == PREVIOUS_SELECTION)
             {
-                AudioManager.Play("CursorMovement");
+
                 SelectionIndex += NEXT_SELECTION;
                 sign = NEXT_SELECTION;
 
@@ -107,12 +120,11 @@ public class TitleSelection : MonoBehaviour, IEventSetup
 
                 //Update Text UI
                 UpdateTextUI();
-
+                AudioManager.Play("CursorMovement");
             }
 
             if (horizontalDir == PREVIOUS_SELECTION || verticalDir == NEXT_SELECTION)
             {
-                AudioManager.Play("CursorMovement");
                 SelectionIndex += PREVIOUS_SELECTION;
                 sign = PREVIOUS_SELECTION;
 
@@ -122,12 +134,14 @@ public class TitleSelection : MonoBehaviour, IEventSetup
 
                 //Update Text UI
                 UpdateTextUI();
+                AudioManager.Play("CursorMovement");
             }
 
-           
+
 
             //Button is down
             keyDown = true;
+
         }
 
         //If horizontal or vertical not being pressed, keyDown is false
@@ -141,6 +155,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
         {
             selectableObjects[SelectionIndex].GetComponent<SelectionEvent>().GetUnityEvent().Invoke();
         }
+
     }
 
     /// <summary>
@@ -162,17 +177,20 @@ public class TitleSelection : MonoBehaviour, IEventSetup
             }
             else
             {
-                if (!selectionEvent.HasEvent() || selectionEvent.IsUnAvaliable)
-                    selectableText.color = unavaliableColor;
-                else
-                    selectableText.color = unselectedColor;
+                selectableText.color = unselectedColor;
 
                 selectableText.text = selectableObjects[index].text.Replace(TAB, STRING_NULL);
                 selectableText.fontSize = unselectedFontSize;
                 images[index].gameObject.SetActive(false);
-                SelectionIndex += sign;
-                UpdateTextUI();
             }
+        }
+
+
+        for (int index = 0; index < unavailableObjects.Count; index++)
+        {
+            TextMeshProUGUI unavaliableText = unavailableObjects[index];
+            unavaliableText.fontSize = unselectedFontSize;
+            unavaliableText.color = unavaliableColor;
         }
     }
 
@@ -193,22 +211,24 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     public void SetupEvents()
     {
         //Set up Start Selected Event
-        StartSelected = EventManager.AddNewEvent(100, "StartSelected",
-            () => GameSceneManager.Instance.LoadScene("STAGE1_GRASSLANDS"),
+        StartSelected = EventManager.AddEvent(100, "StartSelected",
+            () => GameSceneManager.LoadScene("DIFFICULTY_SELECTION", true),
+            () => GameSceneManager.UnloadScene("TITLE"),
             () => GameManager.StartGame(),
             () => StopTitleBGM(),
             () => ClearEvents());
 
         //Set up Practice Selected Event
-        PracticeSelected = EventManager.AddNewEvent(101, "PracticeSelected", 
-            () => GameSceneManager.Instance.LoadScene("STAGE1_GRASSLANDS"),
+        PracticeSelected = EventManager.AddEvent(101, "PracticeSelected",
+            () => GameSceneManager.LoadScene("DIFFICULTY_SELECTION", true),
+            () => GameSceneManager.UnloadScene("TITLE"),
             () => GameManager.IsPractice = true,
             () => GameManager.StartGame(),
             () => ClearEvents());
 
         //Set up Exit Selected Event
-        ExitSelected = EventManager.AddNewEvent(102, "ExitSelected", 
-            () => Application.Quit(), 
+        ExitSelected = EventManager.AddEvent(102, "ExitSelected",
+            () => Application.Quit(),
             () => ClearEvents());
     }
 

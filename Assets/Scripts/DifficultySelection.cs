@@ -26,15 +26,26 @@ public class DifficultySelection : SelectionObject
             _difficultyIndex = difficultyMenu.index;
             Debug.Log($"You have selected {_difficultyIndex}");
             GameManager.UpdateGameDifficulty(_difficultyIndex);
+            GameSceneManager.UnloadScene("DIFFICULTY_SELECTION");
+            GameSceneManager.LoadScene("CHARACTER_SELECTION", true);
+        }
+    }
+
+    void OnCancel()
+    {
+        if (readyToSelect)
+        {
+            Debug.Log("Cancelled Difficulty");
+            GameSceneManager.UnloadScene("DIFFICULTY_SELECTION");
+            GameSceneManager.LoadScene("TITLE", true);
         }
     }
 
     public override void SetupEvents()
     {
-        _onSelectPrevious = EventManager.AddNewEvent(090, "onDifficultySelectPrevious", difficultyMenu.OnClickHorizontalPrev);
-
-        _onSelectNext = EventManager.AddNewEvent(091, "onDifficultySelectNext", difficultyMenu.OnClickHorizontalNext);
-
-        _onConfirm = EventManager.AddNewEvent(092, "onDifficultyConfirm", OnConfirm);
+        _onSelectPrevious = EventManager.AddEvent(090, "onDifficultySelectPrevious", difficultyMenu.OnClickHorizontalPrev);
+        _onSelectNext = EventManager.AddEvent(091, "onDifficultySelectNext", difficultyMenu.OnClickHorizontalNext);
+        _onConfirm = EventManager.AddEvent(092, "onDifficultyConfirm", OnConfirm);
+        _onCancel = EventManager.AddEvent(093, "onDifficultyCancel", OnCancel);
     }
 }

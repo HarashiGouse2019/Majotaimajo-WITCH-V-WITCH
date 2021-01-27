@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        } 
+        }
         #endregion
 
         foreach (Audio a in getAudio)
@@ -58,6 +58,7 @@ public class AudioManager : MonoBehaviour
             a.source.playOnAwake = false;
         }
     }
+
     /// <summary>
     /// Play audio and adjust its volume.
     /// </summary>

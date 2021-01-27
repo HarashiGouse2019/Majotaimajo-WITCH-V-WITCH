@@ -264,7 +264,7 @@ public class PlayerPawn : Pawn
             {
                 if (GameManager.Instance.GetPlayerLives() < 1 && !GameManager.Instance.NoDeaths)
                 {
-                    GameSceneManager.Instance.LoadScene("RECORDSANDHIGHSCORE");
+                    GameSceneManager.LoadScene("RECORDSANDHIGHSCORE", false);
                 }
 
                 if (isVisible)

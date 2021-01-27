@@ -12,7 +12,7 @@ public class BallotItem : Item, IEventSetup
     }
     public void SetupEvents()
     {
-        EV_OnUse = EventManager.AddNewEvent(200, "Increase Magic 50+",
+        EV_OnUse = EventManager.AddEvent(200, "Increase Magic 50+",
             () => GameManager.Instance.IncrementMagic(50f));
     }
 }

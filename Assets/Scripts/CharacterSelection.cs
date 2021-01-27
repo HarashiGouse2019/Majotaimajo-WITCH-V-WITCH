@@ -54,9 +54,19 @@ public class CharacterSelection : SelectionObject
         DisplayProfile();
     }
 
-    void ConfirmCharacter()
+    void OnConfirm()
     {
         GameManager.UpdateGamePlayer(_characterIndex);
+        Debug.Log($"You've selected to play as {profiles[_characterIndex].GetName()}");
+        GameSceneManager.LoadScene("STAGE1_GRASSLANDS", false);
+    }
+
+    void OnCancel()
+    {
+        Debug.Log("Cancelled Character");
+        GameSceneManager.UnloadScene("CHARACTER_SELECTION");
+        GameSceneManager.LoadScene("DIFFICULTY_SELECTION", true);
+        
     }
 
     void UpdateCurrentProfile()
@@ -91,8 +101,9 @@ public class CharacterSelection : SelectionObject
 
     public override void SetupEvents()
     {
-        _onSelectPrevious = EventManager.AddNewEvent(190, "onCharacterSelectPrevious", PreviousCharacter);
-        _onSelectNext = EventManager.AddNewEvent(191, "onCharacterSelectNext", NextCharacter);
-        _onConfirm = EventManager.AddNewEvent(192, "onCharacterConfirm", ConfirmCharacter);
+        _onSelectPrevious = EventManager.AddEvent(190, "onCharacterSelectPrevious", PreviousCharacter);
+        _onSelectNext = EventManager.AddEvent(191, "onCharacterSelectNext", NextCharacter);
+        _onConfirm = EventManager.AddEvent(192, "onCharacterConfirm", OnConfirm);
+        _onCancel = EventManager.AddEvent(193, "onCharacterCancel", OnCancel);
     }
 }

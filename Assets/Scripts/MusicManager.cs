@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour
     private static MusicManager Instance;
 
     [System.Serializable]
-    public class Audio
+    public class Music
     {
         public string name; // Name of the audio
 
@@ -39,7 +39,7 @@ public class MusicManager : MonoBehaviour
 
     public Slider musicVolumeAdjust; //Reference to our volume sliders
 
-    public Audio[] getMusic;
+    public Music[] getMusic;
 
     public static string NowPlaying;
 
@@ -62,7 +62,7 @@ public class MusicManager : MonoBehaviour
         }
         #endregion
 
-        foreach (Audio a in getMusic)
+        foreach (Music a in getMusic)
         {
             a.source = gameObject.AddComponent<AudioSource>();
 
@@ -74,6 +74,7 @@ public class MusicManager : MonoBehaviour
             a.source.outputAudioMixerGroup = musicMixer;
         }
     }
+
     /// <summary>
     /// Play audio and adjust its volume.
     /// </summary>
@@ -87,7 +88,7 @@ public class MusicManager : MonoBehaviour
 
     public static void Play(string _name, float _volume = 100, bool _oneShot = false)
     {
-        Audio a = Array.Find(Instance.getMusic, sound => sound.name == _name);
+        Music a = Array.Find(Instance.getMusic, sound => sound.name == _name);
         if (a == null)
         {
             Debug.LogWarning("Sound name " + _name + " was not found.");
@@ -116,7 +117,7 @@ public class MusicManager : MonoBehaviour
     }
     public static void Stop(string _name)
     {
-        Audio a = Array.Find(Instance.getMusic, sound => sound.name == _name);
+        Music a = Array.Find(Instance.getMusic, sound => sound.name == _name);
         if (a == null)
         {
             Debug.LogWarning("Music name " + _name + " was not found.");
@@ -131,7 +132,7 @@ public class MusicManager : MonoBehaviour
 
     public AudioClip GetAudio(string _name, float _volume = 100)
     {
-        Audio a = Array.Find(getMusic, sound => sound.name == _name);
+        Music a = Array.Find(getMusic, sound => sound.name == _name);
         if (a == null)
         {
             Debug.LogWarning("Music name " + _name + " was not found.");
@@ -147,7 +148,7 @@ public class MusicManager : MonoBehaviour
 
     public static void StopNowPlaying()
     {
-        Audio a = Array.Find(Instance.getMusic, sound => sound.name == NowPlaying);
+        Music a = Array.Find(Instance.getMusic, sound => sound.name == NowPlaying);
 
         if (a == null) return;
         

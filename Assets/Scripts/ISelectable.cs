@@ -1,48 +1,58 @@
-﻿using System.Collections;
+﻿using Extensions;
+using System.Collections;
 using UnityEngine;
 using static Keymapper;
 
-internal interface ISelectable
+internal partial interface ISelectable
 {
     EventManager.Event _onSelectNext { get; set; }
     EventManager.Event _onSelectPrevious { get; set; }
     EventManager.Event _onConfirm { get; set; }
+    EventManager.Event _onCancel { get; set; }
     int selectionIndex { get; set; }
     void SelectionCycle();
-
 }
 
-public class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
+public partial class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
 {
     public EventManager.Event _onSelectNext { get; set; }
     public EventManager.Event _onSelectPrevious { get; set; }
     public EventManager.Event _onConfirm { get; set; }
+    public EventManager.Event _onCancel { get; set; }
     public int selectionIndex { get; set; }
+
+    void Awake()
+    {
+        SetupEvents();
+    }
 
     void Start()
     {
-        SetupEvents();
-        StartCoroutine(Routine());
-    }
-    
-    IEnumerator Routine()
-    {
-        while (true)
-        {
-            SelectionCycle();
-            yield return null;
-        }
+        Routine.Start();
     }
 
-    public virtual void SelectionCycle()
+    IEnumerator Routine
     {
-        ControlAction("left", false, _onSelectPrevious ?? null);
-        ControlAction("right", false, _onSelectNext ?? null);
-        ControlAction("start", false, _onConfirm ?? null);
+        get
+        {
+            while (true)
+            {
+                SelectionCycle();
+                yield return null;
+            }
+        }
     }
 
     public virtual void SetupEvents()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public void SelectionCycle()
+    {
+        ControlAction("left", false, _onSelectPrevious);
+        ControlAction("right", false, _onSelectNext);
+        ControlAction("start", false, _onConfirm);
+        ControlAction("cancel", false, _onCancel);
     }
 }
