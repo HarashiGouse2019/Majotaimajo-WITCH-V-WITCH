@@ -33,6 +33,11 @@ namespace Extensions
         {
             CoroutineHandler.Execute(enumerator);
         }
+
+        public static void Stop(this IEnumerator enumerator)
+        {
+            CoroutineHandler.Halt(enumerator);
+        }
     }
 
     [ImmutableObject(true), Serializable]

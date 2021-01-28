@@ -11,6 +11,11 @@ public class Stage : MonoBehaviour
     [SerializeField]
     private StageMap[] difficultyStageMaps = new StageMap[3];
 
+    private void OnEnable()
+    {
+        LoadStageMap();
+    }
+
     public void PlayStageTheme()
     {
         stageTheme.Play();
@@ -21,26 +26,11 @@ public class Stage : MonoBehaviour
         stageBossTheme.Play();
     }
 
-    public StageMap LoadStageMap(string mapName)
+    public StageMap LoadStageMap()
     {
-        StageMap mapToLoad = Find(mapName);
-        //TODO: Do whatever with this data;
+        StageMap stageToLoad = difficultyStageMaps[GameManager.DifficultyIndex];
 
-        return mapToLoad;
-    }
-
-    StageMap Find(string name)
-    {
-        if (difficultyStageMaps != null || difficultyStageMaps.Length == 0)
-            return null;
-
-        for (int index = 0; index < difficultyStageMaps.Length; index++)
-        {
-            StageMap currentStageMap = difficultyStageMaps[index];
-            if (currentStageMap.MapName.Equals(name))
-                return currentStageMap;
-        }
-
-        return null;
+        Debug.Log($"Loaded in StageMap: {stageToLoad.MapName}");
+        return stageToLoad;
     }
 }

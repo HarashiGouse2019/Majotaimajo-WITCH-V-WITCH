@@ -11,11 +11,5 @@ public class StageMap : ScriptableObject
     [SerializeField]
     private string mapName;
 
-    public string MapName
-    {
-        get
-        {
-            return mapName;
-        }
-    }
+    public string MapName => mapName;
 }

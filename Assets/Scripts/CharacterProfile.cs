@@ -22,6 +22,9 @@ public class CharacterProfile : ScriptableObject
     [SerializeField, Range(1, 5)]
     private int speedStat, powerStat, annoyanceStat, priorityStat, magicStat, knowledgeStat, evasivenessStat;
 
+    [SerializeField]
+    private SpriteBank characterSpriteBank;
+
     public string GetName()
     {
         return characterName;
@@ -45,6 +48,11 @@ public class CharacterProfile : ScriptableObject
     public Stats.StatsAttribute GetAttribute()
     {
         return characterAttribute;
+    }
+
+    public SpriteBank GetSpriteBank()
+    {
+        return characterSpriteBank;
     }
 
     public int GetSpeed()

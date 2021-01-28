@@ -8,6 +8,9 @@ using Extensions;
 public class TitleSelection : MonoBehaviour, IEventSetup
 {
     [SerializeField]
+    MusicTheme FLOMOST;
+
+    [SerializeField]
     Color selectedColor, unselectedColor, unavaliableColor;
 
     [SerializeField]
@@ -50,6 +53,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
 
     void Start()
     {
+        FLOMOST.Play();
         GetSelections();
     }
 
@@ -76,6 +80,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 {
                     unavailableObjects.Add(obj);
                     obj.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("NullImage");
+                    obj.GetComponentInChildren<Image>().gameObject.SetActive(false);
                 }
             }
         }
@@ -181,7 +186,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
         }
 
 
-        for (int index = 0; index < unavailableObjects.Count; index++)
+        for (int index = 0 ; index < unavailableObjects.Count; index++)
         {
             TextMeshProUGUI unavaliableText = unavailableObjects[index];
             unavaliableText.fontSize = unselectedFontSize;

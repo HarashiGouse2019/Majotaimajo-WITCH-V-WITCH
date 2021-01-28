@@ -3683,7 +3683,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1834879816}
   - component: {fileID: 1834879817}
-  - component: {fileID: 1834879819}
   m_Layer: 0
   m_Name: GamePlayGrid
   m_TagString: Untagged
@@ -3721,19 +3720,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &1834879819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834879815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9b35b50cb7f07f4ca7362d25133bd07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeSong: Searching For Lost Ones
 --- !u!1 &1839753831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3839,86 @@ Transform:
   - {fileID: 1834879816}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1900295843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1900295847}
+  - component: {fileID: 1900295846}
+  - component: {fileID: 1900295845}
+  - component: {fileID: 1900295844}
+  m_Layer: 0
+  m_Name: StageConfig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1900295844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900295843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b35b50cb7f07f4ca7362d25133bd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeSong: Decently Promising Sakura
+--- !u!114 &1900295845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900295843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b35b50cb7f07f4ca7362d25133bd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeSong: Searching For Lost Ones
+--- !u!114 &1900295846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900295843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7233e6012dac34db0908ef6af600e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageName: Grasslands
+  stageTheme: {fileID: 1900295845}
+  stageBossTheme: {fileID: 1900295844}
+  difficultyStageMaps:
+  - {fileID: 11400000, guid: 4b9fa9de4ce1b5740a1f12699af08e22, type: 2}
+  - {fileID: 11400000, guid: 2bda19fe4abdc7944b8b6510545ce719, type: 2}
+  - {fileID: 11400000, guid: 2a00783b62b34fa458be87890b741278, type: 2}
+  - {fileID: 11400000, guid: 17c19e3f729bfc54bab83dd19309f07a, type: 2}
+  - {fileID: 11400000, guid: fb422024f0abdf94c8589d73ce1dfc45, type: 2}
+--- !u!4 &1900295847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900295843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1330.4845, y: 557.7736, z: -1258.7977}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946058862
 GameObject:

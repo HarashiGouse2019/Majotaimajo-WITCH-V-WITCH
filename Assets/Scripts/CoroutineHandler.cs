@@ -6,4 +6,9 @@ public sealed class CoroutineHandler : Singleton<CoroutineHandler>
     {
         Instance.StartCoroutine(enumerator);
     }
+
+    public static void Halt(IEnumerator enumerator)
+    {
+        Instance.StopCoroutine(enumerator);
+    }
 }

@@ -56,11 +56,12 @@ public class GameManager : MonoBehaviour
     readonly float flashVal = 255f;
     float rVal, gVal, bVal;
 
-    static int _DifficultyIndex = 0;
+    public static int DifficultyIndex { get; private set; } = 0;
 
     List<ExposeAs> exposedObj = new List<ExposeAs>();
 
-    static int _CharacterIndex;
+    public static SpriteBank CharacterSpriteBank { get; private set; }
+    public static Stats CharacterStats { get; private set; }
     #endregion
 
 
@@ -347,12 +348,17 @@ public class GameManager : MonoBehaviour
 
     public static void UpdateGameDifficulty(int difficultyLevel)
     {
-        _DifficultyIndex = difficultyLevel;
+        DifficultyIndex = difficultyLevel;
     }
 
-    public static void UpdateGamePlayer(int characterIndex)
+    public static void UpdateStats(Stats stats)
     {
-        _CharacterIndex = characterIndex;
+        CharacterStats = stats;
+    }
+
+    public static void UpdateSpriteBank(SpriteBank spriteBank)
+    {
+        CharacterSpriteBank = spriteBank;
     }
 
     void DisableMouseControls()

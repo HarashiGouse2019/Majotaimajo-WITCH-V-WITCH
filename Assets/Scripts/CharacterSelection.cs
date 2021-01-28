@@ -57,23 +57,23 @@ public class CharacterSelection : SelectionObject
 
     void OnConfirm()
     {
-        GameManager.UpdateGamePlayer(_characterIndex);
-        Debug.Log($"You've selected to play as {profiles[_characterIndex].GetName()}");
-        GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
+        GameManager.UpdateSpriteBank(currentProfile.GetSpriteBank());
+        GameManager.UpdateStats(currentProfile.InitStatValues());
+        Debug.Log($"You've selected to play as {currentProfile.GetName()}");
+        GameSceneManager.LoadScene("WITCH_SIGN");
     }
 
     void OnCancel()
     {
         Debug.Log("Cancelled Character");
         GameSceneManager.LoadScene("DIFFICULTY_SELECTION");
-        
     }
 
     void UpdateCurrentProfile()
     {
         _characterIndex = (_characterIndex > profiles.Length - 1) ?
-            _characterIndex - profiles.Length : (_characterIndex < 0) ?
-            _characterIndex + profiles.Length : _characterIndex; 
+        _characterIndex - profiles.Length : (_characterIndex < 0) ?
+        _characterIndex + profiles.Length : _characterIndex; 
 
         currentProfile = profiles[_characterIndex];
     }
