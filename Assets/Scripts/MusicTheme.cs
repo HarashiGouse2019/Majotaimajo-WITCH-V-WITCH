@@ -4,7 +4,7 @@ public class MusicTheme : MonoBehaviour
 {
     [SerializeField] string themeSong;
 
-    private void Start()
+    public void Play()
     {
        MusicManager.Play(themeSong);
     }

@@ -97,8 +97,7 @@ public class TitleSelection : MonoBehaviour, IEventSetup
     /// Read for user input
     /// </summary>
     void ReadInput()
-    {
-
+    { 
         if (!keyDown)
         {
             horizontalDir = Input.GetAxisRaw("Horizontal");
@@ -134,8 +133,6 @@ public class TitleSelection : MonoBehaviour, IEventSetup
                 UpdateTextUI();
                 AudioManager.Play("CursorMovement");
             }
-
-
 
             //Button is down
             keyDown = true;
