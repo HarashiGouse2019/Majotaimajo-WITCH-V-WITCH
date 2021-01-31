@@ -86,7 +86,7 @@ public class CharacterProfile : ScriptableObject
         return characterAttribute;
     }
 
-    public RuntimeAnimatorController GetSpriteBank()
+    public RuntimeAnimatorController GetRAC()
     {
         return characterAnimationController;
     }

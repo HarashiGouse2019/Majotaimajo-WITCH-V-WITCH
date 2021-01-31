@@ -1671,8 +1671,8 @@ GameObject:
   - component: {fileID: 858977141}
   - component: {fileID: 858977143}
   - component: {fileID: 858977142}
-  - component: {fileID: 858977145}
   - component: {fileID: 858977144}
+  - component: {fileID: 858977145}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1721,7 +1721,6 @@ MonoBehaviour:
   - {fileID: 1885529079}
   controller: {fileID: 858977143}
   pawnEmitterPrefab: {fileID: 1252690542}
-  radius: 5.5
   emitter: {fileID: 2096425460}
 --- !u!114 &858977143
 MonoBehaviour:
@@ -1763,13 +1762,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 858977140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27b0260bd211fc4c9b083399bbfde27, type: 3}
+  m_Script: {fileID: 11500000, guid: 59b817e197ef2ef4f97785ba996d0d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellInUse: {fileID: 0}
-  spells: []
-  spellIndex: 0
-  initializeOnStart: 0
+  characterBodyController: {fileID: 1252690545}
 --- !u!1 &866856566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,7 +2080,7 @@ Transform:
   m_GameObject: {fileID: 1252690542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0029997826, y: 0.32541165, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 2, z: 1}
   m_Children:
   - {fileID: 1723832861}
   - {fileID: 4552269971556602108}
@@ -2128,7 +2124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: 21300000, guid: 0bcfecf4d6ed011498bdcb3cc763c688, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1bbc474a7b80fd48b32abc6faa3c066, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2149,7 +2145,7 @@ Animator:
   m_GameObject: {fileID: 1252690542}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b8f7bc210d4fe04ab6afa9e874b0c6f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

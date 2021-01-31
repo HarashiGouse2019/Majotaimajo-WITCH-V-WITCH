@@ -57,7 +57,7 @@ public class CharacterSelection : SelectionObject
 
     void OnConfirm()
     {
-        GameManager.UpdateSpriteBank(currentProfile.GetSpriteBank());
+        GameManager.UpdateCharacterRAC(currentProfile.GetRAC());
         GameManager.UpdateStats(currentProfile.InitStatValues());
         Debug.Log($"You've selected to play as {currentProfile.GetName()}");
         GameManager.StartGame();

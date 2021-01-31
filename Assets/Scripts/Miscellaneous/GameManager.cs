@@ -368,7 +368,7 @@ public class GameManager : MonoBehaviour
         CharacterStats = stats;
     }
 
-    public static void UpdateSpriteBank(RuntimeAnimatorController animatorController)
+    public static void UpdateCharacterRAC(RuntimeAnimatorController animatorController)
     {
         CharacterAnimatorController = animatorController;
     }

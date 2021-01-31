@@ -30,4 +30,5 @@ MonoBehaviour:
   magicStat: 30
   knowledgeStat: 22
   evasivenessStat: 12
-  characterAnimationController: {fileID: 0}
+  characterAnimationController: {fileID: 9100000, guid: 66c5f8e17609f8346942832de6b33d08,
+    type: 2}

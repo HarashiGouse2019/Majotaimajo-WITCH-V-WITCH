@@ -5,6 +5,13 @@ using Extensions;
 
 public class PlayerPawn : Pawn
 {
+    public enum AnimationMotion { 
+        Idle = 0,
+        MoveLeft = 1,
+        MoveRight = 2
+    }
+
+
     public static new PlayerPawn Instance;
 
     public EnemyPawn target;
@@ -38,6 +45,13 @@ public class PlayerPawn : Pawn
 
     //Player Stats
     Stats PlayerStats;
+
+    string[] motionNames =
+    {
+        "Idle",
+        "MoveLeft",
+        "MoveRight"
+    };
 
     private void Awake()
     {
@@ -96,6 +110,13 @@ public class PlayerPawn : Pawn
             }
         }
         catch { /*These hands!*/}
+
+        ChangeMotion(AnimationMotion.Idle);
+    }
+
+    public void ChangeMotion(AnimationMotion newMotion)
+    {
+        characterAnimator.Play(motionNames[(int)newMotion]);
     }
 
     public T GetEmitter<T>() where T : Emitter => (T)System.Convert.ChangeType(emitter, typeof(T));
