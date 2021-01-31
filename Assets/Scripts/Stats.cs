@@ -53,13 +53,17 @@ public class Stats
     //Ravens Default Stats
     //Get 100 + number of plays points
     //And the bosses get much harder with the number of times you play
-    const int DEFAULT_SPEED = 100;
+    const int DEFAULT_SPEED = 10;
     const int DEFAULT_POWER = 5;
     const int DEFAULT_ANNOYANCE = 3;
     const int DEFAULT_PRIORITY = 13;
     const int DEFAULT_MAGIC = 25;
     const int DEFAULT_KNOWLEDGE = 10;
-    const int DEFAULT_EVASIVENESS = 120;
+    const int DEFAULT_EVASIVENESS = 2;
+
+    public const int HIGH_RANK_VALUE = 30;
+    public const int MIN_RATING = 1;
+    public const int MAX_RATING = 5;
     const int ZERO = 0;
     const StatsAttribute DEFAULT_ATTRIBUTE = StatsAttribute.MAGIC;
 
@@ -69,13 +73,13 @@ public class Stats
     {
         StartingProminentAttribute = prominentAttribute;
 
-        BaseSpeed       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.SPEED           ? speed / PROMINENT_ATTRIBUTE_BONUS         : speed);
-        BasePower       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.POWER           ? power / PROMINENT_ATTRIBUTE_BONUS         : power);
-        BaseAnnoyance   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.ANNOYANCE       ? annoyance / PROMINENT_ATTRIBUTE_BONUS     : annoyance);
-        BasePriority    = Mathf.RoundToInt(prominentAttribute == StatsAttribute.BASEPRIORITY    ? basePriority / PROMINENT_ATTRIBUTE_BONUS  : basePriority);
-        BaseMagic       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.MAGIC           ? magic / PROMINENT_ATTRIBUTE_BONUS         : magic);
-        BaseKnowledge   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.KNOWLEDGE       ? knowledge / PROMINENT_ATTRIBUTE_BONUS     : knowledge);
-        BaseEvasiveness = Mathf.RoundToInt(prominentAttribute == StatsAttribute.EVASIVENESS     ? evasiveness / PROMINENT_ATTRIBUTE_BONUS   : evasiveness);
+        BaseSpeed       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.SPEED           ? speed         + (speed        * PROMINENT_ATTRIBUTE_BONUS)    : speed         );
+        BasePower       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.POWER           ? power         + (power        * PROMINENT_ATTRIBUTE_BONUS)    : power         );
+        BaseAnnoyance   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.ANNOYANCE       ? annoyance     + (annoyance    * PROMINENT_ATTRIBUTE_BONUS)    : annoyance     );
+        BasePriority    = Mathf.RoundToInt(prominentAttribute == StatsAttribute.BASEPRIORITY    ? basePriority  + (basePriority * PROMINENT_ATTRIBUTE_BONUS)    : basePriority  );
+        BaseMagic       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.MAGIC           ? magic         + (magic        * PROMINENT_ATTRIBUTE_BONUS)    : magic         );
+        BaseKnowledge   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.KNOWLEDGE       ? knowledge     + (knowledge    * PROMINENT_ATTRIBUTE_BONUS)    : knowledge     );
+        BaseEvasiveness = Mathf.RoundToInt(prominentAttribute == StatsAttribute.EVASIVENESS     ? evasiveness   + (evasiveness  * PROMINENT_ATTRIBUTE_BONUS)    : evasiveness   );
     }
 
     /// <summary>
@@ -98,9 +102,7 @@ public class Stats
         int knowledge                       = DEFAULT_KNOWLEDGE, 
         int evasiveness                     = DEFAULT_EVASIVENESS, 
         StatsAttribute prominentAttribute   = DEFAULT_ATTRIBUTE)
-    {
-        return new Stats(speed, power, annoyance, basePriority, magic, knowledge, evasiveness, prominentAttribute);
-    }
+    { return new Stats(speed, power, annoyance, basePriority, magic, knowledge, evasiveness, prominentAttribute);}
 
     /// <summary>
     /// Upgrade a value by a certain amount
@@ -206,6 +208,12 @@ public class Stats
             EvasivenessEnhancementValue);
 
         CurrentLevel = cumulativePoints / 5;
+    }
+
+    public static int DetermineStatValueRating(int statValue)
+    {
+        //Any state that is at or above 30 is considered 5 star
+        return Mathf.CeilToInt((float)statValue / (float)HIGH_RANK_VALUE * (float)MAX_RATING);
     }
 
     //Get the current level of player

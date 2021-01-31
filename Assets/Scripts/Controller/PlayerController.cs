@@ -1,30 +1,33 @@
-﻿using System.Collections;
-using UnityEngine;
-
+﻿using UnityEngine;
 using static Keymapper;
 using Extensions;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-  
+
 
     #region Private Members
     //Reference Pawn
     PlayerPawn pawn;
     GameManager manager;
+    IEnumerator controlCycle, movementCycle, magicCycle;
     #endregion
 
     // Start is called before the first frame update
     void Awake()
     {
         pawn = GetComponent<PlayerPawn>();
+        controlCycle = InitControlsCycle();
+        movementCycle = InitMovementCycle(Time.deltaTime);
+        magicCycle = MagicUseCycle(0.01f);
     }
 
     private void Start()
     {
-        InitControlsCycle().Start();
-        InitMovementCycle().Start();
-        MagicUseCycle(0.01f).Start();
+        controlCycle.Start();
+        movementCycle.Start();
+        magicCycle.Start();
     }
 
     IEnumerator InitControlsCycle()
@@ -49,17 +52,24 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (OnKey("shoot"))
+
+            ControlAction("shoot", true,
+            //OnKeyPressed
+            () =>
             {
                 if (GameManager.Instance.GetPlayerMagic() > 0)
                 {
                     pawn.Shoot("Crystal");
                     GameManager.Instance.DecrementMagic(0.01f);
-                    pawn.isMagicActivelyUsed = true;
+                    pawn.IsMagicActivelyUsed.Set(true);
                 }
-            }
-            else
-                pawn.isMagicActivelyUsed = false;
+            },
+
+            //OnKeyRelease
+            () => pawn.IsMagicActivelyUsed.Set(false)
+
+            ) ;
+
             yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
         }
     }
@@ -70,11 +80,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("left", true, () =>
         {
             pawn.Left();
-            pawn.isMoving = true;
+            pawn.IsMoving.Set(true);
             return;
         }, () =>
         {
-            pawn.isMoving = false;
+            pawn.Steady();
+            pawn.IsMoving.Set(false);
             return;
         });
 
@@ -82,11 +93,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("right", true, () =>
         {
             pawn.Right();
-            pawn.isMoving = true;
+            pawn.IsMoving.Set(true);
             return;
         }, () =>
         {
-            pawn.isMoving = false;
+            pawn.Steady();
+            pawn.IsMoving.Set(false);
             return;
         });
 
@@ -94,11 +106,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("up", true, () =>
         {
             pawn.Foward();
-            pawn.isMoving = true;
+            pawn.IsMoving.Set(true);
             return;
         }, () =>
         {
-            pawn.isMoving = false;
+            pawn.Steady();
+            pawn.IsMoving.Set(false);
             return;
         });
 
@@ -106,18 +119,19 @@ public class PlayerController : MonoBehaviour
         ControlAction("down", true, () =>
         {
             pawn.Back();
-            pawn.isMoving = true;
+            pawn.IsMoving.Set(true);
             return;
         }, () =>
         {
-            pawn.isMoving = false;
+            pawn.Steady();
+            pawn.IsMoving.Set(false);
             return;
         });
     }
     //Remember, we are controlling pawn!!!
     void InitControls()
     {
-       pawn.isSneaking = OnKey("sneak");
+        pawn.IsOnFocus = OnKey("sneak");
 
         RunSpecial();
     }
@@ -149,6 +163,6 @@ public class PlayerController : MonoBehaviour
         }, () =>
         {
             manager.ActivateSlot(2, false);
-        });  
+        });
     }
 }

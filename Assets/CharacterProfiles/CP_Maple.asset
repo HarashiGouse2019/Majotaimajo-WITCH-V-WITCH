@@ -25,10 +25,11 @@ MonoBehaviour:
     she dropped from the sky, Maple always been with one person; Raven Lilac. Maple
     spends her time teaching Raven new spells. They are technically sisters.\r\n"
   characterAttribute: 5
-  speedStat: 4
-  powerStat: 4
-  annoyanceStat: 2
-  priorityStat: 4
-  magicStat: 5
-  knowledgeStat: 5
-  evasivenessStat: 2
+  speedStat: 25
+  powerStat: 30
+  annoyanceStat: 8
+  priorityStat: 10
+  magicStat: 25
+  knowledgeStat: 30
+  evasivenessStat: 20
+  characterAnimationController: {fileID: 0}

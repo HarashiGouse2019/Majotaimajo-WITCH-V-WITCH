@@ -5,19 +5,19 @@ public class Rating : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Set a rating between 1 - 5")]
-    [Range(minRating, maxRating)]
+    [Range(MIN_RATING, MAX_RATING)]
     private int ratingValue;
 
     [SerializeField]
     private Sprite ratingGraphics;
 
     [SerializeField]
-    private Image[] childImages = new Image[maxRating];
+    private Image[] childImages = new Image[MAX_RATING];
 
     private Sprite nullImage;
 
-    private const int maxRating = 5;
-    private const int minRating = 1;
+    private const int MAX_RATING = 5;
+    private const int MIN_RATING = 1;
     private bool initialized = false;
 
     private void OnEnable()
@@ -33,7 +33,7 @@ public class Rating : MonoBehaviour
 
             childImages = GetComponentsInChildren<Image>();
 
-            for (int index = 0; index < maxRating; index++)
+            for (int index = 0; index < MAX_RATING; index++)
             {
                 if (childImages != null)
                 {
@@ -47,7 +47,7 @@ public class Rating : MonoBehaviour
 
     public Rating SetRating(int value)
     {
-        ratingValue = (ratingValue > maxRating) ? maxRating : (ratingValue < minRating) ? minRating : value;
+        ratingValue = (ratingValue > MAX_RATING) ? MAX_RATING : (ratingValue < MIN_RATING) ? MIN_RATING : value;
         return this;
     }
 
@@ -64,7 +64,7 @@ public class Rating : MonoBehaviour
     void Flush()
     {
         if (!initialized) return;
-        for (int index = 0; index < maxRating; index++)
+        for (int index = 0; index < MAX_RATING; index++)
         {
             if (childImages != null)
             {

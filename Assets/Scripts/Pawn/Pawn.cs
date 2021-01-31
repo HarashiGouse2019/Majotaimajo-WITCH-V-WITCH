@@ -10,6 +10,8 @@ public abstract class Pawn : MonoBehaviour, ICaster
 
     #region Public Members
     //Our movment speeds
+    [SerializeField] protected SpriteRenderer characterRenderer;
+
     public uint priority = 1;
     public uint basePriority;
 
@@ -29,7 +31,6 @@ public abstract class Pawn : MonoBehaviour, ICaster
     protected readonly Timer timer = new Timer(3);
     protected Vector3 xScale;
     protected float xScaleVal;
-    protected SpriteRenderer srenderer;
     protected Rigidbody2D rb;
     protected DanmakuSequencer sequencer;
     

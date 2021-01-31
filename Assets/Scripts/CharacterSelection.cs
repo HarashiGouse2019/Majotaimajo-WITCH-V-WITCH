@@ -60,7 +60,7 @@ public class CharacterSelection : SelectionObject
         GameManager.UpdateSpriteBank(currentProfile.GetSpriteBank());
         GameManager.UpdateStats(currentProfile.InitStatValues());
         Debug.Log($"You've selected to play as {currentProfile.GetName()}");
-        GameSceneManager.LoadScene("WITCH_SIGN");
+        GameManager.StartGame();
     }
 
     void OnCancel()
@@ -80,30 +80,27 @@ public class CharacterSelection : SelectionObject
 
     void DisplayProfile()
     {
-
-        characterName.text = currentProfile.GetName();
-        characterDescription.text = currentProfile.GetDescription();
-
         characterPortrait.sprite = currentProfile.GetPortrait();
 
-        characterBackstory.text = currentProfile.GetBackstory();
-
-        characterAttribute.text = currentProfile.GetAttribute().ToString();
-
-        characterSpeed.SetRating(currentProfile.GetSpeed()).DisplayRating();
-        characterPower.SetRating(currentProfile.GetPower()).DisplayRating();
-        characterAnnoyance.SetRating(currentProfile.GetAnnoyance()).DisplayRating();
-        characterPriority.SetRating(currentProfile.GetPriority()).DisplayRating();
-        characterMagic.SetRating(currentProfile.GetMagic()).DisplayRating();
-        characterKnowledge.SetRating(currentProfile.GetKnowledge()).DisplayRating();
-        characterEvasiveness.SetRating(currentProfile.GetEvasiveness()).DisplayRating();
+        characterName.text          = currentProfile.GetName();
+        characterDescription.text   = currentProfile.GetDescription();
+        characterBackstory.text     = currentProfile.GetBackstory();
+        Stats.DetermineStatValueRating(18);
+        characterAttribute.text     = currentProfile.GetAttribute().            ToString();
+        characterSpeed.             SetRating(currentProfile.SpeedRating).      DisplayRating();
+        characterPower.             SetRating(currentProfile.PowerRating).      DisplayRating();
+        characterAnnoyance.         SetRating(currentProfile.AnnoyanceRating).  DisplayRating();
+        characterPriority.          SetRating(currentProfile.PriorityRating).   DisplayRating();
+        characterMagic.             SetRating(currentProfile.MagicRating).      DisplayRating();
+        characterKnowledge.         SetRating(currentProfile.KnowledgeRating).  DisplayRating();
+        characterEvasiveness.       SetRating(currentProfile.EvasivenessRating).DisplayRating();
     }
 
     public override void SetupEvents()
     {
-        _onSelectPrevious = EventManager.AddEvent(190, "onCharacterSelectPrevious", PreviousCharacter, () => cursorSound.Play());
-        _onSelectNext = EventManager.AddEvent(191, "onCharacterSelectNext", NextCharacter, () => cursorSound.Play());
-        _onConfirm = EventManager.AddEvent(192, "onCharacterConfirm", OnConfirm, () => confirmSound.Play());
-        _onCancel = EventManager.AddEvent(193, "onCharacterCancel", OnCancel, () => cancelSound.Play());
+        _onSelectPrevious   = EventManager.AddEvent(190, "onCharacterSelectPrevious", PreviousCharacter, () => cursorSound.Play());
+        _onSelectNext       = EventManager.AddEvent(191, "onCharacterSelectNext"    , NextCharacter, () => cursorSound.Play());
+        _onConfirm          = EventManager.AddEvent(192, "onCharacterConfirm"       , OnConfirm, () => confirmSound.Play());
+        _onCancel           = EventManager.AddEvent(193, "onCharacterCancel"        , OnCancel, () => cancelSound.Play());
     }
 }

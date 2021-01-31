@@ -420,7 +420,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -522,6 +523,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &377840310
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +746,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -845,6 +849,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &806958341
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +929,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -1025,6 +1032,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1015119740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1112,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -1205,6 +1215,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1021872826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1443,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -1533,6 +1546,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1061901754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1858,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -1945,6 +1961,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1482684254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,7 +2041,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -2125,6 +2144,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1554083143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2298,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -2379,6 +2401,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1707787387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,7 +2481,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -2559,6 +2584,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1858731469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,7 +2664,8 @@ MonoBehaviour:
     topRight: {r: 1, g: 0, b: 0.8200445, a: 1}
     bottomLeft: {r: 0.34124124, g: 0.23113209, b: 1, a: 1}
     bottomRight: {r: 0.6666667, g: 0.6729312, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 575f44a2f5877ca41a0b93799b99c76a,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
@@ -2739,6 +2767,8 @@ MonoBehaviour:
     GameCompletionPercentage: 0
   highlighting: {fileID: 0}
   entryText: {fileID: 0}
+  topEntry: {fileID: 0}
+  bottomEntry: {fileID: 0}
 --- !u!1 &1911534431
 GameObject:
   m_ObjectHideFlags: 0

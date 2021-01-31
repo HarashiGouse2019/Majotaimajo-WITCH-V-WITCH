@@ -9,6 +9,8 @@ public class PlayerPawn : Pawn
 
     public EnemyPawn target;
 
+    public Animator characterAnimator;
+
     [SerializeField]
     private AutoOrbit[] autoOrbitObjs;
 
@@ -19,21 +21,18 @@ public class PlayerPawn : Pawn
     //It will be a prefab
     public GameObject pawnEmitterPrefab;
 
-    public float movementSpeed;
-    public float speedReduction;
-    public float rotationSpeed;
+    public float MovementSpeed { get; set; }
+    public int Evasivness { get; set; }
 
-    public Transform originOfRotation;
+    public float FocusSpeed { get; set; }
+    public float DashSpeed { get; set; }
+    public bool IsMoving { get; set; }
 
-    public float radius = 6f;
-    readonly public float radiusSpeed = 5f;
-    public bool isMoving;
+    public bool IsMagicActivelyUsed { get; set; } = false;
+    public bool IsOnFocus { get; set; } = false;
 
-    public bool isMagicActivelyUsed = false;
-    public bool isSneaking = false;
-
-    const int ZERO = 0;
-
+    private const int ZERO = 0;
+    private const int DOUBLE = 2;
     [SerializeField]
     LinearEmitter emitter;
 
@@ -57,26 +56,25 @@ public class PlayerPawn : Pawn
     //Either circle around Luu, or go towards her.
     private void Start()
     {
-        PlayerStats = Stats.New();
+        PlayerStats = GameManager.CharacterStats;
 
         AssignValuesFromStats();
 
         priority = basePriority;
 
         GameManager.Instance.tRenderer.check = true;
-        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
-        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC));
+        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 100);
+        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 100);
 
         //Get Components
-        srenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         sequencer = GetComponent<DanmakuSequencer>();
         library = GetComponent<SpellLibrary>();
 
-        isVisible = srenderer.isVisible;
+        isVisible = characterRenderer.isVisible;
         xScale = transform.localScale;
         xScaleVal = xScale.x;
-        srendererColor = srenderer.color;
+        srendererColor = characterRenderer.color;
 
         library.SetCaster(this);
 
@@ -92,7 +90,7 @@ public class PlayerPawn : Pawn
         //Read your SpellLibrary, and override GameUi spell text
         try
         {
-            for (int i = 0; i < library.spells.Count; i++)
+            for (int i = ZERO; i < library.spells.Count; i++)
             {
                 GameManager.Instance.SLOTS[i].GetComponentInChildren<TextMeshProUGUI>().text = library.spells[i].name;
             }
@@ -111,8 +109,10 @@ public class PlayerPawn : Pawn
         else
         {
             isVisible = true;
-            srenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
+            characterRenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
         }
+
+
     }
 
     #region Unique
@@ -120,11 +120,11 @@ public class PlayerPawn : Pawn
     IEnumerator FocusCycle()
     {
         while (true)
-        { 
-            for (int index = 0; index < autoOrbitObjs.Length; index++)
+        {
+            for (int index = ZERO; index < autoOrbitObjs.Length; index++)
             {
                 AutoOrbit orbitObj = autoOrbitObjs[index];
-                orbitObj.ChangeRadius(isSneaking);
+                orbitObj.ChangeRadius(IsOnFocus);
             }
 
             yield return null;
@@ -137,8 +137,10 @@ public class PlayerPawn : Pawn
     void AssignValuesFromStats()
     {
         basePriority = (uint)PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.BASEPRIORITY);
-        movementSpeed = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.SPEED);
-        speedReduction = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.EVASIVENESS);
+        MovementSpeed = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.SPEED);
+        Evasivness = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.EVASIVENESS);
+        FocusSpeed = (Evasivness * 10) / MovementSpeed;
+        DashSpeed = MovementSpeed * Evasivness;
     }
 
     /// <summary>
@@ -164,9 +166,9 @@ public class PlayerPawn : Pawn
     {
         while (true)
         {
-            if (!isMagicActivelyUsed && GameManager.Instance.GetPlayerMagic() < 100f)
+            if (!IsMagicActivelyUsed && GameManager.Instance.GetPlayerMagic() < GameManager.MaxMagic)
             {
-                RecoverMagic(0.05f);
+                RecoverMagic(GameManager.MaxMagic * 0.0005f);
             }
 
             yield return new WaitForSeconds(0.025f);
@@ -176,19 +178,19 @@ public class PlayerPawn : Pawn
 
     public override void Shoot(string bulletName)
     {
-        if (recoil == false)
+        EventManager.Watch(recoil == false, () =>
         {
             emitter.SetPawnParent(this);
             emitter.SetBulletInitialSpeed(650);
             emitter.SpawnBullets(1, bulletName);
             AudioManager.Play("Shoot000", _oneShot: true);
             recoil = true;
-        }
+        }, out recoil);
     }
 
     public override bool CheckIfMoving()
     {
-        return isMoving;
+        return IsMoving;
     }
 
     public override void Flip(int _direction)
@@ -204,7 +206,6 @@ public class PlayerPawn : Pawn
                 break;
         }
 
-
         transform.localScale = xScale;
     }
 
@@ -214,33 +215,36 @@ public class PlayerPawn : Pawn
 
         GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true);
 
-        if (GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && library.spellInUse == null)
+        EventManager.Watch(GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && library.spellInUse == null, () =>
         {
             library.spellInUse = spell;
 
             GameManager.Instance.DecrementMagic(spell.magicConsumtion);
 
-            isMagicActivelyUsed = true;
+            IsMagicActivelyUsed = true;
 
             //Increate pawn's priority!!!
             priority += spell.spellPriority;
 
             spell.Activate(this);
-        }
+        }, out bool result);
     }
 
     public override void Wait(float _duration)
     {
         timer.StartTimer(2);
         returnVal = timer.SetFor(_duration, 2);
-        if (returnVal == true) { recoil = false; timer.SetToZero(2, true); }
+
+        EventManager.Watch(returnVal == true, () =>
+        {
+            recoil = false; timer.SetToZero(2, true);
+        }, out returnVal);
     }
 
     public override void Blink(float _duration)
     {
-        if (hit == true)
+        EventManager.Watch(hit, () =>
         {
-
             //Timer for duration
             timer.StartTimer(1);
 
@@ -253,14 +257,15 @@ public class PlayerPawn : Pawn
                 hit = false;
                 timer.SetToZero(1, true);
             }
-        }
+
+        }, out hit);
     }
 
     IEnumerator BlinkCycle(float _blinkRate)
     {
         while (true)
         {
-            if (hit)
+            EventManager.Watch(hit, () =>
             {
                 if (GameManager.Instance.GetPlayerLives() < 1 && !GameManager.Instance.NoDeaths)
                 {
@@ -269,21 +274,22 @@ public class PlayerPawn : Pawn
 
                 if (isVisible)
                 {
-                    Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 0f);
-                    srenderer.color = invisible;
+                    Color invisible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, (float)ZERO);
+                    characterRenderer.color = invisible;
                     isVisible = false;
                 }
                 else
                 {
                     Color visible = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
-                    srenderer.color = visible;
+                    characterRenderer.color = visible;
                     isVisible = true;
                 }
 
-                yield return new WaitForSecondsRealtime(_blinkRate);
-            }
+            }, 
+            out hit
+            );
 
-            yield return null;
+            yield return hit ? new WaitForSecondsRealtime(_blinkRate) : null;
         }
     }
 
@@ -292,37 +298,52 @@ public class PlayerPawn : Pawn
 
         GetOrignatedSpawnPoint objectOrigin = other.GetComponent<GetOrignatedSpawnPoint>();
 
-        if (objectOrigin != null && objectOrigin.pawn != this)
+        EventManager.Watch(objectOrigin != null && objectOrigin.pawn != this, () =>
         {
             if (hit == false)
             {
                 hit = true;
                 GameManager.Instance.DecrementLives();
             }
-        }
+        },
+        out bool result
+        );
     }
 
     public override void Foward()
     {
-        move = new Vector2(rb.velocity.x, (movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10) * Time.fixedDeltaTime;
-        rb.AddForce(move);
-
+        Steady();
+        move.y++;
+        Move();
     }
     public override void Back()
     {
-        move = new Vector2(rb.velocity.x, -(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10) * Time.fixedDeltaTime;
-        rb.AddForce(move);
+        Steady();
+        move.y--;
+        Move();
     }
 
     public override void Left()
     {
-        move = new Vector2(-(movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y) * Time.fixedDeltaTime;
-        rb.AddForce(move);
+        Steady();
+        move.x--;
+        Move();
     }
 
     public override void Right()
     {
-        move = new Vector2((movementSpeed - (isSneaking ? speedReduction / 2 : ZERO)) * 10, rb.velocity.y) * Time.fixedDeltaTime;
-        rb.AddForce(move);
+        Steady();
+        move.x++;
+        Move();
+    }
+
+    void Move()
+    {
+        transform.Translate(move.normalized * (IsOnFocus ? FocusSpeed : MovementSpeed) * Time.deltaTime, Space.Self);
+    }
+
+    public void Steady()
+    {
+        move = Vector3.zero;
     }
 }

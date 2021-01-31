@@ -10,6 +10,11 @@ using Extensions;
 
 public class GameManager : MonoBehaviour
 {
+    //TargetframeRate
+    [SerializeField]
+    private FrameRate targetFrameRate = FrameRate.FPS60;
+    public static FrameRate TargetFrameRate { get => Instance.targetFrameRate; }
+
     #region Public Members
     public static GameManager Instance;
 
@@ -60,8 +65,16 @@ public class GameManager : MonoBehaviour
 
     List<ExposeAs> exposedObj = new List<ExposeAs>();
 
-    public static SpriteBank CharacterSpriteBank { get; private set; }
+    public static RuntimeAnimatorController CharacterAnimatorController { get; private set; }
     public static Stats CharacterStats { get; private set; }
+
+    public static float MaxMagic {
+        get
+        {
+            return Instance.maxMagic;
+        }
+    }
+
     #endregion
 
 
@@ -73,7 +86,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DisableMouseControls();
-            
             DontDestroyOnLoad(this);
         }
         else
@@ -85,6 +97,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = (int)TargetFrameRate;
+
         SceneManager.sceneLoaded += OnLoadedScene;
 
         Configure(
@@ -104,8 +118,6 @@ public class GameManager : MonoBehaviour
        );
 
         UIUpdateCycle(0.0001f).Start();
-
-        
     }
 
     IEnumerator UIUpdateCycle(float delta)
@@ -124,7 +136,7 @@ public class GameManager : MonoBehaviour
     }
     public static void StartGame()
     {
-
+        GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
         switch (IsPractice)
         {
             case true:
@@ -356,9 +368,9 @@ public class GameManager : MonoBehaviour
         CharacterStats = stats;
     }
 
-    public static void UpdateSpriteBank(SpriteBank spriteBank)
+    public static void UpdateSpriteBank(RuntimeAnimatorController animatorController)
     {
-        CharacterSpriteBank = spriteBank;
+        CharacterAnimatorController = animatorController;
     }
 
     void DisableMouseControls()

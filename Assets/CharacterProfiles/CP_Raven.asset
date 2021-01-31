@@ -23,12 +23,11 @@ MonoBehaviour:
     comes to their members. There are also known for having the strongest witches
     aside from the Witch Cult Serrulata.
   characterAttribute: 4
-  speedStat: 3
-  powerStat: 3
-  annoyanceStat: 4
-  priorityStat: 4
-  magicStat: 5
-  knowledgeStat: 3
-  evasivenessStat: 4
-  characterSpriteBank: {fileID: 11400000, guid: bca0434cb0fa64c4da63a0f08ab16946,
-    type: 2}
+  speedStat: 18
+  powerStat: 20
+  annoyanceStat: 25
+  priorityStat: 8
+  magicStat: 30
+  knowledgeStat: 22
+  evasivenessStat: 12
+  characterAnimationController: {fileID: 0}

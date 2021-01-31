@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
-using System.Collections;
-using Extensions;
 
-public class FPSCounter : Singleton<FPSCounter>
-{
     //FrameRate Options
     public enum FrameRate
     {
@@ -14,9 +10,10 @@ public class FPSCounter : Singleton<FPSCounter>
         UNLIMITED = -1
     }
 
-    //Shows the current fps of the game
-    [SerializeField]
-    private FrameRate targetFrameRate = FrameRate.FPS60;
+public class FPSCounter : Singleton<FPSCounter>
+{
+
+
     private static int fpsAccumulator = 0;
     private static float fpsNextPeriod = 0f;
     private static int currentFPS;
@@ -27,37 +24,26 @@ public class FPSCounter : Singleton<FPSCounter>
 
     //Constants
     const float fpsMeasurePeriod = 0.5f;
-    const string display = "[{0}] FPS";
-
-    void Awake()
-    {
-        Application.targetFrameRate = (int)targetFrameRate;
-    }
+    const string display = "[0] FPS";
 
     // Start is called before the first frame update
     void Start()
     {
-        FPSCounterCycle().Start();
+        fpsNextPeriod = Time.realtimeSinceStartup + fpsMeasurePeriod;
     }
 
-    IEnumerator FPSCounterCycle()
+    // Update is called once per frame
+    void Update()
     {
-        fpsNextPeriod = Time.realtimeSinceStartup + fpsMeasurePeriod;
+        //measure average frames per second
+        fpsAccumulator++;
 
-        while (true)
+        if (fpsText != null && Time.realtimeSinceStartup > fpsNextPeriod)
         {
-            //measure average frames per second
-            fpsAccumulator++;
-
-            if (fpsText != null && Time.realtimeSinceStartup > fpsNextPeriod)
-            {
-                currentFPS = (int)(fpsAccumulator / fpsMeasurePeriod);
-                fpsAccumulator = 0;
-                fpsNextPeriod += fpsMeasurePeriod;
-                fpsText.text = string.Format(display, currentFPS);
-            }
-
-            yield return new WaitForSeconds(0.001f);
+            currentFPS = (int)(fpsAccumulator / fpsMeasurePeriod);
+            fpsAccumulator = 0;
+            fpsNextPeriod += fpsMeasurePeriod;
+            fpsText.text = "[" + currentFPS.ToString() + "] FPS";
         }
     }
 

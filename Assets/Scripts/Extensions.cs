@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using UnityEngine;
 
+#region Extensions
 namespace Extensions
 {
     public static class Convenience
@@ -92,11 +93,12 @@ namespace Extensions
     public static class Boolean
     {
         public static int AsNumericValue(this bool _) => _ ? 1 : 0;
+        public static bool Set(this bool _, bool value) => _ = value;
     }
 
     public static class String
     {
-        #region Extensions
+        
         public static string TryConcat(this string _, params string[] strings)
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -130,7 +132,7 @@ namespace Extensions
                 return;
             }
         }
-        #endregion
-    }
-}
 
+    }        
+}
+#endregion

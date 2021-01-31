@@ -270,6 +270,32 @@ public static class EventManager
     /// <returns></returns>
     public static Event[] GetAllEvents() => Events.ToArray();
 
+    /// <summary>
+    /// Will watch for a certain condition to be met before executing
+    /// an event
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <param name="if"></param>
+    /// <param name="results"></param>
+    public static bool Watch(bool condition, Action @if, out bool results)
+    {
+        if (condition) @if.Invoke();
+        results = condition;
+        return results;
+    }
+
+    /// <summary>
+    /// Will watch for a certain condition to be met before executing
+    /// an event
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <param name="if"></param>
+    /// <param name="results"></param>
+    public static void Watch(bool condition, Event @if, out bool results)
+    {
+        if (condition) @if.Trigger();
+        results = condition;
+    }
     public static void DebugEventList()
     {
         foreach (Event @event in GetAllEvents())

@@ -19,11 +19,47 @@ public class CharacterProfile : ScriptableObject
     [SerializeField]
     private Stats.StatsAttribute characterAttribute;
 
-    [SerializeField, Range(1, 5)]
+    [SerializeField]
     private int speedStat, powerStat, annoyanceStat, priorityStat, magicStat, knowledgeStat, evasivenessStat;
 
+    public int SpeedRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(speedStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+    public int PowerRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(powerStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+    public int AnnoyanceRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(annoyanceStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+    public int PriorityRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(priorityStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+    public int MagicRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(magicStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+    public int KnowledgeRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(knowledgeStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+    public int EvasivenessRating { get
+        {
+            return Mathf.Clamp(Stats.DetermineStatValueRating(evasivenessStat), Stats.MIN_RATING, Stats.MAX_RATING);
+        }
+    }
+
     [SerializeField]
-    private SpriteBank characterSpriteBank;
+    private RuntimeAnimatorController characterAnimationController;
 
     public string GetName()
     {
@@ -50,9 +86,9 @@ public class CharacterProfile : ScriptableObject
         return characterAttribute;
     }
 
-    public SpriteBank GetSpriteBank()
+    public RuntimeAnimatorController GetSpriteBank()
     {
-        return characterSpriteBank;
+        return characterAnimationController;
     }
 
     public int GetSpeed()
@@ -93,5 +129,35 @@ public class CharacterProfile : ScriptableObject
     public Stats InitStatValues()
     {
         return Stats.New(speedStat, powerStat, annoyanceStat, priorityStat, magicStat, knowledgeStat, evasivenessStat, characterAttribute);
+    }
+
+    private void OnValidate()
+    {
+        switch (characterAttribute)
+        {
+            case Stats.StatsAttribute.SPEED:
+                speedStat = Stats.HIGH_RANK_VALUE;
+                break;
+            case Stats.StatsAttribute.POWER:
+                powerStat = Stats.HIGH_RANK_VALUE;
+                break;
+            case Stats.StatsAttribute.ANNOYANCE:
+                annoyanceStat = Stats.HIGH_RANK_VALUE;
+                break;
+            case Stats.StatsAttribute.BASEPRIORITY:
+                priorityStat = Stats.HIGH_RANK_VALUE;
+                break;
+            case Stats.StatsAttribute.MAGIC:
+                magicStat = Stats.HIGH_RANK_VALUE;
+                break;
+            case Stats.StatsAttribute.KNOWLEDGE:
+                knowledgeStat = Stats.HIGH_RANK_VALUE;
+                break;
+            case Stats.StatsAttribute.EVASIVENESS:
+                evasivenessStat = Stats.HIGH_RANK_VALUE;
+                break;
+            default:
+                break;
+        }
     }
 }

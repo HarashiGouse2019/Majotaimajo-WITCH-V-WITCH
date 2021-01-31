@@ -24,10 +24,11 @@ MonoBehaviour:
     sister. So much so that she dedicated herself to be a powerful sorceress just
     like her new caretaker."
   characterAttribute: 6
-  speedStat: 4
-  powerStat: 4
-  annoyanceStat: 3
-  priorityStat: 3
-  magicStat: 3
-  knowledgeStat: 2
-  evasivenessStat: 5
+  speedStat: 18
+  powerStat: 19
+  annoyanceStat: 10
+  priorityStat: 12
+  magicStat: 24
+  knowledgeStat: 10
+  evasivenessStat: 30
+  characterAnimationController: {fileID: 0}
