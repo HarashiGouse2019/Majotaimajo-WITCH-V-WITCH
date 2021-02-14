@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour
     public static RuntimeAnimatorController CharacterAnimatorController { get; private set; }
     public static Stats CharacterStats { get; private set; }
 
-    public static float MaxMagic {
+    public static float MaxMagic
+    {
         get
         {
             return Instance.maxMagic;
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DisableMouseControls();
+            //DisableMouseControls();
             DontDestroyOnLoad(this);
         }
         else
@@ -137,6 +138,7 @@ public class GameManager : MonoBehaviour
     public static void StartGame()
     {
         GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
+        MusicManager.StopNowPlaying();
         switch (IsPractice)
         {
             case true:

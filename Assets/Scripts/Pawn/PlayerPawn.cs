@@ -116,6 +116,7 @@ public class PlayerPawn : Pawn
 
     public void ChangeMotion(AnimationMotion newMotion)
     {
+        if(characterAnimator != null)
         characterAnimator.Play(motionNames[(int)newMotion]);
     }
 

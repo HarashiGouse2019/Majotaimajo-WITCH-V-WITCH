@@ -14,6 +14,7 @@ public class Stage : MonoBehaviour
     private void OnEnable()
     {
         LoadStageMap();
+        PlayStageTheme();
     }
 
     public void PlayStageTheme()
@@ -29,7 +30,7 @@ public class Stage : MonoBehaviour
     public StageMap LoadStageMap()
     {
         StageMap stageToLoad = difficultyStageMaps[GameManager.DifficultyIndex];
-
+        
         Debug.Log($"Loaded in StageMap: {stageToLoad.MapName}");
         return stageToLoad;
     }
