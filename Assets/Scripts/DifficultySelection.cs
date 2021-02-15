@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Extensions;
 
 public class DifficultySelection : SelectionObject
 {

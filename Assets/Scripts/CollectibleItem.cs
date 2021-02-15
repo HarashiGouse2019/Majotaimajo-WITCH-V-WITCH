@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollectibleItem : MonoBehaviour, IEventSetup
+public class CollectibleItem : MonoBehaviour
 {
 
     [SerializeField]

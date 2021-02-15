@@ -107,23 +107,3 @@ public class AudioManager : MonoBehaviour
     }
 
 }
-
-namespace Extensions
-{
-    public static class AudioManagerExtension
-    {
-        public static void Play(this Audio audio, float _volume = 100, bool _oneShot = false)
-        {
-            switch (_oneShot)
-            {
-                case true:
-                    audio.source.PlayOneShot(audio.clip, _volume / 100);
-                    break;
-                default:
-                    audio.source.Play();
-                    audio.source.volume = _volume / 100;
-                    break;
-            }
-        }
-    }
-}

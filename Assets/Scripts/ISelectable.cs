@@ -16,7 +16,7 @@ internal interface ISelectable
     void SelectionCycle();
 }
 
-public abstract class SelectionObject : MonoBehaviour, ISelectable, IEventSetup
+public abstract class SelectionObject : MonoBehaviour, ISelectable
 {
     public EventManager.Event _onSelectNext { get; set; }
     public EventManager.Event _onSelectPrevious { get; set; }

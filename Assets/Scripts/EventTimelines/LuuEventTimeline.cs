@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LuuEventTimeline : EventTimeline, IEventSetup
+public class LuuEventTimeline : EventTimeline
 {
     private LuuPawn Luu;
 

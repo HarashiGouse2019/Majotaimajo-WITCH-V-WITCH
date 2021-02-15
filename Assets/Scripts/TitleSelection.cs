@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Extensions;
 
-public class TitleSelection : MonoBehaviour, IEventSetup
+public class TitleSelection : MonoBehaviour
 {
     [SerializeField]
     MusicTheme FLOMOST;

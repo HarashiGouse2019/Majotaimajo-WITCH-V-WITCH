@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Extensions;
 
 public class CharacterSelection : SelectionObject
 {
-    private int _characterIndex = 0;
     private CharacterProfile currentProfile;
 
     [SerializeField]
@@ -43,14 +41,14 @@ public class CharacterSelection : SelectionObject
 
     void NextCharacter()
     {
-        _characterIndex++;
+        selectionIndex++;
         UpdateCurrentProfile();
         DisplayProfile();
     }
 
     void PreviousCharacter()
     {
-        _characterIndex--;
+        selectionIndex--;
         UpdateCurrentProfile();
         DisplayProfile();
     }
@@ -71,11 +69,11 @@ public class CharacterSelection : SelectionObject
 
     void UpdateCurrentProfile()
     {
-        _characterIndex = (_characterIndex > profiles.Length - 1) ?
-        _characterIndex - profiles.Length : (_characterIndex < 0) ?
-        _characterIndex + profiles.Length : _characterIndex; 
+        selectionIndex = (selectionIndex > profiles.Length - 1) ?
+        selectionIndex - profiles.Length : (selectionIndex < 0) ?
+        selectionIndex + profiles.Length : selectionIndex; 
 
-        currentProfile = profiles[_characterIndex];
+        currentProfile = profiles[selectionIndex];
     }
 
     void DisplayProfile()

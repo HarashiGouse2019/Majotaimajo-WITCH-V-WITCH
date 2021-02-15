@@ -33,7 +33,7 @@ TagManager:
   - Title
   - Collector
   - Emitter
-  - 
+  - PPBlurFilter
   - 
   - 
   - 
@@ -55,4 +55,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VisualEffects
+    uniqueID: 1072521599
+    locked: 0
+  - name: Normal
+    uniqueID: 3699721357
     locked: 0

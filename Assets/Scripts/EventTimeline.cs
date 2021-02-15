@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class EventTimeline : MonoBehaviour, IEventSetup
+public abstract class EventTimeline : MonoBehaviour
 {
     public class TimelineException : Exception
     {

@@ -354,10 +354,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLoadedScene(Scene _scene, LoadSceneMode mode)
     {
-        BallotItem newBallotItem = new BallotItem();
 
-        if (newBallotItem != null && _scene.name == "STAGE1_GRASSLANDS")
-            ItemInventory.AddNewItem(0, newBallotItem, 3);
     }
 
     public static void UpdateGameDifficulty(int difficultyLevel)
