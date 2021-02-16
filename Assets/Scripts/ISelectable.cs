@@ -32,29 +32,31 @@ public abstract class SelectionObject : MonoBehaviour, ISelectable
         SetupEvents();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         cursorSound = AudioManager.Find("selection");
         confirmSound = AudioManager.Find("confirmSelection");
         cancelSound = AudioManager.Find("cancelSelection");
-        StartCoroutine(Routine);
+        StartCoroutine(Routine());
     }
 
-    private IEnumerator Routine
+    protected void OnEnable()
     {
-        get
+        StartCoroutine(Routine());
+    }
+
+    private IEnumerator Routine()
+    {
+        while (true)
         {
-            while (true)
-            {
-                SelectionCycle();
-                yield return null;
-            }
+            SelectionCycle();
+            yield return null;
         }
     }
 
     public virtual void SetupEvents()
     {
-        
+
     }
 
     public void SelectionCycle()

@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     public int timesHit;
 
     public static bool IsPractice = false;
+    public static bool HasGameStarted = false;
+    public static bool IsPlayerAlive = false;
     #endregion
 
     #region Private Members
@@ -82,6 +84,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        SetRatio(3, 2);
+
         #region Singleton
         if (Instance == null)
         {
@@ -137,18 +141,25 @@ public class GameManager : MonoBehaviour
     }
     public static void StartGame()
     {
-        GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
+        
         MusicManager.StopNowPlaying();
+        
         switch (IsPractice)
         {
             case true:
+                GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
                 Instance.SetPlayerLives(6);
                 break;
 
             case false:
+                GameSceneManager.LoadScene("STAGE1_GRASSLANDS");
                 Instance.SetPlayerLives(3);
                 break;
         }
+
+        //At this moment, game has started and player is considered alive
+        HasGameStarted = true;
+        IsPlayerAlive = HasGameStarted;
     }
 
     /// <summary>
@@ -196,31 +207,6 @@ public class GameManager : MonoBehaviour
     {
         magic -= _value;
         MAGIC.value = magic;
-    }
-
-    /// <summary>
-    /// Activate a slot based on the key pressed (A, S, or D)
-    /// </summary>
-    /// <param name="_slotIndex"></param>
-    /// <param name="_on"></param>
-    public void ActivateSlot(int _slotIndex, bool _on)
-    {
-
-        switch (_on)
-        {
-            case true:
-                rVal = SLOTS[_slotIndex].color.r;
-                gVal = SLOTS[_slotIndex].color.g;
-                bVal = SLOTS[_slotIndex].color.b;
-
-                SLOTS[_slotIndex].color = new Color(rVal, flashVal, bVal);
-
-                break;
-            case false:
-                SLOTS[_slotIndex].color = new Color(rVal, gVal, bVal);
-
-                break;
-        }
     }
 
     /// <summary>
@@ -376,5 +362,13 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    void SetRatio(float width, float height)
+    {
+        if (((float)Screen.width) / ((float)Screen.height) > width / height)
+            Screen.SetResolution((int)(((float)Screen.height) * (width/height)), Screen.height, true);
+        else
+            Screen.SetResolution(Screen.width, (int)(((float)Screen.width) * (height / width)), true);
     }
 }

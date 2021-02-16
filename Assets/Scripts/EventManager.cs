@@ -276,12 +276,18 @@ public static class EventManager
     /// </summary>
     /// <param name="condition"></param>
     /// <param name="if"></param>
-    /// <param name="results"></param>
-    public static bool Watch(bool condition, Action @if, out bool results)
+    /// <param name="else"></param>
+    /// <returns></returns>
+    public static bool Watch(bool condition, Action @if, Action @else)
     {
-        if (condition) @if.Invoke();
-        results = condition;
-        return results;
+        try
+        {
+            if (condition) @if.Invoke();
+            else @else.Invoke();
+
+            return condition;
+        }
+        catch { return false; }
     }
 
     /// <summary>
@@ -291,11 +297,44 @@ public static class EventManager
     /// <param name="condition"></param>
     /// <param name="if"></param>
     /// <param name="results"></param>
-    public static void Watch(bool condition, Event @if, out bool results)
+    public static bool Watch(bool condition, Action @if, out bool result)
     {
-        if (condition) @if.Trigger();
-        results = condition;
+        result = Watch(condition, @if, null);
+        return result;
     }
+
+    /// <summary>
+    /// Will watch for a certain condition to be met before executing
+    /// an event
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <param name="if"></param>
+    /// <param name="else"></param>
+    /// <returns></returns>
+    public static bool Watch(bool condition, Event @if, Event @else)
+    {
+        try
+        {
+            if (condition) @if.Trigger();
+            else @else.Trigger();
+
+            return condition;
+        } catch { return false; }
+    }
+
+    /// <summary>
+    /// Will watch for a certain condition to be met before executing
+    /// an event
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <param name="if"></param>
+    /// <param name="results"></param>
+    public static bool Watch(bool condition, Event @if, out bool results)
+    {
+        results = Watch(condition, @if, null);
+        return results;
+    }
+
     public static void DebugEventList()
     {
         foreach (Event @event in GetAllEvents())

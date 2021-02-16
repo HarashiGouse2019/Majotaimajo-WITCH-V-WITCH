@@ -102,7 +102,7 @@ public static class Keymapper
             if (allowHold ? OnKey(keyName) : OnKeyDown(keyName) && onKeyPressed.HasListerners())
                 onKeyPressed.Trigger();
 
-            else if (OnKeyRelease(keyName) && onKeyPressed.HasListerners())
+            else if (OnKeyRelease(keyName) && onKeyReleased.HasListerners())
                 onKeyReleased.Trigger();
         }
         catch { }
@@ -141,7 +141,8 @@ public static class Keymapper
 
             return Input.GetKey(currentKey.KeyCode);
         }
-        catch(NoKeyException noKey) { 
+        catch(NoKeyException noKey)
+        { 
             Debug.LogException(noKey); 
             return false;
         }
@@ -159,7 +160,10 @@ public static class Keymapper
                 currentKey.ToggleKeyEvent();
 
             return Input.GetKeyUp(currentKey.KeyCode);
-        } catch(NoKeyException noKey) {
+
+        }
+        catch(NoKeyException noKey)
+        {
             Debug.LogException(noKey);
             return false;
         }

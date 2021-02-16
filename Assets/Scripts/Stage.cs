@@ -30,8 +30,6 @@ public class Stage : MonoBehaviour
     public StageMap LoadStageMap()
     {
         StageMap stageToLoad = difficultyStageMaps[GameManager.DifficultyIndex];
-        
-        Debug.Log($"Loaded in StageMap: {stageToLoad.MapName}");
         return stageToLoad;
     }
 }

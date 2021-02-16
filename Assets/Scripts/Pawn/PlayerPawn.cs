@@ -2,6 +2,7 @@
 using TMPro;
 using System.Collections;
 using Extensions;
+using BulletPro;
 
 public class PlayerPawn : Pawn
 {
@@ -29,7 +30,7 @@ public class PlayerPawn : Pawn
     public GameObject pawnEmitterPrefab;
 
     public float MovementSpeed { get; set; }
-    public int Evasivness { get; set; }
+    public float Evasivness { get; set; }
 
     public float FocusSpeed { get; set; }
     public float DashSpeed { get; set; }
@@ -40,6 +41,7 @@ public class PlayerPawn : Pawn
 
     private const int ZERO = 0;
     private const int DOUBLE = 2;
+
     [SerializeField]
     LinearEmitter emitter;
 
@@ -77,8 +79,8 @@ public class PlayerPawn : Pawn
         priority = basePriority;
 
         GameManager.Instance.tRenderer.check = true;
-        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 100);
-        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 100);
+        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 150);
+        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 150);
 
         //Get Components
         rb = GetComponent<Rigidbody2D>();
@@ -161,7 +163,11 @@ public class PlayerPawn : Pawn
         basePriority = (uint)PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.BASEPRIORITY);
         MovementSpeed = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.SPEED);
         Evasivness = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.EVASIVENESS);
-        FocusSpeed = (Evasivness * 10) / MovementSpeed;
+
+        float statPercentage = Evasivness / Stats.HIGH_RANK_VALUE;
+        float reducePercentage = (Stats.SPEED_REDUCTION_CAP * statPercentage);
+
+        FocusSpeed = MovementSpeed - (MovementSpeed * reducePercentage);
         DashSpeed = MovementSpeed * Evasivness;
     }
 
@@ -198,16 +204,20 @@ public class PlayerPawn : Pawn
     }
     #endregion
 
-    public override void Shoot(string bulletName)
+    public override void Shoot()
     {
-        EventManager.Watch(recoil == false, () =>
+        for (int index = 0; index < emitterCollection.shotTypes.Length; index++)
         {
-            emitter.SetPawnParent(this);
-            emitter.SetBulletInitialSpeed(650);
-            emitter.SpawnBullets(1, bulletName);
-            AudioManager.Play("Shoot000", _oneShot: true);
-            recoil = true;
-        }, out recoil);
+            emitterCollection.shotTypes[index].emitter.Play();
+        }
+    }
+
+    public override void CeaseShoot()
+    {
+        for (int index = 0; index < emitterCollection.shotTypes.Length; index++)
+        {
+            emitterCollection.shotTypes[index].emitter.Stop(PlayOptions.RootAndSubEmitters);
+        }
     }
 
     public override bool CheckIfMoving()
@@ -233,9 +243,8 @@ public class PlayerPawn : Pawn
 
     public override void ActivateSpell(string _name, bool cancelRunningSpell = false)
     {
+        Debug.Log("Activating Spell!!!");
         Spell spell = library.FindSpell(_name);
-
-        GameManager.Instance.ActivateSlot((int)library.GetSpellIndex(_name), true);
 
         EventManager.Watch(GameManager.Instance.GetPlayerMagic() > spell.magicConsumtion && library.spellInUse == null, () =>
         {
@@ -249,7 +258,7 @@ public class PlayerPawn : Pawn
             priority += spell.spellPriority;
 
             spell.Activate(this);
-        }, out bool result);
+        }, null);
     }
 
     public override void Wait(float _duration)

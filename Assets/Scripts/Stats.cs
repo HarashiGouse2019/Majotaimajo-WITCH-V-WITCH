@@ -50,6 +50,8 @@ public class Stats
     //But can not change it until the end of the game.
     public StatsAttribute StartingProminentAttribute { get; set; }
 
+    public static float SPEED_REDUCTION_CAP { get; private set; } = 0.80f;
+
     //Ravens Default Stats
     //Get 100 + number of plays points
     //And the bosses get much harder with the number of times you play
@@ -61,7 +63,7 @@ public class Stats
     const int DEFAULT_KNOWLEDGE = 10;
     const int DEFAULT_EVASIVENESS = 2;
 
-    public const int HIGH_RANK_VALUE = 30;
+    public const int HIGH_RANK_VALUE = 20;
     public const int MIN_RATING = 1;
     public const int MAX_RATING = 5;
     const int ZERO = 0;
@@ -79,7 +81,11 @@ public class Stats
         BasePriority    = Mathf.RoundToInt(prominentAttribute == StatsAttribute.BASEPRIORITY    ? basePriority  + (basePriority * PROMINENT_ATTRIBUTE_BONUS)    : basePriority  );
         BaseMagic       = Mathf.RoundToInt(prominentAttribute == StatsAttribute.MAGIC           ? magic         + (magic        * PROMINENT_ATTRIBUTE_BONUS)    : magic         );
         BaseKnowledge   = Mathf.RoundToInt(prominentAttribute == StatsAttribute.KNOWLEDGE       ? knowledge     + (knowledge    * PROMINENT_ATTRIBUTE_BONUS)    : knowledge     );
-        BaseEvasiveness = Mathf.RoundToInt(prominentAttribute == StatsAttribute.EVASIVENESS     ? evasiveness   + (evasiveness  * PROMINENT_ATTRIBUTE_BONUS)    : evasiveness   );
+        
+        //The bonus doesn't go towards EVASIVNESS, rather it goes
+        //to the SPEED_REDUCTION_CAP that plays a role in the EVASIVENESS stat
+        BaseEvasiveness = evasiveness;
+        SPEED_REDUCTION_CAP += PROMINENT_ATTRIBUTE_BONUS / 100;
     }
 
     /// <summary>

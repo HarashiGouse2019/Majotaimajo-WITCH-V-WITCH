@@ -12,6 +12,7 @@ namespace Extensions
 {
     public static class Convenience
     {
+
         public static int ZeroBased(this int value)
         {
             return value - 1;

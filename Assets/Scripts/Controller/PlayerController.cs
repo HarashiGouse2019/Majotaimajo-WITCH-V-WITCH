@@ -2,22 +2,27 @@
 using static Keymapper;
 using Extensions;
 using System.Collections;
+using BulletPro;
 
 public class PlayerController : MonoBehaviour
 {
 
 
+    [SerializeField] private Transform[] outBoundaries;
     #region Private Members
     //Reference Pawn
     PlayerPawn pawn;
-    GameManager manager;
+    SpellLibrary spellLibrary;
     IEnumerator controlCycle, movementCycle, magicCycle;
     #endregion
+
+
 
     // Start is called before the first frame update
     void Awake()
     {
         pawn = GetComponent<PlayerPawn>();
+        spellLibrary = pawn.library;
         controlCycle = InitControlsCycle();
         movementCycle = InitMovementCycle(Time.deltaTime);
         magicCycle = MagicUseCycle(0.01f);
@@ -52,23 +57,27 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-
             ControlAction("shoot", true,
+
             //OnKeyPressed
             () =>
             {
                 if (GameManager.Instance.GetPlayerMagic() > 0)
                 {
-                    pawn.Shoot("Crystal");
+                    pawn.Shoot();
+
                     GameManager.Instance.DecrementMagic(0.01f);
                     pawn.IsMagicActivelyUsed.Set(true);
                 }
             },
 
             //OnKeyRelease
-            () => pawn.IsMagicActivelyUsed.Set(false)
+            () =>
+            {
+                pawn.CeaseShoot();
+                pawn.IsMagicActivelyUsed.Set(false);
 
-            ) ;
+            });
 
             yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
         }
@@ -138,31 +147,20 @@ public class PlayerController : MonoBehaviour
 
     void RunSpecial()
     {
-        manager = GameManager.Instance;
-
         //This looks a lot nicer!!!!
         ControlAction("special1", false, () =>
         {
-            pawn.ActivateSpell(pawn.library.spells[0].name);
-        }, () =>
-        {
-            manager.ActivateSlot(0, false);
+            pawn.ActivateSpell(spellLibrary.spells[0].name);
         });
 
         ControlAction("special2", false, () =>
         {
-            pawn.ActivateSpell(pawn.library.spells[1].name);
-        }, () =>
-        {
-            manager.ActivateSlot(1, false);
+            pawn.ActivateSpell(spellLibrary.spells[1].name);
         });
 
         ControlAction("special3", false, () =>
         {
-            pawn.ActivateSpell(pawn.library.spells[2].name);
-        }, () =>
-        {
-            manager.ActivateSlot(2, false);
+            pawn.ActivateSpell(spellLibrary.spells[2].name);
         });
     }
 }

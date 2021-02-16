@@ -106,6 +106,9 @@ public class BPDemo_SampleSceneManager : MonoBehaviour {
 		}
 		
 		playerScript.bulletEmitters[0].emitterProfile = playerShots[currentPlayerShot];
+		playerScript.bulletEmitters[2].emitterProfile = playerShots[currentPlayerShot];
+		playerScript.bulletEmitters[3].emitterProfile = playerShots[1];
+		playerScript.bulletEmitters[4].emitterProfile = playerShots[1];
 
 		playerShotName.text = playerShots[currentPlayerShot].name;
 		//playerScript.shootScript.Play();

@@ -57,13 +57,11 @@ public class CharacterSelection : SelectionObject
     {
         GameManager.UpdateCharacterRAC(currentProfile.GetRAC());
         GameManager.UpdateStats(currentProfile.InitStatValues());
-        Debug.Log($"You've selected to play as {currentProfile.GetName()}");
         GameManager.StartGame();
     }
 
     void OnCancel()
     {
-        Debug.Log("Cancelled Character");
         GameSceneManager.LoadScene("DIFFICULTY_SELECTION");
     }
 

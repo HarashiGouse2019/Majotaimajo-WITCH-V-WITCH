@@ -1,43 +1,45 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 using static Keymapper;
 
 public class PauseSystem : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _pauseSelectionObj;
+    private GameObject _pauseSelectionObj, _gameOverSelectionObj;
     private bool _isPaused = false;
 
-    [SerializeField]
-    PostProcessProfile profile;
-    DepthOfField depthOfField;
+    public const int ZERO = 0;
+
+    public const int ONE = 1;
 
     private void Start()
-    {
-        depthOfField = profile.GetSetting<DepthOfField>();
-    }
-
-    private void OnEnable()
     {
         StartCoroutine(Listen());
     }
 
     public void TogglePauseMenu()
     {
-        BoolParameter enableBlur = new BoolParameter();
         _isPaused = !_isPaused;
-        enableBlur.Override(_isPaused);
         _pauseSelectionObj.gameObject.SetActive(_isPaused);
-        depthOfField.enabled = enableBlur;
-        Time.timeScale = _isPaused ? 0 : 1;
+        Time.timeScale = _isPaused ? ZERO : ONE;
+    }
+
+    public void ToggleGameOverMenu()
+    {
+        _isPaused = !_isPaused;
+        _gameOverSelectionObj.gameObject.SetActive(_isPaused);
+        Time.timeScale = _isPaused ? ZERO : ONE;
     }
 
     IEnumerator Listen()
     {
         while (true)
         {
-            ControlAction("pause", false, TogglePauseMenu);
+            EventManager.Watch(GameManager.IsPlayerAlive,
+                () => ControlAction("pause", false, TogglePauseMenu),
+                () => ToggleGameOverMenu());       
+
             yield return null;
         }
     }

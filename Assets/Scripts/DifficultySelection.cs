@@ -24,7 +24,6 @@ public class DifficultySelection : SelectionObject
         if (readyToSelect)
         {
             _difficultyIndex = difficultyMenu.index;
-            Debug.Log($"You have selected {_difficultyIndex}");
             GameManager.UpdateGameDifficulty(_difficultyIndex);
             GameSceneManager.LoadScene("CHARACTER_SELECTION");
         }
@@ -33,10 +32,7 @@ public class DifficultySelection : SelectionObject
     void OnCancel()
     {
         if (readyToSelect)
-        {
-            Debug.Log("Cancelled Difficulty");
             GameSceneManager.LoadScene("TITLE");
-        }
     }
 
     public override void SetupEvents()

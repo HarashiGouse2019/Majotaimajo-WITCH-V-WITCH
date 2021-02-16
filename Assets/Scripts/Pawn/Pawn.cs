@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Alarm;
 using System;
+using BulletPro;
 
 public abstract class Pawn : MonoBehaviour, ICaster
 {
     public static Pawn Instance;
 
-    #region Public Members
+    #region Public/Serialized Members
     //Our movment speeds
     [SerializeField] protected SpriteRenderer characterRenderer;
-
+    [SerializeField] protected EmitterCollection emitterCollection;
     public uint priority = 1;
     public uint basePriority;
 
@@ -38,6 +37,7 @@ public abstract class Pawn : MonoBehaviour, ICaster
     protected bool isVisible;
     protected Color srendererColor;
     protected GetOrignatedSpawnPoint objectOrigin;
+    
     public Animator Animator { get; private set; }
 
     #endregion
@@ -54,8 +54,15 @@ public abstract class Pawn : MonoBehaviour, ICaster
     /// <summary>
     /// Shoot a projectile based on its name.
     /// </summary>
-    /// <param name="bulletName"></param>
-    public virtual void Shoot(string bulletName)
+    public virtual void Shoot()
+    {
+
+    }
+
+    /// <summary>
+    /// Stop shooting out projectiles
+    /// </summary>
+    public virtual void CeaseShoot()
     {
 
     }

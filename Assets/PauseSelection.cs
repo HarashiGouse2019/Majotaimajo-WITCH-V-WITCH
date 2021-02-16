@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -16,13 +17,12 @@ public class PauseSelection : SelectionObject
     [SerializeField]
     int selectedFontSize, unselectedFontSize;
 
+    [SerializeField]
     SelectionEvent currentOptionAction = null;
 
     const string SELECTABLE_TAG = "Selectable";
-    const string PAUSE_LAYER = "Title";
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         GetOptions();
     }
@@ -31,24 +31,10 @@ public class PauseSelection : SelectionObject
     {
         options = new List<TextMeshProUGUI>();
         optionGraphics = new List<Image>();
+        optionActions = new List<SelectionEvent>();
 
         //Get all gameobject in hierarchy
         TextMeshProUGUI[] objectsInHierarchy = GetComponentsInChildren<TextMeshProUGUI>();
-
-        //Check the tag and layer
-        foreach (TextMeshProUGUI obj in objectsInHierarchy)
-        {
-            if (obj.gameObject.tag == SELECTABLE_TAG && obj.gameObject.layer == LayerMask.NameToLayer(PAUSE_LAYER))
-            {
-                SelectionEvent selectionEvent = obj.GetComponent<SelectionEvent>();
-                if (selectionEvent.HasEvent())
-                {
-                    options.Add(obj);
-                    optionGraphics.Add(obj.GetComponentInChildren<Image>());
-                    optionActions.Add(obj.GetComponentInChildren<SelectionEvent>() ?? null);
-                }
-            }
-        }
 
         if (objectsInHierarchy == null)
         {
@@ -56,30 +42,51 @@ public class PauseSelection : SelectionObject
             return;
         }
 
+        //Check the tag and layer
+        foreach (TextMeshProUGUI obj in objectsInHierarchy)
+        {
+
+            if (obj.gameObject.CompareTag(SELECTABLE_TAG))
+            {
+                SelectionEvent selectionEvent = obj.GetComponent<SelectionEvent>();
+                if (selectionEvent.HasEvent())
+                {
+                    options.Add(obj);
+                    optionGraphics.Add(obj.GetComponentInChildren<Image>());
+                    optionActions.Add(obj.GetComponent<SelectionEvent>());
+                }
+            }
+        }
+
+        
         //Update Text UI
         UpdateUI();
     }
 
     void OnConfirm()
     {
-        
+        Debug.Log("ACTION CONFIRMED!!!!");
+        currentOptionAction.GetUnityEvent().Invoke();
+        confirmSound.Play();
     }
 
     void OnCancel()
     {
-
+        cancelSound.Play();
     }
 
     void NextOption()
     {
         selectionIndex++;
         UpdateUI();
+        cursorSound.Play();
     }
 
     void PreviousOption()
     {
         selectionIndex--;
         UpdateUI();
+        cursorSound.Play();
     }
 
     /// <summary>
@@ -91,16 +98,19 @@ public class PauseSelection : SelectionObject
         selectionIndex - options.Count : (selectionIndex < 0) ?
         selectionIndex + options.Count : selectionIndex;
 
+        currentOptionAction = optionActions[selectionIndex];
+
         for (int index = 0; index < options.Count; index++)
         {
             TextMeshProUGUI selectableText = options[index];
-            currentOptionAction = optionActions[index];
+            
             if (index == selectionIndex && currentOptionAction.HasEvent())
             {
                 //This is the current object that is selected, so highlight it
                 selectableText.color = selectedColor;
                 selectableText.fontSize = selectedFontSize;
                 optionGraphics[index].gameObject.SetActive(true);
+                
             }
             else
             {
@@ -113,9 +123,9 @@ public class PauseSelection : SelectionObject
 
     public override void SetupEvents()
     {
-        _onSelectPrevious = EventManager.AddEvent(390, "onCharacterSelectPrevious", PreviousOption, () => cursorSound.Play());
-        _onSelectNext = EventManager.AddEvent(391, "onCharacterSelectNext", NextOption, () => cursorSound.Play());
-        _onConfirm = EventManager.AddEvent(392, "onCharacterConfirm", OnConfirm, () => confirmSound.Play());
-        _onCancel = EventManager.AddEvent(393, "onCharacterCancel", OnCancel, () => cancelSound.Play());
+        _onSelectPrevious = EventManager.AddEvent(390, "onPauseOptionSelectPrevious", PreviousOption);
+        _onSelectNext = EventManager.AddEvent(391, "onPauseOptionSelectNext", NextOption);
+        _onConfirm = EventManager.AddEvent(392, "onPauseOptionConfirm", OnConfirm);
+        _onCancel = EventManager.AddEvent(393, "onPauseOptionCancel", OnCancel);
     }
 }

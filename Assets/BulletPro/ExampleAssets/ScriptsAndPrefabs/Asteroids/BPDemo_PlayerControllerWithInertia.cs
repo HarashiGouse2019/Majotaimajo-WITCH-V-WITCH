@@ -104,7 +104,15 @@ public class BPDemo_PlayerControllerWithInertia : BPDemo_PlayerController
 
 		self.Translate(finalDirection * moveSpeed * Time.deltaTime, Space.Self);
 
-		if (Input.GetKeyDown(shotButton))	shootScript.Play();
-		if (Input.GetKeyUp(shotButton))		shootScript.Stop(PlayOptions.RootAndSubEmitters);
+		if (Input.GetKeyDown(shotButton))
+        {
+            for (int index = 0; index < shootScript.Length; index++)
+                shootScript[index].Play();
+        }
+        if (Input.GetKeyUp(shotButton))
+        {
+            for (int index = 0; index < shootScript.Length; index++)
+                shootScript[index].Stop(PlayOptions.RootAndSubEmitters);
+        };
 	}
 }

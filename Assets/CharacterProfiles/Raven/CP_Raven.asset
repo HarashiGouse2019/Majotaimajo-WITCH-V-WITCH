@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4672d41320b194391dcb121b4c33ef, type: 3}
+  m_Name: CP_Raven
+  m_EditorClassIdentifier: 
+  characterName: Raven Lilac
+  characterDescription: Amethyst Witch
+  characterPortrait: {fileID: 21300000, guid: 7d685682269c32643b12f1c5349b639b, type: 3}
+  characterBackstory: Raven Lilac is an aspiring Witch who is a Crystal Magic User
+    (a very rare Magic Attribute). She is dubbed "The Amethyst Witch" because of the
+    color of crystal she shoots, which closely derives from Dark Magic. She's a fairly
+    powerful Witch and has a high magic yield (how much magic she has). The Witch
+    Cult that she's affiliated is "Soulmere", which is a cult very lenient when it
+    comes to their members. There are also known for having the strongest witches
+    aside from the Witch Cult Serrulata.
+  characterAttribute: 4
+  speedStat: 12
+  powerStat: 15
+  annoyanceStat: 15
+  priorityStat: 15
+  magicStat: 20
+  knowledgeStat: 12
+  evasivenessStat: 15
+  characterAnimationController: {fileID: 9100000, guid: 66c5f8e17609f8346942832de6b33d08,
+    type: 2}
