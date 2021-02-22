@@ -45,7 +45,7 @@ public class AutoOrbit : MonoBehaviour
         while (true)
         {
             transform.RotateAround(center.position, axis, rotationSpeed * Time.deltaTime);
-
+            transform.eulerAngles = new Vector3(0, 0, 0);
             desiredPosition = (transform.position - center.position).normalized * radius + center.position;
             transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
             yield return null;

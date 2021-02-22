@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
 {
 
 
-    [SerializeField] private Transform[] outBoundaries;
+    public Transform leftBound, rightBound, topBound, bottomBound;
+
     #region Private Members
     //Reference Pawn
     PlayerPawn pawn;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             InitMovementControls();
+
             yield return new WaitForSecondsRealtime(delta == 0 ? Time.fixedDeltaTime : delta);
         }
     }
@@ -66,8 +68,8 @@ public class PlayerController : MonoBehaviour
                 {
                     pawn.Shoot();
 
-                    GameManager.Instance.DecrementMagic(0.01f);
-                    pawn.IsMagicActivelyUsed.Set(true);
+                    GameManager.Instance.DecrementMagic(0.1f);
+                    pawn.IsMagicActivelyUsed = true;
                 }
             },
 
@@ -75,8 +77,7 @@ public class PlayerController : MonoBehaviour
             () =>
             {
                 pawn.CeaseShoot();
-                pawn.IsMagicActivelyUsed.Set(false);
-
+                pawn.IsMagicActivelyUsed = false;
             });
 
             yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
@@ -89,12 +90,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("left", true, () =>
         {
             pawn.Left();
-            pawn.IsMoving.Set(true);
+            pawn.IsMoving = true;
             return;
         }, () =>
         {
             pawn.Steady();
-            pawn.IsMoving.Set(false);
+            pawn.IsMoving = false;
             return;
         });
 
@@ -102,12 +103,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("right", true, () =>
         {
             pawn.Right();
-            pawn.IsMoving.Set(true);
+            pawn.IsMoving = true;
             return;
         }, () =>
         {
             pawn.Steady();
-            pawn.IsMoving.Set(false);
+            pawn.IsMoving = false;
             return;
         });
 
@@ -115,12 +116,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("up", true, () =>
         {
             pawn.Foward();
-            pawn.IsMoving.Set(true);
+            pawn.IsMoving = true;
             return;
         }, () =>
         {
             pawn.Steady();
-            pawn.IsMoving.Set(false);
+            pawn.IsMoving = false;
             return;
         });
 
@@ -128,12 +129,12 @@ public class PlayerController : MonoBehaviour
         ControlAction("down", true, () =>
         {
             pawn.Back();
-            pawn.IsMoving.Set(true);
+            pawn.IsMoving = true;
             return;
         }, () =>
         {
             pawn.Steady();
-            pawn.IsMoving.Set(false);
+            pawn.IsMoving = false;
             return;
         });
     }

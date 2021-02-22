@@ -93,8 +93,8 @@ namespace Extensions
 
     public static class Boolean
     {
-        public static int AsNumericValue(this bool _) => _ ? 1 : 0;
-        public static bool Set(this bool _, bool value) => _ = value;
+        public static int AsNumericValue(this bool boolean) => boolean ? 1 : 0;
+        public static void Set(this bool _, bool value) { _ = value; }
     }
 
     public static class String

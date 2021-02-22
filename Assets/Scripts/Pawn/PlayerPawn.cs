@@ -79,8 +79,8 @@ public class PlayerPawn : Pawn
         priority = basePriority;
 
         GameManager.Instance.tRenderer.check = true;
-        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 150);
-        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 150);
+        GameManager.Instance.SetMaxMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 100);
+        GameManager.Instance.IncrementMagic(PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.MAGIC) * 100);
 
         //Get Components
         rb = GetComponent<Rigidbody2D>();
@@ -135,8 +135,6 @@ public class PlayerPawn : Pawn
             isVisible = true;
             characterRenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
         }
-
-
     }
 
     #region Unique
@@ -194,7 +192,7 @@ public class PlayerPawn : Pawn
     {
         while (true)
         {
-            if (!IsMagicActivelyUsed && GameManager.Instance.GetPlayerMagic() < GameManager.MaxMagic)
+            if (IsMagicActivelyUsed == false && GameManager.Instance.GetPlayerMagic() < GameManager.MaxMagic)
             {
                 RecoverMagic(GameManager.MaxMagic * 0.0005f);
             }
@@ -370,6 +368,11 @@ public class PlayerPawn : Pawn
 
     void Move()
     {
+        if (move.x < 0 && transform.position.x - 0.05f < controller.leftBound.position.x) move.x = 0;
+        if (move.x > 0 && transform.position.x + 0.05f > controller.rightBound.position.x) move.x = 0;
+        if (move.y < 0 && transform.position.y - 0.05f < controller.bottomBound.position.y) move.y = 0;
+        if (move.y > 0 && transform.position.y + 0.05f > controller.topBound.position.y) move.y = 0;
+
         transform.Translate(move.normalized * (IsOnFocus ? FocusSpeed : MovementSpeed) * Time.deltaTime, Space.Self);
     }
 
