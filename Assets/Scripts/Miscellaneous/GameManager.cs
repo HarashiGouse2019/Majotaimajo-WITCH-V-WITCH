@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 using static Keymapper;
 using Extensions;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -70,6 +71,12 @@ public class GameManager : MonoBehaviour
     public static RuntimeAnimatorController CharacterAnimatorController { get; private set; }
     public static Stats CharacterStats { get; private set; }
 
+    public static PlayerPawn PlayerPawn { get; private set; }
+
+    public static Stage CurrentStage { get; private set; }
+
+    private bool OnStandAlone = true;
+
     public static float MaxMagic
     {
         get
@@ -90,8 +97,12 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DisableMouseControls();
+#if UNITY_EDITOR
+            OnStandAlone = false;
+#endif
+            if(OnStandAlone) DisableMouseControls();
             DontDestroyOnLoad(this);
+
         }
         else
         {
@@ -113,9 +124,9 @@ public class GameManager : MonoBehaviour
            new Key("down", KeyCode.DownArrow),
            new Key("shoot", KeyCode.Z),
            new Key("sneak", KeyCode.LeftShift),
-           new Key("special1", KeyCode.A),
-           new Key("special2", KeyCode.S),
-           new Key("special3", KeyCode.D),
+           new Key("specialA", KeyCode.A),
+           new Key("specialB", KeyCode.S),
+           new Key("specialC", KeyCode.D),
            new Key("itemSelection", KeyCode.Space),
            new Key("start", KeyCode.Return),
            new Key("cancel", KeyCode.Backspace),
@@ -132,7 +143,8 @@ public class GameManager : MonoBehaviour
             if (HISCORETEXT != null) HISCORETEXT.text = hiScore.ToString("D10");
             if (SCORETEXT != null) SCORETEXT.text = score.ToString("D10");
 
-            if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) AddToScore(1);
+            //if (textBoxUI != null && !textBoxUI.gameObject.activeSelf) 
+                AddToScore(1);
 
             if (isDone == true) ToNextDialogue();
 
@@ -356,6 +368,16 @@ public class GameManager : MonoBehaviour
     public static void UpdateCharacterRAC(RuntimeAnimatorController animatorController)
     {
         CharacterAnimatorController = animatorController;
+    }
+
+    public static void UpdatePlayerPawn(PlayerPawn pawn)
+    {
+        PlayerPawn = pawn;
+    }
+
+    public static void UpdateCurrentStage(Stage stage)
+    {
+        CurrentStage = stage;
     }
 
     void DisableMouseControls()

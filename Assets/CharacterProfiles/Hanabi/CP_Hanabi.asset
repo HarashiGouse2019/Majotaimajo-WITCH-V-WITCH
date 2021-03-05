@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4672d41320b194391dcb121b4c33ef, type: 3}
+  m_Name: CP_Hanabi
+  m_EditorClassIdentifier: 
+  characterName: Hanabi Inoue
+  characterDescription: From Another World
+  characterPortrait: {fileID: 21300000, guid: dd0ab596c8451a742afbb737ddc23c22, type: 3}
+  characterBackstory: "Hanabi Inoue is a very powerful human who was mainly taught
+    Hero Magic, a form of Light Magic. Hanabi isn\u2019t from the Far Land of Magic.
+    Along with her sister, Saki Inoue, they were both founded near a lake. A Sorceress
+    who stumbles upon the 2 abandoned children, took them under their wing. It is
+    believed that Hanabi and her sister Saki were individuals who were brought from
+    another world. Hanabi was taught very well by the person caring for her and her
+    sister. So much so that she dedicated herself to be a powerful sorceress just
+    like her new caretaker."
+  characterAttribute: 6
+  speedStat: 13
+  powerStat: 10
+  annoyanceStat: 10
+  priorityStat: 10
+  magicStat: 14
+  knowledgeStat: 10
+  evasivenessStat: 20
+  characterAnimationController: {fileID: 9100000, guid: 6b8f7bc210d4fe04ab6afa9e874b0c6f,
+    type: 2}
+  playerPawn: {fileID: 735686564419234894, guid: d5c4c421a3e9e714b9a98a9ba6308acf,
+    type: 3}

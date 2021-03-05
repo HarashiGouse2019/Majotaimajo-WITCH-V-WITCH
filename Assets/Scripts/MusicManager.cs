@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -41,12 +42,16 @@ public class MusicManager : MonoBehaviour
 
     public Music[] getMusic;
 
-    public static string NowPlaying;
+    public static Music NowPlaying;
 
     // Start is called before the first frame update
     public float timeSamples;
 
     public float[] positionSeconds;
+
+    static float StartLoopBoundary, EndLoopBoundary;
+    static bool InIntro = true;
+    static IEnumerator LoopCycle;
 
     private void Awake()
     {
@@ -75,6 +80,23 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    static IEnumerator MusicLoopCycle()
+    {
+        while (true)
+        {
+            if (NowPlaying.source.time >= StartLoopBoundary)
+                InIntro = false;
+
+            if(NowPlaying.source.time >= EndLoopBoundary && InIntro == false)
+            {
+                Debug.Log("Looping...");
+                NowPlaying.source.time = (int)StartLoopBoundary;
+            }
+
+            yield return null;
+        }
+    }
+
     /// <summary>
     /// Play audio and adjust its volume.
     /// </summary>
@@ -86,10 +108,11 @@ public class MusicManager : MonoBehaviour
     /// Support values between 0 and 100.
     ///
 
-    public static void Play(string _name, float _volume = 100, bool _oneShot = false)
+    public static void Play(string _name, float _volume = 100, bool _oneShot = false, float mainLoopStart = 0, float mainLoopEnd = 0)
     {
+        LoopCycle = MusicLoopCycle();
 
-        if (_name == NowPlaying)
+        if (NowPlaying != null && _name == NowPlaying.name)
         {
             Debug.Log($"The track {_name} is already playing.");
             return;
@@ -105,22 +128,26 @@ public class MusicManager : MonoBehaviour
         else
         {
             //Turn off previously playing music
-            if (NowPlaying != string.Empty)
+            if (NowPlaying != null)
                 StopNowPlaying();
 
-            NowPlaying = a.name;
+            NowPlaying = a;
+
+            StartLoopBoundary = mainLoopStart;
+            EndLoopBoundary = mainLoopEnd == 0 ? NowPlaying.clip.length : mainLoopEnd;
 
             switch (_oneShot)
             {
                 case true:
-                    a.source.PlayOneShot(a.clip, _volume / 100);
+                    NowPlaying.source.PlayOneShot(a.clip, _volume / 100);
                     break;
                 default:
-                    a.source.Play();
-                    a.source.volume = _volume / 100;
+                    NowPlaying.source.Play();
+                    NowPlaying.source.volume = _volume / 100;
                     break;
             }
 
+            Instance.StartCoroutine(LoopCycle);
         }
     }
     public static void Stop(string _name)
@@ -134,32 +161,13 @@ public class MusicManager : MonoBehaviour
         else
         {
             a.source.Stop();
-            NowPlaying = string.Empty;
-        }
-    }
-
-    public AudioClip GetAudio(string _name, float _volume = 100)
-    {
-        Music a = Array.Find(getMusic, sound => sound.name == _name);
-        if (a == null)
-        {
-            Debug.LogWarning("Music name " + _name + " was not found.");
-            return null;
-        }
-        else
-        {
-            a.source.Play();
-            a.source.volume = _volume / 100;
-            return a.source.clip;
+            NowPlaying = null;
         }
     }
 
     public static void StopNowPlaying()
     {
-        Music a = Array.Find(Instance.getMusic, sound => sound.name == NowPlaying);
-
-        if (a == null) return;
-
-        Stop(a.name);
+        Instance.StopCoroutine(LoopCycle);
+        Stop(NowPlaying.name);
     }
 }

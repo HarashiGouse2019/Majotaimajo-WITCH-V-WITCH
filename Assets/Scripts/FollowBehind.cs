@@ -9,7 +9,7 @@ public class FollowBehind : MonoBehaviour
     float dampTime = 0.15f;
 
     [SerializeField]
-    Vector3 offset;
+    Vector3 _offset;
 
     [SerializeField]
     Transform targetTranform;
@@ -19,16 +19,35 @@ public class FollowBehind : MonoBehaviour
 
     Vector3 velocity = Vector2.zero;
 
+    Transform originParent;
+
     private void Update()
     {
-        if (targetTranform)
+        if (targetTranform && gameObject.activeInHierarchy)
         {
-            Vector3 point = transform.localPosition - new Vector3(offset.x * Mathf.Sign(targetTranform.localScale.x), offset.y);
-            Vector3 delta = targetTranform.localPosition - new Vector3(point.x, point.y, zDepth);
-            Vector3 destination = transform.localPosition + delta;
+            Vector2 point = (Vector2)transform.position - new Vector2(_offset.x * Mathf.Sign(targetTranform.localScale.x), _offset.y);
+            Vector2 delta = (Vector2)targetTranform.position - new Vector2(point.x, point.y);
+            Vector2 destination = (Vector2)transform.position + delta;
 
             //Z will be changed
-            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, destination, ref velocity, dampTime);
+            transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
         }
+    }
+
+    private void OnEnable()
+    {
+            originParent = transform.parent;
+            transform.parent = PlayerSpawner.Transform;
+    }
+
+    private void OnDisable()
+    {
+        if(gameObject.activeInHierarchy)
+        transform.parent = originParent;
+    }
+
+    public void UpdateOffset(Vector3 offset)
+    {
+        _offset = offset;
     }
 }

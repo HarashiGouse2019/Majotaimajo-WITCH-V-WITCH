@@ -27,8 +27,11 @@ public class StageMap
 
     public string MapName => mapName;
 
+    public static bool IsWaiting { get; private set; } = false;
+
     private float currentInterval = -1f;
     private float intervalDelta = 0.1f;
+    
 
     protected StageEvents[] events;
 
@@ -51,7 +54,12 @@ public class StageMap
 
     void Main(params StageEvents[] events)
     {
-        for (int i = 0; i < events.Length - 1; i++)
+        
+    }
+
+    void Validate(params StageEvents[] events)
+    {
+        for (int i = 0; i < events.Length - 1; i += IsWaiting ? 0 : i++)
         {
             if (events[i].Interval == currentInterval)
                 events[i].Event.Trigger();
@@ -67,6 +75,7 @@ public class StageMap
             try
             {
                 Main(events);
+                Validate(events);
                 NextInterval();
             }
             catch (Exception e)
@@ -74,12 +83,17 @@ public class StageMap
                 Debug.LogException(e);
             }
 
-            yield return null;
+            yield return new WaitForSeconds(intervalDelta);
         }
     }
 
     ~StageMap()
     {
         Close();
+    }
+
+    void SetUpEvents()
+    {
+
     }
 }

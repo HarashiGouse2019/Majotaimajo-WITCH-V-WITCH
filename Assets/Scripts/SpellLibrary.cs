@@ -30,11 +30,9 @@ public class SpellLibrary : MonoBehaviour
     
     readonly uint reset = 0;
     
-
     private void Awake()
     {
         library = this;
-        
     }
 
     private void OnEnable()

@@ -11,6 +11,13 @@ public abstract class Pawn : MonoBehaviour, ICaster
     //Our movment speeds
     [SerializeField] protected SpriteRenderer characterRenderer;
     [SerializeField] protected EmitterCollection emitterCollection;
+    public EmitterCollection EmitterCollection
+    {
+        get
+        {
+            return emitterCollection;
+        }
+    }
     public uint priority = 1;
     public uint basePriority;
 

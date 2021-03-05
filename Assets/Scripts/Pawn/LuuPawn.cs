@@ -76,7 +76,7 @@ public class LuuPawn : Pawn, IBossEntity
             Debug.Log("If you got this, this is going to be an easy fix");
             try
             {
-                PlayerPawn player = objectOrigin.pawn as PlayerPawn;
+                RavenPawn player = objectOrigin.pawn as RavenPawn;
                 Stats playerStats = player.GetStats();
 
                 //If no patience has been lost, decrease that

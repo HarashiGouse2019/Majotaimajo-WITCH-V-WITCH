@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -28,13 +29,14 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114697344616406384}
+  currentParamsSelected: {fileID: 114390900287347664}
   numberOfSubAssets: 4
 --- !u!114 &114390900287347664
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -42,7 +44,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15182275
+  uniqueIndex: 7761612
   profile: {fileID: 11400000}
   parent: {fileID: 114630862730644202}
   children: []
@@ -101,18 +103,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -205,18 +213,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -308,18 +322,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -406,18 +426,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -509,18 +535,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -611,18 +643,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -714,18 +752,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -816,18 +860,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -943,18 +993,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1070,18 +1126,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1204,18 +1266,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1330,18 +1398,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1428,18 +1502,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1526,18 +1606,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1629,18 +1715,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1732,18 +1824,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1842,18 +1940,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -1943,18 +2047,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2044,18 +2154,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2145,18 +2261,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2262,18 +2384,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2363,18 +2491,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2464,18 +2598,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2565,18 +2705,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2671,18 +2817,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2773,18 +2925,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -2876,18 +3034,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -2982,18 +3146,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3080,18 +3250,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3186,18 +3362,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3235,18 +3417,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: -1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 0
@@ -3304,18 +3492,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3410,18 +3604,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3508,18 +3708,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3614,18 +3820,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3663,18 +3875,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -3732,18 +3950,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3838,18 +4062,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -3936,18 +4166,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4042,18 +4278,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4091,24 +4333,33 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 0.5006553
             value: 0.8003699
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 0
@@ -4166,18 +4417,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4272,18 +4529,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4370,18 +4633,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4476,18 +4745,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4525,18 +4800,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -4594,18 +4875,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4700,18 +4987,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4798,18 +5091,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4904,18 +5203,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -4953,18 +5258,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -5022,18 +5333,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -5128,18 +5445,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -5226,18 +5549,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -5332,18 +5661,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -5381,18 +5716,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -5442,6 +5783,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     _period: 0
   patternsShot: []
+  dieWhenAllPatternsAreDone: 0
   behaviourPrefabs: []
   delaySpawn: 0
   timeBeforeSpawn:
@@ -5495,18 +5837,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -5596,18 +5944,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -5694,18 +6048,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -5806,18 +6166,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -5944,18 +6310,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -6099,18 +6471,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -6202,8 +6580,9 @@ MonoBehaviour:
 --- !u!114 &114494325993625066
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -6211,7 +6590,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 14984117
+  uniqueIndex: 5115452
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -6271,18 +6650,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6375,18 +6760,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6478,18 +6869,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6576,18 +6973,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6679,18 +7082,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6781,18 +7190,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6884,18 +7299,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -6986,18 +7407,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7113,18 +7540,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7240,18 +7673,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7374,18 +7813,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7500,18 +7945,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7598,18 +8049,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7696,18 +8153,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7799,18 +8262,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -7902,18 +8371,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8012,18 +8487,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8113,18 +8594,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8214,18 +8701,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8315,18 +8808,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8432,18 +8931,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8533,18 +9038,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8634,18 +9145,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8735,18 +9252,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8841,18 +9364,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -8943,18 +9472,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -9046,18 +9581,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9152,18 +9693,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9250,18 +9797,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9356,18 +9909,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9405,18 +9964,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -9474,18 +10039,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9580,18 +10151,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9678,18 +10255,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9784,18 +10367,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -9833,18 +10422,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -9902,18 +10497,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10008,18 +10609,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10106,18 +10713,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10212,18 +10825,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10261,18 +10880,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -10330,18 +10955,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10436,18 +11067,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10534,18 +11171,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10640,18 +11283,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10689,18 +11338,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -10758,18 +11413,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10864,18 +11525,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -10962,18 +11629,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -11068,18 +11741,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -11117,18 +11796,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -11186,18 +11871,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -11292,18 +11983,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -11390,18 +12087,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -11496,18 +12199,24 @@ MonoBehaviour:
             repartitionCurve:
               serializedVersion: 2
               m_Curve:
-              - serializedVersion: 2
+              - serializedVersion: 3
                 time: 0
                 value: 0
                 inSlope: 0
                 outSlope: 1
                 tangentMode: 0
-              - serializedVersion: 2
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
                 time: 1
                 value: 1
                 inSlope: 1
                 outSlope: 0
                 tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4
@@ -11545,18 +12254,24 @@ MonoBehaviour:
         defaultValue:
           serializedVersion: 2
           m_Curve:
-          - serializedVersion: 2
+          - serializedVersion: 3
             time: 0
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
-          - serializedVersion: 2
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
             time: 1
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -11656,18 +12371,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -11703,6 +12424,7 @@ MonoBehaviour:
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
       defaultValue: {fileID: 114697344616406384}
+  dieWhenAllPatternsAreDone: 0
   behaviourPrefabs: []
   delaySpawn: 0
   timeBeforeSpawn:
@@ -11756,18 +12478,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -11857,18 +12585,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -11955,18 +12689,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -12015,8 +12755,9 @@ MonoBehaviour:
 --- !u!114 &114630862730644202
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12024,7 +12765,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 2295502
+  uniqueIndex: 8063954
   profile: {fileID: 11400000}
   parent: {fileID: 114697344616406384}
   children:
@@ -12083,18 +12824,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -12181,18 +12928,24 @@ MonoBehaviour:
           repartitionCurve:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 1
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 1
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -12276,8 +13029,9 @@ MonoBehaviour:
 --- !u!114 &114697344616406384
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12285,7 +13039,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7750113
+  uniqueIndex: 12044764
   profile: {fileID: 11400000}
   parent: {fileID: 114494325993625066}
   children:
@@ -12350,18 +13104,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -12451,18 +13211,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -12550,18 +13316,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -12652,18 +13424,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -12750,18 +13528,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -12848,18 +13632,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -12949,18 +13739,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13050,18 +13846,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13151,18 +13953,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13253,18 +14061,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13356,18 +14170,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13459,18 +14279,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13560,18 +14386,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13667,18 +14499,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13766,18 +14604,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13869,18 +14713,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -13918,18 +14768,24 @@ MonoBehaviour:
           defaultValue:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 1
               inSlope: 0
               outSlope: 0
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 0
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
@@ -13985,18 +14841,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14087,18 +14949,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14193,18 +15061,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14325,18 +15199,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14452,18 +15332,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14578,18 +15464,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14707,18 +15599,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14813,18 +15711,24 @@ MonoBehaviour:
               repartitionCurve:
                 serializedVersion: 2
                 m_Curve:
-                - serializedVersion: 2
+                - serializedVersion: 3
                   time: 0
                   value: 0
                   inSlope: 0
                   outSlope: 1
                   tangentMode: 0
-                - serializedVersion: 2
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
+                - serializedVersion: 3
                   time: 1
                   value: 1
                   inSlope: 1
                   outSlope: 0
                   tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0.33333334
                 m_PreInfinity: 2
                 m_PostInfinity: 2
                 m_RotationOrder: 4
@@ -14862,18 +15766,24 @@ MonoBehaviour:
           defaultValue:
             serializedVersion: 2
             m_Curve:
-            - serializedVersion: 2
+            - serializedVersion: 3
               time: 0
               value: 0
               inSlope: 0
               outSlope: 0
               tangentMode: 0
-            - serializedVersion: 2
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
               time: 1
               value: 1
               inSlope: 0
               outSlope: 0
               tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4

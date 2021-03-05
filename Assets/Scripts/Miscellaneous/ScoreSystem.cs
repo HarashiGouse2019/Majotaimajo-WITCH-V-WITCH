@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using Alarm;
-public class ScoreSystem : UnityEngine.MonoBehaviour
+public class ScoreSystem : MonoBehaviour
 {
     public static ScoreSystem Instance;
 
@@ -31,9 +32,17 @@ public class ScoreSystem : UnityEngine.MonoBehaviour
         #endregion
     }
 
-    private void Update()
+    private void Start()
     {
-        Score += stallpoint;
+        StartCoroutine(ScoreCycle());
+    }
+
+    IEnumerator ScoreCycle()
+    {
+        while (true) {
+            Score += stallpoint;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void Amplify()

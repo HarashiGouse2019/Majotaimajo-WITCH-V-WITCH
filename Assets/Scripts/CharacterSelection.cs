@@ -33,7 +33,7 @@ public class CharacterSelection : SelectionObject
         characterKnowledge, 
         characterEvasiveness;
 
-    private void OnEnable()
+    private new void Start()
     {
         UpdateCurrentProfile();
         DisplayProfile();
@@ -56,6 +56,7 @@ public class CharacterSelection : SelectionObject
     void OnConfirm()
     {
         GameManager.UpdateCharacterRAC(currentProfile.GetRAC());
+        GameManager.UpdatePlayerPawn(currentProfile.GetPlayerPawn());
         GameManager.UpdateStats(currentProfile.InitStatValues());
         GameManager.StartGame();
     }

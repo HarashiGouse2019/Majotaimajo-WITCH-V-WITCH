@@ -40,7 +40,7 @@ public abstract class SelectionObject : MonoBehaviour, ISelectable
         StartCoroutine(Routine());
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         StartCoroutine(Routine());
     }

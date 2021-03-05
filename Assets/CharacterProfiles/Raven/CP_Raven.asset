@@ -25,10 +25,12 @@ MonoBehaviour:
   characterAttribute: 4
   speedStat: 12
   powerStat: 15
-  annoyanceStat: 15
-  priorityStat: 15
+  annoyanceStat: 7
+  priorityStat: 20
   magicStat: 20
   knowledgeStat: 12
   evasivenessStat: 15
   characterAnimationController: {fileID: 9100000, guid: 66c5f8e17609f8346942832de6b33d08,
     type: 2}
+  playerPawn: {fileID: 8016665291999944669, guid: 465b4e2c43b5aac499d78df9b342c693,
+    type: 3}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Character Profile", menuName = "Character Profile")]
 public class CharacterProfile : ScriptableObject
@@ -22,44 +23,65 @@ public class CharacterProfile : ScriptableObject
     [SerializeField]
     private int speedStat, powerStat, annoyanceStat, priorityStat, magicStat, knowledgeStat, evasivenessStat;
 
-    public int SpeedRating { get
+    [SerializeField]
+    private RuntimeAnimatorController characterAnimationController;
+
+    [SerializeField]
+    private PlayerPawn playerPawn;
+
+    public int SpeedRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(speedStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
-    public int PowerRating { get
+    public int PowerRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(powerStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
-    public int AnnoyanceRating { get
+    public int AnnoyanceRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(annoyanceStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
-    public int PriorityRating { get
+    public int PriorityRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(priorityStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
-    public int MagicRating { get
+
+
+    public int MagicRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(magicStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
-    public int KnowledgeRating { get
+    public int KnowledgeRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(knowledgeStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
-    public int EvasivenessRating { get
+    public int EvasivenessRating
+    {
+        get
         {
             return Mathf.Clamp(Stats.DetermineStatValueRating(evasivenessStat), Stats.MIN_RATING, Stats.MAX_RATING);
         }
     }
 
-    [SerializeField]
-    private RuntimeAnimatorController characterAnimationController;
+
 
     public string GetName()
     {
@@ -89,6 +111,11 @@ public class CharacterProfile : ScriptableObject
     public RuntimeAnimatorController GetRAC()
     {
         return characterAnimationController;
+    }
+
+    internal PlayerPawn GetPlayerPawn()
+    {
+        return playerPawn;
     }
 
     public int GetSpeed()

@@ -2,13 +2,9 @@
 using static Keymapper;
 using Extensions;
 using System.Collections;
-using BulletPro;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-    public Transform leftBound, rightBound, topBound, bottomBound;
 
     #region Private Members
     //Reference Pawn
@@ -25,8 +21,8 @@ public class PlayerController : MonoBehaviour
         pawn = GetComponent<PlayerPawn>();
         spellLibrary = pawn.library;
         controlCycle = InitControlsCycle();
-        movementCycle = InitMovementCycle(Time.deltaTime);
-        magicCycle = MagicUseCycle(0.01f);
+        movementCycle = InitMovementCycle(null);
+        magicCycle = MagicUseCycle();
     }
 
     private void Start()
@@ -45,13 +41,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator InitMovementCycle(float delta = 0)
+    IEnumerator InitMovementCycle(float? delta = 0)
     {
         while (true)
         {
             InitMovementControls();
 
-            yield return new WaitForSecondsRealtime(delta == 0 ? Time.fixedDeltaTime : delta);
+            if ((delta == 0)) yield return new WaitForEndOfFrame();
+            else if (delta == null) yield return null;
+            else yield return new WaitForSeconds(delta.Value);
         }
     }
 
@@ -80,7 +78,7 @@ public class PlayerController : MonoBehaviour
                 pawn.IsMagicActivelyUsed = false;
             });
 
-            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
+            yield return null;
         }
     }
 
@@ -149,17 +147,18 @@ public class PlayerController : MonoBehaviour
     void RunSpecial()
     {
         //This looks a lot nicer!!!!
-        ControlAction("special1", false, () =>
+        ControlAction("specialA", false, () =>
         {
+            Debug.Log("Special A Ssu!");
             pawn.ActivateSpell(spellLibrary.spells[0].name);
         });
 
-        ControlAction("special2", false, () =>
+        ControlAction("specialB", false, () =>
         {
             pawn.ActivateSpell(spellLibrary.spells[1].name);
         });
 
-        ControlAction("special3", false, () =>
+        ControlAction("specialC", false, () =>
         {
             pawn.ActivateSpell(spellLibrary.spells[2].name);
         });

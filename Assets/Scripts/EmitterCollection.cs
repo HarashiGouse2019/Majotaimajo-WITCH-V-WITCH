@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using BulletPro;
 
 public class EmitterCollection : MonoBehaviour
@@ -12,12 +10,12 @@ public class EmitterCollection : MonoBehaviour
     /// BulletPro asset)
     /// </summary>
     /// 
-
     [System.Serializable]
     public class EmitterPatternPair
     {
         public BulletEmitter emitter;
         public int profileValue = 0;
+        public int focusProfileValue = 0;
     }
     public EmitterProfile[] emitterProfiles;
     public EmitterPatternPair[] shotTypes;
@@ -33,6 +31,28 @@ public class EmitterCollection : MonoBehaviour
         for(int index = 0; index < shotTypes.Length; index++)
         {
             shotTypes[index].emitter.emitterProfile = emitterProfiles[shotTypes[index].profileValue];
+        }
+    }
+
+    public void ToggleEmittersAtCurrentLevel()
+    {
+        for(int index = 0; index < shotTypes.Length; index++)
+        {
+            BulletEmitter currentEmitter = shotTypes[index].emitter;
+            GameObject emitterObj = currentEmitter.gameObject;
+            if (PowerGradeSystem.CurrentLevel + 1 >= currentEmitter.enableAtPowerLevel &&
+                !emitterObj.activeInHierarchy)
+            {
+                emitterObj.SetActive(true);
+                currentEmitter.Reinitialize();
+            }
+            
+            if((PowerGradeSystem.CurrentLevel + 1 < currentEmitter.enableAtPowerLevel && emitterObj.activeInHierarchy) ||
+                (PowerGradeSystem.CurrentLevel + 1 > currentEmitter.enableAtPowerLevel + currentEmitter.disableLevelOffset && currentEmitter.disableAboveLevel && emitterObj.activeInHierarchy))
+            {
+                emitterObj.SetActive(false);
+                currentEmitter.Stop();
+            } 
         }
     }
 }

@@ -51,6 +51,7 @@ public class Stats
     public StatsAttribute StartingProminentAttribute { get; set; }
 
     public static float SPEED_REDUCTION_CAP { get; private set; } = 0.80f;
+    public static float MAGIC_RECOVERY_RATE { get; private set; } = 0.0005f;
 
     //Ravens Default Stats
     //Get 100 + number of plays points
@@ -85,7 +86,10 @@ public class Stats
         //The bonus doesn't go towards EVASIVNESS, rather it goes
         //to the SPEED_REDUCTION_CAP that plays a role in the EVASIVENESS stat
         BaseEvasiveness = evasiveness;
-        SPEED_REDUCTION_CAP += PROMINENT_ATTRIBUTE_BONUS / 100;
+        if(prominentAttribute == StatsAttribute.EVASIVENESS) SPEED_REDUCTION_CAP += PROMINENT_ATTRIBUTE_BONUS / 100;
+
+        //Magic Recovery Speed will also be altered
+        if(prominentAttribute == StatsAttribute.MAGIC) MAGIC_RECOVERY_RATE += PROMINENT_ATTRIBUTE_BONUS / 100;
     }
 
     /// <summary>

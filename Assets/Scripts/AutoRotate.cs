@@ -8,15 +8,27 @@ public class AutoRotate : MonoBehaviour
     [SerializeField, Range(-1f, 1f)]
     private float rotationSpeed;
 
+    [SerializeField]
+    private AutoRotate objectReference;
+
     private float currentAngle = 0f;
 
     private const float MAX_ANGLE = 360f;
 
     private const float RESET = 0f;
 
+    IEnumerator rotationCycle;
+
+    private void Start()
+    {
+        rotationCycle = Rotation(0.01f);
+        rotationCycle.Start();
+    }
+
     private void OnEnable()
     {
-        Rotation(0.01f).Start();
+        currentAngle = objectReference ? objectReference.GetCurrentAngle() + rotationSpeed : default;
+        if(rotationCycle != null) rotationCycle.Start();
     }
 
     IEnumerator Rotation(float delta = 0)
@@ -25,8 +37,9 @@ public class AutoRotate : MonoBehaviour
         {
             currentAngle += rotationSpeed;
             UpdateRotation();
-            
-            yield return new WaitForSeconds(delta == 0 ? Time.fixedDeltaTime : delta);
+
+            if ((delta == 0)) yield return new WaitForEndOfFrame();
+            else yield return new WaitForSeconds(delta);
         }
     }
 
@@ -43,4 +56,12 @@ public class AutoRotate : MonoBehaviour
     }
 
     void ResetAngle() => currentAngle = RESET;
+
+    public float GetCurrentAngle() => currentAngle;
+
+    private void OnDisable()
+    {
+        if(rotationCycle != null)
+            rotationCycle.Stop();
+    }
 }
