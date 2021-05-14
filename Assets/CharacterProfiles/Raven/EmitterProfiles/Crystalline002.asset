@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pattern (From Crystalline001)
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5553298
+  uniqueIndex: 12028839
   profile: {fileID: 11400000}
   parent: {fileID: 7897203097194585452}
   children:
@@ -16572,7 +16572,7 @@ MonoBehaviour:
   m_Name: Bullet (From Crystalline001)
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4323
+  uniqueIndex: 14708268
   profile: {fileID: 11400000}
   parent: {fileID: -1808679740011395573}
   children: []
@@ -23109,7 +23109,7 @@ MonoBehaviour:
   m_Name: Shot (From Crystalline001)
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 9680568
+  uniqueIndex: 6207287
   profile: {fileID: 11400000}
   parent: {fileID: -5535545121389123857}
   children:
@@ -23418,7 +23418,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6659865
+  uniqueIndex: 13814097
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -25258,7 +25258,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 1
   hideSpriteList: 0
-  currentlyDisplayedModule: 2
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -25366,7 +25366,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 25
+      defaultValue: 35
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -29955,7 +29955,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15953502
+  uniqueIndex: 10811193
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -32253,7 +32253,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4310693
+  uniqueIndex: 11363942
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -38428,7 +38428,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3454393
+  uniqueIndex: 4996704
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -54986,7 +54986,7 @@ MonoBehaviour:
   m_Name: Root Emitter (From Crystalline001)
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 13454767
+  uniqueIndex: 1054587
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:

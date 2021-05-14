@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pattern1
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3369678
+  uniqueIndex: 9814625
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -14241,7 +14241,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3788223
+  uniqueIndex: 6642653
   profile: {fileID: 11400000}
   parent: {fileID: 5729808271265065516}
   children: []
@@ -16081,7 +16081,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 0
   hideSpriteList: 0
-  currentlyDisplayedModule: 3
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -16189,7 +16189,7 @@ MonoBehaviour:
         weight: 0
         headerTitle: 
         blendColor: {r: 0, g: 0, b: 0, a: 0}
-      defaultValue: 15
+      defaultValue: 20
     useSlider: 0
     sliderMin: 0
     sliderMax: 0
@@ -20521,7 +20521,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 16213164
+  uniqueIndex: 2918385
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -27058,7 +27058,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14643288
+  uniqueIndex: 11563303
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -27332,7 +27332,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9699026
+  uniqueIndex: 5861983
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -33507,7 +33507,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3434269
+  uniqueIndex: 3966221
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -44487,7 +44487,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 5372090
+  uniqueIndex: 12691
   profile: {fileID: 11400000}
   parent: {fileID: -8883959193296836241}
   children:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shot (From Pegasus003) (From Pegasus004) 0
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14495434
+  uniqueIndex: 15658228
   profile: {fileID: 11400000}
   parent: {fileID: 5458794515672166843}
   children:
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1740451
+  uniqueIndex: 2674399
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -6916,7 +6916,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15367425
+  uniqueIndex: 12611748
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -7194,7 +7194,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 10588121
+  uniqueIndex: 16093636
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -13473,7 +13473,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 12270460
+  uniqueIndex: 10275412
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -30031,7 +30031,7 @@ MonoBehaviour:
   m_Name: Pattern (From Pegasus003) (From Pegasus004) 0
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2786632
+  uniqueIndex: 12567159
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -46589,7 +46589,7 @@ MonoBehaviour:
   m_Name: Bullet (From Pegasus003) (From Pegasus004) 0
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4086629
+  uniqueIndex: 11035753
   profile: {fileID: 11400000}
   parent: {fileID: -1990989320804193584}
   children: []
@@ -48429,7 +48429,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 1
   hideSpriteList: 0
-  currentlyDisplayedModule: 4
+  currentlyDisplayedModule: 2
   canMove: 1
   canCollide: 1
   isVisible: 1

@@ -28,7 +28,7 @@ public abstract class PlayerPawn : Pawn
     public GameObject pawnEmitterPrefab;
 
     public float MovementSpeed { get; set; }
-    public float Evasivness { get; set; }
+    public float Evasiveness { get; set; }
 
     public float FocusSpeed { get; set; }
     public float DashSpeed { get; set; }
@@ -36,6 +36,7 @@ public abstract class PlayerPawn : Pawn
 
     public bool IsMagicActivelyUsed { get; set; } = false;
     public bool IsOnFocus { get; set; } = false;
+    float AddedSpeed { get; set; }
 
     protected const int ZERO = 0;
     protected const int DOUBLE = 2;
@@ -81,6 +82,9 @@ public abstract class PlayerPawn : Pawn
         //Start Hit Cycle Coroutine
         BlinkCycle(0.05f).Start();
 
+        //Dash Mechanic Cycle Coroutine Start
+        DashCycle(MovementSpeed / 100f).Start();
+
         ChangeMotion(AnimationMotion.Idle);
     }
 
@@ -94,7 +98,7 @@ public abstract class PlayerPawn : Pawn
         {
             isVisible = true;
             characterRenderer.color = new Color(srendererColor.r, srendererColor.g, srendererColor.b, 255f);
-        } 
+        }
     }
 
     protected virtual void ChangeMotion(AnimationMotion newMotion)
@@ -110,13 +114,13 @@ public abstract class PlayerPawn : Pawn
     {
         basePriority = (uint)PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.BASEPRIORITY);
         MovementSpeed = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.SPEED);
-        Evasivness = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.EVASIVENESS);
+        Evasiveness = PlayerStats.GetCurrentAttributeValue(Stats.StatsAttribute.EVASIVENESS);
 
-        float statPercentage = Evasivness / Stats.HIGH_RANK_VALUE;
+        float statPercentage = Evasiveness / Stats.HIGH_RANK_VALUE;
         float reducePercentage = (Stats.SPEED_REDUCTION_CAP * statPercentage);
 
         FocusSpeed = MovementSpeed - (MovementSpeed * reducePercentage);
-        DashSpeed = MovementSpeed * Evasivness;
+        DashSpeed = (IsOnFocus ? FocusSpeed * Evasiveness : MovementSpeed * Evasiveness) - DOUBLE;
     }
 
     /// <summary>
@@ -325,6 +329,9 @@ public abstract class PlayerPawn : Pawn
         if (move.y < 0 && transform.position.y - 0.05f < BottomBound.position.y) move.y = 0;
         if (move.y > 0 && transform.position.y + 0.05f > TopBound.position.y) move.y = 0;
 
+        if(controller.IsDashing)
+            transform.Translate(move.normalized * AddedSpeed * Time.deltaTime, Space.Self);
+        else
         transform.Translate(move.normalized * (IsOnFocus ? FocusSpeed : MovementSpeed) * Time.deltaTime, Space.Self);
     }
 
@@ -338,7 +345,31 @@ public abstract class PlayerPawn : Pawn
         while (true)
         {
 
+
             yield return null;
+        }
+    }
+
+    private IEnumerator DashCycle(float rate)
+    {
+        float interpolationVal = 0;
+
+        while (true)
+        {
+            if (controller.IsDashing)
+            {
+                interpolationVal += IsOnFocus ? rate + (DOUBLE / 200f) : rate / DOUBLE;
+
+                AddedSpeed = Mathf.SmoothStep(DashSpeed / 8f, IsOnFocus ? FocusSpeed / (DOUBLE*DOUBLE) : MovementSpeed / (DOUBLE * DOUBLE), interpolationVal);
+
+                if (interpolationVal >= 0.99f)
+                {
+                    controller.IsDashing = false;
+                    interpolationVal = ZERO;
+                }
+
+            }
+            yield return new WaitForSeconds(0.2f * rate);
         }
     }
 }

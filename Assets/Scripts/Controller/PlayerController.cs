@@ -5,6 +5,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool IsDashing = false;
 
     #region Private Members
     //Reference Pawn
@@ -141,6 +142,10 @@ public class PlayerController : MonoBehaviour
     {
         pawn.IsOnFocus = OnKey("sneak");
 
+        EventManager.Watch(IsDashing == false, () =>
+            ControlAction("dash", false, () => IsDashing = true),
+            out bool results);
+
         RunSpecial();
     }
 
@@ -150,17 +155,17 @@ public class PlayerController : MonoBehaviour
         ControlAction("specialA", false, () =>
         {
             Debug.Log("Special A Ssu!");
-            pawn.ActivateSpell(spellLibrary.spells[0].name);
+            pawn.ActivateSpell(spellLibrary.spells[pawn.IsOnFocus ? 4 : 0].name);
         });
 
         ControlAction("specialB", false, () =>
         {
-            pawn.ActivateSpell(spellLibrary.spells[1].name);
+            pawn.ActivateSpell(spellLibrary.spells[pawn.IsOnFocus ? 5 : 1].name);
         });
 
         ControlAction("specialC", false, () =>
         {
-            pawn.ActivateSpell(spellLibrary.spells[2].name);
+            pawn.ActivateSpell(spellLibrary.spells[pawn.IsOnFocus ? 6 : 2].name);
         });
     }
 }

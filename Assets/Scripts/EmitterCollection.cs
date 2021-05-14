@@ -28,7 +28,7 @@ public class EmitterCollection : MonoBehaviour
 
     void Init()
     {
-        for(int index = 0; index < shotTypes.Length; index++)
+        for (int index = 0; index < shotTypes.Length; index++)
         {
             shotTypes[index].emitter.emitterProfile = emitterProfiles[shotTypes[index].profileValue];
         }
@@ -36,23 +36,47 @@ public class EmitterCollection : MonoBehaviour
 
     public void ToggleEmittersAtCurrentLevel()
     {
-        for(int index = 0; index < shotTypes.Length; index++)
+        for (int index = 0; index < shotTypes.Length; index++)
         {
             BulletEmitter currentEmitter = shotTypes[index].emitter;
             GameObject emitterObj = currentEmitter.gameObject;
             if (PowerGradeSystem.CurrentLevel + 1 >= currentEmitter.enableAtPowerLevel &&
                 !emitterObj.activeInHierarchy)
             {
+                if (!currentEmitter.patternOrigin.gameObject.activeInHierarchy)
+                {
+                    if (currentEmitter.disableObjects.Length > 0)
+                    {
+                        for (int objectIndex = 0; objectIndex < currentEmitter.disableObjects.Length; objectIndex++)
+                        {
+                            GameObject currentObj = currentEmitter.disableObjects[objectIndex];
+                            currentObj.SetActive(true);
+                        }
+                    }
+                }
+
                 emitterObj.SetActive(true);
                 currentEmitter.Reinitialize();
             }
-            
-            if((PowerGradeSystem.CurrentLevel + 1 < currentEmitter.enableAtPowerLevel && emitterObj.activeInHierarchy) ||
+
+            if ((PowerGradeSystem.CurrentLevel + 1 < currentEmitter.enableAtPowerLevel && emitterObj.activeInHierarchy) ||
                 (PowerGradeSystem.CurrentLevel + 1 > currentEmitter.enableAtPowerLevel + currentEmitter.disableLevelOffset && currentEmitter.disableAboveLevel && emitterObj.activeInHierarchy))
             {
+                if (currentEmitter.patternOrigin.gameObject.activeInHierarchy)
+                {
+                    if (currentEmitter.disableObjects.Length > 0)
+                    {
+                        for (int objectIndex = 0; objectIndex < currentEmitter.disableObjects.Length; objectIndex++)
+                        {
+                            GameObject currentObj = currentEmitter.disableObjects[objectIndex];
+                            currentObj.SetActive(false);
+                        }
+                    }
+                }
+
                 emitterObj.SetActive(false);
                 currentEmitter.Stop();
-            } 
+            }
         }
     }
 }

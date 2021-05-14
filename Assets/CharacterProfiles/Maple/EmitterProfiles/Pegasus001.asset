@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New PatternParams 1
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 5310233
+  uniqueIndex: 15250062
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children: []
@@ -14257,7 +14257,7 @@ MonoBehaviour:
   foldoutExport: 0
   foldoutEmptyBin: 0
   foldoutCompactMode: 0
-  currentParamsSelected: {fileID: 114027673760526898}
+  currentParamsSelected: {fileID: 114917193883442684}
   numberOfSubAssets: 0
 --- !u!114 &114027673760526898
 MonoBehaviour:
@@ -14272,7 +14272,7 @@ MonoBehaviour:
   m_Name: Star
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15575825
+  uniqueIndex: 6553130
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children: []
@@ -20809,7 +20809,7 @@ MonoBehaviour:
   m_Name: Shot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 10882556
+  uniqueIndex: 3914886
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -21083,7 +21083,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6536539
+  uniqueIndex: 8219812
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -27258,7 +27258,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7964967
+  uniqueIndex: 6801522
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -33808,7 +33808,8 @@ MonoBehaviour:
             weight: 0
             headerTitle: 
             blendColor: {r: 0, g: 0, b: 0, a: 0}
-          defaultValue: {fileID: 0}
+          defaultValue: {fileID: 8300000, guid: 8ec949894616e034f8a437f92a666057,
+            type: 3}
         narrowType: 1
         requireComponent: 0
         typeName: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
@@ -40962,4 +40963,4 @@ MonoBehaviour:
       displayName: End Loop
   hasBeenSerializedOnce: 1
   focusedInstruction: -1
-  safetyForPlaymode: 7
+  safetyForPlaymode: 8

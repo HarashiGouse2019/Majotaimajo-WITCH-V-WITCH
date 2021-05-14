@@ -17,7 +17,7 @@ public class FollowBehind : MonoBehaviour
     [SerializeField, Range(-10f, 10f)]
     float zDepth = 10f;
 
-    Vector3 velocity = Vector2.zero;
+    Vector3 velocity = Vector3.zero;
 
     Transform originParent;
 
@@ -25,9 +25,9 @@ public class FollowBehind : MonoBehaviour
     {
         if (targetTranform && gameObject.activeInHierarchy)
         {
-            Vector2 point = (Vector2)transform.position - new Vector2(_offset.x * Mathf.Sign(targetTranform.localScale.x), _offset.y);
-            Vector2 delta = (Vector2)targetTranform.position - new Vector2(point.x, point.y);
-            Vector2 destination = (Vector2)transform.position + delta;
+            Vector3 point = (Vector3)transform.position - new Vector3(_offset.x * Mathf.Sign(targetTranform.localScale.x), _offset.y, _offset.z);
+            Vector3 delta = (Vector3)targetTranform.position - new Vector3(point.x, point.y, point.z);
+            Vector3 destination = (Vector3)transform.position + delta;
 
             //Z will be changed
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);

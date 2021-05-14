@@ -20,6 +20,7 @@ namespace BulletPro
         public bool controlByLevel = false;
         public int enableAtPowerLevel = -1;
         public bool disableAboveLevel = false;
+        public GameObject[] disableObjects = new GameObject[0];
         public int disableLevelOffset = 0;
 
         private BulletParams firstBulletParams;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmokeTrail
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11963589
+  uniqueIndex: 729703
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -11401,7 +11401,7 @@ MonoBehaviour:
   m_Name: Bullet 0
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 7269324
+  uniqueIndex: 370092
   profile: {fileID: 11400000}
   parent: {fileID: 6399096186783408521}
   children: []
@@ -17832,7 +17832,7 @@ MonoBehaviour:
   m_Name: MainBullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 1851463
+  uniqueIndex: 1277109
   profile: {fileID: 11400000}
   parent: {fileID: 114201774248674550}
   children:
@@ -20002,7 +20002,7 @@ MonoBehaviour:
     requiredComponentName: 
   foldoutVFX: 1
   hideSpriteList: 0
-  currentlyDisplayedModule: 1
+  currentlyDisplayedModule: 0
   canMove: 1
   canCollide: 1
   isVisible: 1
@@ -25142,7 +25142,7 @@ MonoBehaviour:
   m_Name: MainShot
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 15431026
+  uniqueIndex: 8591355
   profile: {fileID: 11400000}
   parent: {fileID: 114917193883442684}
   children:
@@ -25416,7 +25416,7 @@ MonoBehaviour:
   m_Name: Root Emitter
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 15162660
+  uniqueIndex: 7385858
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -31591,7 +31591,7 @@ MonoBehaviour:
   m_Name: Pattern
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3744131
+  uniqueIndex: 9619800
   profile: {fileID: 11400000}
   parent: {fileID: 114671512830859702}
   children:
@@ -48149,7 +48149,7 @@ MonoBehaviour:
   m_Name: SmokeTrail 0
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7216512
+  uniqueIndex: 9538693
   profile: {fileID: 11400000}
   parent: {fileID: 114027673760526898}
   children:
@@ -59537,7 +59537,7 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4924782
+  uniqueIndex: 1772852
   profile: {fileID: 11400000}
   parent: {fileID: 6507809407898104923}
   children: []
@@ -65848,7 +65848,7 @@ MonoBehaviour:
   m_Name: Smoke 0
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 13792460
+  uniqueIndex: 9999498
   profile: {fileID: 11400000}
   parent: {fileID: 1384759770876142670}
   children:
@@ -70634,7 +70634,7 @@ MonoBehaviour:
   m_Name: Smoke
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 8887145
+  uniqueIndex: 12253751
   profile: {fileID: 11400000}
   parent: {fileID: -2764538654760502241}
   children:

@@ -99,6 +99,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 5
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &3842861031582674144
 MonoBehaviour:
@@ -227,6 +228,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 2
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &1112200449165170326
 GameObject:
@@ -277,6 +279,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &1190405265784187703
 GameObject:
@@ -377,6 +380,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 5
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &1889260642006925285
 MonoBehaviour:
@@ -465,10 +469,10 @@ MonoBehaviour:
   - emitter: {fileID: 5698423326629219074}
     profileValue: 2
     focusProfileValue: 0
-  - emitter: {fileID: 3374371738975826794}
+  - emitter: {fileID: 3235866753012196149}
     profileValue: 0
     focusProfileValue: 0
-  - emitter: {fileID: 5353753492119891567}
+  - emitter: {fileID: 5853713695247233189}
     profileValue: 0
     focusProfileValue: 0
   - emitter: {fileID: 7191368691734543832}
@@ -483,10 +487,10 @@ MonoBehaviour:
   - emitter: {fileID: 1571241021859047541}
     profileValue: 2
     focusProfileValue: 0
-  - emitter: {fileID: 2594046416796289471}
+  - emitter: {fileID: 204213966118520993}
     profileValue: 0
     focusProfileValue: 0
-  - emitter: {fileID: 531651176822859330}
+  - emitter: {fileID: 8605793040492754235}
     profileValue: 0
     focusProfileValue: 0
   - emitter: {fileID: 1608715807223570219}
@@ -511,7 +515,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5053451159940839038}
   - component: {fileID: 5132467052785398948}
-  - component: {fileID: 2594046416796289471}
   m_Layer: 0
   m_Name: CrystalBallSprite
   m_TagString: Untagged
@@ -532,6 +535,7 @@ Transform:
   m_Children:
   - {fileID: 2015355573448396935}
   - {fileID: 7983103868786278880}
+  - {fileID: 7729199215069338180}
   m_Father: {fileID: 3315109877768516405}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -583,25 +587,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2594046416796289471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2439546898083021743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitterProfile: {fileID: 0}
-  patternOrigin: {fileID: 5053451159940839038}
-  playAtStart: 0
-  controlByLevel: 1
-  enableAtPowerLevel: 4
-  disableAboveLevel: 0
-  disableLevelOffset: 0
 --- !u!1 &2587848788474027566
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3540418879404181939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.07999994, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3540418878834825162}
@@ -1135,6 +1120,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &3755225073912291602
 GameObject:
@@ -1146,7 +1132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5620382726791743394}
   - component: {fileID: 5651097842150257538}
-  - component: {fileID: 5353753492119891567}
   m_Layer: 0
   m_Name: CrystalBallSprite
   m_TagString: Untagged
@@ -1167,6 +1152,7 @@ Transform:
   m_Children:
   - {fileID: 4803103767954628862}
   - {fileID: 5744936396316882324}
+  - {fileID: 2080192699595405301}
   m_Father: {fileID: 3540418878445744812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1218,25 +1204,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5353753492119891567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3755225073912291602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitterProfile: {fileID: 0}
-  patternOrigin: {fileID: 5620382726791743394}
-  playAtStart: 0
-  controlByLevel: 1
-  enableAtPowerLevel: 3
-  disableAboveLevel: 0
-  disableLevelOffset: 0
 --- !u!1 &4022299571200623798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1214,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2515706689054675831}
   - component: {fileID: 4617883788709889457}
-  - component: {fileID: 3374371738975826794}
   m_Layer: 0
   m_Name: CrystalBallSprite
   m_TagString: Untagged
@@ -1268,6 +1234,7 @@ Transform:
   m_Children:
   - {fileID: 1986126491284627964}
   - {fileID: 8927089255192856366}
+  - {fileID: 2216967463712495459}
   m_Father: {fileID: 3540418878834825162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1319,25 +1286,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3374371738975826794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4022299571200623798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitterProfile: {fileID: 0}
-  patternOrigin: {fileID: 2515706689054675831}
-  playAtStart: 0
-  controlByLevel: 1
-  enableAtPowerLevel: 3
-  disableAboveLevel: 0
-  disableLevelOffset: 0
 --- !u!1 &4506795552571603942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1335,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &4747844212551314549
 GameObject:
@@ -1501,6 +1450,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 1
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &4770965940777862664
 GameObject:
@@ -1717,6 +1667,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 5
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &5388612546813462302
 MonoBehaviour:
@@ -1732,6 +1683,282 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: -1
   objectReference: {fileID: 0}
+--- !u!1 &7122040561729535404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5654658039850019386}
+  - component: {fileID: 8605793040492754235}
+  - component: {fileID: 9185790851784498945}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5654658039850019386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122040561729535404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261103680107479004}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8605793040492754235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122040561729535404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 0}
+  patternOrigin: {fileID: 5654658039850019386}
+  playAtStart: 0
+  controlByLevel: 1
+  enableAtPowerLevel: 4
+  disableAboveLevel: 0
+  disableObjects:
+  - {fileID: 8598100962969820582}
+  disableLevelOffset: 0
+--- !u!114 &9185790851784498945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122040561729535404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730fb0c213d23ce418322ee131830cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  detectionRange: 25
+  target: {fileID: 0}
+  defaultZRotation: 0
+--- !u!1 &7554734786285249811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080192699595405301}
+  - component: {fileID: 5853713695247233189}
+  - component: {fileID: 3343629034397027474}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2080192699595405301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554734786285249811}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5620382726791743394}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5853713695247233189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554734786285249811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 0}
+  patternOrigin: {fileID: 2080192699595405301}
+  playAtStart: 0
+  controlByLevel: 1
+  enableAtPowerLevel: 3
+  disableAboveLevel: 0
+  disableObjects:
+  - {fileID: 3755225073912291602}
+  disableLevelOffset: 0
+--- !u!114 &3343629034397027474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554734786285249811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730fb0c213d23ce418322ee131830cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  detectionRange: 25
+  target: {fileID: 0}
+  defaultZRotation: 0
+--- !u!1 &7631776980412939118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2216967463712495459}
+  - component: {fileID: 3235866753012196149}
+  - component: {fileID: 4075630359225863439}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2216967463712495459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631776980412939118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2515706689054675831}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3235866753012196149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631776980412939118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 0}
+  patternOrigin: {fileID: 2216967463712495459}
+  playAtStart: 0
+  controlByLevel: 1
+  enableAtPowerLevel: 3
+  disableAboveLevel: 0
+  disableObjects:
+  - {fileID: 4022299571200623798}
+  disableLevelOffset: 0
+--- !u!114 &4075630359225863439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7631776980412939118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730fb0c213d23ce418322ee131830cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  detectionRange: 25
+  target: {fileID: 0}
+  defaultZRotation: 0
+--- !u!1 &7833882572164626392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7729199215069338180}
+  - component: {fileID: 204213966118520993}
+  - component: {fileID: 3626998138883354734}
+  m_Layer: 0
+  m_Name: Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7729199215069338180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833882572164626392}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5053451159940839038}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204213966118520993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833882572164626392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitterProfile: {fileID: 0}
+  patternOrigin: {fileID: 7729199215069338180}
+  playAtStart: 0
+  controlByLevel: 1
+  enableAtPowerLevel: 4
+  disableAboveLevel: 0
+  disableObjects:
+  - {fileID: 2439546898083021743}
+  disableLevelOffset: 0
+--- !u!114 &3626998138883354734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833882572164626392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730fb0c213d23ce418322ee131830cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  detectionRange: 25
+  target: {fileID: 0}
+  defaultZRotation: 0
 --- !u!1 &8238284659087048837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +2008,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &8598100962969820582
 GameObject:
@@ -1792,7 +2020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 261103680107479004}
   - component: {fileID: 383145637845317196}
-  - component: {fileID: 531651176822859330}
   m_Layer: 0
   m_Name: CrystalBallSprite
   m_TagString: Untagged
@@ -1813,6 +2040,7 @@ Transform:
   m_Children:
   - {fileID: 6042031782644659243}
   - {fileID: 5287477984137288547}
+  - {fileID: 5654658039850019386}
   m_Father: {fileID: 3224267109912779650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1864,25 +2092,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &531651176822859330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8598100962969820582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a676b285f069c3c4884c27e78d0fc696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitterProfile: {fileID: 0}
-  patternOrigin: {fileID: 261103680107479004}
-  playAtStart: 0
-  controlByLevel: 1
-  enableAtPowerLevel: 4
-  disableAboveLevel: 0
-  disableLevelOffset: 0
 --- !u!1 &9108502409284584357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2191,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 5
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &3676772203258397866
 MonoBehaviour:

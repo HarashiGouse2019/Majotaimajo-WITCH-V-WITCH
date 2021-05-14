@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: Unique First Split
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 7562342
+  uniqueIndex: 7961370
   profile: {fileID: 11400000}
   parent: {fileID: 114815153843714456}
   children:
@@ -5557,7 +5557,7 @@ MonoBehaviour:
   m_Name: Small Asteroid
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 4185246
+  uniqueIndex: 16726886
   profile: {fileID: 11400000}
   parent: {fileID: 114554912965046252}
   children: []
@@ -19009,7 +19009,7 @@ MonoBehaviour:
   m_Name: Big Asteroid
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 9949794
+  uniqueIndex: 6089628
   profile: {fileID: 11400000}
   parent: {fileID: 114761996701474346}
   children:
@@ -47206,7 +47206,7 @@ MonoBehaviour:
   m_Name: Spawner
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 6196966
+  uniqueIndex: 6408009
   profile: {fileID: 11400000}
   parent: {fileID: 0}
   children:
@@ -58010,7 +58010,7 @@ MonoBehaviour:
   m_Name: Periodical Spawn
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 11642629
+  uniqueIndex: 4275307
   profile: {fileID: 11400000}
   parent: {fileID: 114445233770625862}
   children:
@@ -72070,7 +72070,7 @@ MonoBehaviour:
   m_Name: Unique Split
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 2988382
+  uniqueIndex: 1181987
   profile: {fileID: 11400000}
   parent: {fileID: 114729398677508236}
   children:
@@ -77574,7 +77574,7 @@ MonoBehaviour:
   m_Name: Random Spawn Location
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 14910290
+  uniqueIndex: 2079302
   profile: {fileID: 11400000}
   parent: {fileID: 114459869649051062}
   children:
@@ -84512,7 +84512,7 @@ MonoBehaviour:
   m_Name: Explosion 2
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 12943067
+  uniqueIndex: 11355053
   profile: {fileID: 11400000}
   parent: {fileID: 114501498419577722}
   children:
@@ -89142,7 +89142,7 @@ MonoBehaviour:
   m_Name: Explosion 1
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 11989452
+  uniqueIndex: 13376301
   profile: {fileID: 11400000}
   parent: {fileID: 114648678828899896}
   children:
@@ -93772,7 +93772,7 @@ MonoBehaviour:
   m_Name: Unique Split
   m_EditorClassIdentifier: 
   parameterType: 2
-  uniqueIndex: 3529820
+  uniqueIndex: 7017905
   profile: {fileID: 11400000}
   parent: {fileID: 114159319580985180}
   children:
@@ -99276,7 +99276,7 @@ MonoBehaviour:
   m_Name: Medium Asteroid
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 11878536
+  uniqueIndex: 7479066
   profile: {fileID: 11400000}
   parent: {fileID: 114557217597959648}
   children:
@@ -112832,7 +112832,7 @@ MonoBehaviour:
   m_Name: Explosion
   m_EditorClassIdentifier: 
   parameterType: 1
-  uniqueIndex: 1782464
+  uniqueIndex: 5350586
   profile: {fileID: 11400000}
   parent: {fileID: 114059832505956248}
   children:
@@ -117462,7 +117462,7 @@ MonoBehaviour:
   m_Name: Main Asteroid
   m_EditorClassIdentifier: 
   parameterType: 0
-  uniqueIndex: 3402013
+  uniqueIndex: 551116
   profile: {fileID: 11400000}
   parent: {fileID: 114539422623817408}
   children:

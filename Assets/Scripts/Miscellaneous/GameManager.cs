@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
             OnStandAlone = false;
 #endif
-            if(OnStandAlone) DisableMouseControls();
+            if(OnStandAlone) DisableMouseVisibility();
             DontDestroyOnLoad(this);
 
         }
@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
            new Key("up", KeyCode.UpArrow),
            new Key("down", KeyCode.DownArrow),
            new Key("shoot", KeyCode.Z),
+           new Key("dash", KeyCode.X),
            new Key("sneak", KeyCode.LeftShift),
            new Key("specialA", KeyCode.A),
            new Key("specialB", KeyCode.S),
@@ -380,11 +381,9 @@ public class GameManager : MonoBehaviour
         CurrentStage = stage;
     }
 
-    void DisableMouseControls()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    void LockCursor() => Cursor.lockState = CursorLockMode.Locked;
+
+    void DisableMouseVisibility() => Cursor.visible = false;
 
     void SetRatio(float width, float height)
     {
