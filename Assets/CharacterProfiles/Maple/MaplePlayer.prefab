@@ -63,6 +63,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 5
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &1470882547709455574
 GameObject:
@@ -111,6 +112,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -122,6 +125,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -163,6 +167,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 3
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &3117082685816520594
 MonoBehaviour:
@@ -225,6 +230,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -236,6 +243,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -277,6 +285,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 3
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &7709092031415625817
 MonoBehaviour:
@@ -341,6 +350,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &1934395465568656082
 GameObject:
@@ -449,6 +459,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -460,6 +472,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -501,6 +514,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 2
   disableAboveLevel: 1
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &4485963781803880586
 MonoBehaviour:
@@ -696,6 +710,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 1
   disableAboveLevel: 1
+  disableObjects: []
   disableLevelOffset: 2
 --- !u!1 &5485108131647031350
 GameObject:
@@ -746,6 +761,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &5680889177052607530
 GameObject:
@@ -879,6 +895,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 6
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &7624491251074449150
 GameObject:
@@ -891,7 +908,6 @@ GameObject:
   - component: {fileID: 7624491251074449151}
   - component: {fileID: 7624491251074449149}
   - component: {fileID: 8742285963942512451}
-  - component: {fileID: 7624491251074449138}
   - component: {fileID: 7624491251074449139}
   m_Layer: 0
   m_Name: MaplePlayer
@@ -928,6 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f5d0d3e8d3afb4990869c81dc41a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDashing: 0
 --- !u!114 &8742285963942512451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,25 +969,6 @@ MonoBehaviour:
   _starBits:
   - {fileID: 3050601617380520843}
   - {fileID: 1284538927764948001}
---- !u!114 &7624491251074449138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7624491251074449150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27b0260bd211fc4c9b083399bbfde27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellInUse: {fileID: 0}
-  spells:
-  - {fileID: 11400000, guid: c400dc056dab513468e2dbc8e609319d, type: 2}
-  - {fileID: 11400000, guid: ab554628f8727734a8f8f6c8a17355b1, type: 2}
-  - {fileID: 11400000, guid: 802a22329d1018f4c9e1cf043176d03e, type: 2}
-  spellIndex: 0
-  initializeOnStart: 0
 --- !u!114 &7624491251074449139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1032,6 +1030,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1043,6 +1043,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1109,23 +1110,15 @@ MonoBehaviour:
   OnHitByBullet:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: BulletPro.HitByBulletEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnHitByBulletEnter:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: BulletPro.HitByBulletEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnHitByBulletStay:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: BulletPro.HitByBulletEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   OnHitByBulletExit:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: BulletPro.HitByBulletEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &8353209352570950247
 GameObject:
@@ -1204,6 +1197,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1215,6 +1210,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1307,6 +1303,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 4
   disableAboveLevel: 0
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!1 &8776316309585427966
 GameObject:
@@ -1389,6 +1386,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1400,6 +1399,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1441,6 +1441,7 @@ MonoBehaviour:
   controlByLevel: 1
   enableAtPowerLevel: 2
   disableAboveLevel: 1
+  disableObjects: []
   disableLevelOffset: 0
 --- !u!114 &733965766363825792
 MonoBehaviour:

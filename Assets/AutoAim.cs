@@ -17,11 +17,6 @@ public class AutoAim : MonoBehaviour
     [SerializeField]
     private float defaultZRotation;
 
-    private void Awake()
-    {
-        Debug.Log(defaultZRotation);
-    }
-
     private void OnEnable()
     {
         

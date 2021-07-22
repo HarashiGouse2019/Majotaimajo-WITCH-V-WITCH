@@ -10,17 +10,13 @@ public class Spell : ScriptableObject
     public uint spellPriority;
     public uint magicConsumtion;
     [SerializeField]
-    private List<EmitterSpawner> emitterSpawners = new List<EmitterSpawner>();
+    private EmitterCollection emitterCollection;
 
     public bool Activated { get; private set; } = false;
 
     public bool enableSpellLooping = false;
+
     AnimationClip movement;
-
-    Animator animator;
-
-    ICaster caster;
-
 
     //This will help use know who cast what spell
     Pawn parentPawn;
@@ -30,17 +26,8 @@ public class Spell : ScriptableObject
     /// </summary>
     void Initalize()
     {
-        foreach(EmitterSpawner spawner in emitterSpawners)
-        {
-            spawner.Create();
-            spawner.GetEmitter().SetPawnParent(parentPawn);
-            spawner.SpawnEmitter(spawner.worldSpace);
-            Setup(spawner);
-            Activated = true;
-        }
+     
     }
-
-    public void SetPawnParent(Pawn pawn) => parentPawn = pawn;
 
     /// <summary>
     /// Set up the spawner's sequencer
@@ -48,26 +35,7 @@ public class Spell : ScriptableObject
     /// <param name="spawner"></param>
     void Setup(EmitterSpawner spawner)
     {
-        DanmakuSequencer sequencer = spawner.GetEmitter().Sequencer;
 
-        if (sequencer == null) { Debug.Log("At setup, sequencer is null...");  return; }
-
-        sequencer.spellOrigin = this;
-        sequencer.enableSequenceLooping = enableSpellLooping;
-
-        Enchantment enchanment = spawner.enchantment;
-
-        sequencer.statistics.stepSpeed = enchanment.stepSpeed;
-
-        for(int routinePos = 0; routinePos < enchanment.routine.Count; routinePos++)
-        {
-            sequencer.routines.Add(enchanment.routine[routinePos]);
-
-            //And then we check if we enable looping
-            if (sequencer.allowOverride) sequencer.enableSequenceLooping = enchanment.enableSequenceLooping;
-        }
-        sequencer.SetCaster(caster);
-        sequencer.enabled = true;
     }
 
     /// <summary>
@@ -76,15 +44,9 @@ public class Spell : ScriptableObject
     /// </summary>
     public void Activate(Pawn parentPawn)
     {
-        SetPawnParent(parentPawn);
         Initalize();
     }
 
-    /// <summary>
-    /// Get emitter spawners
-    /// </summary>
-    /// <returns></returns>
-    public List<EmitterSpawner> GetSpawners() => emitterSpawners;
 
     /// <summary>
     /// Set the movement clip of a given character using the spell
@@ -106,23 +68,5 @@ public class Spell : ScriptableObject
     {
         this.movement = movement.GetClip();
         return this.movement;
-    }
-
-    /// <summary>
-    /// Assign the animator 
-    /// </summary>
-    /// <param name="animator"></param>
-    public void AssignAnimator(Animator animator)
-    {
-        this.animator = animator;
-    }
-
-    /// <summary>
-    /// Set the caster of this spell
-    /// </summary>
-    /// <param name="caster"></param>
-    public void SetCaster(ICaster caster)
-    {
-        this.caster = caster;
     }
 }

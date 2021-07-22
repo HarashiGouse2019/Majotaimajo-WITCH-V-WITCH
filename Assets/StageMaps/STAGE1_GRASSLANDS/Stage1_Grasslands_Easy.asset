@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc4be1e9fdd5cd4b8945a3fd940426c, type: 3}
+  m_Name: Stage1_Grasslands_Easy
+  m_EditorClassIdentifier: 
+  mapName: Grasslands_Easy
+  description: 
+  stageAnimation: {fileID: 0}
+  nativeEnemies:
+  - pawn: {fileID: 484686958864491893, guid: 28165d0a8fe8d404db65976a98c0c1ea, type: 3}
+  dialogue: {fileID: 0}
+  _eventScript: {fileID: -1950679744647647471, guid: da5455ef7805a1e4e99a711449859617,
+    type: 3}
